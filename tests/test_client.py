@@ -722,6 +722,7 @@ class TestObpAPI:
         response = client.accounts.with_raw_response.check_iban(body={})
 
         assert response.retries_taken == failures_before_success
+        assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
 
 
 class TestAsyncObpAPI:
@@ -1405,3 +1406,4 @@ class TestAsyncObpAPI:
         response = await client.accounts.with_raw_response.check_iban(body={})
 
         assert response.retries_taken == failures_before_success
+        assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
