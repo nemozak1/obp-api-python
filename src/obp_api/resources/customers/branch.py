@@ -30,10 +30,21 @@ __all__ = ["BranchResource", "AsyncBranchResource"]
 class BranchResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> BranchResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return BranchResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> BranchResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return BranchResourceWithStreamingResponse(self)
 
     def update(
@@ -79,10 +90,21 @@ class BranchResource(SyncAPIResource):
 class AsyncBranchResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncBranchResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncBranchResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncBranchResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncBranchResourceWithStreamingResponse(self)
 
     async def update(

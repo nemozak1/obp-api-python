@@ -30,10 +30,21 @@ __all__ = ["MobileNumberResource", "AsyncMobileNumberResource"]
 class MobileNumberResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> MobileNumberResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return MobileNumberResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> MobileNumberResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return MobileNumberResourceWithStreamingResponse(self)
 
     def update(
@@ -79,10 +90,21 @@ class MobileNumberResource(SyncAPIResource):
 class AsyncMobileNumberResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncMobileNumberResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncMobileNumberResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncMobileNumberResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncMobileNumberResourceWithStreamingResponse(self)
 
     async def update(

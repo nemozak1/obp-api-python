@@ -30,10 +30,21 @@ __all__ = ["AuthContextUpdatesResource", "AsyncAuthContextUpdatesResource"]
 class AuthContextUpdatesResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AuthContextUpdatesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AuthContextUpdatesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AuthContextUpdatesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AuthContextUpdatesResourceWithStreamingResponse(self)
 
     def create(
@@ -120,10 +131,21 @@ class AuthContextUpdatesResource(SyncAPIResource):
 class AsyncAuthContextUpdatesResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncAuthContextUpdatesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncAuthContextUpdatesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncAuthContextUpdatesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncAuthContextUpdatesResourceWithStreamingResponse(self)
 
     async def create(

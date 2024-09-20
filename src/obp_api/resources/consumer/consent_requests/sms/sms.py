@@ -23,10 +23,21 @@ class SMSResource(SyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> SMSResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return SMSResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> SMSResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return SMSResourceWithStreamingResponse(self)
 
 
@@ -37,10 +48,21 @@ class AsyncSMSResource(AsyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> AsyncSMSResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncSMSResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncSMSResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncSMSResourceWithStreamingResponse(self)
 
 

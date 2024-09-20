@@ -25,10 +25,21 @@ __all__ = ["BalancingTransactionResource", "AsyncBalancingTransactionResource"]
 class BalancingTransactionResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> BalancingTransactionResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return BalancingTransactionResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> BalancingTransactionResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return BalancingTransactionResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -69,10 +80,21 @@ class BalancingTransactionResource(SyncAPIResource):
 class AsyncBalancingTransactionResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncBalancingTransactionResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncBalancingTransactionResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncBalancingTransactionResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncBalancingTransactionResourceWithStreamingResponse(self)
 
     async def retrieve(

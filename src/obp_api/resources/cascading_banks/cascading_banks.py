@@ -34,10 +34,21 @@ class CascadingBanksResource(SyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> CascadingBanksResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return CascadingBanksResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> CascadingBanksResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return CascadingBanksResourceWithStreamingResponse(self)
 
     def delete(
@@ -82,10 +93,21 @@ class AsyncCascadingBanksResource(AsyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> AsyncCascadingBanksResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncCascadingBanksResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncCascadingBanksResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncCascadingBanksResourceWithStreamingResponse(self)
 
     async def delete(

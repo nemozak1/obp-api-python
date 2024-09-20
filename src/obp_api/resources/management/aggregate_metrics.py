@@ -25,10 +25,21 @@ __all__ = ["AggregateMetricsResource", "AsyncAggregateMetricsResource"]
 class AggregateMetricsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AggregateMetricsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AggregateMetricsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AggregateMetricsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AggregateMetricsResourceWithStreamingResponse(self)
 
     def list(
@@ -58,10 +69,21 @@ class AggregateMetricsResource(SyncAPIResource):
 class AsyncAggregateMetricsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncAggregateMetricsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncAggregateMetricsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncAggregateMetricsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncAggregateMetricsResourceWithStreamingResponse(self)
 
     async def list(

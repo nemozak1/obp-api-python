@@ -25,10 +25,21 @@ __all__ = ["ProductTreeResource", "AsyncProductTreeResource"]
 class ProductTreeResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> ProductTreeResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return ProductTreeResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> ProductTreeResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return ProductTreeResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -72,10 +83,21 @@ class ProductTreeResource(SyncAPIResource):
 class AsyncProductTreeResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncProductTreeResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncProductTreeResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncProductTreeResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncProductTreeResourceWithStreamingResponse(self)
 
     async def retrieve(

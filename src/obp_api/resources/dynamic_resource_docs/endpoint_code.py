@@ -30,10 +30,21 @@ __all__ = ["EndpointCodeResource", "AsyncEndpointCodeResource"]
 class EndpointCodeResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> EndpointCodeResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return EndpointCodeResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> EndpointCodeResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return EndpointCodeResourceWithStreamingResponse(self)
 
     def create(
@@ -73,10 +84,21 @@ class EndpointCodeResource(SyncAPIResource):
 class AsyncEndpointCodeResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncEndpointCodeResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncEndpointCodeResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncEndpointCodeResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncEndpointCodeResourceWithStreamingResponse(self)
 
     async def create(

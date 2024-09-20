@@ -34,10 +34,21 @@ __all__ = ["WebuiPropsResource", "AsyncWebuiPropsResource"]
 class WebuiPropsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> WebuiPropsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return WebuiPropsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> WebuiPropsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return WebuiPropsResourceWithStreamingResponse(self)
 
     def create(
@@ -133,10 +144,21 @@ class WebuiPropsResource(SyncAPIResource):
 class AsyncWebuiPropsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncWebuiPropsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncWebuiPropsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncWebuiPropsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncWebuiPropsResourceWithStreamingResponse(self)
 
     async def create(
