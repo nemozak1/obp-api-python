@@ -30,10 +30,21 @@ __all__ = ["SupportedCurrenciesResource", "AsyncSupportedCurrenciesResource"]
 class SupportedCurrenciesResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> SupportedCurrenciesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return SupportedCurrenciesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> SupportedCurrenciesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return SupportedCurrenciesResourceWithStreamingResponse(self)
 
     def update(
@@ -79,10 +90,21 @@ class SupportedCurrenciesResource(SyncAPIResource):
 class AsyncSupportedCurrenciesResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncSupportedCurrenciesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncSupportedCurrenciesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncSupportedCurrenciesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncSupportedCurrenciesResourceWithStreamingResponse(self)
 
     async def update(

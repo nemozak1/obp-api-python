@@ -34,10 +34,21 @@ __all__ = ["PhysicalLocationResource", "AsyncPhysicalLocationResource"]
 class PhysicalLocationResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> PhysicalLocationResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return PhysicalLocationResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> PhysicalLocationResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return PhysicalLocationResourceWithStreamingResponse(self)
 
     def create(
@@ -179,10 +190,21 @@ class PhysicalLocationResource(SyncAPIResource):
 class AsyncPhysicalLocationResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncPhysicalLocationResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncPhysicalLocationResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncPhysicalLocationResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncPhysicalLocationResourceWithStreamingResponse(self)
 
     async def create(

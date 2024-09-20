@@ -25,10 +25,21 @@ __all__ = ["LockStatusResource", "AsyncLockStatusResource"]
 class LockStatusResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> LockStatusResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return LockStatusResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> LockStatusResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return LockStatusResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -109,10 +120,21 @@ class LockStatusResource(SyncAPIResource):
 class AsyncLockStatusResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncLockStatusResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncLockStatusResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncLockStatusResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncLockStatusResourceWithStreamingResponse(self)
 
     async def retrieve(

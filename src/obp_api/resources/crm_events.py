@@ -25,10 +25,21 @@ __all__ = ["CRMEventsResource", "AsyncCRMEventsResource"]
 class CRMEventsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> CRMEventsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return CRMEventsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> CRMEventsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return CRMEventsResourceWithStreamingResponse(self)
 
     def list(
@@ -69,10 +80,21 @@ class CRMEventsResource(SyncAPIResource):
 class AsyncCRMEventsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncCRMEventsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncCRMEventsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncCRMEventsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncCRMEventsResourceWithStreamingResponse(self)
 
     async def list(

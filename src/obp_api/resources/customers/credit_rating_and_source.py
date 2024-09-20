@@ -30,10 +30,21 @@ __all__ = ["CreditRatingAndSourceResource", "AsyncCreditRatingAndSourceResource"
 class CreditRatingAndSourceResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> CreditRatingAndSourceResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return CreditRatingAndSourceResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> CreditRatingAndSourceResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return CreditRatingAndSourceResourceWithStreamingResponse(self)
 
     def update(
@@ -79,10 +90,21 @@ class CreditRatingAndSourceResource(SyncAPIResource):
 class AsyncCreditRatingAndSourceResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncCreditRatingAndSourceResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncCreditRatingAndSourceResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncCreditRatingAndSourceResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncCreditRatingAndSourceResourceWithStreamingResponse(self)
 
     async def update(

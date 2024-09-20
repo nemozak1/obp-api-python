@@ -25,10 +25,21 @@ __all__ = ["MinimalResource", "AsyncMinimalResource"]
 class MinimalResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> MinimalResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return MinimalResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> MinimalResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return MinimalResourceWithStreamingResponse(self)
 
     def list(
@@ -69,10 +80,21 @@ class MinimalResource(SyncAPIResource):
 class AsyncMinimalResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncMinimalResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncMinimalResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncMinimalResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncMinimalResourceWithStreamingResponse(self)
 
     async def list(

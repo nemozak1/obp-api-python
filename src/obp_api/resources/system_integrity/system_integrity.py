@@ -37,10 +37,21 @@ class SystemIntegrityResource(SyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> SystemIntegrityResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return SystemIntegrityResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> SystemIntegrityResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return SystemIntegrityResourceWithStreamingResponse(self)
 
     def account_access_unique_index_1_check(
@@ -113,10 +124,21 @@ class AsyncSystemIntegrityResource(AsyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> AsyncSystemIntegrityResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncSystemIntegrityResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncSystemIntegrityResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncSystemIntegrityResourceWithStreamingResponse(self)
 
     async def account_access_unique_index_1_check(

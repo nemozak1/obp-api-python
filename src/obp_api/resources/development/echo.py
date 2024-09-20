@@ -21,10 +21,21 @@ __all__ = ["EchoResource", "AsyncEchoResource"]
 class EchoResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> EchoResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return EchoResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> EchoResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return EchoResourceWithStreamingResponse(self)
 
     def jws_verified_request_jws_signed_response(
@@ -53,10 +64,21 @@ class EchoResource(SyncAPIResource):
 class AsyncEchoResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncEchoResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncEchoResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncEchoResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncEchoResourceWithStreamingResponse(self)
 
     async def jws_verified_request_jws_signed_response(

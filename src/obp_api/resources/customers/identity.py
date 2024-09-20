@@ -30,10 +30,21 @@ __all__ = ["IdentityResource", "AsyncIdentityResource"]
 class IdentityResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> IdentityResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return IdentityResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> IdentityResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return IdentityResourceWithStreamingResponse(self)
 
     def update(
@@ -79,10 +90,21 @@ class IdentityResource(SyncAPIResource):
 class AsyncIdentityResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncIdentityResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncIdentityResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncIdentityResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncIdentityResourceWithStreamingResponse(self)
 
     async def update(

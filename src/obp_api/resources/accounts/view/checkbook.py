@@ -25,10 +25,21 @@ __all__ = ["CheckbookResource", "AsyncCheckbookResource"]
 class CheckbookResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> CheckbookResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return CheckbookResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> CheckbookResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return CheckbookResourceWithStreamingResponse(self)
 
     def list(
@@ -75,10 +86,21 @@ class CheckbookResource(SyncAPIResource):
 class AsyncCheckbookResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncCheckbookResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncCheckbookResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncCheckbookResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncCheckbookResourceWithStreamingResponse(self)
 
     async def list(

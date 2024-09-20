@@ -118,10 +118,21 @@ class AtmsResource(SyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> AtmsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AtmsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AtmsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AtmsResourceWithStreamingResponse(self)
 
     def create(
@@ -339,10 +350,21 @@ class AsyncAtmsResource(AsyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> AsyncAtmsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncAtmsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncAtmsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncAtmsResourceWithStreamingResponse(self)
 
     async def create(

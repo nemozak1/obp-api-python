@@ -25,10 +25,21 @@ __all__ = ["AuthenticationTypeValidationsResource", "AsyncAuthenticationTypeVali
 class AuthenticationTypeValidationsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AuthenticationTypeValidationsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AuthenticationTypeValidationsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AuthenticationTypeValidationsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AuthenticationTypeValidationsResourceWithStreamingResponse(self)
 
     def list(
@@ -57,10 +68,21 @@ class AuthenticationTypeValidationsResource(SyncAPIResource):
 class AsyncAuthenticationTypeValidationsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncAuthenticationTypeValidationsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncAuthenticationTypeValidationsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncAuthenticationTypeValidationsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncAuthenticationTypeValidationsResourceWithStreamingResponse(self)
 
     async def list(

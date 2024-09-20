@@ -24,10 +24,21 @@ class DocumentationResource(SyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> DocumentationResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return DocumentationResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> DocumentationResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return DocumentationResourceWithStreamingResponse(self)
 
 
@@ -38,10 +49,21 @@ class AsyncDocumentationResource(AsyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> AsyncDocumentationResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncDocumentationResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncDocumentationResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncDocumentationResourceWithStreamingResponse(self)
 
 

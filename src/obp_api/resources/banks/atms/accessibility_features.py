@@ -30,10 +30,21 @@ __all__ = ["AccessibilityFeaturesResource", "AsyncAccessibilityFeaturesResource"
 class AccessibilityFeaturesResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AccessibilityFeaturesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AccessibilityFeaturesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AccessibilityFeaturesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AccessibilityFeaturesResourceWithStreamingResponse(self)
 
     def update(
@@ -79,10 +90,21 @@ class AccessibilityFeaturesResource(SyncAPIResource):
 class AsyncAccessibilityFeaturesResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncAccessibilityFeaturesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncAccessibilityFeaturesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncAccessibilityFeaturesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncAccessibilityFeaturesResourceWithStreamingResponse(self)
 
     async def update(

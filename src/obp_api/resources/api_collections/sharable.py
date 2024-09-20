@@ -25,10 +25,21 @@ __all__ = ["SharableResource", "AsyncSharableResource"]
 class SharableResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> SharableResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return SharableResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> SharableResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return SharableResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -55,10 +66,21 @@ class SharableResource(SyncAPIResource):
 class AsyncSharableResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncSharableResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncSharableResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncSharableResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncSharableResourceWithStreamingResponse(self)
 
     async def retrieve(

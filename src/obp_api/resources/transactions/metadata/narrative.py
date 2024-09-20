@@ -30,10 +30,21 @@ __all__ = ["NarrativeResource", "AsyncNarrativeResource"]
 class NarrativeResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> NarrativeResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return NarrativeResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> NarrativeResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return NarrativeResourceWithStreamingResponse(self)
 
     def create(
@@ -218,10 +229,21 @@ class NarrativeResource(SyncAPIResource):
 class AsyncNarrativeResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncNarrativeResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncNarrativeResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncNarrativeResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncNarrativeResourceWithStreamingResponse(self)
 
     async def create(

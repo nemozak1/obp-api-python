@@ -25,10 +25,21 @@ __all__ = ["CurrenciesResource", "AsyncCurrenciesResource"]
 class CurrenciesResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> CurrenciesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return CurrenciesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> CurrenciesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return CurrenciesResourceWithStreamingResponse(self)
 
     def list(
@@ -69,10 +80,21 @@ class CurrenciesResource(SyncAPIResource):
 class AsyncCurrenciesResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncCurrenciesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncCurrenciesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncCurrenciesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncCurrenciesResourceWithStreamingResponse(self)
 
     async def list(

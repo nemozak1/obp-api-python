@@ -25,10 +25,21 @@ __all__ = ["MyConsentsResource", "AsyncMyConsentsResource"]
 class MyConsentsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> MyConsentsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return MyConsentsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> MyConsentsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return MyConsentsResourceWithStreamingResponse(self)
 
     def list(
@@ -106,10 +117,21 @@ class MyConsentsResource(SyncAPIResource):
 class AsyncMyConsentsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncMyConsentsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncMyConsentsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncMyConsentsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncMyConsentsResourceWithStreamingResponse(self)
 
     async def list(
