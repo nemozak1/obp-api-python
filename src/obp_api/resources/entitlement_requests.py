@@ -34,10 +34,21 @@ __all__ = ["EntitlementRequestsResource", "AsyncEntitlementRequestsResource"]
 class EntitlementRequestsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> EntitlementRequestsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return EntitlementRequestsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> EntitlementRequestsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return EntitlementRequestsResourceWithStreamingResponse(self)
 
     def create(
@@ -135,10 +146,21 @@ class EntitlementRequestsResource(SyncAPIResource):
 class AsyncEntitlementRequestsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncEntitlementRequestsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncEntitlementRequestsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncEntitlementRequestsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncEntitlementRequestsResourceWithStreamingResponse(self)
 
     async def create(

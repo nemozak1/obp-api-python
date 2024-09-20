@@ -30,10 +30,21 @@ __all__ = ["NumberResource", "AsyncNumberResource"]
 class NumberResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> NumberResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return NumberResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> NumberResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return NumberResourceWithStreamingResponse(self)
 
     def update(
@@ -79,10 +90,21 @@ class NumberResource(SyncAPIResource):
 class AsyncNumberResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncNumberResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncNumberResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncNumberResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncNumberResourceWithStreamingResponse(self)
 
     async def update(

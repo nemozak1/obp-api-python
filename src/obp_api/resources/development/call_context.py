@@ -21,10 +21,21 @@ __all__ = ["CallContextResource", "AsyncCallContextResource"]
 class CallContextResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> CallContextResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return CallContextResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> CallContextResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return CallContextResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -53,10 +64,21 @@ class CallContextResource(SyncAPIResource):
 class AsyncCallContextResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncCallContextResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncCallContextResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncCallContextResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncCallContextResourceWithStreamingResponse(self)
 
     async def retrieve(

@@ -34,10 +34,21 @@ __all__ = ["TaxResidencesResource", "AsyncTaxResidencesResource"]
 class TaxResidencesResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> TaxResidencesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return TaxResidencesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> TaxResidencesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return TaxResidencesResourceWithStreamingResponse(self)
 
     def create(
@@ -160,10 +171,21 @@ class TaxResidencesResource(SyncAPIResource):
 class AsyncTaxResidencesResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncTaxResidencesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncTaxResidencesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncTaxResidencesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncTaxResidencesResourceWithStreamingResponse(self)
 
     async def create(

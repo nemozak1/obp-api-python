@@ -30,10 +30,21 @@ __all__ = ["StandingOrdersResource", "AsyncStandingOrdersResource"]
 class StandingOrdersResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> StandingOrdersResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return StandingOrdersResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> StandingOrdersResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return StandingOrdersResourceWithStreamingResponse(self)
 
     def create(
@@ -79,10 +90,21 @@ class StandingOrdersResource(SyncAPIResource):
 class AsyncStandingOrdersResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncStandingOrdersResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncStandingOrdersResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncStandingOrdersResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncStandingOrdersResourceWithStreamingResponse(self)
 
     async def create(

@@ -30,10 +30,21 @@ __all__ = ["OverviewFlatResource", "AsyncOverviewFlatResource"]
 class OverviewFlatResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> OverviewFlatResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return OverviewFlatResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> OverviewFlatResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return OverviewFlatResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -76,10 +87,21 @@ class OverviewFlatResource(SyncAPIResource):
 class AsyncOverviewFlatResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncOverviewFlatResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncOverviewFlatResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncOverviewFlatResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncOverviewFlatResourceWithStreamingResponse(self)
 
     async def retrieve(

@@ -34,10 +34,21 @@ __all__ = ["TargetViewsResource", "AsyncTargetViewsResource"]
 class TargetViewsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> TargetViewsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return TargetViewsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> TargetViewsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return TargetViewsResourceWithStreamingResponse(self)
 
     def create(
@@ -208,10 +219,21 @@ class TargetViewsResource(SyncAPIResource):
 class AsyncTargetViewsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncTargetViewsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncTargetViewsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncTargetViewsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncTargetViewsResourceWithStreamingResponse(self)
 
     async def create(

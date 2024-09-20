@@ -30,10 +30,21 @@ __all__ = ["DirectDebitsResource", "AsyncDirectDebitsResource"]
 class DirectDebitsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> DirectDebitsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return DirectDebitsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> DirectDebitsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return DirectDebitsResourceWithStreamingResponse(self)
 
     def create(
@@ -82,10 +93,21 @@ class DirectDebitsResource(SyncAPIResource):
 class AsyncDirectDebitsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncDirectDebitsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncDirectDebitsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncDirectDebitsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncDirectDebitsResourceWithStreamingResponse(self)
 
     async def create(

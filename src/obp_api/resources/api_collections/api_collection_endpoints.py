@@ -30,10 +30,21 @@ __all__ = ["APICollectionEndpointsResource", "AsyncAPICollectionEndpointsResourc
 class APICollectionEndpointsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> APICollectionEndpointsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return APICollectionEndpointsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> APICollectionEndpointsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return APICollectionEndpointsResourceWithStreamingResponse(self)
 
     def create(
@@ -139,10 +150,21 @@ class APICollectionEndpointsResource(SyncAPIResource):
 class AsyncAPICollectionEndpointsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncAPICollectionEndpointsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncAPICollectionEndpointsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncAPICollectionEndpointsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncAPICollectionEndpointsResourceWithStreamingResponse(self)
 
     async def create(

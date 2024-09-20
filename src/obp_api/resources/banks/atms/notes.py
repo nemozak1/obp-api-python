@@ -30,10 +30,21 @@ __all__ = ["NotesResource", "AsyncNotesResource"]
 class NotesResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> NotesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return NotesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> NotesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return NotesResourceWithStreamingResponse(self)
 
     def update(
@@ -79,10 +90,21 @@ class NotesResource(SyncAPIResource):
 class AsyncNotesResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncNotesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncNotesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncNotesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncNotesResourceWithStreamingResponse(self)
 
     async def update(
