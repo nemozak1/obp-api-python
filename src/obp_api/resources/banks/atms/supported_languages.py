@@ -30,10 +30,21 @@ __all__ = ["SupportedLanguagesResource", "AsyncSupportedLanguagesResource"]
 class SupportedLanguagesResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> SupportedLanguagesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return SupportedLanguagesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> SupportedLanguagesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return SupportedLanguagesResourceWithStreamingResponse(self)
 
     def update(
@@ -79,10 +90,21 @@ class SupportedLanguagesResource(SyncAPIResource):
 class AsyncSupportedLanguagesResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncSupportedLanguagesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncSupportedLanguagesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncSupportedLanguagesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncSupportedLanguagesResourceWithStreamingResponse(self)
 
     async def update(

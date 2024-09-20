@@ -30,10 +30,21 @@ __all__ = ["PrivateAliasResource", "AsyncPrivateAliasResource"]
 class PrivateAliasResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> PrivateAliasResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return PrivateAliasResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> PrivateAliasResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return PrivateAliasResourceWithStreamingResponse(self)
 
     def delete(
@@ -85,10 +96,21 @@ class PrivateAliasResource(SyncAPIResource):
 class AsyncPrivateAliasResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncPrivateAliasResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncPrivateAliasResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncPrivateAliasResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncPrivateAliasResourceWithStreamingResponse(self)
 
     async def delete(

@@ -25,10 +25,21 @@ __all__ = ["TopConsumersResource", "AsyncTopConsumersResource"]
 class TopConsumersResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> TopConsumersResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return TopConsumersResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> TopConsumersResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return TopConsumersResourceWithStreamingResponse(self)
 
     def list(
@@ -58,10 +69,21 @@ class TopConsumersResource(SyncAPIResource):
 class AsyncTopConsumersResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncTopConsumersResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncTopConsumersResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncTopConsumersResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncTopConsumersResourceWithStreamingResponse(self)
 
     async def list(

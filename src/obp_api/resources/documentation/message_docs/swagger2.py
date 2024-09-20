@@ -25,10 +25,21 @@ __all__ = ["Swagger2Resource", "AsyncSwagger2Resource"]
 class Swagger2Resource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> Swagger2ResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return Swagger2ResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> Swagger2ResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return Swagger2ResourceWithStreamingResponse(self)
 
     def _0(
@@ -57,10 +68,21 @@ class Swagger2Resource(SyncAPIResource):
 class AsyncSwagger2Resource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncSwagger2ResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncSwagger2ResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncSwagger2ResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncSwagger2ResourceWithStreamingResponse(self)
 
     async def _0(

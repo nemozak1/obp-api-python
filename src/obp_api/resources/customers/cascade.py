@@ -21,10 +21,21 @@ __all__ = ["CascadeResource", "AsyncCascadeResource"]
 class CascadeResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> CascadeResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return CascadeResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> CascadeResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return CascadeResourceWithStreamingResponse(self)
 
     def delete(
@@ -68,10 +79,21 @@ class CascadeResource(SyncAPIResource):
 class AsyncCascadeResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncCascadeResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncCascadeResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncCascadeResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncCascadeResourceWithStreamingResponse(self)
 
     async def delete(

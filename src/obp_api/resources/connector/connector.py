@@ -37,10 +37,21 @@ class ConnectorResource(SyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> ConnectorResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return ConnectorResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> ConnectorResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return ConnectorResourceWithStreamingResponse(self)
 
     def loopback(
@@ -73,10 +84,21 @@ class AsyncConnectorResource(AsyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> AsyncConnectorResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncConnectorResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncConnectorResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncConnectorResourceWithStreamingResponse(self)
 
     async def loopback(

@@ -25,10 +25,21 @@ __all__ = ["JsonSchemaValidationsResource", "AsyncJsonSchemaValidationsResource"
 class JsonSchemaValidationsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> JsonSchemaValidationsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return JsonSchemaValidationsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> JsonSchemaValidationsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return JsonSchemaValidationsResourceWithStreamingResponse(self)
 
     def list(
@@ -57,10 +68,21 @@ class JsonSchemaValidationsResource(SyncAPIResource):
 class AsyncJsonSchemaValidationsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncJsonSchemaValidationsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncJsonSchemaValidationsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncJsonSchemaValidationsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncJsonSchemaValidationsResourceWithStreamingResponse(self)
 
     async def list(

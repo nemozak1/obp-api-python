@@ -25,10 +25,21 @@ __all__ = ["OtherAccountResource", "AsyncOtherAccountResource"]
 class OtherAccountResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> OtherAccountResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return OtherAccountResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> OtherAccountResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return OtherAccountResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -78,10 +89,21 @@ class OtherAccountResource(SyncAPIResource):
 class AsyncOtherAccountResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncOtherAccountResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncOtherAccountResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncOtherAccountResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncOtherAccountResourceWithStreamingResponse(self)
 
     async def retrieve(

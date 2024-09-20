@@ -30,10 +30,21 @@ __all__ = ["AttributeResource", "AsyncAttributeResource"]
 class AttributeResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AttributeResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AttributeResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AttributeResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AttributeResourceWithStreamingResponse(self)
 
     def create(
@@ -79,10 +90,21 @@ class AttributeResource(SyncAPIResource):
 class AsyncAttributeResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncAttributeResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncAttributeResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncAttributeResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncAttributeResourceWithStreamingResponse(self)
 
     async def create(

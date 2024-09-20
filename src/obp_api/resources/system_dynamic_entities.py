@@ -34,10 +34,21 @@ __all__ = ["SystemDynamicEntitiesResource", "AsyncSystemDynamicEntitiesResource"
 class SystemDynamicEntitiesResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> SystemDynamicEntitiesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return SystemDynamicEntitiesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> SystemDynamicEntitiesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return SystemDynamicEntitiesResourceWithStreamingResponse(self)
 
     def create(
@@ -167,10 +178,21 @@ class SystemDynamicEntitiesResource(SyncAPIResource):
 class AsyncSystemDynamicEntitiesResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncSystemDynamicEntitiesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncSystemDynamicEntitiesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncSystemDynamicEntitiesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncSystemDynamicEntitiesResourceWithStreamingResponse(self)
 
     async def create(

@@ -30,10 +30,21 @@ __all__ = ["TransactionAttributesResource", "AsyncTransactionAttributesResource"
 class TransactionAttributesResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> TransactionAttributesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return TransactionAttributesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> TransactionAttributesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return TransactionAttributesResourceWithStreamingResponse(self)
 
     def create(
@@ -82,10 +93,21 @@ class TransactionAttributesResource(SyncAPIResource):
 class AsyncTransactionAttributesResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncTransactionAttributesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncTransactionAttributesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncTransactionAttributesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncTransactionAttributesResourceWithStreamingResponse(self)
 
     async def create(

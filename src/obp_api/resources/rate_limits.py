@@ -25,10 +25,21 @@ __all__ = ["RateLimitsResource", "AsyncRateLimitsResource"]
 class RateLimitsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> RateLimitsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return RateLimitsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> RateLimitsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return RateLimitsResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -57,10 +68,21 @@ class RateLimitsResource(SyncAPIResource):
 class AsyncRateLimitsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncRateLimitsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncRateLimitsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncRateLimitsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncRateLimitsResourceWithStreamingResponse(self)
 
     async def retrieve(

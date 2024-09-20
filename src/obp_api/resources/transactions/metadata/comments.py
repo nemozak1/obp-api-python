@@ -30,10 +30,21 @@ __all__ = ["CommentsResource", "AsyncCommentsResource"]
 class CommentsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> CommentsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return CommentsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> CommentsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return CommentsResourceWithStreamingResponse(self)
 
     def create(
@@ -176,10 +187,21 @@ class CommentsResource(SyncAPIResource):
 class AsyncCommentsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncCommentsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncCommentsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncCommentsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncCommentsResourceWithStreamingResponse(self)
 
     async def create(

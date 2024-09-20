@@ -25,10 +25,21 @@ __all__ = ["CorrelatedUsersResource", "AsyncCorrelatedUsersResource"]
 class CorrelatedUsersResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> CorrelatedUsersResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return CorrelatedUsersResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> CorrelatedUsersResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return CorrelatedUsersResourceWithStreamingResponse(self)
 
     def list(
@@ -72,10 +83,21 @@ class CorrelatedUsersResource(SyncAPIResource):
 class AsyncCorrelatedUsersResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncCorrelatedUsersResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncCorrelatedUsersResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncCorrelatedUsersResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncCorrelatedUsersResourceWithStreamingResponse(self)
 
     async def list(

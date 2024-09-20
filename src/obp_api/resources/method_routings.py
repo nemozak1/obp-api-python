@@ -34,10 +34,21 @@ __all__ = ["MethodRoutingsResource", "AsyncMethodRoutingsResource"]
 class MethodRoutingsResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> MethodRoutingsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return MethodRoutingsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> MethodRoutingsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return MethodRoutingsResourceWithStreamingResponse(self)
 
     def create(
@@ -169,10 +180,21 @@ class MethodRoutingsResource(SyncAPIResource):
 class AsyncMethodRoutingsResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncMethodRoutingsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncMethodRoutingsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncMethodRoutingsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncMethodRoutingsResourceWithStreamingResponse(self)
 
     async def create(

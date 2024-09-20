@@ -23,10 +23,21 @@ class CreditCardsResource(SyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> CreditCardsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return CreditCardsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> CreditCardsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return CreditCardsResourceWithStreamingResponse(self)
 
 
@@ -37,10 +48,21 @@ class AsyncCreditCardsResource(AsyncAPIResource):
 
     @cached_property
     def with_raw_response(self) -> AsyncCreditCardsResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncCreditCardsResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncCreditCardsResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncCreditCardsResourceWithStreamingResponse(self)
 
 

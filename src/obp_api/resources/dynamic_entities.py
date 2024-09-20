@@ -34,10 +34,21 @@ __all__ = ["DynamicEntitiesResource", "AsyncDynamicEntitiesResource"]
 class DynamicEntitiesResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> DynamicEntitiesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return DynamicEntitiesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> DynamicEntitiesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return DynamicEntitiesResourceWithStreamingResponse(self)
 
     def update(
@@ -134,10 +145,21 @@ class DynamicEntitiesResource(SyncAPIResource):
 class AsyncDynamicEntitiesResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncDynamicEntitiesResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncDynamicEntitiesResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncDynamicEntitiesResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncDynamicEntitiesResourceWithStreamingResponse(self)
 
     async def update(

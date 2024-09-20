@@ -30,10 +30,21 @@ __all__ = ["KYCChecksResource", "AsyncKYCChecksResource"]
 class KYCChecksResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> KYCChecksResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return KYCChecksResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> KYCChecksResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return KYCChecksResourceWithStreamingResponse(self)
 
     def update(
@@ -117,10 +128,21 @@ class KYCChecksResource(SyncAPIResource):
 class AsyncKYCChecksResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncKYCChecksResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncKYCChecksResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncKYCChecksResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncKYCChecksResourceWithStreamingResponse(self)
 
     async def update(

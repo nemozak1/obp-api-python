@@ -30,10 +30,21 @@ __all__ = ["FxResource", "AsyncFxResource"]
 class FxResource(SyncAPIResource):
     @cached_property
     def with_raw_response(self) -> FxResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return FxResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> FxResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return FxResourceWithStreamingResponse(self)
 
     def retrieve(
@@ -116,10 +127,21 @@ class FxResource(SyncAPIResource):
 class AsyncFxResource(AsyncAPIResource):
     @cached_property
     def with_raw_response(self) -> AsyncFxResourceWithRawResponse:
+        """
+        This property can be used as a prefix for any HTTP method call to return the
+        the raw response object instead of the parsed content.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#accessing-raw-response-data-eg-headers
+        """
         return AsyncFxResourceWithRawResponse(self)
 
     @cached_property
     def with_streaming_response(self) -> AsyncFxResourceWithStreamingResponse:
+        """
+        An alternative to `.with_raw_response` that doesn't eagerly read the response body.
+
+        For more information, see https://www.github.com/nemozak1/obp-api-python#with_streaming_response
+        """
         return AsyncFxResourceWithStreamingResponse(self)
 
     async def retrieve(
