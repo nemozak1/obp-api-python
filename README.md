@@ -2,7 +2,7 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/obp_api.svg)](https://pypi.org/project/obp_api/)
 
-The Obp API Python library provides convenient access to the Obp API REST API from any Python 3.7+
+The Obp API Python library provides convenient access to the Obp API REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -319,4 +319,8 @@ print(obp_api.__version__)
 
 ## Requirements
 
-Python 3.7 or higher.
+Python 3.8 or higher.
+
+## Contributing
+
+See [the contributing documentation](./CONTRIBUTING.md).
