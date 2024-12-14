@@ -5,6 +5,14 @@ from __future__ import annotations
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
+from .accounts import (
+    AccountsResource,
+    AsyncAccountsResource,
+    AccountsResourceWithRawResponse,
+    AsyncAccountsResourceWithRawResponse,
+    AccountsResourceWithStreamingResponse,
+    AsyncAccountsResourceWithStreamingResponse,
+)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -14,14 +22,7 @@ from ..._response import (
     async_to_streamed_response_wrapper,
 )
 from ..._base_client import make_request_options
-from .accounts.accounts import (
-    AccountsResource,
-    AsyncAccountsResource,
-    AccountsResourceWithRawResponse,
-    AsyncAccountsResourceWithRawResponse,
-    AccountsResourceWithStreamingResponse,
-    AsyncAccountsResourceWithStreamingResponse,
-)
+from .accounts.accounts import AccountsResource, AsyncAccountsResource
 
 __all__ = ["CascadingBanksResource", "AsyncCascadingBanksResource"]
 
