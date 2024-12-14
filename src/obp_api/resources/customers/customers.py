@@ -199,6 +199,14 @@ from .social_media_handles import (
     SocialMediaHandlesResourceWithStreamingResponse,
     AsyncSocialMediaHandlesResourceWithStreamingResponse,
 )
+from .customer_number_query import (
+    CustomerNumberQueryResource,
+    AsyncCustomerNumberQueryResource,
+    CustomerNumberQueryResourceWithRawResponse,
+    AsyncCustomerNumberQueryResourceWithRawResponse,
+    CustomerNumberQueryResourceWithStreamingResponse,
+    AsyncCustomerNumberQueryResourceWithStreamingResponse,
+)
 from .customer_account_links import (
     CustomerAccountLinksResource,
     AsyncCustomerAccountLinksResource,
@@ -215,14 +223,7 @@ from .credit_rating_and_source import (
     CreditRatingAndSourceResourceWithStreamingResponse,
     AsyncCreditRatingAndSourceResourceWithStreamingResponse,
 )
-from .customer_number_query.customer_number_query import (
-    CustomerNumberQueryResource,
-    AsyncCustomerNumberQueryResource,
-    CustomerNumberQueryResourceWithRawResponse,
-    AsyncCustomerNumberQueryResourceWithRawResponse,
-    CustomerNumberQueryResourceWithStreamingResponse,
-    AsyncCustomerNumberQueryResourceWithStreamingResponse,
-)
+from .customer_number_query.customer_number_query import CustomerNumberQueryResource, AsyncCustomerNumberQueryResource
 
 __all__ = ["CustomersResource", "AsyncCustomersResource"]
 
