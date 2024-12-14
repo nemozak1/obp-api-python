@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from .certificate.certificate import (
+from .certificate import (
     CertificateResource,
     AsyncCertificateResource,
     CertificateResourceWithRawResponse,
@@ -12,6 +12,7 @@ from .certificate.certificate import (
     CertificateResourceWithStreamingResponse,
     AsyncCertificateResourceWithStreamingResponse,
 )
+from .certificate.certificate import CertificateResource, AsyncCertificateResource
 
 __all__ = ["MtlsResource", "AsyncMtlsResource"]
 
