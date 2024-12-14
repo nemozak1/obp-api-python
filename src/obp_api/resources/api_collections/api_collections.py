@@ -38,14 +38,6 @@ from ..._response import (
     async_to_custom_raw_response_wrapper,
     async_to_custom_streamed_response_wrapper,
 )
-from .api_endpoints import (
-    APIEndpointsResource,
-    AsyncAPIEndpointsResource,
-    APIEndpointsResourceWithRawResponse,
-    AsyncAPIEndpointsResourceWithRawResponse,
-    APIEndpointsResourceWithStreamingResponse,
-    AsyncAPIEndpointsResourceWithStreamingResponse,
-)
 from ..._base_client import make_request_options
 from .api_collection_endpoints import (
     APICollectionEndpointsResource,
@@ -55,7 +47,14 @@ from .api_collection_endpoints import (
     APICollectionEndpointsResourceWithStreamingResponse,
     AsyncAPICollectionEndpointsResourceWithStreamingResponse,
 )
-from .api_endpoints.api_endpoints import APIEndpointsResource, AsyncAPIEndpointsResource
+from .api_endpoints.api_endpoints import (
+    APIEndpointsResource,
+    AsyncAPIEndpointsResource,
+    APIEndpointsResourceWithRawResponse,
+    AsyncAPIEndpointsResourceWithRawResponse,
+    APIEndpointsResourceWithStreamingResponse,
+    AsyncAPIEndpointsResourceWithStreamingResponse,
+)
 
 __all__ = ["APICollectionsResource", "AsyncAPICollectionsResource"]
 
