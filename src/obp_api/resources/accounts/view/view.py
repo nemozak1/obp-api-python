@@ -25,8 +25,7 @@ from ...._response import (
     async_to_custom_raw_response_wrapper,
     async_to_custom_streamed_response_wrapper,
 )
-from ...._base_client import make_request_options
-from .counterparties.counterparties import (
+from .counterparties import (
     CounterpartiesResource,
     AsyncCounterpartiesResource,
     CounterpartiesResourceWithRawResponse,
@@ -34,6 +33,8 @@ from .counterparties.counterparties import (
     CounterpartiesResourceWithStreamingResponse,
     AsyncCounterpartiesResourceWithStreamingResponse,
 )
+from ...._base_client import make_request_options
+from .counterparties.counterparties import CounterpartiesResource, AsyncCounterpartiesResource
 
 __all__ = ["ViewResource", "AsyncViewResource"]
 
