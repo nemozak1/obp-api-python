@@ -4,7 +4,7 @@ from __future__ import annotations
 
 import httpx
 
-from .sms.sms import (
+from .sms import (
     SMSResource,
     AsyncSMSResource,
     SMSResourceWithRawResponse,
@@ -12,6 +12,15 @@ from .sms.sms import (
     SMSResourceWithStreamingResponse,
     AsyncSMSResourceWithStreamingResponse,
 )
+from .email import (
+    EmailResource,
+    AsyncEmailResource,
+    EmailResourceWithRawResponse,
+    AsyncEmailResourceWithRawResponse,
+    EmailResourceWithStreamingResponse,
+    AsyncEmailResourceWithStreamingResponse,
+)
+from .sms.sms import SMSResource, AsyncSMSResource
 from .consents import (
     ConsentsResource,
     AsyncConsentsResource,
@@ -20,20 +29,21 @@ from .consents import (
     ConsentsResourceWithStreamingResponse,
     AsyncConsentsResourceWithStreamingResponse,
 )
+from .implicit import (
+    ImplicitResource,
+    AsyncImplicitResource,
+    ImplicitResourceWithRawResponse,
+    AsyncImplicitResourceWithRawResponse,
+    ImplicitResourceWithStreamingResponse,
+    AsyncImplicitResourceWithStreamingResponse,
+)
 from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ...._utils import (
     maybe_transform,
     async_maybe_transform,
 )
 from ...._compat import cached_property
-from .email.email import (
-    EmailResource,
-    AsyncEmailResource,
-    EmailResourceWithRawResponse,
-    AsyncEmailResourceWithRawResponse,
-    EmailResourceWithStreamingResponse,
-    AsyncEmailResourceWithStreamingResponse,
-)
+from .email.email import EmailResource, AsyncEmailResource
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
     BinaryAPIResponse,
@@ -47,14 +57,7 @@ from ...._response import (
 )
 from ...._base_client import make_request_options
 from ....types.consumer import consent_request_create_params
-from .implicit.implicit import (
-    ImplicitResource,
-    AsyncImplicitResource,
-    ImplicitResourceWithRawResponse,
-    AsyncImplicitResourceWithRawResponse,
-    ImplicitResourceWithStreamingResponse,
-    AsyncImplicitResourceWithStreamingResponse,
-)
+from .implicit.implicit import ImplicitResource, AsyncImplicitResource
 
 __all__ = ["ConsentRequestsResource", "AsyncConsentRequestsResource"]
 

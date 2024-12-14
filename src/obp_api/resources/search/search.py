@@ -11,8 +11,7 @@ from .metrics import (
     AsyncMetricsResourceWithStreamingResponse,
 )
 from ..._compat import cached_property
-from ..._resource import SyncAPIResource, AsyncAPIResource
-from .warehouse.warehouse import (
+from .warehouse import (
     WarehouseResource,
     AsyncWarehouseResource,
     WarehouseResourceWithRawResponse,
@@ -20,6 +19,8 @@ from .warehouse.warehouse import (
     WarehouseResourceWithStreamingResponse,
     AsyncWarehouseResourceWithStreamingResponse,
 )
+from ..._resource import SyncAPIResource, AsyncAPIResource
+from .warehouse.warehouse import WarehouseResource, AsyncWarehouseResource
 
 __all__ = ["SearchResource", "AsyncSearchResource"]
 
