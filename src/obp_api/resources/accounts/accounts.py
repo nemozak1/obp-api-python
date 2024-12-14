@@ -4,6 +4,22 @@ from __future__ import annotations
 
 import httpx
 
+from .view import (
+    ViewResource,
+    AsyncViewResource,
+    ViewResourceWithRawResponse,
+    AsyncViewResourceWithRawResponse,
+    ViewResourceWithStreamingResponse,
+    AsyncViewResourceWithStreamingResponse,
+)
+from .views import (
+    ViewsResource,
+    AsyncViewsResource,
+    ViewsResourceWithRawResponse,
+    AsyncViewsResourceWithRawResponse,
+    ViewsResourceWithStreamingResponse,
+    AsyncViewsResourceWithStreamingResponse,
+)
 from .public import (
     PublicResource,
     AsyncPublicResource,
@@ -31,15 +47,16 @@ from .balances import (
     BalancesResourceWithStreamingResponse,
     AsyncBalancesResourceWithStreamingResponse,
 )
-from ..._compat import cached_property
-from .view.view import (
-    ViewResource,
-    AsyncViewResource,
-    ViewResourceWithRawResponse,
-    AsyncViewResourceWithRawResponse,
-    ViewResourceWithStreamingResponse,
-    AsyncViewResourceWithStreamingResponse,
+from .firehose import (
+    FirehoseResource,
+    AsyncFirehoseResource,
+    FirehoseResourceWithRawResponse,
+    AsyncFirehoseResourceWithRawResponse,
+    FirehoseResourceWithStreamingResponse,
+    AsyncFirehoseResourceWithStreamingResponse,
 )
+from ..._compat import cached_property
+from .view.view import ViewResource, AsyncViewResource
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
     BinaryAPIResponse,
@@ -51,23 +68,9 @@ from ..._response import (
     async_to_custom_raw_response_wrapper,
     async_to_custom_streamed_response_wrapper,
 )
-from .views.views import (
-    ViewsResource,
-    AsyncViewsResource,
-    ViewsResourceWithRawResponse,
-    AsyncViewsResourceWithRawResponse,
-    ViewsResourceWithStreamingResponse,
-    AsyncViewsResourceWithStreamingResponse,
-)
+from .views.views import ViewsResource, AsyncViewsResource
 from ..._base_client import make_request_options
-from .firehose.firehose import (
-    FirehoseResource,
-    AsyncFirehoseResource,
-    FirehoseResourceWithRawResponse,
-    AsyncFirehoseResourceWithRawResponse,
-    FirehoseResourceWithStreamingResponse,
-    AsyncFirehoseResourceWithStreamingResponse,
-)
+from .firehose.firehose import FirehoseResource, AsyncFirehoseResource
 
 __all__ = ["AccountsResource", "AsyncAccountsResource"]
 
