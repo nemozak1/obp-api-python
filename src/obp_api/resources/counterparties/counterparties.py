@@ -2,6 +2,14 @@
 
 from __future__ import annotations
 
+from .metadata import (
+    MetadataResource,
+    AsyncMetadataResource,
+    MetadataResourceWithRawResponse,
+    AsyncMetadataResourceWithRawResponse,
+    MetadataResourceWithStreamingResponse,
+    AsyncMetadataResourceWithStreamingResponse,
+)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from .private_alias import (
@@ -12,14 +20,7 @@ from .private_alias import (
     PrivateAliasResourceWithStreamingResponse,
     AsyncPrivateAliasResourceWithStreamingResponse,
 )
-from .metadata.metadata import (
-    MetadataResource,
-    AsyncMetadataResource,
-    MetadataResourceWithRawResponse,
-    AsyncMetadataResourceWithRawResponse,
-    MetadataResourceWithStreamingResponse,
-    AsyncMetadataResourceWithStreamingResponse,
-)
+from .metadata.metadata import MetadataResource, AsyncMetadataResource
 
 __all__ = ["CounterpartiesResource", "AsyncCounterpartiesResource"]
 
