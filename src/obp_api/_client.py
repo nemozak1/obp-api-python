@@ -8,7 +8,7 @@ from typing_extensions import Self, Literal, override
 
 import httpx
 
-from . import resources, _exceptions
+from . import _exceptions
 from ._qs import Querystring
 from ._types import (
     NOT_GIVEN,
@@ -24,6 +24,43 @@ from ._utils import (
     get_async_library,
 )
 from ._version import __version__
+from .resources import (
+    certs,
+    roles,
+    config,
+    spaces,
+    adapter,
+    consent,
+    sandbox,
+    jwks_uris,
+    crm_events,
+    currencies,
+    permissions,
+    rate_limits,
+    webui_props,
+    entitlements,
+    product_tree,
+    accounts_held,
+    resource_docs,
+    method_routings,
+    standing_orders,
+    consent_requests,
+    dynamic_entities,
+    connector_methods,
+    customers_minimal,
+    endpoint_mappings,
+    user_entitlements,
+    regulated_entities,
+    correlated_entities,
+    product_collections,
+    dynamic_message_docs,
+    entitlement_requests,
+    customer_account_links,
+    fast_firehose_accounts,
+    json_schema_validations,
+    system_dynamic_entities,
+    authentication_type_validations,
+)
 from ._streaming import Stream as Stream, AsyncStream as AsyncStream
 from ._exceptions import APIStatusError
 from ._base_client import (
@@ -31,6 +68,43 @@ from ._base_client import (
     SyncAPIClient,
     AsyncAPIClient,
 )
+from .resources.api import api
+from .resources.mtls import mtls
+from .resources.user import user
+from .resources.banks import banks
+from .resources.cards import cards
+from .resources.users import users
+from .resources.views import views
+from .resources.search import search
+from .resources.metrics import metrics
+from .resources.accounts import accounts
+from .resources.consents import consents
+from .resources.consumer import consumer
+from .resources.database import database
+from .resources.products import products
+from .resources.connector import connector
+from .resources.consumers import consumers
+from .resources.customers import customers
+from .resources.endpoints import endpoints
+from .resources.web_hooks import web_hooks
+from .resources.management import management
+from .resources.development import development
+from .resources.system_views import system_views
+from .resources.transactions import transactions
+from .resources.bank_accounts import bank_accounts
+from .resources.documentation import documentation
+from .resources.counterparties import counterparties
+from .resources.api_collections import api_collections
+from .resources.cascading_banks import cascading_banks
+from .resources.public_accounts import public_accounts
+from .resources.account_products import account_products
+from .resources.system_integrity import system_integrity
+from .resources.user_invitations import user_invitations
+from .resources.dynamic_endpoints import dynamic_endpoints
+from .resources.user_customer_links import user_customer_links
+from .resources.dynamic_registration import dynamic_registration
+from .resources.transaction_requests import transaction_requests
+from .resources.dynamic_resource_docs import dynamic_resource_docs
 
 __all__ = [
     "ENVIRONMENTS",
@@ -38,7 +112,6 @@ __all__ = [
     "Transport",
     "ProxiesTypes",
     "RequestOptions",
-    "resources",
     "ObpAPI",
     "AsyncObpAPI",
     "Client",
@@ -52,78 +125,78 @@ ENVIRONMENTS: Dict[str, str] = {
 
 
 class ObpAPI(SyncAPIClient):
-    accounts: resources.AccountsResource
-    adapter: resources.AdapterResource
-    api_collections: resources.APICollectionsResource
-    api: resources.APIResource
-    banks: resources.BanksResource
-    accounts_held: resources.AccountsHeldResource
-    counterparties: resources.CounterpartiesResource
-    transactions: resources.TransactionsResource
-    customer_account_links: resources.CustomerAccountLinksResource
-    permissions: resources.PermissionsResource
-    account_products: resources.AccountProductsResource
-    transaction_requests: resources.TransactionRequestsResource
-    bank_accounts: resources.BankAccountsResource
-    consents: resources.ConsentsResource
-    crm_events: resources.CRMEventsResource
-    currencies: resources.CurrenciesResource
-    customers: resources.CustomersResource
-    product_collections: resources.ProductCollectionsResource
-    product_tree: resources.ProductTreeResource
-    products: resources.ProductsResource
-    public_accounts: resources.PublicAccountsResource
-    user_invitations: resources.UserInvitationsResource
-    user_customer_links: resources.UserCustomerLinksResource
-    users: resources.UsersResource
-    views: resources.ViewsResource
-    web_hooks: resources.WebHooksResource
-    cards: resources.CardsResource
-    certs: resources.CertsResource
-    config: resources.ConfigResource
-    connector: resources.ConnectorResource
-    consumer: resources.ConsumerResource
-    consent_requests: resources.ConsentRequestsResource
-    consumers: resources.ConsumersResource
-    customers_minimal: resources.CustomersMinimalResource
-    database: resources.DatabaseResource
-    development: resources.DevelopmentResource
-    dynamic_registration: resources.DynamicRegistrationResource
-    endpoints: resources.EndpointsResource
-    entitlement_requests: resources.EntitlementRequestsResource
-    entitlements: resources.EntitlementsResource
-    jwks_uris: resources.JwksUrisResource
-    management: resources.ManagementResource
-    authentication_type_validations: resources.AuthenticationTypeValidationsResource
-    standing_orders: resources.StandingOrdersResource
-    dynamic_endpoints: resources.DynamicEndpointsResource
-    dynamic_message_docs: resources.DynamicMessageDocsResource
-    dynamic_resource_docs: resources.DynamicResourceDocsResource
-    endpoint_mappings: resources.EndpointMappingsResource
-    fast_firehose_accounts: resources.FastFirehoseAccountsResource
-    cascading_banks: resources.CascadingBanksResource
-    connector_methods: resources.ConnectorMethodsResource
-    json_schema_validations: resources.JsonSchemaValidationsResource
-    method_routings: resources.MethodRoutingsResource
-    metrics: resources.MetricsResource
-    system_dynamic_entities: resources.SystemDynamicEntitiesResource
-    system_integrity: resources.SystemIntegrityResource
-    webui_props: resources.WebuiPropsResource
-    documentation: resources.DocumentationResource
-    consent: resources.ConsentResource
-    correlated_entities: resources.CorrelatedEntitiesResource
-    dynamic_entities: resources.DynamicEntitiesResource
-    mtls: resources.MtlsResource
-    spaces: resources.SpacesResource
-    user: resources.UserResource
-    rate_limits: resources.RateLimitsResource
-    regulated_entities: resources.RegulatedEntitiesResource
-    resource_docs: resources.ResourceDocsResource
-    roles: resources.RolesResource
-    sandbox: resources.SandboxResource
-    search: resources.SearchResource
-    system_views: resources.SystemViewsResource
-    user_entitlements: resources.UserEntitlementsResource
+    accounts: accounts.AccountsResource
+    adapter: adapter.AdapterResource
+    api_collections: api_collections.APICollectionsResource
+    api: api.APIResource
+    banks: banks.BanksResource
+    accounts_held: accounts_held.AccountsHeldResource
+    counterparties: counterparties.CounterpartiesResource
+    transactions: transactions.TransactionsResource
+    customer_account_links: customer_account_links.CustomerAccountLinksResource
+    permissions: permissions.PermissionsResource
+    account_products: account_products.AccountProductsResource
+    transaction_requests: transaction_requests.TransactionRequestsResource
+    bank_accounts: bank_accounts.BankAccountsResource
+    consents: consents.ConsentsResource
+    crm_events: crm_events.CRMEventsResource
+    currencies: currencies.CurrenciesResource
+    customers: customers.CustomersResource
+    product_collections: product_collections.ProductCollectionsResource
+    product_tree: product_tree.ProductTreeResource
+    products: products.ProductsResource
+    public_accounts: public_accounts.PublicAccountsResource
+    user_invitations: user_invitations.UserInvitationsResource
+    user_customer_links: user_customer_links.UserCustomerLinksResource
+    users: users.UsersResource
+    views: views.ViewsResource
+    web_hooks: web_hooks.WebHooksResource
+    cards: cards.CardsResource
+    certs: certs.CertsResource
+    config: config.ConfigResource
+    connector: connector.ConnectorResource
+    consumer: consumer.ConsumerResource
+    consent_requests: consent_requests.ConsentRequestsResource
+    consumers: consumers.ConsumersResource
+    customers_minimal: customers_minimal.CustomersMinimalResource
+    database: database.DatabaseResource
+    development: development.DevelopmentResource
+    dynamic_registration: dynamic_registration.DynamicRegistrationResource
+    endpoints: endpoints.EndpointsResource
+    entitlement_requests: entitlement_requests.EntitlementRequestsResource
+    entitlements: entitlements.EntitlementsResource
+    jwks_uris: jwks_uris.JwksUrisResource
+    management: management.ManagementResource
+    authentication_type_validations: authentication_type_validations.AuthenticationTypeValidationsResource
+    standing_orders: standing_orders.StandingOrdersResource
+    dynamic_endpoints: dynamic_endpoints.DynamicEndpointsResource
+    dynamic_message_docs: dynamic_message_docs.DynamicMessageDocsResource
+    dynamic_resource_docs: dynamic_resource_docs.DynamicResourceDocsResource
+    endpoint_mappings: endpoint_mappings.EndpointMappingsResource
+    fast_firehose_accounts: fast_firehose_accounts.FastFirehoseAccountsResource
+    cascading_banks: cascading_banks.CascadingBanksResource
+    connector_methods: connector_methods.ConnectorMethodsResource
+    json_schema_validations: json_schema_validations.JsonSchemaValidationsResource
+    method_routings: method_routings.MethodRoutingsResource
+    metrics: metrics.MetricsResource
+    system_dynamic_entities: system_dynamic_entities.SystemDynamicEntitiesResource
+    system_integrity: system_integrity.SystemIntegrityResource
+    webui_props: webui_props.WebuiPropsResource
+    documentation: documentation.DocumentationResource
+    consent: consent.ConsentResource
+    correlated_entities: correlated_entities.CorrelatedEntitiesResource
+    dynamic_entities: dynamic_entities.DynamicEntitiesResource
+    mtls: mtls.MtlsResource
+    spaces: spaces.SpacesResource
+    user: user.UserResource
+    rate_limits: rate_limits.RateLimitsResource
+    regulated_entities: regulated_entities.RegulatedEntitiesResource
+    resource_docs: resource_docs.ResourceDocsResource
+    roles: roles.RolesResource
+    sandbox: sandbox.SandboxResource
+    search: search.SearchResource
+    system_views: system_views.SystemViewsResource
+    user_entitlements: user_entitlements.UserEntitlementsResource
     with_raw_response: ObpAPIWithRawResponse
     with_streaming_response: ObpAPIWithStreamedResponse
 
@@ -192,78 +265,80 @@ class ObpAPI(SyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.accounts = resources.AccountsResource(self)
-        self.adapter = resources.AdapterResource(self)
-        self.api_collections = resources.APICollectionsResource(self)
-        self.api = resources.APIResource(self)
-        self.banks = resources.BanksResource(self)
-        self.accounts_held = resources.AccountsHeldResource(self)
-        self.counterparties = resources.CounterpartiesResource(self)
-        self.transactions = resources.TransactionsResource(self)
-        self.customer_account_links = resources.CustomerAccountLinksResource(self)
-        self.permissions = resources.PermissionsResource(self)
-        self.account_products = resources.AccountProductsResource(self)
-        self.transaction_requests = resources.TransactionRequestsResource(self)
-        self.bank_accounts = resources.BankAccountsResource(self)
-        self.consents = resources.ConsentsResource(self)
-        self.crm_events = resources.CRMEventsResource(self)
-        self.currencies = resources.CurrenciesResource(self)
-        self.customers = resources.CustomersResource(self)
-        self.product_collections = resources.ProductCollectionsResource(self)
-        self.product_tree = resources.ProductTreeResource(self)
-        self.products = resources.ProductsResource(self)
-        self.public_accounts = resources.PublicAccountsResource(self)
-        self.user_invitations = resources.UserInvitationsResource(self)
-        self.user_customer_links = resources.UserCustomerLinksResource(self)
-        self.users = resources.UsersResource(self)
-        self.views = resources.ViewsResource(self)
-        self.web_hooks = resources.WebHooksResource(self)
-        self.cards = resources.CardsResource(self)
-        self.certs = resources.CertsResource(self)
-        self.config = resources.ConfigResource(self)
-        self.connector = resources.ConnectorResource(self)
-        self.consumer = resources.ConsumerResource(self)
-        self.consent_requests = resources.ConsentRequestsResource(self)
-        self.consumers = resources.ConsumersResource(self)
-        self.customers_minimal = resources.CustomersMinimalResource(self)
-        self.database = resources.DatabaseResource(self)
-        self.development = resources.DevelopmentResource(self)
-        self.dynamic_registration = resources.DynamicRegistrationResource(self)
-        self.endpoints = resources.EndpointsResource(self)
-        self.entitlement_requests = resources.EntitlementRequestsResource(self)
-        self.entitlements = resources.EntitlementsResource(self)
-        self.jwks_uris = resources.JwksUrisResource(self)
-        self.management = resources.ManagementResource(self)
-        self.authentication_type_validations = resources.AuthenticationTypeValidationsResource(self)
-        self.standing_orders = resources.StandingOrdersResource(self)
-        self.dynamic_endpoints = resources.DynamicEndpointsResource(self)
-        self.dynamic_message_docs = resources.DynamicMessageDocsResource(self)
-        self.dynamic_resource_docs = resources.DynamicResourceDocsResource(self)
-        self.endpoint_mappings = resources.EndpointMappingsResource(self)
-        self.fast_firehose_accounts = resources.FastFirehoseAccountsResource(self)
-        self.cascading_banks = resources.CascadingBanksResource(self)
-        self.connector_methods = resources.ConnectorMethodsResource(self)
-        self.json_schema_validations = resources.JsonSchemaValidationsResource(self)
-        self.method_routings = resources.MethodRoutingsResource(self)
-        self.metrics = resources.MetricsResource(self)
-        self.system_dynamic_entities = resources.SystemDynamicEntitiesResource(self)
-        self.system_integrity = resources.SystemIntegrityResource(self)
-        self.webui_props = resources.WebuiPropsResource(self)
-        self.documentation = resources.DocumentationResource(self)
-        self.consent = resources.ConsentResource(self)
-        self.correlated_entities = resources.CorrelatedEntitiesResource(self)
-        self.dynamic_entities = resources.DynamicEntitiesResource(self)
-        self.mtls = resources.MtlsResource(self)
-        self.spaces = resources.SpacesResource(self)
-        self.user = resources.UserResource(self)
-        self.rate_limits = resources.RateLimitsResource(self)
-        self.regulated_entities = resources.RegulatedEntitiesResource(self)
-        self.resource_docs = resources.ResourceDocsResource(self)
-        self.roles = resources.RolesResource(self)
-        self.sandbox = resources.SandboxResource(self)
-        self.search = resources.SearchResource(self)
-        self.system_views = resources.SystemViewsResource(self)
-        self.user_entitlements = resources.UserEntitlementsResource(self)
+        self.accounts = accounts.AccountsResource(self)
+        self.adapter = adapter.AdapterResource(self)
+        self.api_collections = api_collections.APICollectionsResource(self)
+        self.api = api.APIResource(self)
+        self.banks = banks.BanksResource(self)
+        self.accounts_held = accounts_held.AccountsHeldResource(self)
+        self.counterparties = counterparties.CounterpartiesResource(self)
+        self.transactions = transactions.TransactionsResource(self)
+        self.customer_account_links = customer_account_links.CustomerAccountLinksResource(self)
+        self.permissions = permissions.PermissionsResource(self)
+        self.account_products = account_products.AccountProductsResource(self)
+        self.transaction_requests = transaction_requests.TransactionRequestsResource(self)
+        self.bank_accounts = bank_accounts.BankAccountsResource(self)
+        self.consents = consents.ConsentsResource(self)
+        self.crm_events = crm_events.CRMEventsResource(self)
+        self.currencies = currencies.CurrenciesResource(self)
+        self.customers = customers.CustomersResource(self)
+        self.product_collections = product_collections.ProductCollectionsResource(self)
+        self.product_tree = product_tree.ProductTreeResource(self)
+        self.products = products.ProductsResource(self)
+        self.public_accounts = public_accounts.PublicAccountsResource(self)
+        self.user_invitations = user_invitations.UserInvitationsResource(self)
+        self.user_customer_links = user_customer_links.UserCustomerLinksResource(self)
+        self.users = users.UsersResource(self)
+        self.views = views.ViewsResource(self)
+        self.web_hooks = web_hooks.WebHooksResource(self)
+        self.cards = cards.CardsResource(self)
+        self.certs = certs.CertsResource(self)
+        self.config = config.ConfigResource(self)
+        self.connector = connector.ConnectorResource(self)
+        self.consumer = consumer.ConsumerResource(self)
+        self.consent_requests = consent_requests.ConsentRequestsResource(self)
+        self.consumers = consumers.ConsumersResource(self)
+        self.customers_minimal = customers_minimal.CustomersMinimalResource(self)
+        self.database = database.DatabaseResource(self)
+        self.development = development.DevelopmentResource(self)
+        self.dynamic_registration = dynamic_registration.DynamicRegistrationResource(self)
+        self.endpoints = endpoints.EndpointsResource(self)
+        self.entitlement_requests = entitlement_requests.EntitlementRequestsResource(self)
+        self.entitlements = entitlements.EntitlementsResource(self)
+        self.jwks_uris = jwks_uris.JwksUrisResource(self)
+        self.management = management.ManagementResource(self)
+        self.authentication_type_validations = authentication_type_validations.AuthenticationTypeValidationsResource(
+            self
+        )
+        self.standing_orders = standing_orders.StandingOrdersResource(self)
+        self.dynamic_endpoints = dynamic_endpoints.DynamicEndpointsResource(self)
+        self.dynamic_message_docs = dynamic_message_docs.DynamicMessageDocsResource(self)
+        self.dynamic_resource_docs = dynamic_resource_docs.DynamicResourceDocsResource(self)
+        self.endpoint_mappings = endpoint_mappings.EndpointMappingsResource(self)
+        self.fast_firehose_accounts = fast_firehose_accounts.FastFirehoseAccountsResource(self)
+        self.cascading_banks = cascading_banks.CascadingBanksResource(self)
+        self.connector_methods = connector_methods.ConnectorMethodsResource(self)
+        self.json_schema_validations = json_schema_validations.JsonSchemaValidationsResource(self)
+        self.method_routings = method_routings.MethodRoutingsResource(self)
+        self.metrics = metrics.MetricsResource(self)
+        self.system_dynamic_entities = system_dynamic_entities.SystemDynamicEntitiesResource(self)
+        self.system_integrity = system_integrity.SystemIntegrityResource(self)
+        self.webui_props = webui_props.WebuiPropsResource(self)
+        self.documentation = documentation.DocumentationResource(self)
+        self.consent = consent.ConsentResource(self)
+        self.correlated_entities = correlated_entities.CorrelatedEntitiesResource(self)
+        self.dynamic_entities = dynamic_entities.DynamicEntitiesResource(self)
+        self.mtls = mtls.MtlsResource(self)
+        self.spaces = spaces.SpacesResource(self)
+        self.user = user.UserResource(self)
+        self.rate_limits = rate_limits.RateLimitsResource(self)
+        self.regulated_entities = regulated_entities.RegulatedEntitiesResource(self)
+        self.resource_docs = resource_docs.ResourceDocsResource(self)
+        self.roles = roles.RolesResource(self)
+        self.sandbox = sandbox.SandboxResource(self)
+        self.search = search.SearchResource(self)
+        self.system_views = system_views.SystemViewsResource(self)
+        self.user_entitlements = user_entitlements.UserEntitlementsResource(self)
         self.with_raw_response = ObpAPIWithRawResponse(self)
         self.with_streaming_response = ObpAPIWithStreamedResponse(self)
 
@@ -367,78 +442,78 @@ class ObpAPI(SyncAPIClient):
 
 
 class AsyncObpAPI(AsyncAPIClient):
-    accounts: resources.AsyncAccountsResource
-    adapter: resources.AsyncAdapterResource
-    api_collections: resources.AsyncAPICollectionsResource
-    api: resources.AsyncAPIResource
-    banks: resources.AsyncBanksResource
-    accounts_held: resources.AsyncAccountsHeldResource
-    counterparties: resources.AsyncCounterpartiesResource
-    transactions: resources.AsyncTransactionsResource
-    customer_account_links: resources.AsyncCustomerAccountLinksResource
-    permissions: resources.AsyncPermissionsResource
-    account_products: resources.AsyncAccountProductsResource
-    transaction_requests: resources.AsyncTransactionRequestsResource
-    bank_accounts: resources.AsyncBankAccountsResource
-    consents: resources.AsyncConsentsResource
-    crm_events: resources.AsyncCRMEventsResource
-    currencies: resources.AsyncCurrenciesResource
-    customers: resources.AsyncCustomersResource
-    product_collections: resources.AsyncProductCollectionsResource
-    product_tree: resources.AsyncProductTreeResource
-    products: resources.AsyncProductsResource
-    public_accounts: resources.AsyncPublicAccountsResource
-    user_invitations: resources.AsyncUserInvitationsResource
-    user_customer_links: resources.AsyncUserCustomerLinksResource
-    users: resources.AsyncUsersResource
-    views: resources.AsyncViewsResource
-    web_hooks: resources.AsyncWebHooksResource
-    cards: resources.AsyncCardsResource
-    certs: resources.AsyncCertsResource
-    config: resources.AsyncConfigResource
-    connector: resources.AsyncConnectorResource
-    consumer: resources.AsyncConsumerResource
-    consent_requests: resources.AsyncConsentRequestsResource
-    consumers: resources.AsyncConsumersResource
-    customers_minimal: resources.AsyncCustomersMinimalResource
-    database: resources.AsyncDatabaseResource
-    development: resources.AsyncDevelopmentResource
-    dynamic_registration: resources.AsyncDynamicRegistrationResource
-    endpoints: resources.AsyncEndpointsResource
-    entitlement_requests: resources.AsyncEntitlementRequestsResource
-    entitlements: resources.AsyncEntitlementsResource
-    jwks_uris: resources.AsyncJwksUrisResource
-    management: resources.AsyncManagementResource
-    authentication_type_validations: resources.AsyncAuthenticationTypeValidationsResource
-    standing_orders: resources.AsyncStandingOrdersResource
-    dynamic_endpoints: resources.AsyncDynamicEndpointsResource
-    dynamic_message_docs: resources.AsyncDynamicMessageDocsResource
-    dynamic_resource_docs: resources.AsyncDynamicResourceDocsResource
-    endpoint_mappings: resources.AsyncEndpointMappingsResource
-    fast_firehose_accounts: resources.AsyncFastFirehoseAccountsResource
-    cascading_banks: resources.AsyncCascadingBanksResource
-    connector_methods: resources.AsyncConnectorMethodsResource
-    json_schema_validations: resources.AsyncJsonSchemaValidationsResource
-    method_routings: resources.AsyncMethodRoutingsResource
-    metrics: resources.AsyncMetricsResource
-    system_dynamic_entities: resources.AsyncSystemDynamicEntitiesResource
-    system_integrity: resources.AsyncSystemIntegrityResource
-    webui_props: resources.AsyncWebuiPropsResource
-    documentation: resources.AsyncDocumentationResource
-    consent: resources.AsyncConsentResource
-    correlated_entities: resources.AsyncCorrelatedEntitiesResource
-    dynamic_entities: resources.AsyncDynamicEntitiesResource
-    mtls: resources.AsyncMtlsResource
-    spaces: resources.AsyncSpacesResource
-    user: resources.AsyncUserResource
-    rate_limits: resources.AsyncRateLimitsResource
-    regulated_entities: resources.AsyncRegulatedEntitiesResource
-    resource_docs: resources.AsyncResourceDocsResource
-    roles: resources.AsyncRolesResource
-    sandbox: resources.AsyncSandboxResource
-    search: resources.AsyncSearchResource
-    system_views: resources.AsyncSystemViewsResource
-    user_entitlements: resources.AsyncUserEntitlementsResource
+    accounts: accounts.AsyncAccountsResource
+    adapter: adapter.AsyncAdapterResource
+    api_collections: api_collections.AsyncAPICollectionsResource
+    api: api.AsyncAPIResource
+    banks: banks.AsyncBanksResource
+    accounts_held: accounts_held.AsyncAccountsHeldResource
+    counterparties: counterparties.AsyncCounterpartiesResource
+    transactions: transactions.AsyncTransactionsResource
+    customer_account_links: customer_account_links.AsyncCustomerAccountLinksResource
+    permissions: permissions.AsyncPermissionsResource
+    account_products: account_products.AsyncAccountProductsResource
+    transaction_requests: transaction_requests.AsyncTransactionRequestsResource
+    bank_accounts: bank_accounts.AsyncBankAccountsResource
+    consents: consents.AsyncConsentsResource
+    crm_events: crm_events.AsyncCRMEventsResource
+    currencies: currencies.AsyncCurrenciesResource
+    customers: customers.AsyncCustomersResource
+    product_collections: product_collections.AsyncProductCollectionsResource
+    product_tree: product_tree.AsyncProductTreeResource
+    products: products.AsyncProductsResource
+    public_accounts: public_accounts.AsyncPublicAccountsResource
+    user_invitations: user_invitations.AsyncUserInvitationsResource
+    user_customer_links: user_customer_links.AsyncUserCustomerLinksResource
+    users: users.AsyncUsersResource
+    views: views.AsyncViewsResource
+    web_hooks: web_hooks.AsyncWebHooksResource
+    cards: cards.AsyncCardsResource
+    certs: certs.AsyncCertsResource
+    config: config.AsyncConfigResource
+    connector: connector.AsyncConnectorResource
+    consumer: consumer.AsyncConsumerResource
+    consent_requests: consent_requests.AsyncConsentRequestsResource
+    consumers: consumers.AsyncConsumersResource
+    customers_minimal: customers_minimal.AsyncCustomersMinimalResource
+    database: database.AsyncDatabaseResource
+    development: development.AsyncDevelopmentResource
+    dynamic_registration: dynamic_registration.AsyncDynamicRegistrationResource
+    endpoints: endpoints.AsyncEndpointsResource
+    entitlement_requests: entitlement_requests.AsyncEntitlementRequestsResource
+    entitlements: entitlements.AsyncEntitlementsResource
+    jwks_uris: jwks_uris.AsyncJwksUrisResource
+    management: management.AsyncManagementResource
+    authentication_type_validations: authentication_type_validations.AsyncAuthenticationTypeValidationsResource
+    standing_orders: standing_orders.AsyncStandingOrdersResource
+    dynamic_endpoints: dynamic_endpoints.AsyncDynamicEndpointsResource
+    dynamic_message_docs: dynamic_message_docs.AsyncDynamicMessageDocsResource
+    dynamic_resource_docs: dynamic_resource_docs.AsyncDynamicResourceDocsResource
+    endpoint_mappings: endpoint_mappings.AsyncEndpointMappingsResource
+    fast_firehose_accounts: fast_firehose_accounts.AsyncFastFirehoseAccountsResource
+    cascading_banks: cascading_banks.AsyncCascadingBanksResource
+    connector_methods: connector_methods.AsyncConnectorMethodsResource
+    json_schema_validations: json_schema_validations.AsyncJsonSchemaValidationsResource
+    method_routings: method_routings.AsyncMethodRoutingsResource
+    metrics: metrics.AsyncMetricsResource
+    system_dynamic_entities: system_dynamic_entities.AsyncSystemDynamicEntitiesResource
+    system_integrity: system_integrity.AsyncSystemIntegrityResource
+    webui_props: webui_props.AsyncWebuiPropsResource
+    documentation: documentation.AsyncDocumentationResource
+    consent: consent.AsyncConsentResource
+    correlated_entities: correlated_entities.AsyncCorrelatedEntitiesResource
+    dynamic_entities: dynamic_entities.AsyncDynamicEntitiesResource
+    mtls: mtls.AsyncMtlsResource
+    spaces: spaces.AsyncSpacesResource
+    user: user.AsyncUserResource
+    rate_limits: rate_limits.AsyncRateLimitsResource
+    regulated_entities: regulated_entities.AsyncRegulatedEntitiesResource
+    resource_docs: resource_docs.AsyncResourceDocsResource
+    roles: roles.AsyncRolesResource
+    sandbox: sandbox.AsyncSandboxResource
+    search: search.AsyncSearchResource
+    system_views: system_views.AsyncSystemViewsResource
+    user_entitlements: user_entitlements.AsyncUserEntitlementsResource
     with_raw_response: AsyncObpAPIWithRawResponse
     with_streaming_response: AsyncObpAPIWithStreamedResponse
 
@@ -507,78 +582,80 @@ class AsyncObpAPI(AsyncAPIClient):
             _strict_response_validation=_strict_response_validation,
         )
 
-        self.accounts = resources.AsyncAccountsResource(self)
-        self.adapter = resources.AsyncAdapterResource(self)
-        self.api_collections = resources.AsyncAPICollectionsResource(self)
-        self.api = resources.AsyncAPIResource(self)
-        self.banks = resources.AsyncBanksResource(self)
-        self.accounts_held = resources.AsyncAccountsHeldResource(self)
-        self.counterparties = resources.AsyncCounterpartiesResource(self)
-        self.transactions = resources.AsyncTransactionsResource(self)
-        self.customer_account_links = resources.AsyncCustomerAccountLinksResource(self)
-        self.permissions = resources.AsyncPermissionsResource(self)
-        self.account_products = resources.AsyncAccountProductsResource(self)
-        self.transaction_requests = resources.AsyncTransactionRequestsResource(self)
-        self.bank_accounts = resources.AsyncBankAccountsResource(self)
-        self.consents = resources.AsyncConsentsResource(self)
-        self.crm_events = resources.AsyncCRMEventsResource(self)
-        self.currencies = resources.AsyncCurrenciesResource(self)
-        self.customers = resources.AsyncCustomersResource(self)
-        self.product_collections = resources.AsyncProductCollectionsResource(self)
-        self.product_tree = resources.AsyncProductTreeResource(self)
-        self.products = resources.AsyncProductsResource(self)
-        self.public_accounts = resources.AsyncPublicAccountsResource(self)
-        self.user_invitations = resources.AsyncUserInvitationsResource(self)
-        self.user_customer_links = resources.AsyncUserCustomerLinksResource(self)
-        self.users = resources.AsyncUsersResource(self)
-        self.views = resources.AsyncViewsResource(self)
-        self.web_hooks = resources.AsyncWebHooksResource(self)
-        self.cards = resources.AsyncCardsResource(self)
-        self.certs = resources.AsyncCertsResource(self)
-        self.config = resources.AsyncConfigResource(self)
-        self.connector = resources.AsyncConnectorResource(self)
-        self.consumer = resources.AsyncConsumerResource(self)
-        self.consent_requests = resources.AsyncConsentRequestsResource(self)
-        self.consumers = resources.AsyncConsumersResource(self)
-        self.customers_minimal = resources.AsyncCustomersMinimalResource(self)
-        self.database = resources.AsyncDatabaseResource(self)
-        self.development = resources.AsyncDevelopmentResource(self)
-        self.dynamic_registration = resources.AsyncDynamicRegistrationResource(self)
-        self.endpoints = resources.AsyncEndpointsResource(self)
-        self.entitlement_requests = resources.AsyncEntitlementRequestsResource(self)
-        self.entitlements = resources.AsyncEntitlementsResource(self)
-        self.jwks_uris = resources.AsyncJwksUrisResource(self)
-        self.management = resources.AsyncManagementResource(self)
-        self.authentication_type_validations = resources.AsyncAuthenticationTypeValidationsResource(self)
-        self.standing_orders = resources.AsyncStandingOrdersResource(self)
-        self.dynamic_endpoints = resources.AsyncDynamicEndpointsResource(self)
-        self.dynamic_message_docs = resources.AsyncDynamicMessageDocsResource(self)
-        self.dynamic_resource_docs = resources.AsyncDynamicResourceDocsResource(self)
-        self.endpoint_mappings = resources.AsyncEndpointMappingsResource(self)
-        self.fast_firehose_accounts = resources.AsyncFastFirehoseAccountsResource(self)
-        self.cascading_banks = resources.AsyncCascadingBanksResource(self)
-        self.connector_methods = resources.AsyncConnectorMethodsResource(self)
-        self.json_schema_validations = resources.AsyncJsonSchemaValidationsResource(self)
-        self.method_routings = resources.AsyncMethodRoutingsResource(self)
-        self.metrics = resources.AsyncMetricsResource(self)
-        self.system_dynamic_entities = resources.AsyncSystemDynamicEntitiesResource(self)
-        self.system_integrity = resources.AsyncSystemIntegrityResource(self)
-        self.webui_props = resources.AsyncWebuiPropsResource(self)
-        self.documentation = resources.AsyncDocumentationResource(self)
-        self.consent = resources.AsyncConsentResource(self)
-        self.correlated_entities = resources.AsyncCorrelatedEntitiesResource(self)
-        self.dynamic_entities = resources.AsyncDynamicEntitiesResource(self)
-        self.mtls = resources.AsyncMtlsResource(self)
-        self.spaces = resources.AsyncSpacesResource(self)
-        self.user = resources.AsyncUserResource(self)
-        self.rate_limits = resources.AsyncRateLimitsResource(self)
-        self.regulated_entities = resources.AsyncRegulatedEntitiesResource(self)
-        self.resource_docs = resources.AsyncResourceDocsResource(self)
-        self.roles = resources.AsyncRolesResource(self)
-        self.sandbox = resources.AsyncSandboxResource(self)
-        self.search = resources.AsyncSearchResource(self)
-        self.system_views = resources.AsyncSystemViewsResource(self)
-        self.user_entitlements = resources.AsyncUserEntitlementsResource(self)
+        self.accounts = accounts.AsyncAccountsResource(self)
+        self.adapter = adapter.AsyncAdapterResource(self)
+        self.api_collections = api_collections.AsyncAPICollectionsResource(self)
+        self.api = api.AsyncAPIResource(self)
+        self.banks = banks.AsyncBanksResource(self)
+        self.accounts_held = accounts_held.AsyncAccountsHeldResource(self)
+        self.counterparties = counterparties.AsyncCounterpartiesResource(self)
+        self.transactions = transactions.AsyncTransactionsResource(self)
+        self.customer_account_links = customer_account_links.AsyncCustomerAccountLinksResource(self)
+        self.permissions = permissions.AsyncPermissionsResource(self)
+        self.account_products = account_products.AsyncAccountProductsResource(self)
+        self.transaction_requests = transaction_requests.AsyncTransactionRequestsResource(self)
+        self.bank_accounts = bank_accounts.AsyncBankAccountsResource(self)
+        self.consents = consents.AsyncConsentsResource(self)
+        self.crm_events = crm_events.AsyncCRMEventsResource(self)
+        self.currencies = currencies.AsyncCurrenciesResource(self)
+        self.customers = customers.AsyncCustomersResource(self)
+        self.product_collections = product_collections.AsyncProductCollectionsResource(self)
+        self.product_tree = product_tree.AsyncProductTreeResource(self)
+        self.products = products.AsyncProductsResource(self)
+        self.public_accounts = public_accounts.AsyncPublicAccountsResource(self)
+        self.user_invitations = user_invitations.AsyncUserInvitationsResource(self)
+        self.user_customer_links = user_customer_links.AsyncUserCustomerLinksResource(self)
+        self.users = users.AsyncUsersResource(self)
+        self.views = views.AsyncViewsResource(self)
+        self.web_hooks = web_hooks.AsyncWebHooksResource(self)
+        self.cards = cards.AsyncCardsResource(self)
+        self.certs = certs.AsyncCertsResource(self)
+        self.config = config.AsyncConfigResource(self)
+        self.connector = connector.AsyncConnectorResource(self)
+        self.consumer = consumer.AsyncConsumerResource(self)
+        self.consent_requests = consent_requests.AsyncConsentRequestsResource(self)
+        self.consumers = consumers.AsyncConsumersResource(self)
+        self.customers_minimal = customers_minimal.AsyncCustomersMinimalResource(self)
+        self.database = database.AsyncDatabaseResource(self)
+        self.development = development.AsyncDevelopmentResource(self)
+        self.dynamic_registration = dynamic_registration.AsyncDynamicRegistrationResource(self)
+        self.endpoints = endpoints.AsyncEndpointsResource(self)
+        self.entitlement_requests = entitlement_requests.AsyncEntitlementRequestsResource(self)
+        self.entitlements = entitlements.AsyncEntitlementsResource(self)
+        self.jwks_uris = jwks_uris.AsyncJwksUrisResource(self)
+        self.management = management.AsyncManagementResource(self)
+        self.authentication_type_validations = (
+            authentication_type_validations.AsyncAuthenticationTypeValidationsResource(self)
+        )
+        self.standing_orders = standing_orders.AsyncStandingOrdersResource(self)
+        self.dynamic_endpoints = dynamic_endpoints.AsyncDynamicEndpointsResource(self)
+        self.dynamic_message_docs = dynamic_message_docs.AsyncDynamicMessageDocsResource(self)
+        self.dynamic_resource_docs = dynamic_resource_docs.AsyncDynamicResourceDocsResource(self)
+        self.endpoint_mappings = endpoint_mappings.AsyncEndpointMappingsResource(self)
+        self.fast_firehose_accounts = fast_firehose_accounts.AsyncFastFirehoseAccountsResource(self)
+        self.cascading_banks = cascading_banks.AsyncCascadingBanksResource(self)
+        self.connector_methods = connector_methods.AsyncConnectorMethodsResource(self)
+        self.json_schema_validations = json_schema_validations.AsyncJsonSchemaValidationsResource(self)
+        self.method_routings = method_routings.AsyncMethodRoutingsResource(self)
+        self.metrics = metrics.AsyncMetricsResource(self)
+        self.system_dynamic_entities = system_dynamic_entities.AsyncSystemDynamicEntitiesResource(self)
+        self.system_integrity = system_integrity.AsyncSystemIntegrityResource(self)
+        self.webui_props = webui_props.AsyncWebuiPropsResource(self)
+        self.documentation = documentation.AsyncDocumentationResource(self)
+        self.consent = consent.AsyncConsentResource(self)
+        self.correlated_entities = correlated_entities.AsyncCorrelatedEntitiesResource(self)
+        self.dynamic_entities = dynamic_entities.AsyncDynamicEntitiesResource(self)
+        self.mtls = mtls.AsyncMtlsResource(self)
+        self.spaces = spaces.AsyncSpacesResource(self)
+        self.user = user.AsyncUserResource(self)
+        self.rate_limits = rate_limits.AsyncRateLimitsResource(self)
+        self.regulated_entities = regulated_entities.AsyncRegulatedEntitiesResource(self)
+        self.resource_docs = resource_docs.AsyncResourceDocsResource(self)
+        self.roles = roles.AsyncRolesResource(self)
+        self.sandbox = sandbox.AsyncSandboxResource(self)
+        self.search = search.AsyncSearchResource(self)
+        self.system_views = system_views.AsyncSystemViewsResource(self)
+        self.user_entitlements = user_entitlements.AsyncUserEntitlementsResource(self)
         self.with_raw_response = AsyncObpAPIWithRawResponse(self)
         self.with_streaming_response = AsyncObpAPIWithStreamedResponse(self)
 
@@ -683,386 +760,464 @@ class AsyncObpAPI(AsyncAPIClient):
 
 class ObpAPIWithRawResponse:
     def __init__(self, client: ObpAPI) -> None:
-        self.accounts = resources.AccountsResourceWithRawResponse(client.accounts)
-        self.adapter = resources.AdapterResourceWithRawResponse(client.adapter)
-        self.api_collections = resources.APICollectionsResourceWithRawResponse(client.api_collections)
-        self.api = resources.APIResourceWithRawResponse(client.api)
-        self.banks = resources.BanksResourceWithRawResponse(client.banks)
-        self.accounts_held = resources.AccountsHeldResourceWithRawResponse(client.accounts_held)
-        self.counterparties = resources.CounterpartiesResourceWithRawResponse(client.counterparties)
-        self.transactions = resources.TransactionsResourceWithRawResponse(client.transactions)
-        self.customer_account_links = resources.CustomerAccountLinksResourceWithRawResponse(
+        self.accounts = accounts.AccountsResourceWithRawResponse(client.accounts)
+        self.adapter = adapter.AdapterResourceWithRawResponse(client.adapter)
+        self.api_collections = api_collections.APICollectionsResourceWithRawResponse(client.api_collections)
+        self.api = api.APIResourceWithRawResponse(client.api)
+        self.banks = banks.BanksResourceWithRawResponse(client.banks)
+        self.accounts_held = accounts_held.AccountsHeldResourceWithRawResponse(client.accounts_held)
+        self.counterparties = counterparties.CounterpartiesResourceWithRawResponse(client.counterparties)
+        self.transactions = transactions.TransactionsResourceWithRawResponse(client.transactions)
+        self.customer_account_links = customer_account_links.CustomerAccountLinksResourceWithRawResponse(
             client.customer_account_links
         )
-        self.permissions = resources.PermissionsResourceWithRawResponse(client.permissions)
-        self.account_products = resources.AccountProductsResourceWithRawResponse(client.account_products)
-        self.transaction_requests = resources.TransactionRequestsResourceWithRawResponse(client.transaction_requests)
-        self.bank_accounts = resources.BankAccountsResourceWithRawResponse(client.bank_accounts)
-        self.consents = resources.ConsentsResourceWithRawResponse(client.consents)
-        self.crm_events = resources.CRMEventsResourceWithRawResponse(client.crm_events)
-        self.currencies = resources.CurrenciesResourceWithRawResponse(client.currencies)
-        self.customers = resources.CustomersResourceWithRawResponse(client.customers)
-        self.product_collections = resources.ProductCollectionsResourceWithRawResponse(client.product_collections)
-        self.product_tree = resources.ProductTreeResourceWithRawResponse(client.product_tree)
-        self.products = resources.ProductsResourceWithRawResponse(client.products)
-        self.public_accounts = resources.PublicAccountsResourceWithRawResponse(client.public_accounts)
-        self.user_invitations = resources.UserInvitationsResourceWithRawResponse(client.user_invitations)
-        self.user_customer_links = resources.UserCustomerLinksResourceWithRawResponse(client.user_customer_links)
-        self.users = resources.UsersResourceWithRawResponse(client.users)
-        self.views = resources.ViewsResourceWithRawResponse(client.views)
-        self.web_hooks = resources.WebHooksResourceWithRawResponse(client.web_hooks)
-        self.cards = resources.CardsResourceWithRawResponse(client.cards)
-        self.certs = resources.CertsResourceWithRawResponse(client.certs)
-        self.config = resources.ConfigResourceWithRawResponse(client.config)
-        self.connector = resources.ConnectorResourceWithRawResponse(client.connector)
-        self.consumer = resources.ConsumerResourceWithRawResponse(client.consumer)
-        self.consent_requests = resources.ConsentRequestsResourceWithRawResponse(client.consent_requests)
-        self.consumers = resources.ConsumersResourceWithRawResponse(client.consumers)
-        self.customers_minimal = resources.CustomersMinimalResourceWithRawResponse(client.customers_minimal)
-        self.database = resources.DatabaseResourceWithRawResponse(client.database)
-        self.development = resources.DevelopmentResourceWithRawResponse(client.development)
-        self.dynamic_registration = resources.DynamicRegistrationResourceWithRawResponse(client.dynamic_registration)
-        self.endpoints = resources.EndpointsResourceWithRawResponse(client.endpoints)
-        self.entitlement_requests = resources.EntitlementRequestsResourceWithRawResponse(client.entitlement_requests)
-        self.entitlements = resources.EntitlementsResourceWithRawResponse(client.entitlements)
-        self.jwks_uris = resources.JwksUrisResourceWithRawResponse(client.jwks_uris)
-        self.management = resources.ManagementResourceWithRawResponse(client.management)
-        self.authentication_type_validations = resources.AuthenticationTypeValidationsResourceWithRawResponse(
-            client.authentication_type_validations
+        self.permissions = permissions.PermissionsResourceWithRawResponse(client.permissions)
+        self.account_products = account_products.AccountProductsResourceWithRawResponse(client.account_products)
+        self.transaction_requests = transaction_requests.TransactionRequestsResourceWithRawResponse(
+            client.transaction_requests
         )
-        self.standing_orders = resources.StandingOrdersResourceWithRawResponse(client.standing_orders)
-        self.dynamic_endpoints = resources.DynamicEndpointsResourceWithRawResponse(client.dynamic_endpoints)
-        self.dynamic_message_docs = resources.DynamicMessageDocsResourceWithRawResponse(client.dynamic_message_docs)
-        self.dynamic_resource_docs = resources.DynamicResourceDocsResourceWithRawResponse(client.dynamic_resource_docs)
-        self.endpoint_mappings = resources.EndpointMappingsResourceWithRawResponse(client.endpoint_mappings)
-        self.fast_firehose_accounts = resources.FastFirehoseAccountsResourceWithRawResponse(
+        self.bank_accounts = bank_accounts.BankAccountsResourceWithRawResponse(client.bank_accounts)
+        self.consents = consents.ConsentsResourceWithRawResponse(client.consents)
+        self.crm_events = crm_events.CRMEventsResourceWithRawResponse(client.crm_events)
+        self.currencies = currencies.CurrenciesResourceWithRawResponse(client.currencies)
+        self.customers = customers.CustomersResourceWithRawResponse(client.customers)
+        self.product_collections = product_collections.ProductCollectionsResourceWithRawResponse(
+            client.product_collections
+        )
+        self.product_tree = product_tree.ProductTreeResourceWithRawResponse(client.product_tree)
+        self.products = products.ProductsResourceWithRawResponse(client.products)
+        self.public_accounts = public_accounts.PublicAccountsResourceWithRawResponse(client.public_accounts)
+        self.user_invitations = user_invitations.UserInvitationsResourceWithRawResponse(client.user_invitations)
+        self.user_customer_links = user_customer_links.UserCustomerLinksResourceWithRawResponse(
+            client.user_customer_links
+        )
+        self.users = users.UsersResourceWithRawResponse(client.users)
+        self.views = views.ViewsResourceWithRawResponse(client.views)
+        self.web_hooks = web_hooks.WebHooksResourceWithRawResponse(client.web_hooks)
+        self.cards = cards.CardsResourceWithRawResponse(client.cards)
+        self.certs = certs.CertsResourceWithRawResponse(client.certs)
+        self.config = config.ConfigResourceWithRawResponse(client.config)
+        self.connector = connector.ConnectorResourceWithRawResponse(client.connector)
+        self.consumer = consumer.ConsumerResourceWithRawResponse(client.consumer)
+        self.consent_requests = consent_requests.ConsentRequestsResourceWithRawResponse(client.consent_requests)
+        self.consumers = consumers.ConsumersResourceWithRawResponse(client.consumers)
+        self.customers_minimal = customers_minimal.CustomersMinimalResourceWithRawResponse(client.customers_minimal)
+        self.database = database.DatabaseResourceWithRawResponse(client.database)
+        self.development = development.DevelopmentResourceWithRawResponse(client.development)
+        self.dynamic_registration = dynamic_registration.DynamicRegistrationResourceWithRawResponse(
+            client.dynamic_registration
+        )
+        self.endpoints = endpoints.EndpointsResourceWithRawResponse(client.endpoints)
+        self.entitlement_requests = entitlement_requests.EntitlementRequestsResourceWithRawResponse(
+            client.entitlement_requests
+        )
+        self.entitlements = entitlements.EntitlementsResourceWithRawResponse(client.entitlements)
+        self.jwks_uris = jwks_uris.JwksUrisResourceWithRawResponse(client.jwks_uris)
+        self.management = management.ManagementResourceWithRawResponse(client.management)
+        self.authentication_type_validations = (
+            authentication_type_validations.AuthenticationTypeValidationsResourceWithRawResponse(
+                client.authentication_type_validations
+            )
+        )
+        self.standing_orders = standing_orders.StandingOrdersResourceWithRawResponse(client.standing_orders)
+        self.dynamic_endpoints = dynamic_endpoints.DynamicEndpointsResourceWithRawResponse(client.dynamic_endpoints)
+        self.dynamic_message_docs = dynamic_message_docs.DynamicMessageDocsResourceWithRawResponse(
+            client.dynamic_message_docs
+        )
+        self.dynamic_resource_docs = dynamic_resource_docs.DynamicResourceDocsResourceWithRawResponse(
+            client.dynamic_resource_docs
+        )
+        self.endpoint_mappings = endpoint_mappings.EndpointMappingsResourceWithRawResponse(client.endpoint_mappings)
+        self.fast_firehose_accounts = fast_firehose_accounts.FastFirehoseAccountsResourceWithRawResponse(
             client.fast_firehose_accounts
         )
-        self.cascading_banks = resources.CascadingBanksResourceWithRawResponse(client.cascading_banks)
-        self.connector_methods = resources.ConnectorMethodsResourceWithRawResponse(client.connector_methods)
-        self.json_schema_validations = resources.JsonSchemaValidationsResourceWithRawResponse(
+        self.cascading_banks = cascading_banks.CascadingBanksResourceWithRawResponse(client.cascading_banks)
+        self.connector_methods = connector_methods.ConnectorMethodsResourceWithRawResponse(client.connector_methods)
+        self.json_schema_validations = json_schema_validations.JsonSchemaValidationsResourceWithRawResponse(
             client.json_schema_validations
         )
-        self.method_routings = resources.MethodRoutingsResourceWithRawResponse(client.method_routings)
-        self.metrics = resources.MetricsResourceWithRawResponse(client.metrics)
-        self.system_dynamic_entities = resources.SystemDynamicEntitiesResourceWithRawResponse(
+        self.method_routings = method_routings.MethodRoutingsResourceWithRawResponse(client.method_routings)
+        self.metrics = metrics.MetricsResourceWithRawResponse(client.metrics)
+        self.system_dynamic_entities = system_dynamic_entities.SystemDynamicEntitiesResourceWithRawResponse(
             client.system_dynamic_entities
         )
-        self.system_integrity = resources.SystemIntegrityResourceWithRawResponse(client.system_integrity)
-        self.webui_props = resources.WebuiPropsResourceWithRawResponse(client.webui_props)
-        self.documentation = resources.DocumentationResourceWithRawResponse(client.documentation)
-        self.consent = resources.ConsentResourceWithRawResponse(client.consent)
-        self.correlated_entities = resources.CorrelatedEntitiesResourceWithRawResponse(client.correlated_entities)
-        self.dynamic_entities = resources.DynamicEntitiesResourceWithRawResponse(client.dynamic_entities)
-        self.mtls = resources.MtlsResourceWithRawResponse(client.mtls)
-        self.spaces = resources.SpacesResourceWithRawResponse(client.spaces)
-        self.user = resources.UserResourceWithRawResponse(client.user)
-        self.rate_limits = resources.RateLimitsResourceWithRawResponse(client.rate_limits)
-        self.regulated_entities = resources.RegulatedEntitiesResourceWithRawResponse(client.regulated_entities)
-        self.resource_docs = resources.ResourceDocsResourceWithRawResponse(client.resource_docs)
-        self.roles = resources.RolesResourceWithRawResponse(client.roles)
-        self.sandbox = resources.SandboxResourceWithRawResponse(client.sandbox)
-        self.search = resources.SearchResourceWithRawResponse(client.search)
-        self.system_views = resources.SystemViewsResourceWithRawResponse(client.system_views)
-        self.user_entitlements = resources.UserEntitlementsResourceWithRawResponse(client.user_entitlements)
+        self.system_integrity = system_integrity.SystemIntegrityResourceWithRawResponse(client.system_integrity)
+        self.webui_props = webui_props.WebuiPropsResourceWithRawResponse(client.webui_props)
+        self.documentation = documentation.DocumentationResourceWithRawResponse(client.documentation)
+        self.consent = consent.ConsentResourceWithRawResponse(client.consent)
+        self.correlated_entities = correlated_entities.CorrelatedEntitiesResourceWithRawResponse(
+            client.correlated_entities
+        )
+        self.dynamic_entities = dynamic_entities.DynamicEntitiesResourceWithRawResponse(client.dynamic_entities)
+        self.mtls = mtls.MtlsResourceWithRawResponse(client.mtls)
+        self.spaces = spaces.SpacesResourceWithRawResponse(client.spaces)
+        self.user = user.UserResourceWithRawResponse(client.user)
+        self.rate_limits = rate_limits.RateLimitsResourceWithRawResponse(client.rate_limits)
+        self.regulated_entities = regulated_entities.RegulatedEntitiesResourceWithRawResponse(client.regulated_entities)
+        self.resource_docs = resource_docs.ResourceDocsResourceWithRawResponse(client.resource_docs)
+        self.roles = roles.RolesResourceWithRawResponse(client.roles)
+        self.sandbox = sandbox.SandboxResourceWithRawResponse(client.sandbox)
+        self.search = search.SearchResourceWithRawResponse(client.search)
+        self.system_views = system_views.SystemViewsResourceWithRawResponse(client.system_views)
+        self.user_entitlements = user_entitlements.UserEntitlementsResourceWithRawResponse(client.user_entitlements)
 
 
 class AsyncObpAPIWithRawResponse:
     def __init__(self, client: AsyncObpAPI) -> None:
-        self.accounts = resources.AsyncAccountsResourceWithRawResponse(client.accounts)
-        self.adapter = resources.AsyncAdapterResourceWithRawResponse(client.adapter)
-        self.api_collections = resources.AsyncAPICollectionsResourceWithRawResponse(client.api_collections)
-        self.api = resources.AsyncAPIResourceWithRawResponse(client.api)
-        self.banks = resources.AsyncBanksResourceWithRawResponse(client.banks)
-        self.accounts_held = resources.AsyncAccountsHeldResourceWithRawResponse(client.accounts_held)
-        self.counterparties = resources.AsyncCounterpartiesResourceWithRawResponse(client.counterparties)
-        self.transactions = resources.AsyncTransactionsResourceWithRawResponse(client.transactions)
-        self.customer_account_links = resources.AsyncCustomerAccountLinksResourceWithRawResponse(
+        self.accounts = accounts.AsyncAccountsResourceWithRawResponse(client.accounts)
+        self.adapter = adapter.AsyncAdapterResourceWithRawResponse(client.adapter)
+        self.api_collections = api_collections.AsyncAPICollectionsResourceWithRawResponse(client.api_collections)
+        self.api = api.AsyncAPIResourceWithRawResponse(client.api)
+        self.banks = banks.AsyncBanksResourceWithRawResponse(client.banks)
+        self.accounts_held = accounts_held.AsyncAccountsHeldResourceWithRawResponse(client.accounts_held)
+        self.counterparties = counterparties.AsyncCounterpartiesResourceWithRawResponse(client.counterparties)
+        self.transactions = transactions.AsyncTransactionsResourceWithRawResponse(client.transactions)
+        self.customer_account_links = customer_account_links.AsyncCustomerAccountLinksResourceWithRawResponse(
             client.customer_account_links
         )
-        self.permissions = resources.AsyncPermissionsResourceWithRawResponse(client.permissions)
-        self.account_products = resources.AsyncAccountProductsResourceWithRawResponse(client.account_products)
-        self.transaction_requests = resources.AsyncTransactionRequestsResourceWithRawResponse(
+        self.permissions = permissions.AsyncPermissionsResourceWithRawResponse(client.permissions)
+        self.account_products = account_products.AsyncAccountProductsResourceWithRawResponse(client.account_products)
+        self.transaction_requests = transaction_requests.AsyncTransactionRequestsResourceWithRawResponse(
             client.transaction_requests
         )
-        self.bank_accounts = resources.AsyncBankAccountsResourceWithRawResponse(client.bank_accounts)
-        self.consents = resources.AsyncConsentsResourceWithRawResponse(client.consents)
-        self.crm_events = resources.AsyncCRMEventsResourceWithRawResponse(client.crm_events)
-        self.currencies = resources.AsyncCurrenciesResourceWithRawResponse(client.currencies)
-        self.customers = resources.AsyncCustomersResourceWithRawResponse(client.customers)
-        self.product_collections = resources.AsyncProductCollectionsResourceWithRawResponse(client.product_collections)
-        self.product_tree = resources.AsyncProductTreeResourceWithRawResponse(client.product_tree)
-        self.products = resources.AsyncProductsResourceWithRawResponse(client.products)
-        self.public_accounts = resources.AsyncPublicAccountsResourceWithRawResponse(client.public_accounts)
-        self.user_invitations = resources.AsyncUserInvitationsResourceWithRawResponse(client.user_invitations)
-        self.user_customer_links = resources.AsyncUserCustomerLinksResourceWithRawResponse(client.user_customer_links)
-        self.users = resources.AsyncUsersResourceWithRawResponse(client.users)
-        self.views = resources.AsyncViewsResourceWithRawResponse(client.views)
-        self.web_hooks = resources.AsyncWebHooksResourceWithRawResponse(client.web_hooks)
-        self.cards = resources.AsyncCardsResourceWithRawResponse(client.cards)
-        self.certs = resources.AsyncCertsResourceWithRawResponse(client.certs)
-        self.config = resources.AsyncConfigResourceWithRawResponse(client.config)
-        self.connector = resources.AsyncConnectorResourceWithRawResponse(client.connector)
-        self.consumer = resources.AsyncConsumerResourceWithRawResponse(client.consumer)
-        self.consent_requests = resources.AsyncConsentRequestsResourceWithRawResponse(client.consent_requests)
-        self.consumers = resources.AsyncConsumersResourceWithRawResponse(client.consumers)
-        self.customers_minimal = resources.AsyncCustomersMinimalResourceWithRawResponse(client.customers_minimal)
-        self.database = resources.AsyncDatabaseResourceWithRawResponse(client.database)
-        self.development = resources.AsyncDevelopmentResourceWithRawResponse(client.development)
-        self.dynamic_registration = resources.AsyncDynamicRegistrationResourceWithRawResponse(
+        self.bank_accounts = bank_accounts.AsyncBankAccountsResourceWithRawResponse(client.bank_accounts)
+        self.consents = consents.AsyncConsentsResourceWithRawResponse(client.consents)
+        self.crm_events = crm_events.AsyncCRMEventsResourceWithRawResponse(client.crm_events)
+        self.currencies = currencies.AsyncCurrenciesResourceWithRawResponse(client.currencies)
+        self.customers = customers.AsyncCustomersResourceWithRawResponse(client.customers)
+        self.product_collections = product_collections.AsyncProductCollectionsResourceWithRawResponse(
+            client.product_collections
+        )
+        self.product_tree = product_tree.AsyncProductTreeResourceWithRawResponse(client.product_tree)
+        self.products = products.AsyncProductsResourceWithRawResponse(client.products)
+        self.public_accounts = public_accounts.AsyncPublicAccountsResourceWithRawResponse(client.public_accounts)
+        self.user_invitations = user_invitations.AsyncUserInvitationsResourceWithRawResponse(client.user_invitations)
+        self.user_customer_links = user_customer_links.AsyncUserCustomerLinksResourceWithRawResponse(
+            client.user_customer_links
+        )
+        self.users = users.AsyncUsersResourceWithRawResponse(client.users)
+        self.views = views.AsyncViewsResourceWithRawResponse(client.views)
+        self.web_hooks = web_hooks.AsyncWebHooksResourceWithRawResponse(client.web_hooks)
+        self.cards = cards.AsyncCardsResourceWithRawResponse(client.cards)
+        self.certs = certs.AsyncCertsResourceWithRawResponse(client.certs)
+        self.config = config.AsyncConfigResourceWithRawResponse(client.config)
+        self.connector = connector.AsyncConnectorResourceWithRawResponse(client.connector)
+        self.consumer = consumer.AsyncConsumerResourceWithRawResponse(client.consumer)
+        self.consent_requests = consent_requests.AsyncConsentRequestsResourceWithRawResponse(client.consent_requests)
+        self.consumers = consumers.AsyncConsumersResourceWithRawResponse(client.consumers)
+        self.customers_minimal = customers_minimal.AsyncCustomersMinimalResourceWithRawResponse(
+            client.customers_minimal
+        )
+        self.database = database.AsyncDatabaseResourceWithRawResponse(client.database)
+        self.development = development.AsyncDevelopmentResourceWithRawResponse(client.development)
+        self.dynamic_registration = dynamic_registration.AsyncDynamicRegistrationResourceWithRawResponse(
             client.dynamic_registration
         )
-        self.endpoints = resources.AsyncEndpointsResourceWithRawResponse(client.endpoints)
-        self.entitlement_requests = resources.AsyncEntitlementRequestsResourceWithRawResponse(
+        self.endpoints = endpoints.AsyncEndpointsResourceWithRawResponse(client.endpoints)
+        self.entitlement_requests = entitlement_requests.AsyncEntitlementRequestsResourceWithRawResponse(
             client.entitlement_requests
         )
-        self.entitlements = resources.AsyncEntitlementsResourceWithRawResponse(client.entitlements)
-        self.jwks_uris = resources.AsyncJwksUrisResourceWithRawResponse(client.jwks_uris)
-        self.management = resources.AsyncManagementResourceWithRawResponse(client.management)
-        self.authentication_type_validations = resources.AsyncAuthenticationTypeValidationsResourceWithRawResponse(
-            client.authentication_type_validations
+        self.entitlements = entitlements.AsyncEntitlementsResourceWithRawResponse(client.entitlements)
+        self.jwks_uris = jwks_uris.AsyncJwksUrisResourceWithRawResponse(client.jwks_uris)
+        self.management = management.AsyncManagementResourceWithRawResponse(client.management)
+        self.authentication_type_validations = (
+            authentication_type_validations.AsyncAuthenticationTypeValidationsResourceWithRawResponse(
+                client.authentication_type_validations
+            )
         )
-        self.standing_orders = resources.AsyncStandingOrdersResourceWithRawResponse(client.standing_orders)
-        self.dynamic_endpoints = resources.AsyncDynamicEndpointsResourceWithRawResponse(client.dynamic_endpoints)
-        self.dynamic_message_docs = resources.AsyncDynamicMessageDocsResourceWithRawResponse(
+        self.standing_orders = standing_orders.AsyncStandingOrdersResourceWithRawResponse(client.standing_orders)
+        self.dynamic_endpoints = dynamic_endpoints.AsyncDynamicEndpointsResourceWithRawResponse(
+            client.dynamic_endpoints
+        )
+        self.dynamic_message_docs = dynamic_message_docs.AsyncDynamicMessageDocsResourceWithRawResponse(
             client.dynamic_message_docs
         )
-        self.dynamic_resource_docs = resources.AsyncDynamicResourceDocsResourceWithRawResponse(
+        self.dynamic_resource_docs = dynamic_resource_docs.AsyncDynamicResourceDocsResourceWithRawResponse(
             client.dynamic_resource_docs
         )
-        self.endpoint_mappings = resources.AsyncEndpointMappingsResourceWithRawResponse(client.endpoint_mappings)
-        self.fast_firehose_accounts = resources.AsyncFastFirehoseAccountsResourceWithRawResponse(
+        self.endpoint_mappings = endpoint_mappings.AsyncEndpointMappingsResourceWithRawResponse(
+            client.endpoint_mappings
+        )
+        self.fast_firehose_accounts = fast_firehose_accounts.AsyncFastFirehoseAccountsResourceWithRawResponse(
             client.fast_firehose_accounts
         )
-        self.cascading_banks = resources.AsyncCascadingBanksResourceWithRawResponse(client.cascading_banks)
-        self.connector_methods = resources.AsyncConnectorMethodsResourceWithRawResponse(client.connector_methods)
-        self.json_schema_validations = resources.AsyncJsonSchemaValidationsResourceWithRawResponse(
+        self.cascading_banks = cascading_banks.AsyncCascadingBanksResourceWithRawResponse(client.cascading_banks)
+        self.connector_methods = connector_methods.AsyncConnectorMethodsResourceWithRawResponse(
+            client.connector_methods
+        )
+        self.json_schema_validations = json_schema_validations.AsyncJsonSchemaValidationsResourceWithRawResponse(
             client.json_schema_validations
         )
-        self.method_routings = resources.AsyncMethodRoutingsResourceWithRawResponse(client.method_routings)
-        self.metrics = resources.AsyncMetricsResourceWithRawResponse(client.metrics)
-        self.system_dynamic_entities = resources.AsyncSystemDynamicEntitiesResourceWithRawResponse(
+        self.method_routings = method_routings.AsyncMethodRoutingsResourceWithRawResponse(client.method_routings)
+        self.metrics = metrics.AsyncMetricsResourceWithRawResponse(client.metrics)
+        self.system_dynamic_entities = system_dynamic_entities.AsyncSystemDynamicEntitiesResourceWithRawResponse(
             client.system_dynamic_entities
         )
-        self.system_integrity = resources.AsyncSystemIntegrityResourceWithRawResponse(client.system_integrity)
-        self.webui_props = resources.AsyncWebuiPropsResourceWithRawResponse(client.webui_props)
-        self.documentation = resources.AsyncDocumentationResourceWithRawResponse(client.documentation)
-        self.consent = resources.AsyncConsentResourceWithRawResponse(client.consent)
-        self.correlated_entities = resources.AsyncCorrelatedEntitiesResourceWithRawResponse(client.correlated_entities)
-        self.dynamic_entities = resources.AsyncDynamicEntitiesResourceWithRawResponse(client.dynamic_entities)
-        self.mtls = resources.AsyncMtlsResourceWithRawResponse(client.mtls)
-        self.spaces = resources.AsyncSpacesResourceWithRawResponse(client.spaces)
-        self.user = resources.AsyncUserResourceWithRawResponse(client.user)
-        self.rate_limits = resources.AsyncRateLimitsResourceWithRawResponse(client.rate_limits)
-        self.regulated_entities = resources.AsyncRegulatedEntitiesResourceWithRawResponse(client.regulated_entities)
-        self.resource_docs = resources.AsyncResourceDocsResourceWithRawResponse(client.resource_docs)
-        self.roles = resources.AsyncRolesResourceWithRawResponse(client.roles)
-        self.sandbox = resources.AsyncSandboxResourceWithRawResponse(client.sandbox)
-        self.search = resources.AsyncSearchResourceWithRawResponse(client.search)
-        self.system_views = resources.AsyncSystemViewsResourceWithRawResponse(client.system_views)
-        self.user_entitlements = resources.AsyncUserEntitlementsResourceWithRawResponse(client.user_entitlements)
+        self.system_integrity = system_integrity.AsyncSystemIntegrityResourceWithRawResponse(client.system_integrity)
+        self.webui_props = webui_props.AsyncWebuiPropsResourceWithRawResponse(client.webui_props)
+        self.documentation = documentation.AsyncDocumentationResourceWithRawResponse(client.documentation)
+        self.consent = consent.AsyncConsentResourceWithRawResponse(client.consent)
+        self.correlated_entities = correlated_entities.AsyncCorrelatedEntitiesResourceWithRawResponse(
+            client.correlated_entities
+        )
+        self.dynamic_entities = dynamic_entities.AsyncDynamicEntitiesResourceWithRawResponse(client.dynamic_entities)
+        self.mtls = mtls.AsyncMtlsResourceWithRawResponse(client.mtls)
+        self.spaces = spaces.AsyncSpacesResourceWithRawResponse(client.spaces)
+        self.user = user.AsyncUserResourceWithRawResponse(client.user)
+        self.rate_limits = rate_limits.AsyncRateLimitsResourceWithRawResponse(client.rate_limits)
+        self.regulated_entities = regulated_entities.AsyncRegulatedEntitiesResourceWithRawResponse(
+            client.regulated_entities
+        )
+        self.resource_docs = resource_docs.AsyncResourceDocsResourceWithRawResponse(client.resource_docs)
+        self.roles = roles.AsyncRolesResourceWithRawResponse(client.roles)
+        self.sandbox = sandbox.AsyncSandboxResourceWithRawResponse(client.sandbox)
+        self.search = search.AsyncSearchResourceWithRawResponse(client.search)
+        self.system_views = system_views.AsyncSystemViewsResourceWithRawResponse(client.system_views)
+        self.user_entitlements = user_entitlements.AsyncUserEntitlementsResourceWithRawResponse(
+            client.user_entitlements
+        )
 
 
 class ObpAPIWithStreamedResponse:
     def __init__(self, client: ObpAPI) -> None:
-        self.accounts = resources.AccountsResourceWithStreamingResponse(client.accounts)
-        self.adapter = resources.AdapterResourceWithStreamingResponse(client.adapter)
-        self.api_collections = resources.APICollectionsResourceWithStreamingResponse(client.api_collections)
-        self.api = resources.APIResourceWithStreamingResponse(client.api)
-        self.banks = resources.BanksResourceWithStreamingResponse(client.banks)
-        self.accounts_held = resources.AccountsHeldResourceWithStreamingResponse(client.accounts_held)
-        self.counterparties = resources.CounterpartiesResourceWithStreamingResponse(client.counterparties)
-        self.transactions = resources.TransactionsResourceWithStreamingResponse(client.transactions)
-        self.customer_account_links = resources.CustomerAccountLinksResourceWithStreamingResponse(
+        self.accounts = accounts.AccountsResourceWithStreamingResponse(client.accounts)
+        self.adapter = adapter.AdapterResourceWithStreamingResponse(client.adapter)
+        self.api_collections = api_collections.APICollectionsResourceWithStreamingResponse(client.api_collections)
+        self.api = api.APIResourceWithStreamingResponse(client.api)
+        self.banks = banks.BanksResourceWithStreamingResponse(client.banks)
+        self.accounts_held = accounts_held.AccountsHeldResourceWithStreamingResponse(client.accounts_held)
+        self.counterparties = counterparties.CounterpartiesResourceWithStreamingResponse(client.counterparties)
+        self.transactions = transactions.TransactionsResourceWithStreamingResponse(client.transactions)
+        self.customer_account_links = customer_account_links.CustomerAccountLinksResourceWithStreamingResponse(
             client.customer_account_links
         )
-        self.permissions = resources.PermissionsResourceWithStreamingResponse(client.permissions)
-        self.account_products = resources.AccountProductsResourceWithStreamingResponse(client.account_products)
-        self.transaction_requests = resources.TransactionRequestsResourceWithStreamingResponse(
+        self.permissions = permissions.PermissionsResourceWithStreamingResponse(client.permissions)
+        self.account_products = account_products.AccountProductsResourceWithStreamingResponse(client.account_products)
+        self.transaction_requests = transaction_requests.TransactionRequestsResourceWithStreamingResponse(
             client.transaction_requests
         )
-        self.bank_accounts = resources.BankAccountsResourceWithStreamingResponse(client.bank_accounts)
-        self.consents = resources.ConsentsResourceWithStreamingResponse(client.consents)
-        self.crm_events = resources.CRMEventsResourceWithStreamingResponse(client.crm_events)
-        self.currencies = resources.CurrenciesResourceWithStreamingResponse(client.currencies)
-        self.customers = resources.CustomersResourceWithStreamingResponse(client.customers)
-        self.product_collections = resources.ProductCollectionsResourceWithStreamingResponse(client.product_collections)
-        self.product_tree = resources.ProductTreeResourceWithStreamingResponse(client.product_tree)
-        self.products = resources.ProductsResourceWithStreamingResponse(client.products)
-        self.public_accounts = resources.PublicAccountsResourceWithStreamingResponse(client.public_accounts)
-        self.user_invitations = resources.UserInvitationsResourceWithStreamingResponse(client.user_invitations)
-        self.user_customer_links = resources.UserCustomerLinksResourceWithStreamingResponse(client.user_customer_links)
-        self.users = resources.UsersResourceWithStreamingResponse(client.users)
-        self.views = resources.ViewsResourceWithStreamingResponse(client.views)
-        self.web_hooks = resources.WebHooksResourceWithStreamingResponse(client.web_hooks)
-        self.cards = resources.CardsResourceWithStreamingResponse(client.cards)
-        self.certs = resources.CertsResourceWithStreamingResponse(client.certs)
-        self.config = resources.ConfigResourceWithStreamingResponse(client.config)
-        self.connector = resources.ConnectorResourceWithStreamingResponse(client.connector)
-        self.consumer = resources.ConsumerResourceWithStreamingResponse(client.consumer)
-        self.consent_requests = resources.ConsentRequestsResourceWithStreamingResponse(client.consent_requests)
-        self.consumers = resources.ConsumersResourceWithStreamingResponse(client.consumers)
-        self.customers_minimal = resources.CustomersMinimalResourceWithStreamingResponse(client.customers_minimal)
-        self.database = resources.DatabaseResourceWithStreamingResponse(client.database)
-        self.development = resources.DevelopmentResourceWithStreamingResponse(client.development)
-        self.dynamic_registration = resources.DynamicRegistrationResourceWithStreamingResponse(
+        self.bank_accounts = bank_accounts.BankAccountsResourceWithStreamingResponse(client.bank_accounts)
+        self.consents = consents.ConsentsResourceWithStreamingResponse(client.consents)
+        self.crm_events = crm_events.CRMEventsResourceWithStreamingResponse(client.crm_events)
+        self.currencies = currencies.CurrenciesResourceWithStreamingResponse(client.currencies)
+        self.customers = customers.CustomersResourceWithStreamingResponse(client.customers)
+        self.product_collections = product_collections.ProductCollectionsResourceWithStreamingResponse(
+            client.product_collections
+        )
+        self.product_tree = product_tree.ProductTreeResourceWithStreamingResponse(client.product_tree)
+        self.products = products.ProductsResourceWithStreamingResponse(client.products)
+        self.public_accounts = public_accounts.PublicAccountsResourceWithStreamingResponse(client.public_accounts)
+        self.user_invitations = user_invitations.UserInvitationsResourceWithStreamingResponse(client.user_invitations)
+        self.user_customer_links = user_customer_links.UserCustomerLinksResourceWithStreamingResponse(
+            client.user_customer_links
+        )
+        self.users = users.UsersResourceWithStreamingResponse(client.users)
+        self.views = views.ViewsResourceWithStreamingResponse(client.views)
+        self.web_hooks = web_hooks.WebHooksResourceWithStreamingResponse(client.web_hooks)
+        self.cards = cards.CardsResourceWithStreamingResponse(client.cards)
+        self.certs = certs.CertsResourceWithStreamingResponse(client.certs)
+        self.config = config.ConfigResourceWithStreamingResponse(client.config)
+        self.connector = connector.ConnectorResourceWithStreamingResponse(client.connector)
+        self.consumer = consumer.ConsumerResourceWithStreamingResponse(client.consumer)
+        self.consent_requests = consent_requests.ConsentRequestsResourceWithStreamingResponse(client.consent_requests)
+        self.consumers = consumers.ConsumersResourceWithStreamingResponse(client.consumers)
+        self.customers_minimal = customers_minimal.CustomersMinimalResourceWithStreamingResponse(
+            client.customers_minimal
+        )
+        self.database = database.DatabaseResourceWithStreamingResponse(client.database)
+        self.development = development.DevelopmentResourceWithStreamingResponse(client.development)
+        self.dynamic_registration = dynamic_registration.DynamicRegistrationResourceWithStreamingResponse(
             client.dynamic_registration
         )
-        self.endpoints = resources.EndpointsResourceWithStreamingResponse(client.endpoints)
-        self.entitlement_requests = resources.EntitlementRequestsResourceWithStreamingResponse(
+        self.endpoints = endpoints.EndpointsResourceWithStreamingResponse(client.endpoints)
+        self.entitlement_requests = entitlement_requests.EntitlementRequestsResourceWithStreamingResponse(
             client.entitlement_requests
         )
-        self.entitlements = resources.EntitlementsResourceWithStreamingResponse(client.entitlements)
-        self.jwks_uris = resources.JwksUrisResourceWithStreamingResponse(client.jwks_uris)
-        self.management = resources.ManagementResourceWithStreamingResponse(client.management)
-        self.authentication_type_validations = resources.AuthenticationTypeValidationsResourceWithStreamingResponse(
-            client.authentication_type_validations
+        self.entitlements = entitlements.EntitlementsResourceWithStreamingResponse(client.entitlements)
+        self.jwks_uris = jwks_uris.JwksUrisResourceWithStreamingResponse(client.jwks_uris)
+        self.management = management.ManagementResourceWithStreamingResponse(client.management)
+        self.authentication_type_validations = (
+            authentication_type_validations.AuthenticationTypeValidationsResourceWithStreamingResponse(
+                client.authentication_type_validations
+            )
         )
-        self.standing_orders = resources.StandingOrdersResourceWithStreamingResponse(client.standing_orders)
-        self.dynamic_endpoints = resources.DynamicEndpointsResourceWithStreamingResponse(client.dynamic_endpoints)
-        self.dynamic_message_docs = resources.DynamicMessageDocsResourceWithStreamingResponse(
+        self.standing_orders = standing_orders.StandingOrdersResourceWithStreamingResponse(client.standing_orders)
+        self.dynamic_endpoints = dynamic_endpoints.DynamicEndpointsResourceWithStreamingResponse(
+            client.dynamic_endpoints
+        )
+        self.dynamic_message_docs = dynamic_message_docs.DynamicMessageDocsResourceWithStreamingResponse(
             client.dynamic_message_docs
         )
-        self.dynamic_resource_docs = resources.DynamicResourceDocsResourceWithStreamingResponse(
+        self.dynamic_resource_docs = dynamic_resource_docs.DynamicResourceDocsResourceWithStreamingResponse(
             client.dynamic_resource_docs
         )
-        self.endpoint_mappings = resources.EndpointMappingsResourceWithStreamingResponse(client.endpoint_mappings)
-        self.fast_firehose_accounts = resources.FastFirehoseAccountsResourceWithStreamingResponse(
+        self.endpoint_mappings = endpoint_mappings.EndpointMappingsResourceWithStreamingResponse(
+            client.endpoint_mappings
+        )
+        self.fast_firehose_accounts = fast_firehose_accounts.FastFirehoseAccountsResourceWithStreamingResponse(
             client.fast_firehose_accounts
         )
-        self.cascading_banks = resources.CascadingBanksResourceWithStreamingResponse(client.cascading_banks)
-        self.connector_methods = resources.ConnectorMethodsResourceWithStreamingResponse(client.connector_methods)
-        self.json_schema_validations = resources.JsonSchemaValidationsResourceWithStreamingResponse(
+        self.cascading_banks = cascading_banks.CascadingBanksResourceWithStreamingResponse(client.cascading_banks)
+        self.connector_methods = connector_methods.ConnectorMethodsResourceWithStreamingResponse(
+            client.connector_methods
+        )
+        self.json_schema_validations = json_schema_validations.JsonSchemaValidationsResourceWithStreamingResponse(
             client.json_schema_validations
         )
-        self.method_routings = resources.MethodRoutingsResourceWithStreamingResponse(client.method_routings)
-        self.metrics = resources.MetricsResourceWithStreamingResponse(client.metrics)
-        self.system_dynamic_entities = resources.SystemDynamicEntitiesResourceWithStreamingResponse(
+        self.method_routings = method_routings.MethodRoutingsResourceWithStreamingResponse(client.method_routings)
+        self.metrics = metrics.MetricsResourceWithStreamingResponse(client.metrics)
+        self.system_dynamic_entities = system_dynamic_entities.SystemDynamicEntitiesResourceWithStreamingResponse(
             client.system_dynamic_entities
         )
-        self.system_integrity = resources.SystemIntegrityResourceWithStreamingResponse(client.system_integrity)
-        self.webui_props = resources.WebuiPropsResourceWithStreamingResponse(client.webui_props)
-        self.documentation = resources.DocumentationResourceWithStreamingResponse(client.documentation)
-        self.consent = resources.ConsentResourceWithStreamingResponse(client.consent)
-        self.correlated_entities = resources.CorrelatedEntitiesResourceWithStreamingResponse(client.correlated_entities)
-        self.dynamic_entities = resources.DynamicEntitiesResourceWithStreamingResponse(client.dynamic_entities)
-        self.mtls = resources.MtlsResourceWithStreamingResponse(client.mtls)
-        self.spaces = resources.SpacesResourceWithStreamingResponse(client.spaces)
-        self.user = resources.UserResourceWithStreamingResponse(client.user)
-        self.rate_limits = resources.RateLimitsResourceWithStreamingResponse(client.rate_limits)
-        self.regulated_entities = resources.RegulatedEntitiesResourceWithStreamingResponse(client.regulated_entities)
-        self.resource_docs = resources.ResourceDocsResourceWithStreamingResponse(client.resource_docs)
-        self.roles = resources.RolesResourceWithStreamingResponse(client.roles)
-        self.sandbox = resources.SandboxResourceWithStreamingResponse(client.sandbox)
-        self.search = resources.SearchResourceWithStreamingResponse(client.search)
-        self.system_views = resources.SystemViewsResourceWithStreamingResponse(client.system_views)
-        self.user_entitlements = resources.UserEntitlementsResourceWithStreamingResponse(client.user_entitlements)
+        self.system_integrity = system_integrity.SystemIntegrityResourceWithStreamingResponse(client.system_integrity)
+        self.webui_props = webui_props.WebuiPropsResourceWithStreamingResponse(client.webui_props)
+        self.documentation = documentation.DocumentationResourceWithStreamingResponse(client.documentation)
+        self.consent = consent.ConsentResourceWithStreamingResponse(client.consent)
+        self.correlated_entities = correlated_entities.CorrelatedEntitiesResourceWithStreamingResponse(
+            client.correlated_entities
+        )
+        self.dynamic_entities = dynamic_entities.DynamicEntitiesResourceWithStreamingResponse(client.dynamic_entities)
+        self.mtls = mtls.MtlsResourceWithStreamingResponse(client.mtls)
+        self.spaces = spaces.SpacesResourceWithStreamingResponse(client.spaces)
+        self.user = user.UserResourceWithStreamingResponse(client.user)
+        self.rate_limits = rate_limits.RateLimitsResourceWithStreamingResponse(client.rate_limits)
+        self.regulated_entities = regulated_entities.RegulatedEntitiesResourceWithStreamingResponse(
+            client.regulated_entities
+        )
+        self.resource_docs = resource_docs.ResourceDocsResourceWithStreamingResponse(client.resource_docs)
+        self.roles = roles.RolesResourceWithStreamingResponse(client.roles)
+        self.sandbox = sandbox.SandboxResourceWithStreamingResponse(client.sandbox)
+        self.search = search.SearchResourceWithStreamingResponse(client.search)
+        self.system_views = system_views.SystemViewsResourceWithStreamingResponse(client.system_views)
+        self.user_entitlements = user_entitlements.UserEntitlementsResourceWithStreamingResponse(
+            client.user_entitlements
+        )
 
 
 class AsyncObpAPIWithStreamedResponse:
     def __init__(self, client: AsyncObpAPI) -> None:
-        self.accounts = resources.AsyncAccountsResourceWithStreamingResponse(client.accounts)
-        self.adapter = resources.AsyncAdapterResourceWithStreamingResponse(client.adapter)
-        self.api_collections = resources.AsyncAPICollectionsResourceWithStreamingResponse(client.api_collections)
-        self.api = resources.AsyncAPIResourceWithStreamingResponse(client.api)
-        self.banks = resources.AsyncBanksResourceWithStreamingResponse(client.banks)
-        self.accounts_held = resources.AsyncAccountsHeldResourceWithStreamingResponse(client.accounts_held)
-        self.counterparties = resources.AsyncCounterpartiesResourceWithStreamingResponse(client.counterparties)
-        self.transactions = resources.AsyncTransactionsResourceWithStreamingResponse(client.transactions)
-        self.customer_account_links = resources.AsyncCustomerAccountLinksResourceWithStreamingResponse(
+        self.accounts = accounts.AsyncAccountsResourceWithStreamingResponse(client.accounts)
+        self.adapter = adapter.AsyncAdapterResourceWithStreamingResponse(client.adapter)
+        self.api_collections = api_collections.AsyncAPICollectionsResourceWithStreamingResponse(client.api_collections)
+        self.api = api.AsyncAPIResourceWithStreamingResponse(client.api)
+        self.banks = banks.AsyncBanksResourceWithStreamingResponse(client.banks)
+        self.accounts_held = accounts_held.AsyncAccountsHeldResourceWithStreamingResponse(client.accounts_held)
+        self.counterparties = counterparties.AsyncCounterpartiesResourceWithStreamingResponse(client.counterparties)
+        self.transactions = transactions.AsyncTransactionsResourceWithStreamingResponse(client.transactions)
+        self.customer_account_links = customer_account_links.AsyncCustomerAccountLinksResourceWithStreamingResponse(
             client.customer_account_links
         )
-        self.permissions = resources.AsyncPermissionsResourceWithStreamingResponse(client.permissions)
-        self.account_products = resources.AsyncAccountProductsResourceWithStreamingResponse(client.account_products)
-        self.transaction_requests = resources.AsyncTransactionRequestsResourceWithStreamingResponse(
+        self.permissions = permissions.AsyncPermissionsResourceWithStreamingResponse(client.permissions)
+        self.account_products = account_products.AsyncAccountProductsResourceWithStreamingResponse(
+            client.account_products
+        )
+        self.transaction_requests = transaction_requests.AsyncTransactionRequestsResourceWithStreamingResponse(
             client.transaction_requests
         )
-        self.bank_accounts = resources.AsyncBankAccountsResourceWithStreamingResponse(client.bank_accounts)
-        self.consents = resources.AsyncConsentsResourceWithStreamingResponse(client.consents)
-        self.crm_events = resources.AsyncCRMEventsResourceWithStreamingResponse(client.crm_events)
-        self.currencies = resources.AsyncCurrenciesResourceWithStreamingResponse(client.currencies)
-        self.customers = resources.AsyncCustomersResourceWithStreamingResponse(client.customers)
-        self.product_collections = resources.AsyncProductCollectionsResourceWithStreamingResponse(
+        self.bank_accounts = bank_accounts.AsyncBankAccountsResourceWithStreamingResponse(client.bank_accounts)
+        self.consents = consents.AsyncConsentsResourceWithStreamingResponse(client.consents)
+        self.crm_events = crm_events.AsyncCRMEventsResourceWithStreamingResponse(client.crm_events)
+        self.currencies = currencies.AsyncCurrenciesResourceWithStreamingResponse(client.currencies)
+        self.customers = customers.AsyncCustomersResourceWithStreamingResponse(client.customers)
+        self.product_collections = product_collections.AsyncProductCollectionsResourceWithStreamingResponse(
             client.product_collections
         )
-        self.product_tree = resources.AsyncProductTreeResourceWithStreamingResponse(client.product_tree)
-        self.products = resources.AsyncProductsResourceWithStreamingResponse(client.products)
-        self.public_accounts = resources.AsyncPublicAccountsResourceWithStreamingResponse(client.public_accounts)
-        self.user_invitations = resources.AsyncUserInvitationsResourceWithStreamingResponse(client.user_invitations)
-        self.user_customer_links = resources.AsyncUserCustomerLinksResourceWithStreamingResponse(
+        self.product_tree = product_tree.AsyncProductTreeResourceWithStreamingResponse(client.product_tree)
+        self.products = products.AsyncProductsResourceWithStreamingResponse(client.products)
+        self.public_accounts = public_accounts.AsyncPublicAccountsResourceWithStreamingResponse(client.public_accounts)
+        self.user_invitations = user_invitations.AsyncUserInvitationsResourceWithStreamingResponse(
+            client.user_invitations
+        )
+        self.user_customer_links = user_customer_links.AsyncUserCustomerLinksResourceWithStreamingResponse(
             client.user_customer_links
         )
-        self.users = resources.AsyncUsersResourceWithStreamingResponse(client.users)
-        self.views = resources.AsyncViewsResourceWithStreamingResponse(client.views)
-        self.web_hooks = resources.AsyncWebHooksResourceWithStreamingResponse(client.web_hooks)
-        self.cards = resources.AsyncCardsResourceWithStreamingResponse(client.cards)
-        self.certs = resources.AsyncCertsResourceWithStreamingResponse(client.certs)
-        self.config = resources.AsyncConfigResourceWithStreamingResponse(client.config)
-        self.connector = resources.AsyncConnectorResourceWithStreamingResponse(client.connector)
-        self.consumer = resources.AsyncConsumerResourceWithStreamingResponse(client.consumer)
-        self.consent_requests = resources.AsyncConsentRequestsResourceWithStreamingResponse(client.consent_requests)
-        self.consumers = resources.AsyncConsumersResourceWithStreamingResponse(client.consumers)
-        self.customers_minimal = resources.AsyncCustomersMinimalResourceWithStreamingResponse(client.customers_minimal)
-        self.database = resources.AsyncDatabaseResourceWithStreamingResponse(client.database)
-        self.development = resources.AsyncDevelopmentResourceWithStreamingResponse(client.development)
-        self.dynamic_registration = resources.AsyncDynamicRegistrationResourceWithStreamingResponse(
+        self.users = users.AsyncUsersResourceWithStreamingResponse(client.users)
+        self.views = views.AsyncViewsResourceWithStreamingResponse(client.views)
+        self.web_hooks = web_hooks.AsyncWebHooksResourceWithStreamingResponse(client.web_hooks)
+        self.cards = cards.AsyncCardsResourceWithStreamingResponse(client.cards)
+        self.certs = certs.AsyncCertsResourceWithStreamingResponse(client.certs)
+        self.config = config.AsyncConfigResourceWithStreamingResponse(client.config)
+        self.connector = connector.AsyncConnectorResourceWithStreamingResponse(client.connector)
+        self.consumer = consumer.AsyncConsumerResourceWithStreamingResponse(client.consumer)
+        self.consent_requests = consent_requests.AsyncConsentRequestsResourceWithStreamingResponse(
+            client.consent_requests
+        )
+        self.consumers = consumers.AsyncConsumersResourceWithStreamingResponse(client.consumers)
+        self.customers_minimal = customers_minimal.AsyncCustomersMinimalResourceWithStreamingResponse(
+            client.customers_minimal
+        )
+        self.database = database.AsyncDatabaseResourceWithStreamingResponse(client.database)
+        self.development = development.AsyncDevelopmentResourceWithStreamingResponse(client.development)
+        self.dynamic_registration = dynamic_registration.AsyncDynamicRegistrationResourceWithStreamingResponse(
             client.dynamic_registration
         )
-        self.endpoints = resources.AsyncEndpointsResourceWithStreamingResponse(client.endpoints)
-        self.entitlement_requests = resources.AsyncEntitlementRequestsResourceWithStreamingResponse(
+        self.endpoints = endpoints.AsyncEndpointsResourceWithStreamingResponse(client.endpoints)
+        self.entitlement_requests = entitlement_requests.AsyncEntitlementRequestsResourceWithStreamingResponse(
             client.entitlement_requests
         )
-        self.entitlements = resources.AsyncEntitlementsResourceWithStreamingResponse(client.entitlements)
-        self.jwks_uris = resources.AsyncJwksUrisResourceWithStreamingResponse(client.jwks_uris)
-        self.management = resources.AsyncManagementResourceWithStreamingResponse(client.management)
+        self.entitlements = entitlements.AsyncEntitlementsResourceWithStreamingResponse(client.entitlements)
+        self.jwks_uris = jwks_uris.AsyncJwksUrisResourceWithStreamingResponse(client.jwks_uris)
+        self.management = management.AsyncManagementResourceWithStreamingResponse(client.management)
         self.authentication_type_validations = (
-            resources.AsyncAuthenticationTypeValidationsResourceWithStreamingResponse(
+            authentication_type_validations.AsyncAuthenticationTypeValidationsResourceWithStreamingResponse(
                 client.authentication_type_validations
             )
         )
-        self.standing_orders = resources.AsyncStandingOrdersResourceWithStreamingResponse(client.standing_orders)
-        self.dynamic_endpoints = resources.AsyncDynamicEndpointsResourceWithStreamingResponse(client.dynamic_endpoints)
-        self.dynamic_message_docs = resources.AsyncDynamicMessageDocsResourceWithStreamingResponse(
+        self.standing_orders = standing_orders.AsyncStandingOrdersResourceWithStreamingResponse(client.standing_orders)
+        self.dynamic_endpoints = dynamic_endpoints.AsyncDynamicEndpointsResourceWithStreamingResponse(
+            client.dynamic_endpoints
+        )
+        self.dynamic_message_docs = dynamic_message_docs.AsyncDynamicMessageDocsResourceWithStreamingResponse(
             client.dynamic_message_docs
         )
-        self.dynamic_resource_docs = resources.AsyncDynamicResourceDocsResourceWithStreamingResponse(
+        self.dynamic_resource_docs = dynamic_resource_docs.AsyncDynamicResourceDocsResourceWithStreamingResponse(
             client.dynamic_resource_docs
         )
-        self.endpoint_mappings = resources.AsyncEndpointMappingsResourceWithStreamingResponse(client.endpoint_mappings)
-        self.fast_firehose_accounts = resources.AsyncFastFirehoseAccountsResourceWithStreamingResponse(
+        self.endpoint_mappings = endpoint_mappings.AsyncEndpointMappingsResourceWithStreamingResponse(
+            client.endpoint_mappings
+        )
+        self.fast_firehose_accounts = fast_firehose_accounts.AsyncFastFirehoseAccountsResourceWithStreamingResponse(
             client.fast_firehose_accounts
         )
-        self.cascading_banks = resources.AsyncCascadingBanksResourceWithStreamingResponse(client.cascading_banks)
-        self.connector_methods = resources.AsyncConnectorMethodsResourceWithStreamingResponse(client.connector_methods)
-        self.json_schema_validations = resources.AsyncJsonSchemaValidationsResourceWithStreamingResponse(
+        self.cascading_banks = cascading_banks.AsyncCascadingBanksResourceWithStreamingResponse(client.cascading_banks)
+        self.connector_methods = connector_methods.AsyncConnectorMethodsResourceWithStreamingResponse(
+            client.connector_methods
+        )
+        self.json_schema_validations = json_schema_validations.AsyncJsonSchemaValidationsResourceWithStreamingResponse(
             client.json_schema_validations
         )
-        self.method_routings = resources.AsyncMethodRoutingsResourceWithStreamingResponse(client.method_routings)
-        self.metrics = resources.AsyncMetricsResourceWithStreamingResponse(client.metrics)
-        self.system_dynamic_entities = resources.AsyncSystemDynamicEntitiesResourceWithStreamingResponse(
+        self.method_routings = method_routings.AsyncMethodRoutingsResourceWithStreamingResponse(client.method_routings)
+        self.metrics = metrics.AsyncMetricsResourceWithStreamingResponse(client.metrics)
+        self.system_dynamic_entities = system_dynamic_entities.AsyncSystemDynamicEntitiesResourceWithStreamingResponse(
             client.system_dynamic_entities
         )
-        self.system_integrity = resources.AsyncSystemIntegrityResourceWithStreamingResponse(client.system_integrity)
-        self.webui_props = resources.AsyncWebuiPropsResourceWithStreamingResponse(client.webui_props)
-        self.documentation = resources.AsyncDocumentationResourceWithStreamingResponse(client.documentation)
-        self.consent = resources.AsyncConsentResourceWithStreamingResponse(client.consent)
-        self.correlated_entities = resources.AsyncCorrelatedEntitiesResourceWithStreamingResponse(
+        self.system_integrity = system_integrity.AsyncSystemIntegrityResourceWithStreamingResponse(
+            client.system_integrity
+        )
+        self.webui_props = webui_props.AsyncWebuiPropsResourceWithStreamingResponse(client.webui_props)
+        self.documentation = documentation.AsyncDocumentationResourceWithStreamingResponse(client.documentation)
+        self.consent = consent.AsyncConsentResourceWithStreamingResponse(client.consent)
+        self.correlated_entities = correlated_entities.AsyncCorrelatedEntitiesResourceWithStreamingResponse(
             client.correlated_entities
         )
-        self.dynamic_entities = resources.AsyncDynamicEntitiesResourceWithStreamingResponse(client.dynamic_entities)
-        self.mtls = resources.AsyncMtlsResourceWithStreamingResponse(client.mtls)
-        self.spaces = resources.AsyncSpacesResourceWithStreamingResponse(client.spaces)
-        self.user = resources.AsyncUserResourceWithStreamingResponse(client.user)
-        self.rate_limits = resources.AsyncRateLimitsResourceWithStreamingResponse(client.rate_limits)
-        self.regulated_entities = resources.AsyncRegulatedEntitiesResourceWithStreamingResponse(
+        self.dynamic_entities = dynamic_entities.AsyncDynamicEntitiesResourceWithStreamingResponse(
+            client.dynamic_entities
+        )
+        self.mtls = mtls.AsyncMtlsResourceWithStreamingResponse(client.mtls)
+        self.spaces = spaces.AsyncSpacesResourceWithStreamingResponse(client.spaces)
+        self.user = user.AsyncUserResourceWithStreamingResponse(client.user)
+        self.rate_limits = rate_limits.AsyncRateLimitsResourceWithStreamingResponse(client.rate_limits)
+        self.regulated_entities = regulated_entities.AsyncRegulatedEntitiesResourceWithStreamingResponse(
             client.regulated_entities
         )
-        self.resource_docs = resources.AsyncResourceDocsResourceWithStreamingResponse(client.resource_docs)
-        self.roles = resources.AsyncRolesResourceWithStreamingResponse(client.roles)
-        self.sandbox = resources.AsyncSandboxResourceWithStreamingResponse(client.sandbox)
-        self.search = resources.AsyncSearchResourceWithStreamingResponse(client.search)
-        self.system_views = resources.AsyncSystemViewsResourceWithStreamingResponse(client.system_views)
-        self.user_entitlements = resources.AsyncUserEntitlementsResourceWithStreamingResponse(client.user_entitlements)
+        self.resource_docs = resource_docs.AsyncResourceDocsResourceWithStreamingResponse(client.resource_docs)
+        self.roles = roles.AsyncRolesResourceWithStreamingResponse(client.roles)
+        self.sandbox = sandbox.AsyncSandboxResourceWithStreamingResponse(client.sandbox)
+        self.search = search.AsyncSearchResourceWithStreamingResponse(client.search)
+        self.system_views = system_views.AsyncSystemViewsResourceWithStreamingResponse(client.system_views)
+        self.user_entitlements = user_entitlements.AsyncUserEntitlementsResourceWithStreamingResponse(
+            client.user_entitlements
+        )
 
 
 Client = ObpAPI
