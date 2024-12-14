@@ -10,24 +10,8 @@ from .balances import (
     BalancesResourceWithStreamingResponse,
     AsyncBalancesResourceWithStreamingResponse,
 )
-from .metadata import (
-    MetadataResource,
-    AsyncMetadataResource,
-    MetadataResourceWithRawResponse,
-    AsyncMetadataResourceWithRawResponse,
-    MetadataResourceWithStreamingResponse,
-    AsyncMetadataResourceWithStreamingResponse,
-)
 from ...._compat import cached_property
 from ...._resource import SyncAPIResource, AsyncAPIResource
-from .credit_cards import (
-    CreditCardsResource,
-    AsyncCreditCardsResource,
-    CreditCardsResourceWithRawResponse,
-    AsyncCreditCardsResourceWithRawResponse,
-    CreditCardsResourceWithStreamingResponse,
-    AsyncCreditCardsResourceWithStreamingResponse,
-)
 from .target_views import (
     TargetViewsResource,
     AsyncTargetViewsResource,
@@ -44,14 +28,6 @@ from .direct_debits import (
     DirectDebitsResourceWithStreamingResponse,
     AsyncDirectDebitsResourceWithStreamingResponse,
 )
-from .counterparties import (
-    CounterpartiesResource,
-    AsyncCounterpartiesResource,
-    CounterpartiesResourceWithRawResponse,
-    AsyncCounterpartiesResourceWithRawResponse,
-    CounterpartiesResourceWithStreamingResponse,
-    AsyncCounterpartiesResourceWithStreamingResponse,
-)
 from .funds_available import (
     FundsAvailableResource,
     AsyncFundsAvailableResource,
@@ -60,7 +36,14 @@ from .funds_available import (
     FundsAvailableResourceWithStreamingResponse,
     AsyncFundsAvailableResourceWithStreamingResponse,
 )
-from .metadata.metadata import MetadataResource, AsyncMetadataResource
+from .metadata.metadata import (
+    MetadataResource,
+    AsyncMetadataResource,
+    MetadataResourceWithRawResponse,
+    AsyncMetadataResourceWithRawResponse,
+    MetadataResourceWithStreamingResponse,
+    AsyncMetadataResourceWithStreamingResponse,
+)
 from .user_account_access import (
     UserAccountAccessResource,
     AsyncUserAccountAccessResource,
@@ -69,8 +52,22 @@ from .user_account_access import (
     UserAccountAccessResourceWithStreamingResponse,
     AsyncUserAccountAccessResourceWithStreamingResponse,
 )
-from .credit_cards.credit_cards import CreditCardsResource, AsyncCreditCardsResource
-from .counterparties.counterparties import CounterpartiesResource, AsyncCounterpartiesResource
+from .credit_cards.credit_cards import (
+    CreditCardsResource,
+    AsyncCreditCardsResource,
+    CreditCardsResourceWithRawResponse,
+    AsyncCreditCardsResourceWithRawResponse,
+    CreditCardsResourceWithStreamingResponse,
+    AsyncCreditCardsResourceWithStreamingResponse,
+)
+from .counterparties.counterparties import (
+    CounterpartiesResource,
+    AsyncCounterpartiesResource,
+    CounterpartiesResourceWithRawResponse,
+    AsyncCounterpartiesResourceWithRawResponse,
+    CounterpartiesResourceWithStreamingResponse,
+    AsyncCounterpartiesResourceWithStreamingResponse,
+)
 
 __all__ = ["ViewsResource", "AsyncViewsResource"]
 

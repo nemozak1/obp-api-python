@@ -13,14 +13,6 @@ from .locks import (
     AsyncLocksResourceWithStreamingResponse,
 )
 from ...types import user_create_params, user_reset_password_url_params
-from .current import (
-    CurrentResource,
-    AsyncCurrentResource,
-    CurrentResourceWithRawResponse,
-    AsyncCurrentResourceWithRawResponse,
-    CurrentResourceWithStreamingResponse,
-    AsyncCurrentResourceWithStreamingResponse,
-)
 from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
 from ..._utils import (
     maybe_transform,
@@ -75,7 +67,14 @@ from .account_access import (
     AccountAccessResourceWithStreamingResponse,
     AsyncAccountAccessResourceWithStreamingResponse,
 )
-from .current.current import CurrentResource, AsyncCurrentResource
+from .current.current import (
+    CurrentResource,
+    AsyncCurrentResource,
+    CurrentResourceWithRawResponse,
+    AsyncCurrentResourceWithRawResponse,
+    CurrentResourceWithStreamingResponse,
+    AsyncCurrentResourceWithStreamingResponse,
+)
 from .auth_context_updates import (
     AuthContextUpdatesResource,
     AsyncAuthContextUpdatesResource,
