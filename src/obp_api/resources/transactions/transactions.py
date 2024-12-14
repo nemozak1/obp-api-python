@@ -2,14 +2,6 @@
 
 from __future__ import annotations
 
-from .metadata import (
-    MetadataResource,
-    AsyncMetadataResource,
-    MetadataResourceWithRawResponse,
-    AsyncMetadataResourceWithRawResponse,
-    MetadataResourceWithStreamingResponse,
-    AsyncMetadataResourceWithStreamingResponse,
-)
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from .transaction import (
@@ -28,7 +20,14 @@ from .other_account import (
     OtherAccountResourceWithStreamingResponse,
     AsyncOtherAccountResourceWithStreamingResponse,
 )
-from .metadata.metadata import MetadataResource, AsyncMetadataResource
+from .metadata.metadata import (
+    MetadataResource,
+    AsyncMetadataResource,
+    MetadataResourceWithRawResponse,
+    AsyncMetadataResourceWithRawResponse,
+    MetadataResourceWithStreamingResponse,
+    AsyncMetadataResourceWithStreamingResponse,
+)
 from .balancing_transaction import (
     BalancingTransactionResource,
     AsyncBalancingTransactionResource,
