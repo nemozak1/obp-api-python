@@ -20,7 +20,7 @@ from .private import (
 )
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from .account_ids.account_ids import (
+from .account_ids import (
     AccountIDsResource,
     AsyncAccountIDsResource,
     AccountIDsResourceWithRawResponse,
@@ -28,6 +28,7 @@ from .account_ids.account_ids import (
     AccountIDsResourceWithStreamingResponse,
     AsyncAccountIDsResourceWithStreamingResponse,
 )
+from .account_ids.account_ids import AccountIDsResource, AsyncAccountIDsResource
 
 __all__ = ["BankAccountsResource", "AsyncBankAccountsResource"]
 
