@@ -12,14 +12,6 @@ from .fx import (
     FxResourceWithStreamingResponse,
     AsyncFxResourceWithStreamingResponse,
 )
-from .atms import (
-    AtmsResource,
-    AsyncAtmsResource,
-    AtmsResourceWithRawResponse,
-    AsyncAtmsResourceWithRawResponse,
-    AtmsResourceWithStreamingResponse,
-    AsyncAtmsResourceWithStreamingResponse,
-)
 from ...types import bank_create_params, bank_update_params
 from .adapter import (
     AdapterResource,
@@ -33,14 +25,6 @@ from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
 from ..._utils import (
     maybe_transform,
     async_maybe_transform,
-)
-from .accounts import (
-    AccountsResource,
-    AsyncAccountsResource,
-    AccountsResourceWithRawResponse,
-    AsyncAccountsResourceWithRawResponse,
-    AccountsResourceWithStreamingResponse,
-    AsyncAccountsResourceWithStreamingResponse,
 )
 from .balances import (
     BalancesResource,
@@ -83,14 +67,13 @@ from .webhooks import (
     AsyncWebhooksResourceWithStreamingResponse,
 )
 from ..._compat import cached_property
-from .atms.atms import AtmsResource, AsyncAtmsResource
-from .customers import (
-    CustomersResource,
-    AsyncCustomersResource,
-    CustomersResourceWithRawResponse,
-    AsyncCustomersResourceWithRawResponse,
-    CustomersResourceWithStreamingResponse,
-    AsyncCustomersResourceWithStreamingResponse,
+from .atms.atms import (
+    AtmsResource,
+    AsyncAtmsResource,
+    AtmsResourceWithRawResponse,
+    AsyncAtmsResourceWithRawResponse,
+    AtmsResourceWithStreamingResponse,
+    AsyncAtmsResourceWithStreamingResponse,
 )
 from .attributes import (
     AttributesResource,
@@ -99,14 +82,6 @@ from .attributes import (
     AsyncAttributesResourceWithRawResponse,
     AttributesResourceWithStreamingResponse,
     AsyncAttributesResourceWithStreamingResponse,
-)
-from .management import (
-    ManagementResource,
-    AsyncManagementResource,
-    ManagementResourceWithRawResponse,
-    AsyncManagementResourceWithRawResponse,
-    ManagementResourceWithStreamingResponse,
-    AsyncManagementResourceWithStreamingResponse,
 )
 from ..._resource import SyncAPIResource, AsyncAPIResource
 from ..._response import (
@@ -160,14 +135,13 @@ from .account_web_hooks import (
     AccountWebHooksResourceWithStreamingResponse,
     AsyncAccountWebHooksResourceWithStreamingResponse,
 )
-from .accounts.accounts import AccountsResource, AsyncAccountsResource
-from .dynamic_endpoints import (
-    DynamicEndpointsResource,
-    AsyncDynamicEndpointsResource,
-    DynamicEndpointsResourceWithRawResponse,
-    AsyncDynamicEndpointsResourceWithRawResponse,
-    DynamicEndpointsResourceWithStreamingResponse,
-    AsyncDynamicEndpointsResourceWithStreamingResponse,
+from .accounts.accounts import (
+    AccountsResource,
+    AsyncAccountsResource,
+    AccountsResourceWithRawResponse,
+    AsyncAccountsResourceWithRawResponse,
+    AccountsResourceWithStreamingResponse,
+    AsyncAccountsResourceWithStreamingResponse,
 )
 from .firehose_customers import (
     FirehoseCustomersResource,
@@ -177,7 +151,14 @@ from .firehose_customers import (
     FirehoseCustomersResourceWithStreamingResponse,
     AsyncFirehoseCustomersResourceWithStreamingResponse,
 )
-from .customers.customers import CustomersResource, AsyncCustomersResource
+from .customers.customers import (
+    CustomersResource,
+    AsyncCustomersResource,
+    CustomersResourceWithRawResponse,
+    AsyncCustomersResourceWithRawResponse,
+    CustomersResourceWithStreamingResponse,
+    AsyncCustomersResourceWithStreamingResponse,
+)
 from .account_applications import (
     AccountApplicationsResource,
     AsyncAccountApplicationsResource,
@@ -194,7 +175,23 @@ from .dynamic_message_docs import (
     DynamicMessageDocsResourceWithStreamingResponse,
     AsyncDynamicMessageDocsResourceWithStreamingResponse,
 )
-from .attribute_definitions import (
+from .management.management import (
+    ManagementResource,
+    AsyncManagementResource,
+    ManagementResourceWithRawResponse,
+    AsyncManagementResourceWithRawResponse,
+    ManagementResourceWithStreamingResponse,
+    AsyncManagementResourceWithStreamingResponse,
+)
+from .dynamic_endpoints.dynamic_endpoints import (
+    DynamicEndpointsResource,
+    AsyncDynamicEndpointsResource,
+    DynamicEndpointsResourceWithRawResponse,
+    AsyncDynamicEndpointsResourceWithRawResponse,
+    DynamicEndpointsResourceWithStreamingResponse,
+    AsyncDynamicEndpointsResourceWithStreamingResponse,
+)
+from .attribute_definitions.attribute_definitions import (
     AttributeDefinitionsResource,
     AsyncAttributeDefinitionsResource,
     AttributeDefinitionsResourceWithRawResponse,
@@ -202,9 +199,6 @@ from .attribute_definitions import (
     AttributeDefinitionsResourceWithStreamingResponse,
     AsyncAttributeDefinitionsResourceWithStreamingResponse,
 )
-from .management.management import ManagementResource, AsyncManagementResource
-from .dynamic_endpoints.dynamic_endpoints import DynamicEndpointsResource, AsyncDynamicEndpointsResource
-from .attribute_definitions.attribute_definitions import AttributeDefinitionsResource, AsyncAttributeDefinitionsResource
 
 __all__ = ["BanksResource", "AsyncBanksResource"]
 
