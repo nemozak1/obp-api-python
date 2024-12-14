@@ -4,6 +4,14 @@ from __future__ import annotations
 
 import httpx
 
+from .views import (
+    ViewsResource,
+    AsyncViewsResource,
+    ViewsResourceWithRawResponse,
+    AsyncViewsResourceWithRawResponse,
+    ViewsResourceWithStreamingResponse,
+    AsyncViewsResourceWithStreamingResponse,
+)
 from .account import (
     AccountResource,
     AsyncAccountResource,
@@ -18,14 +26,7 @@ from ...._utils import (
     async_maybe_transform,
 )
 from ...._compat import cached_property
-from .views.views import (
-    ViewsResource,
-    AsyncViewsResource,
-    ViewsResourceWithRawResponse,
-    AsyncViewsResourceWithRawResponse,
-    ViewsResourceWithStreamingResponse,
-    AsyncViewsResourceWithStreamingResponse,
-)
+from .views.views import ViewsResource, AsyncViewsResource
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
     BinaryAPIResponse,
@@ -45,6 +46,14 @@ from .direct_debit import (
     DirectDebitResourceWithStreamingResponse,
     AsyncDirectDebitResourceWithStreamingResponse,
 )
+from .transactions import (
+    TransactionsResource,
+    AsyncTransactionsResource,
+    TransactionsResourceWithRawResponse,
+    AsyncTransactionsResourceWithRawResponse,
+    TransactionsResourceWithStreamingResponse,
+    AsyncTransactionsResourceWithStreamingResponse,
+)
 from ....types.banks import account_update_params
 from .counterparties import (
     CounterpartiesResource,
@@ -53,6 +62,14 @@ from .counterparties import (
     AsyncCounterpartiesResourceWithRawResponse,
     CounterpartiesResourceWithStreamingResponse,
     AsyncCounterpartiesResourceWithStreamingResponse,
+)
+from .other_accounts import (
+    OtherAccountsResource,
+    AsyncOtherAccountsResource,
+    OtherAccountsResourceWithRawResponse,
+    AsyncOtherAccountsResourceWithRawResponse,
+    OtherAccountsResourceWithStreamingResponse,
+    AsyncOtherAccountsResourceWithStreamingResponse,
 )
 from .standing_order import (
     StandingOrderResource,
@@ -87,22 +104,8 @@ from .transaction_request_types import (
     TransactionRequestTypesResourceWithStreamingResponse,
     AsyncTransactionRequestTypesResourceWithStreamingResponse,
 )
-from .transactions.transactions import (
-    TransactionsResource,
-    AsyncTransactionsResource,
-    TransactionsResourceWithRawResponse,
-    AsyncTransactionsResourceWithRawResponse,
-    TransactionsResourceWithStreamingResponse,
-    AsyncTransactionsResourceWithStreamingResponse,
-)
-from .other_accounts.other_accounts import (
-    OtherAccountsResource,
-    AsyncOtherAccountsResource,
-    OtherAccountsResourceWithRawResponse,
-    AsyncOtherAccountsResourceWithRawResponse,
-    OtherAccountsResourceWithStreamingResponse,
-    AsyncOtherAccountsResourceWithStreamingResponse,
-)
+from .transactions.transactions import TransactionsResource, AsyncTransactionsResource
+from .other_accounts.other_accounts import OtherAccountsResource, AsyncOtherAccountsResource
 
 __all__ = ["AccountsResource", "AsyncAccountsResource"]
 
