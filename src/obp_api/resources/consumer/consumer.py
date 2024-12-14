@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from .consent_requests import (
+from .consent_requests.consent_requests import (
     ConsentRequestsResource,
     AsyncConsentRequestsResource,
     ConsentRequestsResourceWithRawResponse,
@@ -12,7 +12,6 @@ from .consent_requests import (
     ConsentRequestsResourceWithStreamingResponse,
     AsyncConsentRequestsResourceWithStreamingResponse,
 )
-from .consent_requests.consent_requests import ConsentRequestsResource, AsyncConsentRequestsResource
 
 __all__ = ["ConsumerResource", "AsyncConsumerResource"]
 

@@ -47,17 +47,13 @@ from .transaction_requests import (
     AsyncTransactionRequestsResourceWithStreamingResponse,
 )
 from .....types.banks.accounts import view_create_params, view_delete_params, view_update_params
-from .transaction_request_types import (
+from .transaction_request_types.transaction_request_types import (
     TransactionRequestTypesResource,
     AsyncTransactionRequestTypesResource,
     TransactionRequestTypesResourceWithRawResponse,
     AsyncTransactionRequestTypesResourceWithRawResponse,
     TransactionRequestTypesResourceWithStreamingResponse,
     AsyncTransactionRequestTypesResourceWithStreamingResponse,
-)
-from .transaction_request_types.transaction_request_types import (
-    TransactionRequestTypesResource,
-    AsyncTransactionRequestTypesResource,
 )
 
 __all__ = ["ViewsResource", "AsyncViewsResource"]

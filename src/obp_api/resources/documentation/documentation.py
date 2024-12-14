@@ -4,7 +4,7 @@ from __future__ import annotations
 
 from ..._compat import cached_property
 from ..._resource import SyncAPIResource, AsyncAPIResource
-from .message_docs import (
+from .message_docs.message_docs import (
     MessageDocsResource,
     AsyncMessageDocsResource,
     MessageDocsResourceWithRawResponse,
@@ -12,7 +12,6 @@ from .message_docs import (
     MessageDocsResourceWithStreamingResponse,
     AsyncMessageDocsResourceWithStreamingResponse,
 )
-from .message_docs.message_docs import MessageDocsResource, AsyncMessageDocsResource
 
 __all__ = ["DocumentationResource", "AsyncDocumentationResource"]
 
