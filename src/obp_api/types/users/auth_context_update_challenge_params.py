@@ -12,4 +12,4 @@ __all__ = ["AuthContextUpdateChallengeParams"]
 class AuthContextUpdateChallengeParams(TypedDict, total=False):
     bank_id: Required[Annotated[str, PropertyInfo(alias="BANK_ID")]]
 
-    body: Required[object]
+    answer: Required[str]

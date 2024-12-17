@@ -98,7 +98,9 @@ class APICollectionsResource(SyncAPIResource):
     def create(
         self,
         *,
-        body: object,
+        api_collection_name: str,
+        is_sharable: bool,
+        description: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -121,7 +123,14 @@ class APICollectionsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/obp/v5.1.0/my/api-collections",
-            body=maybe_transform(body, api_collection_create_params.APICollectionCreateParams),
+            body=maybe_transform(
+                {
+                    "api_collection_name": api_collection_name,
+                    "is_sharable": is_sharable,
+                    "description": description,
+                },
+                api_collection_create_params.APICollectionCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -153,7 +162,9 @@ class APICollectionsResource(SyncAPIResource):
     def update(
         self,
         *,
-        body: object,
+        api_collection_name: str,
+        is_sharable: bool,
+        description: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -176,7 +187,14 @@ class APICollectionsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             "/obp/v5.1.0/my/api-collections/API_COLLECTION_ID",
-            body=maybe_transform(body, api_collection_update_params.APICollectionUpdateParams),
+            body=maybe_transform(
+                {
+                    "api_collection_name": api_collection_name,
+                    "is_sharable": is_sharable,
+                    "description": description,
+                },
+                api_collection_update_params.APICollectionUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -267,7 +285,9 @@ class AsyncAPICollectionsResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        body: object,
+        api_collection_name: str,
+        is_sharable: bool,
+        description: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -290,7 +310,14 @@ class AsyncAPICollectionsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/obp/v5.1.0/my/api-collections",
-            body=await async_maybe_transform(body, api_collection_create_params.APICollectionCreateParams),
+            body=await async_maybe_transform(
+                {
+                    "api_collection_name": api_collection_name,
+                    "is_sharable": is_sharable,
+                    "description": description,
+                },
+                api_collection_create_params.APICollectionCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -322,7 +349,9 @@ class AsyncAPICollectionsResource(AsyncAPIResource):
     async def update(
         self,
         *,
-        body: object,
+        api_collection_name: str,
+        is_sharable: bool,
+        description: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -345,7 +374,14 @@ class AsyncAPICollectionsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             "/obp/v5.1.0/my/api-collections/API_COLLECTION_ID",
-            body=await async_maybe_transform(body, api_collection_update_params.APICollectionUpdateParams),
+            body=await async_maybe_transform(
+                {
+                    "api_collection_name": api_collection_name,
+                    "is_sharable": is_sharable,
+                    "description": description,
+                },
+                api_collection_update_params.APICollectionUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

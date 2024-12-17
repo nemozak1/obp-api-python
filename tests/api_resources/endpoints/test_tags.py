@@ -30,7 +30,7 @@ class TestTags:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         tag = client.endpoints.tags.create(
-            body={},
+            tag_name="BankAccountTag1",
         )
         assert tag.is_closed
         assert tag.json() == {"foo": "bar"}
@@ -45,7 +45,7 @@ class TestTags:
         )
 
         tag = client.endpoints.tags.with_raw_response.create(
-            body={},
+            tag_name="BankAccountTag1",
         )
 
         assert tag.is_closed is True
@@ -60,7 +60,7 @@ class TestTags:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.endpoints.tags.with_streaming_response.create(
-            body={},
+            tag_name="BankAccountTag1",
         ) as tag:
             assert not tag.is_closed
             assert tag.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -78,7 +78,7 @@ class TestTags:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         tag = client.endpoints.tags.update(
-            body={},
+            tag_name="BankAccountTag1",
         )
         assert tag.is_closed
         assert tag.json() == {"foo": "bar"}
@@ -93,7 +93,7 @@ class TestTags:
         )
 
         tag = client.endpoints.tags.with_raw_response.update(
-            body={},
+            tag_name="BankAccountTag1",
         )
 
         assert tag.is_closed is True
@@ -108,7 +108,7 @@ class TestTags:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.endpoints.tags.with_streaming_response.update(
-            body={},
+            tag_name="BankAccountTag1",
         ) as tag:
             assert not tag.is_closed
             assert tag.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -214,7 +214,7 @@ class TestAsyncTags:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         tag = await async_client.endpoints.tags.create(
-            body={},
+            tag_name="BankAccountTag1",
         )
         assert tag.is_closed
         assert await tag.json() == {"foo": "bar"}
@@ -229,7 +229,7 @@ class TestAsyncTags:
         )
 
         tag = await async_client.endpoints.tags.with_raw_response.create(
-            body={},
+            tag_name="BankAccountTag1",
         )
 
         assert tag.is_closed is True
@@ -244,7 +244,7 @@ class TestAsyncTags:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.endpoints.tags.with_streaming_response.create(
-            body={},
+            tag_name="BankAccountTag1",
         ) as tag:
             assert not tag.is_closed
             assert tag.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -262,7 +262,7 @@ class TestAsyncTags:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         tag = await async_client.endpoints.tags.update(
-            body={},
+            tag_name="BankAccountTag1",
         )
         assert tag.is_closed
         assert await tag.json() == {"foo": "bar"}
@@ -277,7 +277,7 @@ class TestAsyncTags:
         )
 
         tag = await async_client.endpoints.tags.with_raw_response.update(
-            body={},
+            tag_name="BankAccountTag1",
         )
 
         assert tag.is_closed is True
@@ -292,7 +292,7 @@ class TestAsyncTags:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.endpoints.tags.with_streaming_response.update(
-            body={},
+            tag_name="BankAccountTag1",
         ) as tag:
             assert not tag.is_closed
             assert tag.http_request.headers.get("X-Stainless-Lang") == "python"

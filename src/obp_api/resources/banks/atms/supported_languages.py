@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import List
+
 import httpx
 
 from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -52,7 +54,7 @@ class SupportedLanguagesResource(SyncAPIResource):
         atm_id: str,
         *,
         bank_id: str,
-        body: object,
+        supported_languages: List[str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -79,7 +81,10 @@ class SupportedLanguagesResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/atms/{atm_id}/supported-languages",
-            body=maybe_transform(body, supported_language_update_params.SupportedLanguageUpdateParams),
+            body=maybe_transform(
+                {"supported_languages": supported_languages},
+                supported_language_update_params.SupportedLanguageUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -112,7 +117,7 @@ class AsyncSupportedLanguagesResource(AsyncAPIResource):
         atm_id: str,
         *,
         bank_id: str,
-        body: object,
+        supported_languages: List[str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -139,7 +144,10 @@ class AsyncSupportedLanguagesResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/atms/{atm_id}/supported-languages",
-            body=await async_maybe_transform(body, supported_language_update_params.SupportedLanguageUpdateParams),
+            body=await async_maybe_transform(
+                {"supported_languages": supported_languages},
+                supported_language_update_params.SupportedLanguageUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

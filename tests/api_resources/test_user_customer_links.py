@@ -31,7 +31,8 @@ class TestUserCustomerLinks:
         )
         user_customer_link = client.user_customer_links.create(
             bank_id="BANK_ID",
-            body={},
+            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
         )
         assert user_customer_link.is_closed
         assert user_customer_link.json() == {"foo": "bar"}
@@ -47,7 +48,8 @@ class TestUserCustomerLinks:
 
         user_customer_link = client.user_customer_links.with_raw_response.create(
             bank_id="BANK_ID",
-            body={},
+            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
         )
 
         assert user_customer_link.is_closed is True
@@ -63,7 +65,8 @@ class TestUserCustomerLinks:
         )
         with client.user_customer_links.with_streaming_response.create(
             bank_id="BANK_ID",
-            body={},
+            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
         ) as user_customer_link:
             assert not user_customer_link.is_closed
             assert user_customer_link.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -80,7 +83,8 @@ class TestUserCustomerLinks:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             client.user_customer_links.with_raw_response.create(
                 bank_id="",
-                body={},
+                customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
+                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
             )
 
     @parametrize
@@ -133,7 +137,8 @@ class TestAsyncUserCustomerLinks:
         )
         user_customer_link = await async_client.user_customer_links.create(
             bank_id="BANK_ID",
-            body={},
+            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
         )
         assert user_customer_link.is_closed
         assert await user_customer_link.json() == {"foo": "bar"}
@@ -149,7 +154,8 @@ class TestAsyncUserCustomerLinks:
 
         user_customer_link = await async_client.user_customer_links.with_raw_response.create(
             bank_id="BANK_ID",
-            body={},
+            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
         )
 
         assert user_customer_link.is_closed is True
@@ -165,7 +171,8 @@ class TestAsyncUserCustomerLinks:
         )
         async with async_client.user_customer_links.with_streaming_response.create(
             bank_id="BANK_ID",
-            body={},
+            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
         ) as user_customer_link:
             assert not user_customer_link.is_closed
             assert user_customer_link.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -182,7 +189,8 @@ class TestAsyncUserCustomerLinks:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             await async_client.user_customer_links.with_raw_response.create(
                 bank_id="",
-                body={},
+                customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
+                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
             )
 
     @parametrize

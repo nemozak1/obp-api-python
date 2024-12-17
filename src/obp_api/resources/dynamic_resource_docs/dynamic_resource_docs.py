@@ -62,7 +62,19 @@ class DynamicResourceDocsResource(SyncAPIResource):
     def create(
         self,
         *,
-        body: object,
+        description: str,
+        error_response_bodies: str,
+        method_body: str,
+        partial_function_name: str,
+        request_url: str,
+        request_verb: str,
+        roles: str,
+        summary: str,
+        tags: str,
+        bank_id: str | NotGiven = NOT_GIVEN,
+        dynamic_resource_doc_id: str | NotGiven = NOT_GIVEN,
+        example_request_body: dynamic_resource_doc_create_params.ExampleRequestBody | NotGiven = NOT_GIVEN,
+        success_response_body: dynamic_resource_doc_create_params.SuccessResponseBody | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -85,7 +97,24 @@ class DynamicResourceDocsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/obp/v5.1.0/management/dynamic-resource-docs",
-            body=maybe_transform(body, dynamic_resource_doc_create_params.DynamicResourceDocCreateParams),
+            body=maybe_transform(
+                {
+                    "description": description,
+                    "error_response_bodies": error_response_bodies,
+                    "method_body": method_body,
+                    "partial_function_name": partial_function_name,
+                    "request_url": request_url,
+                    "request_verb": request_verb,
+                    "roles": roles,
+                    "summary": summary,
+                    "tags": tags,
+                    "bank_id": bank_id,
+                    "dynamic_resource_doc_id": dynamic_resource_doc_id,
+                    "example_request_body": example_request_body,
+                    "success_response_body": success_response_body,
+                },
+                dynamic_resource_doc_create_params.DynamicResourceDocCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -117,7 +146,19 @@ class DynamicResourceDocsResource(SyncAPIResource):
     def update(
         self,
         *,
-        body: object,
+        description: str,
+        error_response_bodies: str,
+        method_body: str,
+        partial_function_name: str,
+        request_url: str,
+        request_verb: str,
+        roles: str,
+        summary: str,
+        tags: str,
+        bank_id: str | NotGiven = NOT_GIVEN,
+        dynamic_resource_doc_id: str | NotGiven = NOT_GIVEN,
+        example_request_body: dynamic_resource_doc_update_params.ExampleRequestBody | NotGiven = NOT_GIVEN,
+        success_response_body: dynamic_resource_doc_update_params.SuccessResponseBody | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -140,7 +181,24 @@ class DynamicResourceDocsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             "/obp/v5.1.0/management/dynamic-resource-docs/DYNAMIC-RESOURCE-DOC-ID",
-            body=maybe_transform(body, dynamic_resource_doc_update_params.DynamicResourceDocUpdateParams),
+            body=maybe_transform(
+                {
+                    "description": description,
+                    "error_response_bodies": error_response_bodies,
+                    "method_body": method_body,
+                    "partial_function_name": partial_function_name,
+                    "request_url": request_url,
+                    "request_verb": request_verb,
+                    "roles": roles,
+                    "summary": summary,
+                    "tags": tags,
+                    "bank_id": bank_id,
+                    "dynamic_resource_doc_id": dynamic_resource_doc_id,
+                    "example_request_body": example_request_body,
+                    "success_response_body": success_response_body,
+                },
+                dynamic_resource_doc_update_params.DynamicResourceDocUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -215,7 +273,19 @@ class AsyncDynamicResourceDocsResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        body: object,
+        description: str,
+        error_response_bodies: str,
+        method_body: str,
+        partial_function_name: str,
+        request_url: str,
+        request_verb: str,
+        roles: str,
+        summary: str,
+        tags: str,
+        bank_id: str | NotGiven = NOT_GIVEN,
+        dynamic_resource_doc_id: str | NotGiven = NOT_GIVEN,
+        example_request_body: dynamic_resource_doc_create_params.ExampleRequestBody | NotGiven = NOT_GIVEN,
+        success_response_body: dynamic_resource_doc_create_params.SuccessResponseBody | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -238,7 +308,24 @@ class AsyncDynamicResourceDocsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/obp/v5.1.0/management/dynamic-resource-docs",
-            body=await async_maybe_transform(body, dynamic_resource_doc_create_params.DynamicResourceDocCreateParams),
+            body=await async_maybe_transform(
+                {
+                    "description": description,
+                    "error_response_bodies": error_response_bodies,
+                    "method_body": method_body,
+                    "partial_function_name": partial_function_name,
+                    "request_url": request_url,
+                    "request_verb": request_verb,
+                    "roles": roles,
+                    "summary": summary,
+                    "tags": tags,
+                    "bank_id": bank_id,
+                    "dynamic_resource_doc_id": dynamic_resource_doc_id,
+                    "example_request_body": example_request_body,
+                    "success_response_body": success_response_body,
+                },
+                dynamic_resource_doc_create_params.DynamicResourceDocCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -270,7 +357,19 @@ class AsyncDynamicResourceDocsResource(AsyncAPIResource):
     async def update(
         self,
         *,
-        body: object,
+        description: str,
+        error_response_bodies: str,
+        method_body: str,
+        partial_function_name: str,
+        request_url: str,
+        request_verb: str,
+        roles: str,
+        summary: str,
+        tags: str,
+        bank_id: str | NotGiven = NOT_GIVEN,
+        dynamic_resource_doc_id: str | NotGiven = NOT_GIVEN,
+        example_request_body: dynamic_resource_doc_update_params.ExampleRequestBody | NotGiven = NOT_GIVEN,
+        success_response_body: dynamic_resource_doc_update_params.SuccessResponseBody | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -293,7 +392,24 @@ class AsyncDynamicResourceDocsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             "/obp/v5.1.0/management/dynamic-resource-docs/DYNAMIC-RESOURCE-DOC-ID",
-            body=await async_maybe_transform(body, dynamic_resource_doc_update_params.DynamicResourceDocUpdateParams),
+            body=await async_maybe_transform(
+                {
+                    "description": description,
+                    "error_response_bodies": error_response_bodies,
+                    "method_body": method_body,
+                    "partial_function_name": partial_function_name,
+                    "request_url": request_url,
+                    "request_verb": request_verb,
+                    "roles": roles,
+                    "summary": summary,
+                    "tags": tags,
+                    "bank_id": bank_id,
+                    "dynamic_resource_doc_id": dynamic_resource_doc_id,
+                    "example_request_body": example_request_body,
+                    "success_response_body": success_response_body,
+                },
+                dynamic_resource_doc_update_params.DynamicResourceDocUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

@@ -14,4 +14,10 @@ class AttributeUpdateParams(TypedDict, total=False):
 
     atm_id: Required[Annotated[str, PropertyInfo(alias="ATM_ID")]]
 
-    body: Required[object]
+    name: Required[str]
+
+    type: Required[str]
+
+    value: Required[str]
+
+    is_active: bool

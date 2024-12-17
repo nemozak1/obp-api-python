@@ -6,7 +6,7 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from ...._utils import PropertyInfo
 
-__all__ = ["PhysicalLocationCreateParams"]
+__all__ = ["PhysicalLocationCreateParams", "PhysicalLocation"]
 
 
 class PhysicalLocationCreateParams(TypedDict, total=False):
@@ -16,4 +16,10 @@ class PhysicalLocationCreateParams(TypedDict, total=False):
 
     view_id: Required[Annotated[str, PropertyInfo(alias="VIEW_ID")]]
 
-    body: Required[object]
+    physical_location: Required[PhysicalLocation]
+
+
+class PhysicalLocation(TypedDict, total=False):
+    latitude: Required[float]
+
+    longitude: Required[float]

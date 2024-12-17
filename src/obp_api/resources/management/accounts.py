@@ -50,7 +50,8 @@ class AccountsResource(SyncAPIResource):
     def account_routing_query(
         self,
         *,
-        body: object,
+        account_routing: account_account_routing_query_params.AccountRouting,
+        bank_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -73,7 +74,13 @@ class AccountsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/obp/v5.1.0/management/accounts/account-routing-query",
-            body=maybe_transform(body, account_account_routing_query_params.AccountAccountRoutingQueryParams),
+            body=maybe_transform(
+                {
+                    "account_routing": account_routing,
+                    "bank_id": bank_id,
+                },
+                account_account_routing_query_params.AccountAccountRoutingQueryParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -83,7 +90,8 @@ class AccountsResource(SyncAPIResource):
     def account_routing_regex_query(
         self,
         *,
-        body: object,
+        account_routing: account_account_routing_regex_query_params.AccountRouting,
+        bank_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -107,7 +115,11 @@ class AccountsResource(SyncAPIResource):
         return self._post(
             "/obp/v5.1.0/management/accounts/account-routing-regex-query",
             body=maybe_transform(
-                body, account_account_routing_regex_query_params.AccountAccountRoutingRegexQueryParams
+                {
+                    "account_routing": account_routing,
+                    "bank_id": bank_id,
+                },
+                account_account_routing_regex_query_params.AccountAccountRoutingRegexQueryParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -139,7 +151,8 @@ class AsyncAccountsResource(AsyncAPIResource):
     async def account_routing_query(
         self,
         *,
-        body: object,
+        account_routing: account_account_routing_query_params.AccountRouting,
+        bank_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -163,7 +176,11 @@ class AsyncAccountsResource(AsyncAPIResource):
         return await self._post(
             "/obp/v5.1.0/management/accounts/account-routing-query",
             body=await async_maybe_transform(
-                body, account_account_routing_query_params.AccountAccountRoutingQueryParams
+                {
+                    "account_routing": account_routing,
+                    "bank_id": bank_id,
+                },
+                account_account_routing_query_params.AccountAccountRoutingQueryParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -174,7 +191,8 @@ class AsyncAccountsResource(AsyncAPIResource):
     async def account_routing_regex_query(
         self,
         *,
-        body: object,
+        account_routing: account_account_routing_regex_query_params.AccountRouting,
+        bank_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -198,7 +216,11 @@ class AsyncAccountsResource(AsyncAPIResource):
         return await self._post(
             "/obp/v5.1.0/management/accounts/account-routing-regex-query",
             body=await async_maybe_transform(
-                body, account_account_routing_regex_query_params.AccountAccountRoutingRegexQueryParams
+                {
+                    "account_routing": account_routing,
+                    "bank_id": bank_id,
+                },
+                account_account_routing_regex_query_params.AccountAccountRoutingRegexQueryParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout

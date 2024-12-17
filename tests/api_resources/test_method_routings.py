@@ -30,7 +30,39 @@ class TestMethodRoutings:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         method_routing = client.method_routings.create(
-            body={},
+            connector_name="rest_vMar2019",
+            is_bank_id_exact_match=False,
+            method_name="getBank",
+            parameters=[
+                {
+                    "key": "url",
+                    "value": "http://mydomain.com/xxx",
+                }
+            ],
+        )
+        assert method_routing.is_closed
+        assert method_routing.json() == {"foo": "bar"}
+        assert cast(Any, method_routing.is_closed) is True
+        assert isinstance(method_routing, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_create_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.post("/obp/v5.1.0/management/method_routings").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        method_routing = client.method_routings.create(
+            connector_name="rest_vMar2019",
+            is_bank_id_exact_match=False,
+            method_name="getBank",
+            parameters=[
+                {
+                    "key": "url",
+                    "value": "http://mydomain.com/xxx",
+                }
+            ],
+            bank_id_pattern="some_bankId_.*",
+            method_routing_id="method_routing_id",
         )
         assert method_routing.is_closed
         assert method_routing.json() == {"foo": "bar"}
@@ -45,7 +77,15 @@ class TestMethodRoutings:
         )
 
         method_routing = client.method_routings.with_raw_response.create(
-            body={},
+            connector_name="rest_vMar2019",
+            is_bank_id_exact_match=False,
+            method_name="getBank",
+            parameters=[
+                {
+                    "key": "url",
+                    "value": "http://mydomain.com/xxx",
+                }
+            ],
         )
 
         assert method_routing.is_closed is True
@@ -60,7 +100,15 @@ class TestMethodRoutings:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.method_routings.with_streaming_response.create(
-            body={},
+            connector_name="rest_vMar2019",
+            is_bank_id_exact_match=False,
+            method_name="getBank",
+            parameters=[
+                {
+                    "key": "url",
+                    "value": "http://mydomain.com/xxx",
+                }
+            ],
         ) as method_routing:
             assert not method_routing.is_closed
             assert method_routing.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -78,8 +126,41 @@ class TestMethodRoutings:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         method_routing = client.method_routings.update(
-            method_routing_id="METHOD_ROUTING_ID",
-            body={},
+            path_method_routing_id="METHOD_ROUTING_ID",
+            connector_name="rest_vMar2019",
+            is_bank_id_exact_match=False,
+            method_name="getBank",
+            parameters=[
+                {
+                    "key": "url",
+                    "value": "http://mydomain.com/xxx",
+                }
+            ],
+        )
+        assert method_routing.is_closed
+        assert method_routing.json() == {"foo": "bar"}
+        assert cast(Any, method_routing.is_closed) is True
+        assert isinstance(method_routing, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_update_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.put("/obp/v5.1.0/management/method_routings/METHOD_ROUTING_ID").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        method_routing = client.method_routings.update(
+            path_method_routing_id="METHOD_ROUTING_ID",
+            connector_name="rest_vMar2019",
+            is_bank_id_exact_match=False,
+            method_name="getBank",
+            parameters=[
+                {
+                    "key": "url",
+                    "value": "http://mydomain.com/xxx",
+                }
+            ],
+            bank_id_pattern="some_bankId_.*",
+            body_method_routing_id="method_routing_id",
         )
         assert method_routing.is_closed
         assert method_routing.json() == {"foo": "bar"}
@@ -94,8 +175,16 @@ class TestMethodRoutings:
         )
 
         method_routing = client.method_routings.with_raw_response.update(
-            method_routing_id="METHOD_ROUTING_ID",
-            body={},
+            path_method_routing_id="METHOD_ROUTING_ID",
+            connector_name="rest_vMar2019",
+            is_bank_id_exact_match=False,
+            method_name="getBank",
+            parameters=[
+                {
+                    "key": "url",
+                    "value": "http://mydomain.com/xxx",
+                }
+            ],
         )
 
         assert method_routing.is_closed is True
@@ -110,8 +199,16 @@ class TestMethodRoutings:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.method_routings.with_streaming_response.update(
-            method_routing_id="METHOD_ROUTING_ID",
-            body={},
+            path_method_routing_id="METHOD_ROUTING_ID",
+            connector_name="rest_vMar2019",
+            is_bank_id_exact_match=False,
+            method_name="getBank",
+            parameters=[
+                {
+                    "key": "url",
+                    "value": "http://mydomain.com/xxx",
+                }
+            ],
         ) as method_routing:
             assert not method_routing.is_closed
             assert method_routing.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -125,10 +222,20 @@ class TestMethodRoutings:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_path_params_update(self, client: ObpAPI) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `method_routing_id` but received ''"):
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `path_method_routing_id` but received ''"
+        ):
             client.method_routings.with_raw_response.update(
-                method_routing_id="",
-                body={},
+                path_method_routing_id="",
+                connector_name="rest_vMar2019",
+                is_bank_id_exact_match=False,
+                method_name="getBank",
+                parameters=[
+                    {
+                        "key": "url",
+                        "value": "http://mydomain.com/xxx",
+                    }
+                ],
             )
 
     @parametrize
@@ -222,7 +329,39 @@ class TestAsyncMethodRoutings:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         method_routing = await async_client.method_routings.create(
-            body={},
+            connector_name="rest_vMar2019",
+            is_bank_id_exact_match=False,
+            method_name="getBank",
+            parameters=[
+                {
+                    "key": "url",
+                    "value": "http://mydomain.com/xxx",
+                }
+            ],
+        )
+        assert method_routing.is_closed
+        assert await method_routing.json() == {"foo": "bar"}
+        assert cast(Any, method_routing.is_closed) is True
+        assert isinstance(method_routing, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_create_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.post("/obp/v5.1.0/management/method_routings").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        method_routing = await async_client.method_routings.create(
+            connector_name="rest_vMar2019",
+            is_bank_id_exact_match=False,
+            method_name="getBank",
+            parameters=[
+                {
+                    "key": "url",
+                    "value": "http://mydomain.com/xxx",
+                }
+            ],
+            bank_id_pattern="some_bankId_.*",
+            method_routing_id="method_routing_id",
         )
         assert method_routing.is_closed
         assert await method_routing.json() == {"foo": "bar"}
@@ -237,7 +376,15 @@ class TestAsyncMethodRoutings:
         )
 
         method_routing = await async_client.method_routings.with_raw_response.create(
-            body={},
+            connector_name="rest_vMar2019",
+            is_bank_id_exact_match=False,
+            method_name="getBank",
+            parameters=[
+                {
+                    "key": "url",
+                    "value": "http://mydomain.com/xxx",
+                }
+            ],
         )
 
         assert method_routing.is_closed is True
@@ -252,7 +399,15 @@ class TestAsyncMethodRoutings:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.method_routings.with_streaming_response.create(
-            body={},
+            connector_name="rest_vMar2019",
+            is_bank_id_exact_match=False,
+            method_name="getBank",
+            parameters=[
+                {
+                    "key": "url",
+                    "value": "http://mydomain.com/xxx",
+                }
+            ],
         ) as method_routing:
             assert not method_routing.is_closed
             assert method_routing.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -270,8 +425,41 @@ class TestAsyncMethodRoutings:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         method_routing = await async_client.method_routings.update(
-            method_routing_id="METHOD_ROUTING_ID",
-            body={},
+            path_method_routing_id="METHOD_ROUTING_ID",
+            connector_name="rest_vMar2019",
+            is_bank_id_exact_match=False,
+            method_name="getBank",
+            parameters=[
+                {
+                    "key": "url",
+                    "value": "http://mydomain.com/xxx",
+                }
+            ],
+        )
+        assert method_routing.is_closed
+        assert await method_routing.json() == {"foo": "bar"}
+        assert cast(Any, method_routing.is_closed) is True
+        assert isinstance(method_routing, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_update_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.put("/obp/v5.1.0/management/method_routings/METHOD_ROUTING_ID").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        method_routing = await async_client.method_routings.update(
+            path_method_routing_id="METHOD_ROUTING_ID",
+            connector_name="rest_vMar2019",
+            is_bank_id_exact_match=False,
+            method_name="getBank",
+            parameters=[
+                {
+                    "key": "url",
+                    "value": "http://mydomain.com/xxx",
+                }
+            ],
+            bank_id_pattern="some_bankId_.*",
+            body_method_routing_id="method_routing_id",
         )
         assert method_routing.is_closed
         assert await method_routing.json() == {"foo": "bar"}
@@ -286,8 +474,16 @@ class TestAsyncMethodRoutings:
         )
 
         method_routing = await async_client.method_routings.with_raw_response.update(
-            method_routing_id="METHOD_ROUTING_ID",
-            body={},
+            path_method_routing_id="METHOD_ROUTING_ID",
+            connector_name="rest_vMar2019",
+            is_bank_id_exact_match=False,
+            method_name="getBank",
+            parameters=[
+                {
+                    "key": "url",
+                    "value": "http://mydomain.com/xxx",
+                }
+            ],
         )
 
         assert method_routing.is_closed is True
@@ -302,8 +498,16 @@ class TestAsyncMethodRoutings:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.method_routings.with_streaming_response.update(
-            method_routing_id="METHOD_ROUTING_ID",
-            body={},
+            path_method_routing_id="METHOD_ROUTING_ID",
+            connector_name="rest_vMar2019",
+            is_bank_id_exact_match=False,
+            method_name="getBank",
+            parameters=[
+                {
+                    "key": "url",
+                    "value": "http://mydomain.com/xxx",
+                }
+            ],
         ) as method_routing:
             assert not method_routing.is_closed
             assert method_routing.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -317,10 +521,20 @@ class TestAsyncMethodRoutings:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_path_params_update(self, async_client: AsyncObpAPI) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `method_routing_id` but received ''"):
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `path_method_routing_id` but received ''"
+        ):
             await async_client.method_routings.with_raw_response.update(
-                method_routing_id="",
-                body={},
+                path_method_routing_id="",
+                connector_name="rest_vMar2019",
+                is_bank_id_exact_match=False,
+                method_name="getBank",
+                parameters=[
+                    {
+                        "key": "url",
+                        "value": "http://mydomain.com/xxx",
+                    }
+                ],
             )
 
     @parametrize

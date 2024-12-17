@@ -30,10 +30,11 @@ class TestAccountAccess:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         account_access = client.banks.accounts.views.account_access.grant(
-            view_id="VIEW_ID",
-            bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            path_view_id="VIEW_ID",
+            bank_id="BANK_ID",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+            body_view_id="owner",
         )
         assert account_access.is_closed
         assert account_access.json() == {"foo": "bar"}
@@ -48,10 +49,11 @@ class TestAccountAccess:
         )
 
         account_access = client.banks.accounts.views.account_access.with_raw_response.grant(
-            view_id="VIEW_ID",
-            bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            path_view_id="VIEW_ID",
+            bank_id="BANK_ID",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+            body_view_id="owner",
         )
 
         assert account_access.is_closed is True
@@ -66,10 +68,11 @@ class TestAccountAccess:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.banks.accounts.views.account_access.with_streaming_response.grant(
-            view_id="VIEW_ID",
-            bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            path_view_id="VIEW_ID",
+            bank_id="BANK_ID",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+            body_view_id="owner",
         ) as account_access:
             assert not account_access.is_closed
             assert account_access.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -83,28 +86,31 @@ class TestAccountAccess:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_path_params_grant(self, client: ObpAPI) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_view_id` but received ''"):
+            client.banks.accounts.views.account_access.with_raw_response.grant(
+                account_id="ACCOUNT_ID",
+                path_view_id="",
+                bank_id="BANK_ID",
+                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+                body_view_id="owner",
+            )
+
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             client.banks.accounts.views.account_access.with_raw_response.grant(
-                view_id="VIEW_ID",
-                bank_id="",
                 account_id="ACCOUNT_ID",
-                body={},
+                path_view_id="VIEW_ID",
+                bank_id="",
+                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+                body_view_id="owner",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
             client.banks.accounts.views.account_access.with_raw_response.grant(
-                view_id="VIEW_ID",
-                bank_id="BANK_ID",
                 account_id="",
-                body={},
-            )
-
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
-            client.banks.accounts.views.account_access.with_raw_response.grant(
-                view_id="",
+                path_view_id="VIEW_ID",
                 bank_id="BANK_ID",
-                account_id="ACCOUNT_ID",
-                body={},
+                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+                body_view_id="owner",
             )
 
     @parametrize
@@ -114,10 +120,11 @@ class TestAccountAccess:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         account_access = client.banks.accounts.views.account_access.revoke(
-            view_id="VIEW_ID",
-            bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            path_view_id="VIEW_ID",
+            bank_id="BANK_ID",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+            body_view_id="owner",
         )
         assert account_access.is_closed
         assert account_access.json() == {"foo": "bar"}
@@ -132,10 +139,11 @@ class TestAccountAccess:
         )
 
         account_access = client.banks.accounts.views.account_access.with_raw_response.revoke(
-            view_id="VIEW_ID",
-            bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            path_view_id="VIEW_ID",
+            bank_id="BANK_ID",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+            body_view_id="owner",
         )
 
         assert account_access.is_closed is True
@@ -150,10 +158,11 @@ class TestAccountAccess:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.banks.accounts.views.account_access.with_streaming_response.revoke(
-            view_id="VIEW_ID",
-            bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            path_view_id="VIEW_ID",
+            bank_id="BANK_ID",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+            body_view_id="owner",
         ) as account_access:
             assert not account_access.is_closed
             assert account_access.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -167,28 +176,31 @@ class TestAccountAccess:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_path_params_revoke(self, client: ObpAPI) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_view_id` but received ''"):
+            client.banks.accounts.views.account_access.with_raw_response.revoke(
+                account_id="ACCOUNT_ID",
+                path_view_id="",
+                bank_id="BANK_ID",
+                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+                body_view_id="owner",
+            )
+
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             client.banks.accounts.views.account_access.with_raw_response.revoke(
-                view_id="VIEW_ID",
-                bank_id="",
                 account_id="ACCOUNT_ID",
-                body={},
+                path_view_id="VIEW_ID",
+                bank_id="",
+                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+                body_view_id="owner",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
             client.banks.accounts.views.account_access.with_raw_response.revoke(
-                view_id="VIEW_ID",
-                bank_id="BANK_ID",
                 account_id="",
-                body={},
-            )
-
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
-            client.banks.accounts.views.account_access.with_raw_response.revoke(
-                view_id="",
+                path_view_id="VIEW_ID",
                 bank_id="BANK_ID",
-                account_id="ACCOUNT_ID",
-                body={},
+                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+                body_view_id="owner",
             )
 
 
@@ -202,10 +214,11 @@ class TestAsyncAccountAccess:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         account_access = await async_client.banks.accounts.views.account_access.grant(
-            view_id="VIEW_ID",
-            bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            path_view_id="VIEW_ID",
+            bank_id="BANK_ID",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+            body_view_id="owner",
         )
         assert account_access.is_closed
         assert await account_access.json() == {"foo": "bar"}
@@ -220,10 +233,11 @@ class TestAsyncAccountAccess:
         )
 
         account_access = await async_client.banks.accounts.views.account_access.with_raw_response.grant(
-            view_id="VIEW_ID",
-            bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            path_view_id="VIEW_ID",
+            bank_id="BANK_ID",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+            body_view_id="owner",
         )
 
         assert account_access.is_closed is True
@@ -238,10 +252,11 @@ class TestAsyncAccountAccess:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.banks.accounts.views.account_access.with_streaming_response.grant(
-            view_id="VIEW_ID",
-            bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            path_view_id="VIEW_ID",
+            bank_id="BANK_ID",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+            body_view_id="owner",
         ) as account_access:
             assert not account_access.is_closed
             assert account_access.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -255,28 +270,31 @@ class TestAsyncAccountAccess:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_path_params_grant(self, async_client: AsyncObpAPI) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_view_id` but received ''"):
+            await async_client.banks.accounts.views.account_access.with_raw_response.grant(
+                account_id="ACCOUNT_ID",
+                path_view_id="",
+                bank_id="BANK_ID",
+                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+                body_view_id="owner",
+            )
+
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             await async_client.banks.accounts.views.account_access.with_raw_response.grant(
-                view_id="VIEW_ID",
-                bank_id="",
                 account_id="ACCOUNT_ID",
-                body={},
+                path_view_id="VIEW_ID",
+                bank_id="",
+                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+                body_view_id="owner",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
             await async_client.banks.accounts.views.account_access.with_raw_response.grant(
-                view_id="VIEW_ID",
-                bank_id="BANK_ID",
                 account_id="",
-                body={},
-            )
-
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
-            await async_client.banks.accounts.views.account_access.with_raw_response.grant(
-                view_id="",
+                path_view_id="VIEW_ID",
                 bank_id="BANK_ID",
-                account_id="ACCOUNT_ID",
-                body={},
+                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+                body_view_id="owner",
             )
 
     @parametrize
@@ -286,10 +304,11 @@ class TestAsyncAccountAccess:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         account_access = await async_client.banks.accounts.views.account_access.revoke(
-            view_id="VIEW_ID",
-            bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            path_view_id="VIEW_ID",
+            bank_id="BANK_ID",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+            body_view_id="owner",
         )
         assert account_access.is_closed
         assert await account_access.json() == {"foo": "bar"}
@@ -304,10 +323,11 @@ class TestAsyncAccountAccess:
         )
 
         account_access = await async_client.banks.accounts.views.account_access.with_raw_response.revoke(
-            view_id="VIEW_ID",
-            bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            path_view_id="VIEW_ID",
+            bank_id="BANK_ID",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+            body_view_id="owner",
         )
 
         assert account_access.is_closed is True
@@ -322,10 +342,11 @@ class TestAsyncAccountAccess:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.banks.accounts.views.account_access.with_streaming_response.revoke(
-            view_id="VIEW_ID",
-            bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            path_view_id="VIEW_ID",
+            bank_id="BANK_ID",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+            body_view_id="owner",
         ) as account_access:
             assert not account_access.is_closed
             assert account_access.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -339,26 +360,29 @@ class TestAsyncAccountAccess:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_path_params_revoke(self, async_client: AsyncObpAPI) -> None:
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_view_id` but received ''"):
+            await async_client.banks.accounts.views.account_access.with_raw_response.revoke(
+                account_id="ACCOUNT_ID",
+                path_view_id="",
+                bank_id="BANK_ID",
+                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+                body_view_id="owner",
+            )
+
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             await async_client.banks.accounts.views.account_access.with_raw_response.revoke(
-                view_id="VIEW_ID",
-                bank_id="",
                 account_id="ACCOUNT_ID",
-                body={},
+                path_view_id="VIEW_ID",
+                bank_id="",
+                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+                body_view_id="owner",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
             await async_client.banks.accounts.views.account_access.with_raw_response.revoke(
-                view_id="VIEW_ID",
-                bank_id="BANK_ID",
                 account_id="",
-                body={},
-            )
-
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
-            await async_client.banks.accounts.views.account_access.with_raw_response.revoke(
-                view_id="",
+                path_view_id="VIEW_ID",
                 bank_id="BANK_ID",
-                account_id="ACCOUNT_ID",
-                body={},
+                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+                body_view_id="owner",
             )

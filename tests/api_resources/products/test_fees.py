@@ -32,7 +32,40 @@ class TestFees:
         fee = client.products.fees.create(
             product_code="PRODUCT_CODE",
             bank_id="BANK_ID",
-            body={},
+            is_active=True,
+            more_info="More information about this fee",
+            name="ACCOUNT_MANAGEMENT_FEE",
+            value={
+                "amount": "10.12",
+                "currency": "EUR",
+                "frequency": "DAILY",
+                "type": "",
+            },
+        )
+        assert fee.is_closed
+        assert fee.json() == {"foo": "bar"}
+        assert cast(Any, fee.is_closed) is True
+        assert isinstance(fee, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_create_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.post("/obp/v5.1.0/banks/BANK_ID/products/PRODUCT_CODE/fee").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        fee = client.products.fees.create(
+            product_code="PRODUCT_CODE",
+            bank_id="BANK_ID",
+            is_active=True,
+            more_info="More information about this fee",
+            name="ACCOUNT_MANAGEMENT_FEE",
+            value={
+                "amount": "10.12",
+                "currency": "EUR",
+                "frequency": "DAILY",
+                "type": "",
+            },
+            product_fee_id="696hlAHLFKUHE37469287634",
         )
         assert fee.is_closed
         assert fee.json() == {"foo": "bar"}
@@ -49,7 +82,15 @@ class TestFees:
         fee = client.products.fees.with_raw_response.create(
             product_code="PRODUCT_CODE",
             bank_id="BANK_ID",
-            body={},
+            is_active=True,
+            more_info="More information about this fee",
+            name="ACCOUNT_MANAGEMENT_FEE",
+            value={
+                "amount": "10.12",
+                "currency": "EUR",
+                "frequency": "DAILY",
+                "type": "",
+            },
         )
 
         assert fee.is_closed is True
@@ -66,7 +107,15 @@ class TestFees:
         with client.products.fees.with_streaming_response.create(
             product_code="PRODUCT_CODE",
             bank_id="BANK_ID",
-            body={},
+            is_active=True,
+            more_info="More information about this fee",
+            name="ACCOUNT_MANAGEMENT_FEE",
+            value={
+                "amount": "10.12",
+                "currency": "EUR",
+                "frequency": "DAILY",
+                "type": "",
+            },
         ) as fee:
             assert not fee.is_closed
             assert fee.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -84,14 +133,30 @@ class TestFees:
             client.products.fees.with_raw_response.create(
                 product_code="PRODUCT_CODE",
                 bank_id="",
-                body={},
+                is_active=True,
+                more_info="More information about this fee",
+                name="ACCOUNT_MANAGEMENT_FEE",
+                value={
+                    "amount": "10.12",
+                    "currency": "EUR",
+                    "frequency": "DAILY",
+                    "type": "",
+                },
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `product_code` but received ''"):
             client.products.fees.with_raw_response.create(
                 product_code="",
                 bank_id="BANK_ID",
-                body={},
+                is_active=True,
+                more_info="More information about this fee",
+                name="ACCOUNT_MANAGEMENT_FEE",
+                value={
+                    "amount": "10.12",
+                    "currency": "EUR",
+                    "frequency": "DAILY",
+                    "type": "",
+                },
             )
 
     @parametrize
@@ -169,7 +234,40 @@ class TestFees:
         fee = client.products.fees.update(
             product_code="PRODUCT_CODE",
             bank_id="BANK_ID",
-            body={},
+            is_active=True,
+            more_info="More information about this fee",
+            name="ACCOUNT_MANAGEMENT_FEE",
+            value={
+                "amount": "10.12",
+                "currency": "EUR",
+                "frequency": "DAILY",
+                "type": "",
+            },
+        )
+        assert fee.is_closed
+        assert fee.json() == {"foo": "bar"}
+        assert cast(Any, fee.is_closed) is True
+        assert isinstance(fee, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_update_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.put("/obp/v5.1.0/banks/BANK_ID/products/PRODUCT_CODE/fees/PRODUCT_FEE_ID").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        fee = client.products.fees.update(
+            product_code="PRODUCT_CODE",
+            bank_id="BANK_ID",
+            is_active=True,
+            more_info="More information about this fee",
+            name="ACCOUNT_MANAGEMENT_FEE",
+            value={
+                "amount": "10.12",
+                "currency": "EUR",
+                "frequency": "DAILY",
+                "type": "",
+            },
+            product_fee_id="696hlAHLFKUHE37469287634",
         )
         assert fee.is_closed
         assert fee.json() == {"foo": "bar"}
@@ -186,7 +284,15 @@ class TestFees:
         fee = client.products.fees.with_raw_response.update(
             product_code="PRODUCT_CODE",
             bank_id="BANK_ID",
-            body={},
+            is_active=True,
+            more_info="More information about this fee",
+            name="ACCOUNT_MANAGEMENT_FEE",
+            value={
+                "amount": "10.12",
+                "currency": "EUR",
+                "frequency": "DAILY",
+                "type": "",
+            },
         )
 
         assert fee.is_closed is True
@@ -203,7 +309,15 @@ class TestFees:
         with client.products.fees.with_streaming_response.update(
             product_code="PRODUCT_CODE",
             bank_id="BANK_ID",
-            body={},
+            is_active=True,
+            more_info="More information about this fee",
+            name="ACCOUNT_MANAGEMENT_FEE",
+            value={
+                "amount": "10.12",
+                "currency": "EUR",
+                "frequency": "DAILY",
+                "type": "",
+            },
         ) as fee:
             assert not fee.is_closed
             assert fee.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -221,14 +335,30 @@ class TestFees:
             client.products.fees.with_raw_response.update(
                 product_code="PRODUCT_CODE",
                 bank_id="",
-                body={},
+                is_active=True,
+                more_info="More information about this fee",
+                name="ACCOUNT_MANAGEMENT_FEE",
+                value={
+                    "amount": "10.12",
+                    "currency": "EUR",
+                    "frequency": "DAILY",
+                    "type": "",
+                },
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `product_code` but received ''"):
             client.products.fees.with_raw_response.update(
                 product_code="",
                 bank_id="BANK_ID",
-                body={},
+                is_active=True,
+                more_info="More information about this fee",
+                name="ACCOUNT_MANAGEMENT_FEE",
+                value={
+                    "amount": "10.12",
+                    "currency": "EUR",
+                    "frequency": "DAILY",
+                    "type": "",
+                },
             )
 
     @parametrize
@@ -376,7 +506,40 @@ class TestAsyncFees:
         fee = await async_client.products.fees.create(
             product_code="PRODUCT_CODE",
             bank_id="BANK_ID",
-            body={},
+            is_active=True,
+            more_info="More information about this fee",
+            name="ACCOUNT_MANAGEMENT_FEE",
+            value={
+                "amount": "10.12",
+                "currency": "EUR",
+                "frequency": "DAILY",
+                "type": "",
+            },
+        )
+        assert fee.is_closed
+        assert await fee.json() == {"foo": "bar"}
+        assert cast(Any, fee.is_closed) is True
+        assert isinstance(fee, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_create_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.post("/obp/v5.1.0/banks/BANK_ID/products/PRODUCT_CODE/fee").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        fee = await async_client.products.fees.create(
+            product_code="PRODUCT_CODE",
+            bank_id="BANK_ID",
+            is_active=True,
+            more_info="More information about this fee",
+            name="ACCOUNT_MANAGEMENT_FEE",
+            value={
+                "amount": "10.12",
+                "currency": "EUR",
+                "frequency": "DAILY",
+                "type": "",
+            },
+            product_fee_id="696hlAHLFKUHE37469287634",
         )
         assert fee.is_closed
         assert await fee.json() == {"foo": "bar"}
@@ -393,7 +556,15 @@ class TestAsyncFees:
         fee = await async_client.products.fees.with_raw_response.create(
             product_code="PRODUCT_CODE",
             bank_id="BANK_ID",
-            body={},
+            is_active=True,
+            more_info="More information about this fee",
+            name="ACCOUNT_MANAGEMENT_FEE",
+            value={
+                "amount": "10.12",
+                "currency": "EUR",
+                "frequency": "DAILY",
+                "type": "",
+            },
         )
 
         assert fee.is_closed is True
@@ -410,7 +581,15 @@ class TestAsyncFees:
         async with async_client.products.fees.with_streaming_response.create(
             product_code="PRODUCT_CODE",
             bank_id="BANK_ID",
-            body={},
+            is_active=True,
+            more_info="More information about this fee",
+            name="ACCOUNT_MANAGEMENT_FEE",
+            value={
+                "amount": "10.12",
+                "currency": "EUR",
+                "frequency": "DAILY",
+                "type": "",
+            },
         ) as fee:
             assert not fee.is_closed
             assert fee.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -428,14 +607,30 @@ class TestAsyncFees:
             await async_client.products.fees.with_raw_response.create(
                 product_code="PRODUCT_CODE",
                 bank_id="",
-                body={},
+                is_active=True,
+                more_info="More information about this fee",
+                name="ACCOUNT_MANAGEMENT_FEE",
+                value={
+                    "amount": "10.12",
+                    "currency": "EUR",
+                    "frequency": "DAILY",
+                    "type": "",
+                },
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `product_code` but received ''"):
             await async_client.products.fees.with_raw_response.create(
                 product_code="",
                 bank_id="BANK_ID",
-                body={},
+                is_active=True,
+                more_info="More information about this fee",
+                name="ACCOUNT_MANAGEMENT_FEE",
+                value={
+                    "amount": "10.12",
+                    "currency": "EUR",
+                    "frequency": "DAILY",
+                    "type": "",
+                },
             )
 
     @parametrize
@@ -513,7 +708,40 @@ class TestAsyncFees:
         fee = await async_client.products.fees.update(
             product_code="PRODUCT_CODE",
             bank_id="BANK_ID",
-            body={},
+            is_active=True,
+            more_info="More information about this fee",
+            name="ACCOUNT_MANAGEMENT_FEE",
+            value={
+                "amount": "10.12",
+                "currency": "EUR",
+                "frequency": "DAILY",
+                "type": "",
+            },
+        )
+        assert fee.is_closed
+        assert await fee.json() == {"foo": "bar"}
+        assert cast(Any, fee.is_closed) is True
+        assert isinstance(fee, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_update_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.put("/obp/v5.1.0/banks/BANK_ID/products/PRODUCT_CODE/fees/PRODUCT_FEE_ID").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        fee = await async_client.products.fees.update(
+            product_code="PRODUCT_CODE",
+            bank_id="BANK_ID",
+            is_active=True,
+            more_info="More information about this fee",
+            name="ACCOUNT_MANAGEMENT_FEE",
+            value={
+                "amount": "10.12",
+                "currency": "EUR",
+                "frequency": "DAILY",
+                "type": "",
+            },
+            product_fee_id="696hlAHLFKUHE37469287634",
         )
         assert fee.is_closed
         assert await fee.json() == {"foo": "bar"}
@@ -530,7 +758,15 @@ class TestAsyncFees:
         fee = await async_client.products.fees.with_raw_response.update(
             product_code="PRODUCT_CODE",
             bank_id="BANK_ID",
-            body={},
+            is_active=True,
+            more_info="More information about this fee",
+            name="ACCOUNT_MANAGEMENT_FEE",
+            value={
+                "amount": "10.12",
+                "currency": "EUR",
+                "frequency": "DAILY",
+                "type": "",
+            },
         )
 
         assert fee.is_closed is True
@@ -547,7 +783,15 @@ class TestAsyncFees:
         async with async_client.products.fees.with_streaming_response.update(
             product_code="PRODUCT_CODE",
             bank_id="BANK_ID",
-            body={},
+            is_active=True,
+            more_info="More information about this fee",
+            name="ACCOUNT_MANAGEMENT_FEE",
+            value={
+                "amount": "10.12",
+                "currency": "EUR",
+                "frequency": "DAILY",
+                "type": "",
+            },
         ) as fee:
             assert not fee.is_closed
             assert fee.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -565,14 +809,30 @@ class TestAsyncFees:
             await async_client.products.fees.with_raw_response.update(
                 product_code="PRODUCT_CODE",
                 bank_id="",
-                body={},
+                is_active=True,
+                more_info="More information about this fee",
+                name="ACCOUNT_MANAGEMENT_FEE",
+                value={
+                    "amount": "10.12",
+                    "currency": "EUR",
+                    "frequency": "DAILY",
+                    "type": "",
+                },
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `product_code` but received ''"):
             await async_client.products.fees.with_raw_response.update(
                 product_code="",
                 bank_id="BANK_ID",
-                body={},
+                is_active=True,
+                more_info="More information about this fee",
+                name="ACCOUNT_MANAGEMENT_FEE",
+                value={
+                    "amount": "10.12",
+                    "currency": "EUR",
+                    "frequency": "DAILY",
+                    "type": "",
+                },
             )
 
     @parametrize

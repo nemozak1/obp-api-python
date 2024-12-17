@@ -52,7 +52,11 @@ class DataResource(SyncAPIResource):
         customer_id: str,
         *,
         bank_id: str,
-        body: object,
+        dependants: int,
+        employment_status: str,
+        face_image: data_update_params.FaceImage,
+        highest_education_attained: str,
+        relationship_status: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -79,7 +83,16 @@ class DataResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/data",
-            body=maybe_transform(body, data_update_params.DataUpdateParams),
+            body=maybe_transform(
+                {
+                    "dependants": dependants,
+                    "employment_status": employment_status,
+                    "face_image": face_image,
+                    "highest_education_attained": highest_education_attained,
+                    "relationship_status": relationship_status,
+                },
+                data_update_params.DataUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -112,7 +125,11 @@ class AsyncDataResource(AsyncAPIResource):
         customer_id: str,
         *,
         bank_id: str,
-        body: object,
+        dependants: int,
+        employment_status: str,
+        face_image: data_update_params.FaceImage,
+        highest_education_attained: str,
+        relationship_status: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -139,7 +156,16 @@ class AsyncDataResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/data",
-            body=await async_maybe_transform(body, data_update_params.DataUpdateParams),
+            body=await async_maybe_transform(
+                {
+                    "dependants": dependants,
+                    "employment_status": employment_status,
+                    "face_image": face_image,
+                    "highest_education_attained": highest_education_attained,
+                    "relationship_status": relationship_status,
+                },
+                data_update_params.DataUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

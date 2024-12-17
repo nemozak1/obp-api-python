@@ -28,7 +28,22 @@ class TestAPICollections:
     def test_method_create(self, client: ObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/my/api-collections").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         api_collection = client.api_collections.create(
-            body={},
+            api_collection_name="Favourites",
+            is_sharable=True,
+        )
+        assert api_collection.is_closed
+        assert api_collection.json() == {"foo": "bar"}
+        assert cast(Any, api_collection.is_closed) is True
+        assert isinstance(api_collection, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_create_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.post("/obp/v5.1.0/my/api-collections").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        api_collection = client.api_collections.create(
+            api_collection_name="Favourites",
+            is_sharable=True,
+            description="This an optional field. Maximum length is 2000. It can be any characters here.",
         )
         assert api_collection.is_closed
         assert api_collection.json() == {"foo": "bar"}
@@ -41,7 +56,8 @@ class TestAPICollections:
         respx_mock.post("/obp/v5.1.0/my/api-collections").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         api_collection = client.api_collections.with_raw_response.create(
-            body={},
+            api_collection_name="Favourites",
+            is_sharable=True,
         )
 
         assert api_collection.is_closed is True
@@ -54,7 +70,8 @@ class TestAPICollections:
     def test_streaming_response_create(self, client: ObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/my/api-collections").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.api_collections.with_streaming_response.create(
-            body={},
+            api_collection_name="Favourites",
+            is_sharable=True,
         ) as api_collection:
             assert not api_collection.is_closed
             assert api_collection.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -114,7 +131,24 @@ class TestAPICollections:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         api_collection = client.api_collections.update(
-            body={},
+            api_collection_name="Favourites",
+            is_sharable=True,
+        )
+        assert api_collection.is_closed
+        assert api_collection.json() == {"foo": "bar"}
+        assert cast(Any, api_collection.is_closed) is True
+        assert isinstance(api_collection, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_update_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.put("/obp/v5.1.0/my/api-collections/API_COLLECTION_ID").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        api_collection = client.api_collections.update(
+            api_collection_name="Favourites",
+            is_sharable=True,
+            description="This an optional field. Maximum length is 2000. It can be any characters here.",
         )
         assert api_collection.is_closed
         assert api_collection.json() == {"foo": "bar"}
@@ -129,7 +163,8 @@ class TestAPICollections:
         )
 
         api_collection = client.api_collections.with_raw_response.update(
-            body={},
+            api_collection_name="Favourites",
+            is_sharable=True,
         )
 
         assert api_collection.is_closed is True
@@ -144,7 +179,8 @@ class TestAPICollections:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.api_collections.with_streaming_response.update(
-            body={},
+            api_collection_name="Favourites",
+            is_sharable=True,
         ) as api_collection:
             assert not api_collection.is_closed
             assert api_collection.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -242,7 +278,22 @@ class TestAsyncAPICollections:
     async def test_method_create(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/my/api-collections").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         api_collection = await async_client.api_collections.create(
-            body={},
+            api_collection_name="Favourites",
+            is_sharable=True,
+        )
+        assert api_collection.is_closed
+        assert await api_collection.json() == {"foo": "bar"}
+        assert cast(Any, api_collection.is_closed) is True
+        assert isinstance(api_collection, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_create_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.post("/obp/v5.1.0/my/api-collections").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        api_collection = await async_client.api_collections.create(
+            api_collection_name="Favourites",
+            is_sharable=True,
+            description="This an optional field. Maximum length is 2000. It can be any characters here.",
         )
         assert api_collection.is_closed
         assert await api_collection.json() == {"foo": "bar"}
@@ -255,7 +306,8 @@ class TestAsyncAPICollections:
         respx_mock.post("/obp/v5.1.0/my/api-collections").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         api_collection = await async_client.api_collections.with_raw_response.create(
-            body={},
+            api_collection_name="Favourites",
+            is_sharable=True,
         )
 
         assert api_collection.is_closed is True
@@ -268,7 +320,8 @@ class TestAsyncAPICollections:
     async def test_streaming_response_create(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/my/api-collections").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.api_collections.with_streaming_response.create(
-            body={},
+            api_collection_name="Favourites",
+            is_sharable=True,
         ) as api_collection:
             assert not api_collection.is_closed
             assert api_collection.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -328,7 +381,24 @@ class TestAsyncAPICollections:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         api_collection = await async_client.api_collections.update(
-            body={},
+            api_collection_name="Favourites",
+            is_sharable=True,
+        )
+        assert api_collection.is_closed
+        assert await api_collection.json() == {"foo": "bar"}
+        assert cast(Any, api_collection.is_closed) is True
+        assert isinstance(api_collection, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_update_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.put("/obp/v5.1.0/my/api-collections/API_COLLECTION_ID").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        api_collection = await async_client.api_collections.update(
+            api_collection_name="Favourites",
+            is_sharable=True,
+            description="This an optional field. Maximum length is 2000. It can be any characters here.",
         )
         assert api_collection.is_closed
         assert await api_collection.json() == {"foo": "bar"}
@@ -343,7 +413,8 @@ class TestAsyncAPICollections:
         )
 
         api_collection = await async_client.api_collections.with_raw_response.update(
-            body={},
+            api_collection_name="Favourites",
+            is_sharable=True,
         )
 
         assert api_collection.is_closed is True
@@ -358,7 +429,8 @@ class TestAsyncAPICollections:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.api_collections.with_streaming_response.update(
-            body={},
+            api_collection_name="Favourites",
+            is_sharable=True,
         ) as api_collection:
             assert not api_collection.is_closed
             assert api_collection.http_request.headers.get("X-Stainless-Lang") == "python"

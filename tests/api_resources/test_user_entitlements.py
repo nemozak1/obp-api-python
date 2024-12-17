@@ -28,7 +28,14 @@ class TestUserEntitlements:
     def test_method_create(self, client: ObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/user-entitlements").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         user_entitlement = client.user_entitlements.create(
-            body={},
+            provider="dauth.ETHEREUM",
+            roles=[
+                {
+                    "bank_id": "gh.29.uk",
+                    "role_name": "CanCreateBranch",
+                }
+            ],
+            username="felixsmith",
         )
         assert user_entitlement.is_closed
         assert user_entitlement.json() == {"foo": "bar"}
@@ -41,7 +48,14 @@ class TestUserEntitlements:
         respx_mock.post("/obp/v5.1.0/user-entitlements").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         user_entitlement = client.user_entitlements.with_raw_response.create(
-            body={},
+            provider="dauth.ETHEREUM",
+            roles=[
+                {
+                    "bank_id": "gh.29.uk",
+                    "role_name": "CanCreateBranch",
+                }
+            ],
+            username="felixsmith",
         )
 
         assert user_entitlement.is_closed is True
@@ -54,7 +68,14 @@ class TestUserEntitlements:
     def test_streaming_response_create(self, client: ObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/user-entitlements").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.user_entitlements.with_streaming_response.create(
-            body={},
+            provider="dauth.ETHEREUM",
+            roles=[
+                {
+                    "bank_id": "gh.29.uk",
+                    "role_name": "CanCreateBranch",
+                }
+            ],
+            username="felixsmith",
         ) as user_entitlement:
             assert not user_entitlement.is_closed
             assert user_entitlement.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -74,7 +95,14 @@ class TestAsyncUserEntitlements:
     async def test_method_create(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/user-entitlements").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         user_entitlement = await async_client.user_entitlements.create(
-            body={},
+            provider="dauth.ETHEREUM",
+            roles=[
+                {
+                    "bank_id": "gh.29.uk",
+                    "role_name": "CanCreateBranch",
+                }
+            ],
+            username="felixsmith",
         )
         assert user_entitlement.is_closed
         assert await user_entitlement.json() == {"foo": "bar"}
@@ -87,7 +115,14 @@ class TestAsyncUserEntitlements:
         respx_mock.post("/obp/v5.1.0/user-entitlements").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         user_entitlement = await async_client.user_entitlements.with_raw_response.create(
-            body={},
+            provider="dauth.ETHEREUM",
+            roles=[
+                {
+                    "bank_id": "gh.29.uk",
+                    "role_name": "CanCreateBranch",
+                }
+            ],
+            username="felixsmith",
         )
 
         assert user_entitlement.is_closed is True
@@ -100,7 +135,14 @@ class TestAsyncUserEntitlements:
     async def test_streaming_response_create(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/user-entitlements").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.user_entitlements.with_streaming_response.create(
-            body={},
+            provider="dauth.ETHEREUM",
+            roles=[
+                {
+                    "bank_id": "gh.29.uk",
+                    "role_name": "CanCreateBranch",
+                }
+            ],
+            username="felixsmith",
         ) as user_entitlement:
             assert not user_entitlement.is_closed
             assert user_entitlement.http_request.headers.get("X-Stainless-Lang") == "python"

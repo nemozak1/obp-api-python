@@ -10,6 +10,7 @@ import pytest
 from respx import MockRouter
 
 from obp_api import ObpAPI, AsyncObpAPI
+from obp_api._utils import parse_date
 from obp_api._response import (
     BinaryAPIResponse,
     AsyncBinaryAPIResponse,
@@ -33,7 +34,12 @@ class TestKYCDocuments:
             kyc_document_id="KYC_DOCUMENT_ID",
             bank_id="BANK_ID",
             customer_id="CUSTOMER_ID",
-            body={},
+            customer_number="5987953",
+            expiry_date=parse_date("2019-12-27"),
+            issue_date=parse_date("2019-12-27"),
+            issue_place="Berlin",
+            number="12345",
+            type="passport",
         )
         assert kyc_document.is_closed
         assert kyc_document.json() == {"foo": "bar"}
@@ -51,7 +57,12 @@ class TestKYCDocuments:
             kyc_document_id="KYC_DOCUMENT_ID",
             bank_id="BANK_ID",
             customer_id="CUSTOMER_ID",
-            body={},
+            customer_number="5987953",
+            expiry_date=parse_date("2019-12-27"),
+            issue_date=parse_date("2019-12-27"),
+            issue_place="Berlin",
+            number="12345",
+            type="passport",
         )
 
         assert kyc_document.is_closed is True
@@ -69,7 +80,12 @@ class TestKYCDocuments:
             kyc_document_id="KYC_DOCUMENT_ID",
             bank_id="BANK_ID",
             customer_id="CUSTOMER_ID",
-            body={},
+            customer_number="5987953",
+            expiry_date=parse_date("2019-12-27"),
+            issue_date=parse_date("2019-12-27"),
+            issue_place="Berlin",
+            number="12345",
+            type="passport",
         ) as kyc_document:
             assert not kyc_document.is_closed
             assert kyc_document.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -88,7 +104,12 @@ class TestKYCDocuments:
                 kyc_document_id="KYC_DOCUMENT_ID",
                 bank_id="",
                 customer_id="CUSTOMER_ID",
-                body={},
+                customer_number="5987953",
+                expiry_date=parse_date("2019-12-27"),
+                issue_date=parse_date("2019-12-27"),
+                issue_place="Berlin",
+                number="12345",
+                type="passport",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
@@ -96,7 +117,12 @@ class TestKYCDocuments:
                 kyc_document_id="KYC_DOCUMENT_ID",
                 bank_id="BANK_ID",
                 customer_id="",
-                body={},
+                customer_number="5987953",
+                expiry_date=parse_date("2019-12-27"),
+                issue_date=parse_date("2019-12-27"),
+                issue_place="Berlin",
+                number="12345",
+                type="passport",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `kyc_document_id` but received ''"):
@@ -104,7 +130,12 @@ class TestKYCDocuments:
                 kyc_document_id="",
                 bank_id="BANK_ID",
                 customer_id="CUSTOMER_ID",
-                body={},
+                customer_number="5987953",
+                expiry_date=parse_date("2019-12-27"),
+                issue_date=parse_date("2019-12-27"),
+                issue_place="Berlin",
+                number="12345",
+                type="passport",
             )
 
     @parametrize
@@ -177,7 +208,12 @@ class TestAsyncKYCDocuments:
             kyc_document_id="KYC_DOCUMENT_ID",
             bank_id="BANK_ID",
             customer_id="CUSTOMER_ID",
-            body={},
+            customer_number="5987953",
+            expiry_date=parse_date("2019-12-27"),
+            issue_date=parse_date("2019-12-27"),
+            issue_place="Berlin",
+            number="12345",
+            type="passport",
         )
         assert kyc_document.is_closed
         assert await kyc_document.json() == {"foo": "bar"}
@@ -195,7 +231,12 @@ class TestAsyncKYCDocuments:
             kyc_document_id="KYC_DOCUMENT_ID",
             bank_id="BANK_ID",
             customer_id="CUSTOMER_ID",
-            body={},
+            customer_number="5987953",
+            expiry_date=parse_date("2019-12-27"),
+            issue_date=parse_date("2019-12-27"),
+            issue_place="Berlin",
+            number="12345",
+            type="passport",
         )
 
         assert kyc_document.is_closed is True
@@ -213,7 +254,12 @@ class TestAsyncKYCDocuments:
             kyc_document_id="KYC_DOCUMENT_ID",
             bank_id="BANK_ID",
             customer_id="CUSTOMER_ID",
-            body={},
+            customer_number="5987953",
+            expiry_date=parse_date("2019-12-27"),
+            issue_date=parse_date("2019-12-27"),
+            issue_place="Berlin",
+            number="12345",
+            type="passport",
         ) as kyc_document:
             assert not kyc_document.is_closed
             assert kyc_document.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -232,7 +278,12 @@ class TestAsyncKYCDocuments:
                 kyc_document_id="KYC_DOCUMENT_ID",
                 bank_id="",
                 customer_id="CUSTOMER_ID",
-                body={},
+                customer_number="5987953",
+                expiry_date=parse_date("2019-12-27"),
+                issue_date=parse_date("2019-12-27"),
+                issue_place="Berlin",
+                number="12345",
+                type="passport",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
@@ -240,7 +291,12 @@ class TestAsyncKYCDocuments:
                 kyc_document_id="KYC_DOCUMENT_ID",
                 bank_id="BANK_ID",
                 customer_id="",
-                body={},
+                customer_number="5987953",
+                expiry_date=parse_date("2019-12-27"),
+                issue_date=parse_date("2019-12-27"),
+                issue_place="Berlin",
+                number="12345",
+                type="passport",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `kyc_document_id` but received ''"):
@@ -248,7 +304,12 @@ class TestAsyncKYCDocuments:
                 kyc_document_id="",
                 bank_id="BANK_ID",
                 customer_id="CUSTOMER_ID",
-                body={},
+                customer_number="5987953",
+                expiry_date=parse_date("2019-12-27"),
+                issue_date=parse_date("2019-12-27"),
+                issue_place="Berlin",
+                number="12345",
+                type="passport",
             )
 
     @parametrize

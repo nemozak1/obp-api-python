@@ -12,4 +12,4 @@ __all__ = ["EmailUpdateParams"]
 class EmailUpdateParams(TypedDict, total=False):
     bank_id: Required[Annotated[str, PropertyInfo(alias="BANK_ID")]]
 
-    body: Required[object]
+    email: Required[str]
