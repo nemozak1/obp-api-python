@@ -16,4 +16,14 @@ class LimitUpdateParams(TypedDict, total=False):
 
     view_id: Required[Annotated[str, PropertyInfo(alias="VIEW_ID")]]
 
-    body: Required[object]
+    currency: Required[str]
+
+    max_monthly_amount: Required[int]
+
+    max_number_of_monthly_transactions: Required[int]
+
+    max_number_of_yearly_transactions: Required[int]
+
+    max_single_amount: Required[int]
+
+    max_yearly_amount: Required[int]

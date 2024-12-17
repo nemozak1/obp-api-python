@@ -28,7 +28,8 @@ class TestEntitlementRequests:
     def test_method_create(self, client: ObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/entitlement-requests").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         entitlement_request = client.entitlement_requests.create(
-            body={},
+            bank_id="gh.29.uk",
+            role_name="CanCreateBranch",
         )
         assert entitlement_request.is_closed
         assert entitlement_request.json() == {"foo": "bar"}
@@ -41,7 +42,8 @@ class TestEntitlementRequests:
         respx_mock.post("/obp/v5.1.0/entitlement-requests").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         entitlement_request = client.entitlement_requests.with_raw_response.create(
-            body={},
+            bank_id="gh.29.uk",
+            role_name="CanCreateBranch",
         )
 
         assert entitlement_request.is_closed is True
@@ -54,7 +56,8 @@ class TestEntitlementRequests:
     def test_streaming_response_create(self, client: ObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/entitlement-requests").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.entitlement_requests.with_streaming_response.create(
-            body={},
+            bank_id="gh.29.uk",
+            role_name="CanCreateBranch",
         ) as entitlement_request:
             assert not entitlement_request.is_closed
             assert entitlement_request.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -156,7 +159,8 @@ class TestAsyncEntitlementRequests:
     async def test_method_create(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/entitlement-requests").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         entitlement_request = await async_client.entitlement_requests.create(
-            body={},
+            bank_id="gh.29.uk",
+            role_name="CanCreateBranch",
         )
         assert entitlement_request.is_closed
         assert await entitlement_request.json() == {"foo": "bar"}
@@ -169,7 +173,8 @@ class TestAsyncEntitlementRequests:
         respx_mock.post("/obp/v5.1.0/entitlement-requests").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         entitlement_request = await async_client.entitlement_requests.with_raw_response.create(
-            body={},
+            bank_id="gh.29.uk",
+            role_name="CanCreateBranch",
         )
 
         assert entitlement_request.is_closed is True
@@ -182,7 +187,8 @@ class TestAsyncEntitlementRequests:
     async def test_streaming_response_create(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/entitlement-requests").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.entitlement_requests.with_streaming_response.create(
-            body={},
+            bank_id="gh.29.uk",
+            role_name="CanCreateBranch",
         ) as entitlement_request:
             assert not entitlement_request.is_closed
             assert entitlement_request.http_request.headers.get("X-Stainless-Lang") == "python"

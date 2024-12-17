@@ -49,11 +49,12 @@ class AccountAccessResource(SyncAPIResource):
 
     def grant(
         self,
-        view_id: str,
-        *,
-        bank_id: str,
         account_id: str,
-        body: object,
+        *,
+        path_view_id: str,
+        bank_id: str,
+        user_id: str,
+        body_view_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -73,16 +74,22 @@ class AccountAccessResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not path_view_id:
+            raise ValueError(f"Expected a non-empty value for `path_view_id` but received {path_view_id!r}")
         if not bank_id:
             raise ValueError(f"Expected a non-empty value for `bank_id` but received {bank_id!r}")
         if not account_id:
             raise ValueError(f"Expected a non-empty value for `account_id` but received {account_id!r}")
-        if not view_id:
-            raise ValueError(f"Expected a non-empty value for `view_id` but received {view_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
-            f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/views/{view_id}/account-access/grant",
-            body=maybe_transform(body, account_access_grant_params.AccountAccessGrantParams),
+            f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/views/{path_view_id}/account-access/grant",
+            body=maybe_transform(
+                {
+                    "user_id": user_id,
+                    "body_view_id": body_view_id,
+                },
+                account_access_grant_params.AccountAccessGrantParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -91,11 +98,12 @@ class AccountAccessResource(SyncAPIResource):
 
     def revoke(
         self,
-        view_id: str,
-        *,
-        bank_id: str,
         account_id: str,
-        body: object,
+        *,
+        path_view_id: str,
+        bank_id: str,
+        user_id: str,
+        body_view_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -115,16 +123,22 @@ class AccountAccessResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not path_view_id:
+            raise ValueError(f"Expected a non-empty value for `path_view_id` but received {path_view_id!r}")
         if not bank_id:
             raise ValueError(f"Expected a non-empty value for `bank_id` but received {bank_id!r}")
         if not account_id:
             raise ValueError(f"Expected a non-empty value for `account_id` but received {account_id!r}")
-        if not view_id:
-            raise ValueError(f"Expected a non-empty value for `view_id` but received {view_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
-            f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/views/{view_id}/account-access/revoke",
-            body=maybe_transform(body, account_access_revoke_params.AccountAccessRevokeParams),
+            f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/views/{path_view_id}/account-access/revoke",
+            body=maybe_transform(
+                {
+                    "user_id": user_id,
+                    "body_view_id": body_view_id,
+                },
+                account_access_revoke_params.AccountAccessRevokeParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -154,11 +168,12 @@ class AsyncAccountAccessResource(AsyncAPIResource):
 
     async def grant(
         self,
-        view_id: str,
-        *,
-        bank_id: str,
         account_id: str,
-        body: object,
+        *,
+        path_view_id: str,
+        bank_id: str,
+        user_id: str,
+        body_view_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -178,16 +193,22 @@ class AsyncAccountAccessResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not path_view_id:
+            raise ValueError(f"Expected a non-empty value for `path_view_id` but received {path_view_id!r}")
         if not bank_id:
             raise ValueError(f"Expected a non-empty value for `bank_id` but received {bank_id!r}")
         if not account_id:
             raise ValueError(f"Expected a non-empty value for `account_id` but received {account_id!r}")
-        if not view_id:
-            raise ValueError(f"Expected a non-empty value for `view_id` but received {view_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
-            f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/views/{view_id}/account-access/grant",
-            body=await async_maybe_transform(body, account_access_grant_params.AccountAccessGrantParams),
+            f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/views/{path_view_id}/account-access/grant",
+            body=await async_maybe_transform(
+                {
+                    "user_id": user_id,
+                    "body_view_id": body_view_id,
+                },
+                account_access_grant_params.AccountAccessGrantParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -196,11 +217,12 @@ class AsyncAccountAccessResource(AsyncAPIResource):
 
     async def revoke(
         self,
-        view_id: str,
-        *,
-        bank_id: str,
         account_id: str,
-        body: object,
+        *,
+        path_view_id: str,
+        bank_id: str,
+        user_id: str,
+        body_view_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -220,16 +242,22 @@ class AsyncAccountAccessResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
+        if not path_view_id:
+            raise ValueError(f"Expected a non-empty value for `path_view_id` but received {path_view_id!r}")
         if not bank_id:
             raise ValueError(f"Expected a non-empty value for `bank_id` but received {bank_id!r}")
         if not account_id:
             raise ValueError(f"Expected a non-empty value for `account_id` but received {account_id!r}")
-        if not view_id:
-            raise ValueError(f"Expected a non-empty value for `view_id` but received {view_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
-            f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/views/{view_id}/account-access/revoke",
-            body=await async_maybe_transform(body, account_access_revoke_params.AccountAccessRevokeParams),
+            f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/views/{path_view_id}/account-access/revoke",
+            body=await async_maybe_transform(
+                {
+                    "user_id": user_id,
+                    "body_view_id": body_view_id,
+                },
+                account_access_revoke_params.AccountAccessRevokeParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

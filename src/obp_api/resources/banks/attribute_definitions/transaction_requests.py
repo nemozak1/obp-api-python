@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import List
+
 import httpx
 
 from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -85,7 +87,13 @@ class TransactionRequestsResource(SyncAPIResource):
         self,
         bank_id: str,
         *,
-        body: object,
+        alias: str,
+        can_be_seen_on_views: List[str],
+        category: str,
+        description: str,
+        is_active: bool,
+        name: str,
+        type: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -110,7 +118,18 @@ class TransactionRequestsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/attribute-definitions/transaction-request",
-            body=maybe_transform(body, transaction_request_update_params.TransactionRequestUpdateParams),
+            body=maybe_transform(
+                {
+                    "alias": alias,
+                    "can_be_seen_on_views": can_be_seen_on_views,
+                    "category": category,
+                    "description": description,
+                    "is_active": is_active,
+                    "name": name,
+                    "type": type,
+                },
+                transaction_request_update_params.TransactionRequestUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -121,7 +140,13 @@ class TransactionRequestsResource(SyncAPIResource):
         self,
         bank_id: str,
         *,
-        body: object,
+        alias: str,
+        can_be_seen_on_views: List[str],
+        category: str,
+        description: str,
+        is_active: bool,
+        name: str,
+        type: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -146,7 +171,18 @@ class TransactionRequestsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/attribute-definitions/account",
-            body=maybe_transform(body, transaction_request_delete_params.TransactionRequestDeleteParams),
+            body=maybe_transform(
+                {
+                    "alias": alias,
+                    "can_be_seen_on_views": can_be_seen_on_views,
+                    "category": category,
+                    "description": description,
+                    "is_active": is_active,
+                    "name": name,
+                    "type": type,
+                },
+                transaction_request_delete_params.TransactionRequestDeleteParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -212,7 +248,13 @@ class AsyncTransactionRequestsResource(AsyncAPIResource):
         self,
         bank_id: str,
         *,
-        body: object,
+        alias: str,
+        can_be_seen_on_views: List[str],
+        category: str,
+        description: str,
+        is_active: bool,
+        name: str,
+        type: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -237,7 +279,18 @@ class AsyncTransactionRequestsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/attribute-definitions/transaction-request",
-            body=await async_maybe_transform(body, transaction_request_update_params.TransactionRequestUpdateParams),
+            body=await async_maybe_transform(
+                {
+                    "alias": alias,
+                    "can_be_seen_on_views": can_be_seen_on_views,
+                    "category": category,
+                    "description": description,
+                    "is_active": is_active,
+                    "name": name,
+                    "type": type,
+                },
+                transaction_request_update_params.TransactionRequestUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -248,7 +301,13 @@ class AsyncTransactionRequestsResource(AsyncAPIResource):
         self,
         bank_id: str,
         *,
-        body: object,
+        alias: str,
+        can_be_seen_on_views: List[str],
+        category: str,
+        description: str,
+        is_active: bool,
+        name: str,
+        type: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -273,7 +332,18 @@ class AsyncTransactionRequestsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/attribute-definitions/account",
-            body=await async_maybe_transform(body, transaction_request_delete_params.TransactionRequestDeleteParams),
+            body=await async_maybe_transform(
+                {
+                    "alias": alias,
+                    "can_be_seen_on_views": can_be_seen_on_views,
+                    "category": category,
+                    "description": description,
+                    "is_active": is_active,
+                    "name": name,
+                    "type": type,
+                },
+                transaction_request_delete_params.TransactionRequestDeleteParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

@@ -54,7 +54,7 @@ class TagsResource(SyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        body: object,
+        value: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -85,7 +85,7 @@ class TagsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/transactions/{transaction_id}/metadata/tags",
-            body=maybe_transform(body, tag_create_params.TagCreateParams),
+            body=maybe_transform({"value": value}, tag_create_params.TagCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -143,7 +143,7 @@ class TagsResource(SyncAPIResource):
         account_id: str,
         view_id: str,
         transaction_id: str,
-        body: object,
+        json_string: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -176,7 +176,7 @@ class TagsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/transactions/{transaction_id}/metadata/tags/{tag_id}",
-            body=maybe_transform(body, tag_delete_params.TagDeleteParams),
+            body=maybe_transform({"json_string": json_string}, tag_delete_params.TagDeleteParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -211,7 +211,7 @@ class AsyncTagsResource(AsyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        body: object,
+        value: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -242,7 +242,7 @@ class AsyncTagsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/transactions/{transaction_id}/metadata/tags",
-            body=await async_maybe_transform(body, tag_create_params.TagCreateParams),
+            body=await async_maybe_transform({"value": value}, tag_create_params.TagCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -300,7 +300,7 @@ class AsyncTagsResource(AsyncAPIResource):
         account_id: str,
         view_id: str,
         transaction_id: str,
-        body: object,
+        json_string: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -333,7 +333,7 @@ class AsyncTagsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/transactions/{transaction_id}/metadata/tags/{tag_id}",
-            body=await async_maybe_transform(body, tag_delete_params.TagDeleteParams),
+            body=await async_maybe_transform({"json_string": json_string}, tag_delete_params.TagDeleteParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

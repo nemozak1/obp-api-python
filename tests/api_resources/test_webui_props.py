@@ -30,7 +30,24 @@ class TestWebuiProps:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         webui_prop = client.webui_props.create(
-            body={},
+            name="webui_api_explorer_url",
+            value="https://apiexplorer.openbankproject.com",
+        )
+        assert webui_prop.is_closed
+        assert webui_prop.json() == {"foo": "bar"}
+        assert cast(Any, webui_prop.is_closed) is True
+        assert isinstance(webui_prop, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_create_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.post("/obp/v5.1.0/management/webui_props").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        webui_prop = client.webui_props.create(
+            name="webui_api_explorer_url",
+            value="https://apiexplorer.openbankproject.com",
+            web_ui_props_id="web_ui_props_id",
         )
         assert webui_prop.is_closed
         assert webui_prop.json() == {"foo": "bar"}
@@ -45,7 +62,8 @@ class TestWebuiProps:
         )
 
         webui_prop = client.webui_props.with_raw_response.create(
-            body={},
+            name="webui_api_explorer_url",
+            value="https://apiexplorer.openbankproject.com",
         )
 
         assert webui_prop.is_closed is True
@@ -60,7 +78,8 @@ class TestWebuiProps:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.webui_props.with_streaming_response.create(
-            body={},
+            name="webui_api_explorer_url",
+            value="https://apiexplorer.openbankproject.com",
         ) as webui_prop:
             assert not webui_prop.is_closed
             assert webui_prop.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -156,7 +175,24 @@ class TestAsyncWebuiProps:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         webui_prop = await async_client.webui_props.create(
-            body={},
+            name="webui_api_explorer_url",
+            value="https://apiexplorer.openbankproject.com",
+        )
+        assert webui_prop.is_closed
+        assert await webui_prop.json() == {"foo": "bar"}
+        assert cast(Any, webui_prop.is_closed) is True
+        assert isinstance(webui_prop, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_create_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.post("/obp/v5.1.0/management/webui_props").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        webui_prop = await async_client.webui_props.create(
+            name="webui_api_explorer_url",
+            value="https://apiexplorer.openbankproject.com",
+            web_ui_props_id="web_ui_props_id",
         )
         assert webui_prop.is_closed
         assert await webui_prop.json() == {"foo": "bar"}
@@ -171,7 +207,8 @@ class TestAsyncWebuiProps:
         )
 
         webui_prop = await async_client.webui_props.with_raw_response.create(
-            body={},
+            name="webui_api_explorer_url",
+            value="https://apiexplorer.openbankproject.com",
         )
 
         assert webui_prop.is_closed is True
@@ -186,7 +223,8 @@ class TestAsyncWebuiProps:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.webui_props.with_streaming_response.create(
-            body={},
+            name="webui_api_explorer_url",
+            value="https://apiexplorer.openbankproject.com",
         ) as webui_prop:
             assert not webui_prop.is_closed
             assert webui_prop.http_request.headers.get("X-Stainless-Lang") == "python"

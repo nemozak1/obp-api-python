@@ -125,7 +125,12 @@ class ProductsResource(SyncAPIResource):
         product_code: str,
         *,
         bank_id: str,
-        body: object,
+        name: str,
+        parent_product_code: str,
+        description: str | NotGiven = NOT_GIVEN,
+        meta: product_update_params.Meta | NotGiven = NOT_GIVEN,
+        more_info_url: str | NotGiven = NOT_GIVEN,
+        terms_and_conditions_url: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -152,7 +157,17 @@ class ProductsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/products/{product_code}",
-            body=maybe_transform(body, product_update_params.ProductUpdateParams),
+            body=maybe_transform(
+                {
+                    "name": name,
+                    "parent_product_code": parent_product_code,
+                    "description": description,
+                    "meta": meta,
+                    "more_info_url": more_info_url,
+                    "terms_and_conditions_url": terms_and_conditions_url,
+                },
+                product_update_params.ProductUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -268,7 +283,12 @@ class AsyncProductsResource(AsyncAPIResource):
         product_code: str,
         *,
         bank_id: str,
-        body: object,
+        name: str,
+        parent_product_code: str,
+        description: str | NotGiven = NOT_GIVEN,
+        meta: product_update_params.Meta | NotGiven = NOT_GIVEN,
+        more_info_url: str | NotGiven = NOT_GIVEN,
+        terms_and_conditions_url: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -295,7 +315,17 @@ class AsyncProductsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/products/{product_code}",
-            body=await async_maybe_transform(body, product_update_params.ProductUpdateParams),
+            body=await async_maybe_transform(
+                {
+                    "name": name,
+                    "parent_product_code": parent_product_code,
+                    "description": description,
+                    "meta": meta,
+                    "more_info_url": more_info_url,
+                    "terms_and_conditions_url": terms_and_conditions_url,
+                },
+                product_update_params.ProductUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

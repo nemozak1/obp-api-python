@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Iterable
+
 import httpx
 
 from ...._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
@@ -57,7 +59,19 @@ class CounterpartiesResource(SyncAPIResource):
         *,
         bank_id: str,
         account_id: str,
-        body: object,
+        bespoke: Iterable[counterparty_create_params.Bespoke],
+        currency: str,
+        description: str,
+        is_beneficiary: bool,
+        name: str,
+        other_account_routing_address: str,
+        other_account_routing_scheme: str,
+        other_account_secondary_routing_address: str,
+        other_account_secondary_routing_scheme: str,
+        other_bank_routing_address: str,
+        other_bank_routing_scheme: str,
+        other_branch_routing_address: str,
+        other_branch_routing_scheme: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -87,7 +101,24 @@ class CounterpartiesResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/management/banks/{bank_id}/accounts/{account_id}/{view_id}/counterparties",
-            body=maybe_transform(body, counterparty_create_params.CounterpartyCreateParams),
+            body=maybe_transform(
+                {
+                    "bespoke": bespoke,
+                    "currency": currency,
+                    "description": description,
+                    "is_beneficiary": is_beneficiary,
+                    "name": name,
+                    "other_account_routing_address": other_account_routing_address,
+                    "other_account_routing_scheme": other_account_routing_scheme,
+                    "other_account_secondary_routing_address": other_account_secondary_routing_address,
+                    "other_account_secondary_routing_scheme": other_account_secondary_routing_scheme,
+                    "other_bank_routing_address": other_bank_routing_address,
+                    "other_bank_routing_scheme": other_bank_routing_scheme,
+                    "other_branch_routing_address": other_branch_routing_address,
+                    "other_branch_routing_scheme": other_branch_routing_scheme,
+                },
+                counterparty_create_params.CounterpartyCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -247,7 +278,19 @@ class AsyncCounterpartiesResource(AsyncAPIResource):
         *,
         bank_id: str,
         account_id: str,
-        body: object,
+        bespoke: Iterable[counterparty_create_params.Bespoke],
+        currency: str,
+        description: str,
+        is_beneficiary: bool,
+        name: str,
+        other_account_routing_address: str,
+        other_account_routing_scheme: str,
+        other_account_secondary_routing_address: str,
+        other_account_secondary_routing_scheme: str,
+        other_bank_routing_address: str,
+        other_bank_routing_scheme: str,
+        other_branch_routing_address: str,
+        other_branch_routing_scheme: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -277,7 +320,24 @@ class AsyncCounterpartiesResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/management/banks/{bank_id}/accounts/{account_id}/{view_id}/counterparties",
-            body=await async_maybe_transform(body, counterparty_create_params.CounterpartyCreateParams),
+            body=await async_maybe_transform(
+                {
+                    "bespoke": bespoke,
+                    "currency": currency,
+                    "description": description,
+                    "is_beneficiary": is_beneficiary,
+                    "name": name,
+                    "other_account_routing_address": other_account_routing_address,
+                    "other_account_routing_scheme": other_account_routing_scheme,
+                    "other_account_secondary_routing_address": other_account_secondary_routing_address,
+                    "other_account_secondary_routing_scheme": other_account_secondary_routing_scheme,
+                    "other_bank_routing_address": other_bank_routing_address,
+                    "other_bank_routing_scheme": other_bank_routing_scheme,
+                    "other_branch_routing_address": other_branch_routing_address,
+                    "other_branch_routing_scheme": other_branch_routing_scheme,
+                },
+                counterparty_create_params.CounterpartyCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

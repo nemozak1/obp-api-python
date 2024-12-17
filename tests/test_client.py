@@ -686,7 +686,7 @@ class TestObpAPI:
         with pytest.raises(APITimeoutError):
             self.client.post(
                 "/obp/v5.1.0/account/check/scheme/iban",
-                body=cast(object, dict(body={})),
+                body=cast(object, dict(address="DE75512108001245126199")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -701,7 +701,7 @@ class TestObpAPI:
         with pytest.raises(APIStatusError):
             self.client.post(
                 "/obp/v5.1.0/account/check/scheme/iban",
-                body=cast(object, dict(body={})),
+                body=cast(object, dict(address="DE75512108001245126199")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -734,7 +734,7 @@ class TestObpAPI:
 
         respx_mock.post("/obp/v5.1.0/account/check/scheme/iban").mock(side_effect=retry_handler)
 
-        response = client.accounts.with_raw_response.check_iban(body={})
+        response = client.accounts.with_raw_response.check_iban(address="DE75512108001245126199")
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -759,7 +759,7 @@ class TestObpAPI:
         respx_mock.post("/obp/v5.1.0/account/check/scheme/iban").mock(side_effect=retry_handler)
 
         response = client.accounts.with_raw_response.check_iban(
-            body={}, extra_headers={"x-stainless-retry-count": Omit()}
+            address="DE75512108001245126199", extra_headers={"x-stainless-retry-count": Omit()}
         )
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
@@ -784,7 +784,7 @@ class TestObpAPI:
         respx_mock.post("/obp/v5.1.0/account/check/scheme/iban").mock(side_effect=retry_handler)
 
         response = client.accounts.with_raw_response.check_iban(
-            body={}, extra_headers={"x-stainless-retry-count": "42"}
+            address="DE75512108001245126199", extra_headers={"x-stainless-retry-count": "42"}
         )
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"
@@ -1427,7 +1427,7 @@ class TestAsyncObpAPI:
         with pytest.raises(APITimeoutError):
             await self.client.post(
                 "/obp/v5.1.0/account/check/scheme/iban",
-                body=cast(object, dict(body={})),
+                body=cast(object, dict(address="DE75512108001245126199")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1442,7 +1442,7 @@ class TestAsyncObpAPI:
         with pytest.raises(APIStatusError):
             await self.client.post(
                 "/obp/v5.1.0/account/check/scheme/iban",
-                body=cast(object, dict(body={})),
+                body=cast(object, dict(address="DE75512108001245126199")),
                 cast_to=httpx.Response,
                 options={"headers": {RAW_RESPONSE_HEADER: "stream"}},
             )
@@ -1476,7 +1476,7 @@ class TestAsyncObpAPI:
 
         respx_mock.post("/obp/v5.1.0/account/check/scheme/iban").mock(side_effect=retry_handler)
 
-        response = await client.accounts.with_raw_response.check_iban(body={})
+        response = await client.accounts.with_raw_response.check_iban(address="DE75512108001245126199")
 
         assert response.retries_taken == failures_before_success
         assert int(response.http_request.headers.get("x-stainless-retry-count")) == failures_before_success
@@ -1502,7 +1502,7 @@ class TestAsyncObpAPI:
         respx_mock.post("/obp/v5.1.0/account/check/scheme/iban").mock(side_effect=retry_handler)
 
         response = await client.accounts.with_raw_response.check_iban(
-            body={}, extra_headers={"x-stainless-retry-count": Omit()}
+            address="DE75512108001245126199", extra_headers={"x-stainless-retry-count": Omit()}
         )
 
         assert len(response.http_request.headers.get_list("x-stainless-retry-count")) == 0
@@ -1528,7 +1528,7 @@ class TestAsyncObpAPI:
         respx_mock.post("/obp/v5.1.0/account/check/scheme/iban").mock(side_effect=retry_handler)
 
         response = await client.accounts.with_raw_response.check_iban(
-            body={}, extra_headers={"x-stainless-retry-count": "42"}
+            address="DE75512108001245126199", extra_headers={"x-stainless-retry-count": "42"}
         )
 
         assert response.http_request.headers.get("x-stainless-retry-count") == "42"

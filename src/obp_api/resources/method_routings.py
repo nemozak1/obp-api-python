@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Iterable
+
 import httpx
 
 from ..types import method_routing_create_params, method_routing_update_params
@@ -54,7 +56,12 @@ class MethodRoutingsResource(SyncAPIResource):
     def create(
         self,
         *,
-        body: object,
+        connector_name: str,
+        is_bank_id_exact_match: bool,
+        method_name: str,
+        parameters: Iterable[method_routing_create_params.Parameter],
+        bank_id_pattern: str | NotGiven = NOT_GIVEN,
+        method_routing_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -77,7 +84,17 @@ class MethodRoutingsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/obp/v5.1.0/management/method_routings",
-            body=maybe_transform(body, method_routing_create_params.MethodRoutingCreateParams),
+            body=maybe_transform(
+                {
+                    "connector_name": connector_name,
+                    "is_bank_id_exact_match": is_bank_id_exact_match,
+                    "method_name": method_name,
+                    "parameters": parameters,
+                    "bank_id_pattern": bank_id_pattern,
+                    "method_routing_id": method_routing_id,
+                },
+                method_routing_create_params.MethodRoutingCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -86,9 +103,14 @@ class MethodRoutingsResource(SyncAPIResource):
 
     def update(
         self,
-        method_routing_id: str,
         *,
-        body: object,
+        path_method_routing_id: str,
+        connector_name: str,
+        is_bank_id_exact_match: bool,
+        method_name: str,
+        parameters: Iterable[method_routing_update_params.Parameter],
+        bank_id_pattern: str | NotGiven = NOT_GIVEN,
+        body_method_routing_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -108,12 +130,24 @@ class MethodRoutingsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not method_routing_id:
-            raise ValueError(f"Expected a non-empty value for `method_routing_id` but received {method_routing_id!r}")
+        if not path_method_routing_id:
+            raise ValueError(
+                f"Expected a non-empty value for `path_method_routing_id` but received {path_method_routing_id!r}"
+            )
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
-            f"/obp/v5.1.0/management/method_routings/{method_routing_id}",
-            body=maybe_transform(body, method_routing_update_params.MethodRoutingUpdateParams),
+            f"/obp/v5.1.0/management/method_routings/{path_method_routing_id}",
+            body=maybe_transform(
+                {
+                    "connector_name": connector_name,
+                    "is_bank_id_exact_match": is_bank_id_exact_match,
+                    "method_name": method_name,
+                    "parameters": parameters,
+                    "bank_id_pattern": bank_id_pattern,
+                    "body_method_routing_id": body_method_routing_id,
+                },
+                method_routing_update_params.MethodRoutingUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -200,7 +234,12 @@ class AsyncMethodRoutingsResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        body: object,
+        connector_name: str,
+        is_bank_id_exact_match: bool,
+        method_name: str,
+        parameters: Iterable[method_routing_create_params.Parameter],
+        bank_id_pattern: str | NotGiven = NOT_GIVEN,
+        method_routing_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -223,7 +262,17 @@ class AsyncMethodRoutingsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/obp/v5.1.0/management/method_routings",
-            body=await async_maybe_transform(body, method_routing_create_params.MethodRoutingCreateParams),
+            body=await async_maybe_transform(
+                {
+                    "connector_name": connector_name,
+                    "is_bank_id_exact_match": is_bank_id_exact_match,
+                    "method_name": method_name,
+                    "parameters": parameters,
+                    "bank_id_pattern": bank_id_pattern,
+                    "method_routing_id": method_routing_id,
+                },
+                method_routing_create_params.MethodRoutingCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -232,9 +281,14 @@ class AsyncMethodRoutingsResource(AsyncAPIResource):
 
     async def update(
         self,
-        method_routing_id: str,
         *,
-        body: object,
+        path_method_routing_id: str,
+        connector_name: str,
+        is_bank_id_exact_match: bool,
+        method_name: str,
+        parameters: Iterable[method_routing_update_params.Parameter],
+        bank_id_pattern: str | NotGiven = NOT_GIVEN,
+        body_method_routing_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -254,12 +308,24 @@ class AsyncMethodRoutingsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not method_routing_id:
-            raise ValueError(f"Expected a non-empty value for `method_routing_id` but received {method_routing_id!r}")
+        if not path_method_routing_id:
+            raise ValueError(
+                f"Expected a non-empty value for `path_method_routing_id` but received {path_method_routing_id!r}"
+            )
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
-            f"/obp/v5.1.0/management/method_routings/{method_routing_id}",
-            body=await async_maybe_transform(body, method_routing_update_params.MethodRoutingUpdateParams),
+            f"/obp/v5.1.0/management/method_routings/{path_method_routing_id}",
+            body=await async_maybe_transform(
+                {
+                    "connector_name": connector_name,
+                    "is_bank_id_exact_match": is_bank_id_exact_match,
+                    "method_name": method_name,
+                    "parameters": parameters,
+                    "bank_id_pattern": bank_id_pattern,
+                    "body_method_routing_id": body_method_routing_id,
+                },
+                method_routing_update_params.MethodRoutingUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

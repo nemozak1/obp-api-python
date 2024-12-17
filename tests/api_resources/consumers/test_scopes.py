@@ -31,7 +31,8 @@ class TestScopes:
         )
         scope = client.consumers.scopes.create(
             consumer_id="CONSUMER_ID",
-            body={},
+            bank_id="gh.29.uk",
+            role_name="CanGetEntitlementsForAnyUserAtOneBank",
         )
         assert scope.is_closed
         assert scope.json() == {"foo": "bar"}
@@ -47,7 +48,8 @@ class TestScopes:
 
         scope = client.consumers.scopes.with_raw_response.create(
             consumer_id="CONSUMER_ID",
-            body={},
+            bank_id="gh.29.uk",
+            role_name="CanGetEntitlementsForAnyUserAtOneBank",
         )
 
         assert scope.is_closed is True
@@ -63,7 +65,8 @@ class TestScopes:
         )
         with client.consumers.scopes.with_streaming_response.create(
             consumer_id="CONSUMER_ID",
-            body={},
+            bank_id="gh.29.uk",
+            role_name="CanGetEntitlementsForAnyUserAtOneBank",
         ) as scope:
             assert not scope.is_closed
             assert scope.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -80,7 +83,8 @@ class TestScopes:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `consumer_id` but received ''"):
             client.consumers.scopes.with_raw_response.create(
                 consumer_id="",
-                body={},
+                bank_id="gh.29.uk",
+                role_name="CanGetEntitlementsForAnyUserAtOneBank",
             )
 
     @parametrize
@@ -199,7 +203,8 @@ class TestAsyncScopes:
         )
         scope = await async_client.consumers.scopes.create(
             consumer_id="CONSUMER_ID",
-            body={},
+            bank_id="gh.29.uk",
+            role_name="CanGetEntitlementsForAnyUserAtOneBank",
         )
         assert scope.is_closed
         assert await scope.json() == {"foo": "bar"}
@@ -215,7 +220,8 @@ class TestAsyncScopes:
 
         scope = await async_client.consumers.scopes.with_raw_response.create(
             consumer_id="CONSUMER_ID",
-            body={},
+            bank_id="gh.29.uk",
+            role_name="CanGetEntitlementsForAnyUserAtOneBank",
         )
 
         assert scope.is_closed is True
@@ -231,7 +237,8 @@ class TestAsyncScopes:
         )
         async with async_client.consumers.scopes.with_streaming_response.create(
             consumer_id="CONSUMER_ID",
-            body={},
+            bank_id="gh.29.uk",
+            role_name="CanGetEntitlementsForAnyUserAtOneBank",
         ) as scope:
             assert not scope.is_closed
             assert scope.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -248,7 +255,8 @@ class TestAsyncScopes:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `consumer_id` but received ''"):
             await async_client.consumers.scopes.with_raw_response.create(
                 consumer_id="",
-                body={},
+                bank_id="gh.29.uk",
+                role_name="CanGetEntitlementsForAnyUserAtOneBank",
             )
 
     @parametrize

@@ -32,7 +32,10 @@ class TestCreditLimit:
         credit_limit = client.customers.credit_limit.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            body={},
+            credit_limit={
+                "amount": "100",
+                "currency": "EUR",
+            },
         )
         assert credit_limit.is_closed
         assert credit_limit.json() == {"foo": "bar"}
@@ -49,7 +52,10 @@ class TestCreditLimit:
         credit_limit = client.customers.credit_limit.with_raw_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            body={},
+            credit_limit={
+                "amount": "100",
+                "currency": "EUR",
+            },
         )
 
         assert credit_limit.is_closed is True
@@ -66,7 +72,10 @@ class TestCreditLimit:
         with client.customers.credit_limit.with_streaming_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            body={},
+            credit_limit={
+                "amount": "100",
+                "currency": "EUR",
+            },
         ) as credit_limit:
             assert not credit_limit.is_closed
             assert credit_limit.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -84,14 +93,20 @@ class TestCreditLimit:
             client.customers.credit_limit.with_raw_response.update(
                 customer_id="CUSTOMER_ID",
                 bank_id="",
-                body={},
+                credit_limit={
+                    "amount": "100",
+                    "currency": "EUR",
+                },
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             client.customers.credit_limit.with_raw_response.update(
                 customer_id="",
                 bank_id="BANK_ID",
-                body={},
+                credit_limit={
+                    "amount": "100",
+                    "currency": "EUR",
+                },
             )
 
 
@@ -107,7 +122,10 @@ class TestAsyncCreditLimit:
         credit_limit = await async_client.customers.credit_limit.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            body={},
+            credit_limit={
+                "amount": "100",
+                "currency": "EUR",
+            },
         )
         assert credit_limit.is_closed
         assert await credit_limit.json() == {"foo": "bar"}
@@ -124,7 +142,10 @@ class TestAsyncCreditLimit:
         credit_limit = await async_client.customers.credit_limit.with_raw_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            body={},
+            credit_limit={
+                "amount": "100",
+                "currency": "EUR",
+            },
         )
 
         assert credit_limit.is_closed is True
@@ -141,7 +162,10 @@ class TestAsyncCreditLimit:
         async with async_client.customers.credit_limit.with_streaming_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            body={},
+            credit_limit={
+                "amount": "100",
+                "currency": "EUR",
+            },
         ) as credit_limit:
             assert not credit_limit.is_closed
             assert credit_limit.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -159,12 +183,18 @@ class TestAsyncCreditLimit:
             await async_client.customers.credit_limit.with_raw_response.update(
                 customer_id="CUSTOMER_ID",
                 bank_id="",
-                body={},
+                credit_limit={
+                    "amount": "100",
+                    "currency": "EUR",
+                },
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             await async_client.customers.credit_limit.with_raw_response.update(
                 customer_id="",
                 bank_id="BANK_ID",
-                body={},
+                credit_limit={
+                    "amount": "100",
+                    "currency": "EUR",
+                },
             )

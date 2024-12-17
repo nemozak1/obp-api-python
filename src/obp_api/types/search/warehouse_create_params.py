@@ -4,8 +4,16 @@ from __future__ import annotations
 
 from typing_extensions import Required, TypedDict
 
-__all__ = ["WarehouseCreateParams"]
+__all__ = ["WarehouseCreateParams", "Query", "QueryMatchAll"]
 
 
 class WarehouseCreateParams(TypedDict, total=False):
-    body: Required[object]
+    query: Required[Query]
+
+
+class QueryMatchAll(TypedDict, total=False):
+    none: str
+
+
+class Query(TypedDict, total=False):
+    match_all: Required[QueryMatchAll]

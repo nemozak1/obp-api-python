@@ -32,7 +32,7 @@ class TestSupportedLanguages:
         supported_language = client.banks.atms.supported_languages.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            supported_languages=["string"],
         )
         assert supported_language.is_closed
         assert supported_language.json() == {"foo": "bar"}
@@ -49,7 +49,7 @@ class TestSupportedLanguages:
         supported_language = client.banks.atms.supported_languages.with_raw_response.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            supported_languages=["string"],
         )
 
         assert supported_language.is_closed is True
@@ -66,7 +66,7 @@ class TestSupportedLanguages:
         with client.banks.atms.supported_languages.with_streaming_response.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            supported_languages=["string"],
         ) as supported_language:
             assert not supported_language.is_closed
             assert supported_language.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -84,14 +84,14 @@ class TestSupportedLanguages:
             client.banks.atms.supported_languages.with_raw_response.update(
                 atm_id="ATM_ID",
                 bank_id="",
-                body={},
+                supported_languages=["string"],
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `atm_id` but received ''"):
             client.banks.atms.supported_languages.with_raw_response.update(
                 atm_id="",
                 bank_id="BANK_ID",
-                body={},
+                supported_languages=["string"],
             )
 
 
@@ -107,7 +107,7 @@ class TestAsyncSupportedLanguages:
         supported_language = await async_client.banks.atms.supported_languages.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            supported_languages=["string"],
         )
         assert supported_language.is_closed
         assert await supported_language.json() == {"foo": "bar"}
@@ -124,7 +124,7 @@ class TestAsyncSupportedLanguages:
         supported_language = await async_client.banks.atms.supported_languages.with_raw_response.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            supported_languages=["string"],
         )
 
         assert supported_language.is_closed is True
@@ -141,7 +141,7 @@ class TestAsyncSupportedLanguages:
         async with async_client.banks.atms.supported_languages.with_streaming_response.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            supported_languages=["string"],
         ) as supported_language:
             assert not supported_language.is_closed
             assert supported_language.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -159,12 +159,12 @@ class TestAsyncSupportedLanguages:
             await async_client.banks.atms.supported_languages.with_raw_response.update(
                 atm_id="ATM_ID",
                 bank_id="",
-                body={},
+                supported_languages=["string"],
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `atm_id` but received ''"):
             await async_client.banks.atms.supported_languages.with_raw_response.update(
                 atm_id="",
                 bank_id="BANK_ID",
-                body={},
+                supported_languages=["string"],
             )

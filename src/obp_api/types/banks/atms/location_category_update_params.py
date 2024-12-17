@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import Required, Annotated, TypedDict
 
 from ...._utils import PropertyInfo
@@ -12,4 +13,4 @@ __all__ = ["LocationCategoryUpdateParams"]
 class LocationCategoryUpdateParams(TypedDict, total=False):
     bank_id: Required[Annotated[str, PropertyInfo(alias="BANK_ID")]]
 
-    body: Required[object]
+    location_categories: Required[List[str]]
