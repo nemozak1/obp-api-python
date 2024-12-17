@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+from typing import Union, Iterable
+from datetime import date
+
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -51,7 +54,11 @@ class MeetingsResource(SyncAPIResource):
         self,
         bank_id: str,
         *,
-        body: object,
+        creator: meeting_create_params.Creator,
+        date: Union[str, date],
+        invitees: Iterable[meeting_create_params.Invitee],
+        provider_id: str,
+        purpose_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -76,7 +83,16 @@ class MeetingsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/meetings",
-            body=maybe_transform(body, meeting_create_params.MeetingCreateParams),
+            body=maybe_transform(
+                {
+                    "creator": creator,
+                    "date": date,
+                    "invitees": invitees,
+                    "provider_id": provider_id,
+                    "purpose_id": purpose_id,
+                },
+                meeting_create_params.MeetingCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -179,7 +195,11 @@ class AsyncMeetingsResource(AsyncAPIResource):
         self,
         bank_id: str,
         *,
-        body: object,
+        creator: meeting_create_params.Creator,
+        date: Union[str, date],
+        invitees: Iterable[meeting_create_params.Invitee],
+        provider_id: str,
+        purpose_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -204,7 +224,16 @@ class AsyncMeetingsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/meetings",
-            body=await async_maybe_transform(body, meeting_create_params.MeetingCreateParams),
+            body=await async_maybe_transform(
+                {
+                    "creator": creator,
+                    "date": date,
+                    "invitees": invitees,
+                    "provider_id": provider_id,
+                    "purpose_id": purpose_id,
+                },
+                meeting_create_params.MeetingCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

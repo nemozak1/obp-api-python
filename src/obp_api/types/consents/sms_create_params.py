@@ -2,10 +2,40 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+from typing import Union, Iterable
+from datetime import date
+from typing_extensions import Required, Annotated, TypedDict
 
-__all__ = ["SMSCreateParams"]
+from ..._utils import PropertyInfo
+
+__all__ = ["SMSCreateParams", "Entitlement", "View"]
 
 
 class SMSCreateParams(TypedDict, total=False):
-    body: Required[object]
+    entitlements: Required[Iterable[Entitlement]]
+
+    everything: Required[bool]
+
+    phone_number: Required[str]
+
+    views: Required[Iterable[View]]
+
+    consumer_id: str
+
+    time_to_live: int
+
+    valid_from: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
+
+
+class Entitlement(TypedDict, total=False):
+    bank_id: Required[str]
+
+    role_name: Required[str]
+
+
+class View(TypedDict, total=False):
+    account_id: Required[str]
+
+    bank_id: Required[str]
+
+    view_id: Required[str]

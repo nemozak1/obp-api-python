@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import List
+
 import httpx
 
 from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -52,7 +54,7 @@ class AccessibilityFeaturesResource(SyncAPIResource):
         atm_id: str,
         *,
         bank_id: str,
-        body: object,
+        accessibility_features: List[str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -79,7 +81,10 @@ class AccessibilityFeaturesResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/atms/{atm_id}/accessibility-features",
-            body=maybe_transform(body, accessibility_feature_update_params.AccessibilityFeatureUpdateParams),
+            body=maybe_transform(
+                {"accessibility_features": accessibility_features},
+                accessibility_feature_update_params.AccessibilityFeatureUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -112,7 +117,7 @@ class AsyncAccessibilityFeaturesResource(AsyncAPIResource):
         atm_id: str,
         *,
         bank_id: str,
-        body: object,
+        accessibility_features: List[str],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -140,7 +145,8 @@ class AsyncAccessibilityFeaturesResource(AsyncAPIResource):
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/atms/{atm_id}/accessibility-features",
             body=await async_maybe_transform(
-                body, accessibility_feature_update_params.AccessibilityFeatureUpdateParams
+                {"accessibility_features": accessibility_features},
+                accessibility_feature_update_params.AccessibilityFeatureUpdateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout

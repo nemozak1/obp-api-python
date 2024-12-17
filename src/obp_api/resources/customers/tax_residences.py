@@ -56,7 +56,8 @@ class TaxResidencesResource(SyncAPIResource):
         customer_id: str,
         *,
         bank_id: str,
-        body: object,
+        domain: str,
+        tax_number: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -83,7 +84,13 @@ class TaxResidencesResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/tax-residence",
-            body=maybe_transform(body, tax_residence_create_params.TaxResidenceCreateParams),
+            body=maybe_transform(
+                {
+                    "domain": domain,
+                    "tax_number": tax_number,
+                },
+                tax_residence_create_params.TaxResidenceCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -193,7 +200,8 @@ class AsyncTaxResidencesResource(AsyncAPIResource):
         customer_id: str,
         *,
         bank_id: str,
-        body: object,
+        domain: str,
+        tax_number: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -220,7 +228,13 @@ class AsyncTaxResidencesResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/tax-residence",
-            body=await async_maybe_transform(body, tax_residence_create_params.TaxResidenceCreateParams),
+            body=await async_maybe_transform(
+                {
+                    "domain": domain,
+                    "tax_number": tax_number,
+                },
+                tax_residence_create_params.TaxResidenceCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

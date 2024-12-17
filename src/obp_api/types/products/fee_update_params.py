@@ -6,10 +6,28 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["FeeUpdateParams"]
+__all__ = ["FeeUpdateParams", "Value"]
 
 
 class FeeUpdateParams(TypedDict, total=False):
     bank_id: Required[Annotated[str, PropertyInfo(alias="BANK_ID")]]
 
-    body: Required[object]
+    is_active: Required[bool]
+
+    more_info: Required[str]
+
+    name: Required[str]
+
+    value: Required[Value]
+
+    product_fee_id: str
+
+
+class Value(TypedDict, total=False):
+    amount: Required[str]
+
+    currency: Required[str]
+
+    frequency: Required[str]
+
+    type: Required[str]

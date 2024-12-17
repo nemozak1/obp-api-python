@@ -10,6 +10,7 @@ import pytest
 from respx import MockRouter
 
 from obp_api import ObpAPI, AsyncObpAPI
+from obp_api._utils import parse_date
 from obp_api._response import (
     BinaryAPIResponse,
     AsyncBinaryAPIResponse,
@@ -33,7 +34,13 @@ class TestKYCChecks:
             kyc_check_id="KYC_CHECK_ID",
             bank_id="BANK_ID",
             customer_id="CUSTOMER_ID",
-            body={},
+            comments="String",
+            customer_number="5987953",
+            date=parse_date("2019-12-27"),
+            how="online_meeting",
+            satisfied=True,
+            staff_name="Simon",
+            staff_user_id="67876",
         )
         assert kyc_check.is_closed
         assert kyc_check.json() == {"foo": "bar"}
@@ -51,7 +58,13 @@ class TestKYCChecks:
             kyc_check_id="KYC_CHECK_ID",
             bank_id="BANK_ID",
             customer_id="CUSTOMER_ID",
-            body={},
+            comments="String",
+            customer_number="5987953",
+            date=parse_date("2019-12-27"),
+            how="online_meeting",
+            satisfied=True,
+            staff_name="Simon",
+            staff_user_id="67876",
         )
 
         assert kyc_check.is_closed is True
@@ -69,7 +82,13 @@ class TestKYCChecks:
             kyc_check_id="KYC_CHECK_ID",
             bank_id="BANK_ID",
             customer_id="CUSTOMER_ID",
-            body={},
+            comments="String",
+            customer_number="5987953",
+            date=parse_date("2019-12-27"),
+            how="online_meeting",
+            satisfied=True,
+            staff_name="Simon",
+            staff_user_id="67876",
         ) as kyc_check:
             assert not kyc_check.is_closed
             assert kyc_check.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -88,7 +107,13 @@ class TestKYCChecks:
                 kyc_check_id="KYC_CHECK_ID",
                 bank_id="",
                 customer_id="CUSTOMER_ID",
-                body={},
+                comments="String",
+                customer_number="5987953",
+                date=parse_date("2019-12-27"),
+                how="online_meeting",
+                satisfied=True,
+                staff_name="Simon",
+                staff_user_id="67876",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
@@ -96,7 +121,13 @@ class TestKYCChecks:
                 kyc_check_id="KYC_CHECK_ID",
                 bank_id="BANK_ID",
                 customer_id="",
-                body={},
+                comments="String",
+                customer_number="5987953",
+                date=parse_date("2019-12-27"),
+                how="online_meeting",
+                satisfied=True,
+                staff_name="Simon",
+                staff_user_id="67876",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `kyc_check_id` but received ''"):
@@ -104,7 +135,13 @@ class TestKYCChecks:
                 kyc_check_id="",
                 bank_id="BANK_ID",
                 customer_id="CUSTOMER_ID",
-                body={},
+                comments="String",
+                customer_number="5987953",
+                date=parse_date("2019-12-27"),
+                how="online_meeting",
+                satisfied=True,
+                staff_name="Simon",
+                staff_user_id="67876",
             )
 
     @parametrize
@@ -177,7 +214,13 @@ class TestAsyncKYCChecks:
             kyc_check_id="KYC_CHECK_ID",
             bank_id="BANK_ID",
             customer_id="CUSTOMER_ID",
-            body={},
+            comments="String",
+            customer_number="5987953",
+            date=parse_date("2019-12-27"),
+            how="online_meeting",
+            satisfied=True,
+            staff_name="Simon",
+            staff_user_id="67876",
         )
         assert kyc_check.is_closed
         assert await kyc_check.json() == {"foo": "bar"}
@@ -195,7 +238,13 @@ class TestAsyncKYCChecks:
             kyc_check_id="KYC_CHECK_ID",
             bank_id="BANK_ID",
             customer_id="CUSTOMER_ID",
-            body={},
+            comments="String",
+            customer_number="5987953",
+            date=parse_date("2019-12-27"),
+            how="online_meeting",
+            satisfied=True,
+            staff_name="Simon",
+            staff_user_id="67876",
         )
 
         assert kyc_check.is_closed is True
@@ -213,7 +262,13 @@ class TestAsyncKYCChecks:
             kyc_check_id="KYC_CHECK_ID",
             bank_id="BANK_ID",
             customer_id="CUSTOMER_ID",
-            body={},
+            comments="String",
+            customer_number="5987953",
+            date=parse_date("2019-12-27"),
+            how="online_meeting",
+            satisfied=True,
+            staff_name="Simon",
+            staff_user_id="67876",
         ) as kyc_check:
             assert not kyc_check.is_closed
             assert kyc_check.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -232,7 +287,13 @@ class TestAsyncKYCChecks:
                 kyc_check_id="KYC_CHECK_ID",
                 bank_id="",
                 customer_id="CUSTOMER_ID",
-                body={},
+                comments="String",
+                customer_number="5987953",
+                date=parse_date("2019-12-27"),
+                how="online_meeting",
+                satisfied=True,
+                staff_name="Simon",
+                staff_user_id="67876",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
@@ -240,7 +301,13 @@ class TestAsyncKYCChecks:
                 kyc_check_id="KYC_CHECK_ID",
                 bank_id="BANK_ID",
                 customer_id="",
-                body={},
+                comments="String",
+                customer_number="5987953",
+                date=parse_date("2019-12-27"),
+                how="online_meeting",
+                satisfied=True,
+                staff_name="Simon",
+                staff_user_id="67876",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `kyc_check_id` but received ''"):
@@ -248,7 +315,13 @@ class TestAsyncKYCChecks:
                 kyc_check_id="",
                 bank_id="BANK_ID",
                 customer_id="CUSTOMER_ID",
-                body={},
+                comments="String",
+                customer_number="5987953",
+                date=parse_date("2019-12-27"),
+                how="online_meeting",
+                satisfied=True,
+                staff_name="Simon",
+                staff_user_id="67876",
             )
 
     @parametrize

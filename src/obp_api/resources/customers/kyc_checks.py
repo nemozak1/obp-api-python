@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+from typing import Union
+from datetime import date
+
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -53,7 +56,13 @@ class KYCChecksResource(SyncAPIResource):
         *,
         bank_id: str,
         customer_id: str,
-        body: object,
+        comments: str,
+        customer_number: str,
+        date: Union[str, date],
+        how: str,
+        satisfied: bool,
+        staff_name: str,
+        staff_user_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -83,7 +92,18 @@ class KYCChecksResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/kyc_check/{kyc_check_id}",
-            body=maybe_transform(body, kyc_check_update_params.KYCCheckUpdateParams),
+            body=maybe_transform(
+                {
+                    "comments": comments,
+                    "customer_number": customer_number,
+                    "date": date,
+                    "how": how,
+                    "satisfied": satisfied,
+                    "staff_name": staff_name,
+                    "staff_user_id": staff_user_id,
+                },
+                kyc_check_update_params.KYCCheckUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -151,7 +171,13 @@ class AsyncKYCChecksResource(AsyncAPIResource):
         *,
         bank_id: str,
         customer_id: str,
-        body: object,
+        comments: str,
+        customer_number: str,
+        date: Union[str, date],
+        how: str,
+        satisfied: bool,
+        staff_name: str,
+        staff_user_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -181,7 +207,18 @@ class AsyncKYCChecksResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/kyc_check/{kyc_check_id}",
-            body=await async_maybe_transform(body, kyc_check_update_params.KYCCheckUpdateParams),
+            body=await async_maybe_transform(
+                {
+                    "comments": comments,
+                    "customer_number": customer_number,
+                    "date": date,
+                    "how": how,
+                    "satisfied": satisfied,
+                    "staff_name": staff_name,
+                    "staff_user_id": staff_user_id,
+                },
+                kyc_check_update_params.KYCCheckUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

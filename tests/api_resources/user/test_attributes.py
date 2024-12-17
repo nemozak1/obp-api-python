@@ -28,7 +28,9 @@ class TestAttributes:
     def test_method_create(self, client: ObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/my/user/attributes").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         attribute = client.user.attributes.create(
-            body={},
+            name="BATTERY_LEVEL",
+            type="STRING",
+            value="90",
         )
         assert attribute.is_closed
         assert attribute.json() == {"foo": "bar"}
@@ -41,7 +43,9 @@ class TestAttributes:
         respx_mock.post("/obp/v5.1.0/my/user/attributes").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         attribute = client.user.attributes.with_raw_response.create(
-            body={},
+            name="BATTERY_LEVEL",
+            type="STRING",
+            value="90",
         )
 
         assert attribute.is_closed is True
@@ -54,7 +58,9 @@ class TestAttributes:
     def test_streaming_response_create(self, client: ObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/my/user/attributes").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.user.attributes.with_streaming_response.create(
-            body={},
+            name="BATTERY_LEVEL",
+            type="STRING",
+            value="90",
         ) as attribute:
             assert not attribute.is_closed
             assert attribute.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -72,7 +78,9 @@ class TestAttributes:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         attribute = client.user.attributes.update(
-            body={},
+            name="BATTERY_LEVEL",
+            type="STRING",
+            value="90",
         )
         assert attribute.is_closed
         assert attribute.json() == {"foo": "bar"}
@@ -87,7 +95,9 @@ class TestAttributes:
         )
 
         attribute = client.user.attributes.with_raw_response.update(
-            body={},
+            name="BATTERY_LEVEL",
+            type="STRING",
+            value="90",
         )
 
         assert attribute.is_closed is True
@@ -102,7 +112,9 @@ class TestAttributes:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.user.attributes.with_streaming_response.update(
-            body={},
+            name="BATTERY_LEVEL",
+            type="STRING",
+            value="90",
         ) as attribute:
             assert not attribute.is_closed
             assert attribute.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -158,7 +170,9 @@ class TestAsyncAttributes:
     async def test_method_create(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/my/user/attributes").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         attribute = await async_client.user.attributes.create(
-            body={},
+            name="BATTERY_LEVEL",
+            type="STRING",
+            value="90",
         )
         assert attribute.is_closed
         assert await attribute.json() == {"foo": "bar"}
@@ -171,7 +185,9 @@ class TestAsyncAttributes:
         respx_mock.post("/obp/v5.1.0/my/user/attributes").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         attribute = await async_client.user.attributes.with_raw_response.create(
-            body={},
+            name="BATTERY_LEVEL",
+            type="STRING",
+            value="90",
         )
 
         assert attribute.is_closed is True
@@ -184,7 +200,9 @@ class TestAsyncAttributes:
     async def test_streaming_response_create(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/my/user/attributes").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.user.attributes.with_streaming_response.create(
-            body={},
+            name="BATTERY_LEVEL",
+            type="STRING",
+            value="90",
         ) as attribute:
             assert not attribute.is_closed
             assert attribute.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -202,7 +220,9 @@ class TestAsyncAttributes:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         attribute = await async_client.user.attributes.update(
-            body={},
+            name="BATTERY_LEVEL",
+            type="STRING",
+            value="90",
         )
         assert attribute.is_closed
         assert await attribute.json() == {"foo": "bar"}
@@ -217,7 +237,9 @@ class TestAsyncAttributes:
         )
 
         attribute = await async_client.user.attributes.with_raw_response.update(
-            body={},
+            name="BATTERY_LEVEL",
+            type="STRING",
+            value="90",
         )
 
         assert attribute.is_closed is True
@@ -232,7 +254,9 @@ class TestAsyncAttributes:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.user.attributes.with_streaming_response.update(
-            body={},
+            name="BATTERY_LEVEL",
+            type="STRING",
+            value="90",
         ) as attribute:
             assert not attribute.is_closed
             assert attribute.http_request.headers.get("X-Stainless-Lang") == "python"

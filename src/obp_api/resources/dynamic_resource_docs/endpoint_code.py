@@ -50,7 +50,10 @@ class EndpointCodeResource(SyncAPIResource):
     def create(
         self,
         *,
-        body: object,
+        request_url: str,
+        request_verb: str,
+        example_request_body: endpoint_code_create_params.ExampleRequestBody | NotGiven = NOT_GIVEN,
+        success_response_body: endpoint_code_create_params.SuccessResponseBody | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -73,7 +76,15 @@ class EndpointCodeResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/obp/v5.1.0/management/dynamic-resource-docs/endpoint-code",
-            body=maybe_transform(body, endpoint_code_create_params.EndpointCodeCreateParams),
+            body=maybe_transform(
+                {
+                    "request_url": request_url,
+                    "request_verb": request_verb,
+                    "example_request_body": example_request_body,
+                    "success_response_body": success_response_body,
+                },
+                endpoint_code_create_params.EndpointCodeCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -104,7 +115,10 @@ class AsyncEndpointCodeResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        body: object,
+        request_url: str,
+        request_verb: str,
+        example_request_body: endpoint_code_create_params.ExampleRequestBody | NotGiven = NOT_GIVEN,
+        success_response_body: endpoint_code_create_params.SuccessResponseBody | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -127,7 +141,15 @@ class AsyncEndpointCodeResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/obp/v5.1.0/management/dynamic-resource-docs/endpoint-code",
-            body=await async_maybe_transform(body, endpoint_code_create_params.EndpointCodeCreateParams),
+            body=await async_maybe_transform(
+                {
+                    "request_url": request_url,
+                    "request_verb": request_verb,
+                    "example_request_body": example_request_body,
+                    "success_response_body": success_response_body,
+                },
+                endpoint_code_create_params.EndpointCodeCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

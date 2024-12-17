@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+from typing import Union, Iterable
+from datetime import date
+
 import httpx
 
 from .sms.sms import (
@@ -98,7 +101,15 @@ class ConsentRequestsResource(SyncAPIResource):
     def create(
         self,
         *,
-        body: object,
+        account_access: Iterable[consent_request_create_params.AccountAccess],
+        everything: bool,
+        bank_id: str | NotGiven = NOT_GIVEN,
+        consumer_id: str | NotGiven = NOT_GIVEN,
+        email: str | NotGiven = NOT_GIVEN,
+        entitlements: Iterable[consent_request_create_params.Entitlement] | NotGiven = NOT_GIVEN,
+        phone_number: str | NotGiven = NOT_GIVEN,
+        time_to_live: int | NotGiven = NOT_GIVEN,
+        valid_from: Union[str, date] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -121,7 +132,20 @@ class ConsentRequestsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/obp/v5.1.0/consumer/consent-requests",
-            body=maybe_transform(body, consent_request_create_params.ConsentRequestCreateParams),
+            body=maybe_transform(
+                {
+                    "account_access": account_access,
+                    "everything": everything,
+                    "bank_id": bank_id,
+                    "consumer_id": consumer_id,
+                    "email": email,
+                    "entitlements": entitlements,
+                    "phone_number": phone_number,
+                    "time_to_live": time_to_live,
+                    "valid_from": valid_from,
+                },
+                consent_request_create_params.ConsentRequestCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -188,7 +212,15 @@ class AsyncConsentRequestsResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        body: object,
+        account_access: Iterable[consent_request_create_params.AccountAccess],
+        everything: bool,
+        bank_id: str | NotGiven = NOT_GIVEN,
+        consumer_id: str | NotGiven = NOT_GIVEN,
+        email: str | NotGiven = NOT_GIVEN,
+        entitlements: Iterable[consent_request_create_params.Entitlement] | NotGiven = NOT_GIVEN,
+        phone_number: str | NotGiven = NOT_GIVEN,
+        time_to_live: int | NotGiven = NOT_GIVEN,
+        valid_from: Union[str, date] | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -211,7 +243,20 @@ class AsyncConsentRequestsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/obp/v5.1.0/consumer/consent-requests",
-            body=await async_maybe_transform(body, consent_request_create_params.ConsentRequestCreateParams),
+            body=await async_maybe_transform(
+                {
+                    "account_access": account_access,
+                    "everything": everything,
+                    "bank_id": bank_id,
+                    "consumer_id": consumer_id,
+                    "email": email,
+                    "entitlements": entitlements,
+                    "phone_number": phone_number,
+                    "time_to_live": time_to_live,
+                    "valid_from": valid_from,
+                },
+                consent_request_create_params.ConsentRequestCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

@@ -8,4 +8,4 @@ __all__ = ["TagUpdateParams"]
 
 
 class TagUpdateParams(TypedDict, total=False):
-    body: Required[object]
+    tag_name: Required[str]

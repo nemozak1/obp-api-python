@@ -31,7 +31,7 @@ class TestWarehouse:
         )
         warehouse = client.search.warehouse.create(
             index="INDEX",
-            body={},
+            query={"match_all": {}},
         )
         assert warehouse.is_closed
         assert warehouse.json() == {"foo": "bar"}
@@ -47,7 +47,7 @@ class TestWarehouse:
 
         warehouse = client.search.warehouse.with_raw_response.create(
             index="INDEX",
-            body={},
+            query={"match_all": {}},
         )
 
         assert warehouse.is_closed is True
@@ -63,7 +63,7 @@ class TestWarehouse:
         )
         with client.search.warehouse.with_streaming_response.create(
             index="INDEX",
-            body={},
+            query={"match_all": {}},
         ) as warehouse:
             assert not warehouse.is_closed
             assert warehouse.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -80,7 +80,7 @@ class TestWarehouse:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `index` but received ''"):
             client.search.warehouse.with_raw_response.create(
                 index="",
-                body={},
+                query={"match_all": {}},
             )
 
 
@@ -95,7 +95,7 @@ class TestAsyncWarehouse:
         )
         warehouse = await async_client.search.warehouse.create(
             index="INDEX",
-            body={},
+            query={"match_all": {}},
         )
         assert warehouse.is_closed
         assert await warehouse.json() == {"foo": "bar"}
@@ -111,7 +111,7 @@ class TestAsyncWarehouse:
 
         warehouse = await async_client.search.warehouse.with_raw_response.create(
             index="INDEX",
-            body={},
+            query={"match_all": {}},
         )
 
         assert warehouse.is_closed is True
@@ -127,7 +127,7 @@ class TestAsyncWarehouse:
         )
         async with async_client.search.warehouse.with_streaming_response.create(
             index="INDEX",
-            body={},
+            query={"match_all": {}},
         ) as warehouse:
             assert not warehouse.is_closed
             assert warehouse.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -144,5 +144,5 @@ class TestAsyncWarehouse:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `index` but received ''"):
             await async_client.search.warehouse.with_raw_response.create(
                 index="",
-                body={},
+                query={"match_all": {}},
             )

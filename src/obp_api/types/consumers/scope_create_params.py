@@ -8,4 +8,6 @@ __all__ = ["ScopeCreateParams"]
 
 
 class ScopeCreateParams(TypedDict, total=False):
-    body: Required[object]
+    bank_id: Required[str]
+
+    role_name: Required[str]

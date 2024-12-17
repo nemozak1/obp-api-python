@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
@@ -14,4 +15,22 @@ class AddressUpdateParams(TypedDict, total=False):
 
     customer_id: Required[Annotated[str, PropertyInfo(alias="CUSTOMER_ID")]]
 
-    body: Required[object]
+    city: Required[str]
+
+    country_code: Required[str]
+
+    county: Required[str]
+
+    line_1: Required[str]
+
+    line_2: Required[str]
+
+    line_3: Required[str]
+
+    postcode: Required[str]
+
+    state: Required[str]
+
+    status: Required[str]
+
+    tags: Required[List[str]]

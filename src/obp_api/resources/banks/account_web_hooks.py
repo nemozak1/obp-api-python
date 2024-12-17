@@ -51,7 +51,12 @@ class AccountWebHooksResource(SyncAPIResource):
         self,
         bank_id: str,
         *,
-        body: object,
+        account_id: str,
+        http_method: str,
+        http_protocol: str,
+        is_active: str,
+        trigger_name: str,
+        url: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -76,7 +81,17 @@ class AccountWebHooksResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/account-web-hooks",
-            body=maybe_transform(body, account_web_hook_create_params.AccountWebHookCreateParams),
+            body=maybe_transform(
+                {
+                    "account_id": account_id,
+                    "http_method": http_method,
+                    "http_protocol": http_protocol,
+                    "is_active": is_active,
+                    "trigger_name": trigger_name,
+                    "url": url,
+                },
+                account_web_hook_create_params.AccountWebHookCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -87,7 +102,8 @@ class AccountWebHooksResource(SyncAPIResource):
         self,
         bank_id: str,
         *,
-        body: object,
+        account_webhook_id: str,
+        is_active: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -112,7 +128,13 @@ class AccountWebHooksResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/account-web-hooks",
-            body=maybe_transform(body, account_web_hook_update_params.AccountWebHookUpdateParams),
+            body=maybe_transform(
+                {
+                    "account_webhook_id": account_webhook_id,
+                    "is_active": is_active,
+                },
+                account_web_hook_update_params.AccountWebHookUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -144,7 +166,12 @@ class AsyncAccountWebHooksResource(AsyncAPIResource):
         self,
         bank_id: str,
         *,
-        body: object,
+        account_id: str,
+        http_method: str,
+        http_protocol: str,
+        is_active: str,
+        trigger_name: str,
+        url: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -169,7 +196,17 @@ class AsyncAccountWebHooksResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/account-web-hooks",
-            body=await async_maybe_transform(body, account_web_hook_create_params.AccountWebHookCreateParams),
+            body=await async_maybe_transform(
+                {
+                    "account_id": account_id,
+                    "http_method": http_method,
+                    "http_protocol": http_protocol,
+                    "is_active": is_active,
+                    "trigger_name": trigger_name,
+                    "url": url,
+                },
+                account_web_hook_create_params.AccountWebHookCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -180,7 +217,8 @@ class AsyncAccountWebHooksResource(AsyncAPIResource):
         self,
         bank_id: str,
         *,
-        body: object,
+        account_webhook_id: str,
+        is_active: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -205,7 +243,13 @@ class AsyncAccountWebHooksResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/account-web-hooks",
-            body=await async_maybe_transform(body, account_web_hook_update_params.AccountWebHookUpdateParams),
+            body=await async_maybe_transform(
+                {
+                    "account_webhook_id": account_webhook_id,
+                    "is_active": is_active,
+                },
+                account_web_hook_update_params.AccountWebHookUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

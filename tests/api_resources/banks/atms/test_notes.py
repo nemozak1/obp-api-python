@@ -32,7 +32,7 @@ class TestNotes:
         note = client.banks.atms.notes.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            notes=["string"],
         )
         assert note.is_closed
         assert note.json() == {"foo": "bar"}
@@ -49,7 +49,7 @@ class TestNotes:
         note = client.banks.atms.notes.with_raw_response.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            notes=["string"],
         )
 
         assert note.is_closed is True
@@ -66,7 +66,7 @@ class TestNotes:
         with client.banks.atms.notes.with_streaming_response.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            notes=["string"],
         ) as note:
             assert not note.is_closed
             assert note.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -84,14 +84,14 @@ class TestNotes:
             client.banks.atms.notes.with_raw_response.update(
                 atm_id="ATM_ID",
                 bank_id="",
-                body={},
+                notes=["string"],
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `atm_id` but received ''"):
             client.banks.atms.notes.with_raw_response.update(
                 atm_id="",
                 bank_id="BANK_ID",
-                body={},
+                notes=["string"],
             )
 
 
@@ -107,7 +107,7 @@ class TestAsyncNotes:
         note = await async_client.banks.atms.notes.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            notes=["string"],
         )
         assert note.is_closed
         assert await note.json() == {"foo": "bar"}
@@ -124,7 +124,7 @@ class TestAsyncNotes:
         note = await async_client.banks.atms.notes.with_raw_response.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            notes=["string"],
         )
 
         assert note.is_closed is True
@@ -141,7 +141,7 @@ class TestAsyncNotes:
         async with async_client.banks.atms.notes.with_streaming_response.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            notes=["string"],
         ) as note:
             assert not note.is_closed
             assert note.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -159,12 +159,12 @@ class TestAsyncNotes:
             await async_client.banks.atms.notes.with_raw_response.update(
                 atm_id="ATM_ID",
                 bank_id="",
-                body={},
+                notes=["string"],
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `atm_id` but received ''"):
             await async_client.banks.atms.notes.with_raw_response.update(
                 atm_id="",
                 bank_id="BANK_ID",
-                body={},
+                notes=["string"],
             )

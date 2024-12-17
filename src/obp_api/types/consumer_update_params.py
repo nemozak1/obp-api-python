@@ -8,4 +8,4 @@ __all__ = ["ConsumerUpdateParams"]
 
 
 class ConsumerUpdateParams(TypedDict, total=False):
-    body: Required[object]
+    enabled: Required[bool]

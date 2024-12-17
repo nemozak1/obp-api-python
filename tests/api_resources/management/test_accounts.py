@@ -30,7 +30,28 @@ class TestAccounts:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         account = client.management.accounts.account_routing_query(
-            body={},
+            account_routing={
+                "address": "4930396",
+                "scheme": "AccountNumber",
+            },
+        )
+        assert account.is_closed
+        assert account.json() == {"foo": "bar"}
+        assert cast(Any, account.is_closed) is True
+        assert isinstance(account, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_account_routing_query_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.post("/obp/v5.1.0/management/accounts/account-routing-query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        account = client.management.accounts.account_routing_query(
+            account_routing={
+                "address": "4930396",
+                "scheme": "AccountNumber",
+            },
+            bank_id="gh.29.uk",
         )
         assert account.is_closed
         assert account.json() == {"foo": "bar"}
@@ -45,7 +66,10 @@ class TestAccounts:
         )
 
         account = client.management.accounts.with_raw_response.account_routing_query(
-            body={},
+            account_routing={
+                "address": "4930396",
+                "scheme": "AccountNumber",
+            },
         )
 
         assert account.is_closed is True
@@ -60,7 +84,10 @@ class TestAccounts:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.management.accounts.with_streaming_response.account_routing_query(
-            body={},
+            account_routing={
+                "address": "4930396",
+                "scheme": "AccountNumber",
+            },
         ) as account:
             assert not account.is_closed
             assert account.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -78,7 +105,28 @@ class TestAccounts:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         account = client.management.accounts.account_routing_regex_query(
-            body={},
+            account_routing={
+                "address": "4930396",
+                "scheme": "AccountNumber",
+            },
+        )
+        assert account.is_closed
+        assert account.json() == {"foo": "bar"}
+        assert cast(Any, account.is_closed) is True
+        assert isinstance(account, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_account_routing_regex_query_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.post("/obp/v5.1.0/management/accounts/account-routing-regex-query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        account = client.management.accounts.account_routing_regex_query(
+            account_routing={
+                "address": "4930396",
+                "scheme": "AccountNumber",
+            },
+            bank_id="gh.29.uk",
         )
         assert account.is_closed
         assert account.json() == {"foo": "bar"}
@@ -93,7 +141,10 @@ class TestAccounts:
         )
 
         account = client.management.accounts.with_raw_response.account_routing_regex_query(
-            body={},
+            account_routing={
+                "address": "4930396",
+                "scheme": "AccountNumber",
+            },
         )
 
         assert account.is_closed is True
@@ -108,7 +159,10 @@ class TestAccounts:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.management.accounts.with_streaming_response.account_routing_regex_query(
-            body={},
+            account_routing={
+                "address": "4930396",
+                "scheme": "AccountNumber",
+            },
         ) as account:
             assert not account.is_closed
             assert account.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -130,7 +184,30 @@ class TestAsyncAccounts:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         account = await async_client.management.accounts.account_routing_query(
-            body={},
+            account_routing={
+                "address": "4930396",
+                "scheme": "AccountNumber",
+            },
+        )
+        assert account.is_closed
+        assert await account.json() == {"foo": "bar"}
+        assert cast(Any, account.is_closed) is True
+        assert isinstance(account, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_account_routing_query_with_all_params(
+        self, async_client: AsyncObpAPI, respx_mock: MockRouter
+    ) -> None:
+        respx_mock.post("/obp/v5.1.0/management/accounts/account-routing-query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        account = await async_client.management.accounts.account_routing_query(
+            account_routing={
+                "address": "4930396",
+                "scheme": "AccountNumber",
+            },
+            bank_id="gh.29.uk",
         )
         assert account.is_closed
         assert await account.json() == {"foo": "bar"}
@@ -145,7 +222,10 @@ class TestAsyncAccounts:
         )
 
         account = await async_client.management.accounts.with_raw_response.account_routing_query(
-            body={},
+            account_routing={
+                "address": "4930396",
+                "scheme": "AccountNumber",
+            },
         )
 
         assert account.is_closed is True
@@ -162,7 +242,10 @@ class TestAsyncAccounts:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.management.accounts.with_streaming_response.account_routing_query(
-            body={},
+            account_routing={
+                "address": "4930396",
+                "scheme": "AccountNumber",
+            },
         ) as account:
             assert not account.is_closed
             assert account.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -180,7 +263,30 @@ class TestAsyncAccounts:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         account = await async_client.management.accounts.account_routing_regex_query(
-            body={},
+            account_routing={
+                "address": "4930396",
+                "scheme": "AccountNumber",
+            },
+        )
+        assert account.is_closed
+        assert await account.json() == {"foo": "bar"}
+        assert cast(Any, account.is_closed) is True
+        assert isinstance(account, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_account_routing_regex_query_with_all_params(
+        self, async_client: AsyncObpAPI, respx_mock: MockRouter
+    ) -> None:
+        respx_mock.post("/obp/v5.1.0/management/accounts/account-routing-regex-query").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        account = await async_client.management.accounts.account_routing_regex_query(
+            account_routing={
+                "address": "4930396",
+                "scheme": "AccountNumber",
+            },
+            bank_id="gh.29.uk",
         )
         assert account.is_closed
         assert await account.json() == {"foo": "bar"}
@@ -197,7 +303,10 @@ class TestAsyncAccounts:
         )
 
         account = await async_client.management.accounts.with_raw_response.account_routing_regex_query(
-            body={},
+            account_routing={
+                "address": "4930396",
+                "scheme": "AccountNumber",
+            },
         )
 
         assert account.is_closed is True
@@ -214,7 +323,10 @@ class TestAsyncAccounts:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.management.accounts.with_streaming_response.account_routing_regex_query(
-            body={},
+            account_routing={
+                "address": "4930396",
+                "scheme": "AccountNumber",
+            },
         ) as account:
             assert not account.is_closed
             assert account.http_request.headers.get("X-Stainless-Lang") == "python"

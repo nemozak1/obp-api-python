@@ -33,7 +33,13 @@ class TestTargetViews:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            allowed_permissions=["string"],
+            description="This view is for the owner for the account.",
+            hide_metadata_if_alias_used=False,
+            is_public=False,
+            metadata_view="",
+            name="owner",
+            which_alias_to_use="public",
         )
         assert target_view.is_closed
         assert target_view.json() == {"foo": "bar"}
@@ -51,7 +57,13 @@ class TestTargetViews:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            allowed_permissions=["string"],
+            description="This view is for the owner for the account.",
+            hide_metadata_if_alias_used=False,
+            is_public=False,
+            metadata_view="",
+            name="owner",
+            which_alias_to_use="public",
         )
 
         assert target_view.is_closed is True
@@ -69,7 +81,13 @@ class TestTargetViews:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            allowed_permissions=["string"],
+            description="This view is for the owner for the account.",
+            hide_metadata_if_alias_used=False,
+            is_public=False,
+            metadata_view="",
+            name="owner",
+            which_alias_to_use="public",
         ) as target_view:
             assert not target_view.is_closed
             assert target_view.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -88,7 +106,13 @@ class TestTargetViews:
                 view_id="VIEW_ID",
                 bank_id="",
                 account_id="ACCOUNT_ID",
-                body={},
+                allowed_permissions=["string"],
+                description="This view is for the owner for the account.",
+                hide_metadata_if_alias_used=False,
+                is_public=False,
+                metadata_view="",
+                name="owner",
+                which_alias_to_use="public",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -96,7 +120,13 @@ class TestTargetViews:
                 view_id="VIEW_ID",
                 bank_id="BANK_ID",
                 account_id="",
-                body={},
+                allowed_permissions=["string"],
+                description="This view is for the owner for the account.",
+                hide_metadata_if_alias_used=False,
+                is_public=False,
+                metadata_view="",
+                name="owner",
+                which_alias_to_use="public",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -104,7 +134,13 @@ class TestTargetViews:
                 view_id="",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                body={},
+                allowed_permissions=["string"],
+                description="This view is for the owner for the account.",
+                hide_metadata_if_alias_used=False,
+                is_public=False,
+                metadata_view="",
+                name="owner",
+                which_alias_to_use="public",
             )
 
     @parametrize
@@ -195,7 +231,12 @@ class TestTargetViews:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            allowed_permissions=["string"],
+            description="This view is for the owner for the account.",
+            hide_metadata_if_alias_used=False,
+            is_public=False,
+            metadata_view="",
+            which_alias_to_use="public",
         )
         assert target_view.is_closed
         assert target_view.json() == {"foo": "bar"}
@@ -213,7 +254,12 @@ class TestTargetViews:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            allowed_permissions=["string"],
+            description="This view is for the owner for the account.",
+            hide_metadata_if_alias_used=False,
+            is_public=False,
+            metadata_view="",
+            which_alias_to_use="public",
         )
 
         assert target_view.is_closed is True
@@ -231,7 +277,12 @@ class TestTargetViews:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            allowed_permissions=["string"],
+            description="This view is for the owner for the account.",
+            hide_metadata_if_alias_used=False,
+            is_public=False,
+            metadata_view="",
+            which_alias_to_use="public",
         ) as target_view:
             assert not target_view.is_closed
             assert target_view.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -250,7 +301,12 @@ class TestTargetViews:
                 view_id="VIEW_ID",
                 bank_id="",
                 account_id="ACCOUNT_ID",
-                body={},
+                allowed_permissions=["string"],
+                description="This view is for the owner for the account.",
+                hide_metadata_if_alias_used=False,
+                is_public=False,
+                metadata_view="",
+                which_alias_to_use="public",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -258,7 +314,12 @@ class TestTargetViews:
                 view_id="VIEW_ID",
                 bank_id="BANK_ID",
                 account_id="",
-                body={},
+                allowed_permissions=["string"],
+                description="This view is for the owner for the account.",
+                hide_metadata_if_alias_used=False,
+                is_public=False,
+                metadata_view="",
+                which_alias_to_use="public",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -266,7 +327,12 @@ class TestTargetViews:
                 view_id="",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                body={},
+                allowed_permissions=["string"],
+                description="This view is for the owner for the account.",
+                hide_metadata_if_alias_used=False,
+                is_public=False,
+                metadata_view="",
+                which_alias_to_use="public",
             )
 
     @parametrize
@@ -343,7 +409,13 @@ class TestAsyncTargetViews:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            allowed_permissions=["string"],
+            description="This view is for the owner for the account.",
+            hide_metadata_if_alias_used=False,
+            is_public=False,
+            metadata_view="",
+            name="owner",
+            which_alias_to_use="public",
         )
         assert target_view.is_closed
         assert await target_view.json() == {"foo": "bar"}
@@ -361,7 +433,13 @@ class TestAsyncTargetViews:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            allowed_permissions=["string"],
+            description="This view is for the owner for the account.",
+            hide_metadata_if_alias_used=False,
+            is_public=False,
+            metadata_view="",
+            name="owner",
+            which_alias_to_use="public",
         )
 
         assert target_view.is_closed is True
@@ -379,7 +457,13 @@ class TestAsyncTargetViews:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            allowed_permissions=["string"],
+            description="This view is for the owner for the account.",
+            hide_metadata_if_alias_used=False,
+            is_public=False,
+            metadata_view="",
+            name="owner",
+            which_alias_to_use="public",
         ) as target_view:
             assert not target_view.is_closed
             assert target_view.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -398,7 +482,13 @@ class TestAsyncTargetViews:
                 view_id="VIEW_ID",
                 bank_id="",
                 account_id="ACCOUNT_ID",
-                body={},
+                allowed_permissions=["string"],
+                description="This view is for the owner for the account.",
+                hide_metadata_if_alias_used=False,
+                is_public=False,
+                metadata_view="",
+                name="owner",
+                which_alias_to_use="public",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -406,7 +496,13 @@ class TestAsyncTargetViews:
                 view_id="VIEW_ID",
                 bank_id="BANK_ID",
                 account_id="",
-                body={},
+                allowed_permissions=["string"],
+                description="This view is for the owner for the account.",
+                hide_metadata_if_alias_used=False,
+                is_public=False,
+                metadata_view="",
+                name="owner",
+                which_alias_to_use="public",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -414,7 +510,13 @@ class TestAsyncTargetViews:
                 view_id="",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                body={},
+                allowed_permissions=["string"],
+                description="This view is for the owner for the account.",
+                hide_metadata_if_alias_used=False,
+                is_public=False,
+                metadata_view="",
+                name="owner",
+                which_alias_to_use="public",
             )
 
     @parametrize
@@ -505,7 +607,12 @@ class TestAsyncTargetViews:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            allowed_permissions=["string"],
+            description="This view is for the owner for the account.",
+            hide_metadata_if_alias_used=False,
+            is_public=False,
+            metadata_view="",
+            which_alias_to_use="public",
         )
         assert target_view.is_closed
         assert await target_view.json() == {"foo": "bar"}
@@ -523,7 +630,12 @@ class TestAsyncTargetViews:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            allowed_permissions=["string"],
+            description="This view is for the owner for the account.",
+            hide_metadata_if_alias_used=False,
+            is_public=False,
+            metadata_view="",
+            which_alias_to_use="public",
         )
 
         assert target_view.is_closed is True
@@ -541,7 +653,12 @@ class TestAsyncTargetViews:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            allowed_permissions=["string"],
+            description="This view is for the owner for the account.",
+            hide_metadata_if_alias_used=False,
+            is_public=False,
+            metadata_view="",
+            which_alias_to_use="public",
         ) as target_view:
             assert not target_view.is_closed
             assert target_view.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -560,7 +677,12 @@ class TestAsyncTargetViews:
                 view_id="VIEW_ID",
                 bank_id="",
                 account_id="ACCOUNT_ID",
-                body={},
+                allowed_permissions=["string"],
+                description="This view is for the owner for the account.",
+                hide_metadata_if_alias_used=False,
+                is_public=False,
+                metadata_view="",
+                which_alias_to_use="public",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -568,7 +690,12 @@ class TestAsyncTargetViews:
                 view_id="VIEW_ID",
                 bank_id="BANK_ID",
                 account_id="",
-                body={},
+                allowed_permissions=["string"],
+                description="This view is for the owner for the account.",
+                hide_metadata_if_alias_used=False,
+                is_public=False,
+                metadata_view="",
+                which_alias_to_use="public",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -576,7 +703,12 @@ class TestAsyncTargetViews:
                 view_id="",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                body={},
+                allowed_permissions=["string"],
+                description="This view is for the owner for the account.",
+                hide_metadata_if_alias_used=False,
+                is_public=False,
+                metadata_view="",
+                which_alias_to_use="public",
             )
 
     @parametrize

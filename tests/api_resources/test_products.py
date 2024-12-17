@@ -98,7 +98,34 @@ class TestProducts:
         product = client.products.update(
             product_code="PRODUCT_CODE",
             bank_id="BANK_ID",
-            body={},
+            name="Deposit Account 1",
+            parent_product_code="787LOW",
+        )
+        assert product.is_closed
+        assert product.json() == {"foo": "bar"}
+        assert cast(Any, product.is_closed) is True
+        assert isinstance(product, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_update_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.put("/obp/v5.1.0/banks/BANK_ID/products/PRODUCT_CODE").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        product = client.products.update(
+            product_code="PRODUCT_CODE",
+            bank_id="BANK_ID",
+            name="Deposit Account 1",
+            parent_product_code="787LOW",
+            description="This an optional field. Maximum length is 2000. It can be any characters here.",
+            meta={
+                "license": {
+                    "id": "ODbL-1.0",
+                    "name": "Open Database License",
+                }
+            },
+            more_info_url="www.example.com/abc",
+            terms_and_conditions_url="www.example.com/xyz",
         )
         assert product.is_closed
         assert product.json() == {"foo": "bar"}
@@ -115,7 +142,8 @@ class TestProducts:
         product = client.products.with_raw_response.update(
             product_code="PRODUCT_CODE",
             bank_id="BANK_ID",
-            body={},
+            name="Deposit Account 1",
+            parent_product_code="787LOW",
         )
 
         assert product.is_closed is True
@@ -132,7 +160,8 @@ class TestProducts:
         with client.products.with_streaming_response.update(
             product_code="PRODUCT_CODE",
             bank_id="BANK_ID",
-            body={},
+            name="Deposit Account 1",
+            parent_product_code="787LOW",
         ) as product:
             assert not product.is_closed
             assert product.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -150,14 +179,16 @@ class TestProducts:
             client.products.with_raw_response.update(
                 product_code="PRODUCT_CODE",
                 bank_id="",
-                body={},
+                name="Deposit Account 1",
+                parent_product_code="787LOW",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `product_code` but received ''"):
             client.products.with_raw_response.update(
                 product_code="",
                 bank_id="BANK_ID",
-                body={},
+                name="Deposit Account 1",
+                parent_product_code="787LOW",
             )
 
     @parametrize
@@ -289,7 +320,34 @@ class TestAsyncProducts:
         product = await async_client.products.update(
             product_code="PRODUCT_CODE",
             bank_id="BANK_ID",
-            body={},
+            name="Deposit Account 1",
+            parent_product_code="787LOW",
+        )
+        assert product.is_closed
+        assert await product.json() == {"foo": "bar"}
+        assert cast(Any, product.is_closed) is True
+        assert isinstance(product, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_update_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.put("/obp/v5.1.0/banks/BANK_ID/products/PRODUCT_CODE").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        product = await async_client.products.update(
+            product_code="PRODUCT_CODE",
+            bank_id="BANK_ID",
+            name="Deposit Account 1",
+            parent_product_code="787LOW",
+            description="This an optional field. Maximum length is 2000. It can be any characters here.",
+            meta={
+                "license": {
+                    "id": "ODbL-1.0",
+                    "name": "Open Database License",
+                }
+            },
+            more_info_url="www.example.com/abc",
+            terms_and_conditions_url="www.example.com/xyz",
         )
         assert product.is_closed
         assert await product.json() == {"foo": "bar"}
@@ -306,7 +364,8 @@ class TestAsyncProducts:
         product = await async_client.products.with_raw_response.update(
             product_code="PRODUCT_CODE",
             bank_id="BANK_ID",
-            body={},
+            name="Deposit Account 1",
+            parent_product_code="787LOW",
         )
 
         assert product.is_closed is True
@@ -323,7 +382,8 @@ class TestAsyncProducts:
         async with async_client.products.with_streaming_response.update(
             product_code="PRODUCT_CODE",
             bank_id="BANK_ID",
-            body={},
+            name="Deposit Account 1",
+            parent_product_code="787LOW",
         ) as product:
             assert not product.is_closed
             assert product.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -341,14 +401,16 @@ class TestAsyncProducts:
             await async_client.products.with_raw_response.update(
                 product_code="PRODUCT_CODE",
                 bank_id="",
-                body={},
+                name="Deposit Account 1",
+                parent_product_code="787LOW",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `product_code` but received ''"):
             await async_client.products.with_raw_response.update(
                 product_code="",
                 bank_id="BANK_ID",
-                body={},
+                name="Deposit Account 1",
+                parent_product_code="787LOW",
             )
 
     @parametrize

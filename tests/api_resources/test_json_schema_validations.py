@@ -30,7 +30,20 @@ class TestJsonSchemaValidations:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         json_schema_validation = client.json_schema_validations.create(
-            body={},
+            schema="http://json-schema.org/draft-07/schema",
+            additional_properties=True,
+            description="The demo json-schema",
+            properties={
+                "xxx_id": {
+                    "examples": ["string"],
+                    "max_length": 50,
+                    "min_length": 2,
+                    "type": "string",
+                }
+            },
+            required=["string"],
+            title="The demo schema",
+            type="object",
         )
         assert json_schema_validation.is_closed
         assert json_schema_validation.json() == {"foo": "bar"}
@@ -45,7 +58,20 @@ class TestJsonSchemaValidations:
         )
 
         json_schema_validation = client.json_schema_validations.with_raw_response.create(
-            body={},
+            schema="http://json-schema.org/draft-07/schema",
+            additional_properties=True,
+            description="The demo json-schema",
+            properties={
+                "xxx_id": {
+                    "examples": ["string"],
+                    "max_length": 50,
+                    "min_length": 2,
+                    "type": "string",
+                }
+            },
+            required=["string"],
+            title="The demo schema",
+            type="object",
         )
 
         assert json_schema_validation.is_closed is True
@@ -60,7 +86,20 @@ class TestJsonSchemaValidations:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.json_schema_validations.with_streaming_response.create(
-            body={},
+            schema="http://json-schema.org/draft-07/schema",
+            additional_properties=True,
+            description="The demo json-schema",
+            properties={
+                "xxx_id": {
+                    "examples": ["string"],
+                    "max_length": 50,
+                    "min_length": 2,
+                    "type": "string",
+                }
+            },
+            required=["string"],
+            title="The demo schema",
+            type="object",
         ) as json_schema_validation:
             assert not json_schema_validation.is_closed
             assert json_schema_validation.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -120,7 +159,20 @@ class TestJsonSchemaValidations:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         json_schema_validation = client.json_schema_validations.update(
-            body={},
+            schema="http://json-schema.org/draft-07/schema",
+            additional_properties=True,
+            description="The demo json-schema",
+            properties={
+                "xxx_id": {
+                    "examples": ["string"],
+                    "max_length": 50,
+                    "min_length": 2,
+                    "type": "string",
+                }
+            },
+            required=["string"],
+            title="The demo schema",
+            type="object",
         )
         assert json_schema_validation.is_closed
         assert json_schema_validation.json() == {"foo": "bar"}
@@ -135,7 +187,20 @@ class TestJsonSchemaValidations:
         )
 
         json_schema_validation = client.json_schema_validations.with_raw_response.update(
-            body={},
+            schema="http://json-schema.org/draft-07/schema",
+            additional_properties=True,
+            description="The demo json-schema",
+            properties={
+                "xxx_id": {
+                    "examples": ["string"],
+                    "max_length": 50,
+                    "min_length": 2,
+                    "type": "string",
+                }
+            },
+            required=["string"],
+            title="The demo schema",
+            type="object",
         )
 
         assert json_schema_validation.is_closed is True
@@ -150,7 +215,20 @@ class TestJsonSchemaValidations:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.json_schema_validations.with_streaming_response.update(
-            body={},
+            schema="http://json-schema.org/draft-07/schema",
+            additional_properties=True,
+            description="The demo json-schema",
+            properties={
+                "xxx_id": {
+                    "examples": ["string"],
+                    "max_length": 50,
+                    "min_length": 2,
+                    "type": "string",
+                }
+            },
+            required=["string"],
+            title="The demo schema",
+            type="object",
         ) as json_schema_validation:
             assert not json_schema_validation.is_closed
             assert json_schema_validation.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -256,7 +334,20 @@ class TestAsyncJsonSchemaValidations:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         json_schema_validation = await async_client.json_schema_validations.create(
-            body={},
+            schema="http://json-schema.org/draft-07/schema",
+            additional_properties=True,
+            description="The demo json-schema",
+            properties={
+                "xxx_id": {
+                    "examples": ["string"],
+                    "max_length": 50,
+                    "min_length": 2,
+                    "type": "string",
+                }
+            },
+            required=["string"],
+            title="The demo schema",
+            type="object",
         )
         assert json_schema_validation.is_closed
         assert await json_schema_validation.json() == {"foo": "bar"}
@@ -271,7 +362,20 @@ class TestAsyncJsonSchemaValidations:
         )
 
         json_schema_validation = await async_client.json_schema_validations.with_raw_response.create(
-            body={},
+            schema="http://json-schema.org/draft-07/schema",
+            additional_properties=True,
+            description="The demo json-schema",
+            properties={
+                "xxx_id": {
+                    "examples": ["string"],
+                    "max_length": 50,
+                    "min_length": 2,
+                    "type": "string",
+                }
+            },
+            required=["string"],
+            title="The demo schema",
+            type="object",
         )
 
         assert json_schema_validation.is_closed is True
@@ -286,7 +390,20 @@ class TestAsyncJsonSchemaValidations:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.json_schema_validations.with_streaming_response.create(
-            body={},
+            schema="http://json-schema.org/draft-07/schema",
+            additional_properties=True,
+            description="The demo json-schema",
+            properties={
+                "xxx_id": {
+                    "examples": ["string"],
+                    "max_length": 50,
+                    "min_length": 2,
+                    "type": "string",
+                }
+            },
+            required=["string"],
+            title="The demo schema",
+            type="object",
         ) as json_schema_validation:
             assert not json_schema_validation.is_closed
             assert json_schema_validation.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -346,7 +463,20 @@ class TestAsyncJsonSchemaValidations:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         json_schema_validation = await async_client.json_schema_validations.update(
-            body={},
+            schema="http://json-schema.org/draft-07/schema",
+            additional_properties=True,
+            description="The demo json-schema",
+            properties={
+                "xxx_id": {
+                    "examples": ["string"],
+                    "max_length": 50,
+                    "min_length": 2,
+                    "type": "string",
+                }
+            },
+            required=["string"],
+            title="The demo schema",
+            type="object",
         )
         assert json_schema_validation.is_closed
         assert await json_schema_validation.json() == {"foo": "bar"}
@@ -361,7 +491,20 @@ class TestAsyncJsonSchemaValidations:
         )
 
         json_schema_validation = await async_client.json_schema_validations.with_raw_response.update(
-            body={},
+            schema="http://json-schema.org/draft-07/schema",
+            additional_properties=True,
+            description="The demo json-schema",
+            properties={
+                "xxx_id": {
+                    "examples": ["string"],
+                    "max_length": 50,
+                    "min_length": 2,
+                    "type": "string",
+                }
+            },
+            required=["string"],
+            title="The demo schema",
+            type="object",
         )
 
         assert json_schema_validation.is_closed is True
@@ -376,7 +519,20 @@ class TestAsyncJsonSchemaValidations:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.json_schema_validations.with_streaming_response.update(
-            body={},
+            schema="http://json-schema.org/draft-07/schema",
+            additional_properties=True,
+            description="The demo json-schema",
+            properties={
+                "xxx_id": {
+                    "examples": ["string"],
+                    "max_length": 50,
+                    "min_length": 2,
+                    "type": "string",
+                }
+            },
+            required=["string"],
+            title="The demo schema",
+            type="object",
         ) as json_schema_validation:
             assert not json_schema_validation.is_closed
             assert json_schema_validation.http_request.headers.get("X-Stainless-Lang") == "python"

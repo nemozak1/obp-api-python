@@ -32,7 +32,8 @@ class TestAuthContextUpdates:
         auth_context_update = client.users.auth_context_updates.create(
             sca_method="SCA_METHOD",
             bank_id="BANK_ID",
-            body={},
+            key="CUSTOMER_NUMBER",
+            value="78987432",
         )
         assert auth_context_update.is_closed
         assert auth_context_update.json() == {"foo": "bar"}
@@ -49,7 +50,8 @@ class TestAuthContextUpdates:
         auth_context_update = client.users.auth_context_updates.with_raw_response.create(
             sca_method="SCA_METHOD",
             bank_id="BANK_ID",
-            body={},
+            key="CUSTOMER_NUMBER",
+            value="78987432",
         )
 
         assert auth_context_update.is_closed is True
@@ -66,7 +68,8 @@ class TestAuthContextUpdates:
         with client.users.auth_context_updates.with_streaming_response.create(
             sca_method="SCA_METHOD",
             bank_id="BANK_ID",
-            body={},
+            key="CUSTOMER_NUMBER",
+            value="78987432",
         ) as auth_context_update:
             assert not auth_context_update.is_closed
             assert auth_context_update.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -84,14 +87,16 @@ class TestAuthContextUpdates:
             client.users.auth_context_updates.with_raw_response.create(
                 sca_method="SCA_METHOD",
                 bank_id="",
-                body={},
+                key="CUSTOMER_NUMBER",
+                value="78987432",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `sca_method` but received ''"):
             client.users.auth_context_updates.with_raw_response.create(
                 sca_method="",
                 bank_id="BANK_ID",
-                body={},
+                key="CUSTOMER_NUMBER",
+                value="78987432",
             )
 
     @parametrize
@@ -103,7 +108,7 @@ class TestAuthContextUpdates:
         auth_context_update = client.users.auth_context_updates.challenge(
             auth_context_update_id="AUTH_CONTEXT_UPDATE_ID",
             bank_id="BANK_ID",
-            body={},
+            answer="123",
         )
         assert auth_context_update.is_closed
         assert auth_context_update.json() == {"foo": "bar"}
@@ -120,7 +125,7 @@ class TestAuthContextUpdates:
         auth_context_update = client.users.auth_context_updates.with_raw_response.challenge(
             auth_context_update_id="AUTH_CONTEXT_UPDATE_ID",
             bank_id="BANK_ID",
-            body={},
+            answer="123",
         )
 
         assert auth_context_update.is_closed is True
@@ -137,7 +142,7 @@ class TestAuthContextUpdates:
         with client.users.auth_context_updates.with_streaming_response.challenge(
             auth_context_update_id="AUTH_CONTEXT_UPDATE_ID",
             bank_id="BANK_ID",
-            body={},
+            answer="123",
         ) as auth_context_update:
             assert not auth_context_update.is_closed
             assert auth_context_update.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -155,7 +160,7 @@ class TestAuthContextUpdates:
             client.users.auth_context_updates.with_raw_response.challenge(
                 auth_context_update_id="AUTH_CONTEXT_UPDATE_ID",
                 bank_id="",
-                body={},
+                answer="123",
             )
 
         with pytest.raises(
@@ -164,7 +169,7 @@ class TestAuthContextUpdates:
             client.users.auth_context_updates.with_raw_response.challenge(
                 auth_context_update_id="",
                 bank_id="BANK_ID",
-                body={},
+                answer="123",
             )
 
 
@@ -180,7 +185,8 @@ class TestAsyncAuthContextUpdates:
         auth_context_update = await async_client.users.auth_context_updates.create(
             sca_method="SCA_METHOD",
             bank_id="BANK_ID",
-            body={},
+            key="CUSTOMER_NUMBER",
+            value="78987432",
         )
         assert auth_context_update.is_closed
         assert await auth_context_update.json() == {"foo": "bar"}
@@ -197,7 +203,8 @@ class TestAsyncAuthContextUpdates:
         auth_context_update = await async_client.users.auth_context_updates.with_raw_response.create(
             sca_method="SCA_METHOD",
             bank_id="BANK_ID",
-            body={},
+            key="CUSTOMER_NUMBER",
+            value="78987432",
         )
 
         assert auth_context_update.is_closed is True
@@ -214,7 +221,8 @@ class TestAsyncAuthContextUpdates:
         async with async_client.users.auth_context_updates.with_streaming_response.create(
             sca_method="SCA_METHOD",
             bank_id="BANK_ID",
-            body={},
+            key="CUSTOMER_NUMBER",
+            value="78987432",
         ) as auth_context_update:
             assert not auth_context_update.is_closed
             assert auth_context_update.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -232,14 +240,16 @@ class TestAsyncAuthContextUpdates:
             await async_client.users.auth_context_updates.with_raw_response.create(
                 sca_method="SCA_METHOD",
                 bank_id="",
-                body={},
+                key="CUSTOMER_NUMBER",
+                value="78987432",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `sca_method` but received ''"):
             await async_client.users.auth_context_updates.with_raw_response.create(
                 sca_method="",
                 bank_id="BANK_ID",
-                body={},
+                key="CUSTOMER_NUMBER",
+                value="78987432",
             )
 
     @parametrize
@@ -251,7 +261,7 @@ class TestAsyncAuthContextUpdates:
         auth_context_update = await async_client.users.auth_context_updates.challenge(
             auth_context_update_id="AUTH_CONTEXT_UPDATE_ID",
             bank_id="BANK_ID",
-            body={},
+            answer="123",
         )
         assert auth_context_update.is_closed
         assert await auth_context_update.json() == {"foo": "bar"}
@@ -268,7 +278,7 @@ class TestAsyncAuthContextUpdates:
         auth_context_update = await async_client.users.auth_context_updates.with_raw_response.challenge(
             auth_context_update_id="AUTH_CONTEXT_UPDATE_ID",
             bank_id="BANK_ID",
-            body={},
+            answer="123",
         )
 
         assert auth_context_update.is_closed is True
@@ -285,7 +295,7 @@ class TestAsyncAuthContextUpdates:
         async with async_client.users.auth_context_updates.with_streaming_response.challenge(
             auth_context_update_id="AUTH_CONTEXT_UPDATE_ID",
             bank_id="BANK_ID",
-            body={},
+            answer="123",
         ) as auth_context_update:
             assert not auth_context_update.is_closed
             assert auth_context_update.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -303,7 +313,7 @@ class TestAsyncAuthContextUpdates:
             await async_client.users.auth_context_updates.with_raw_response.challenge(
                 auth_context_update_id="AUTH_CONTEXT_UPDATE_ID",
                 bank_id="",
-                body={},
+                answer="123",
             )
 
         with pytest.raises(
@@ -312,5 +322,5 @@ class TestAsyncAuthContextUpdates:
             await async_client.users.auth_context_updates.with_raw_response.challenge(
                 auth_context_update_id="",
                 bank_id="BANK_ID",
-                body={},
+                answer="123",
             )

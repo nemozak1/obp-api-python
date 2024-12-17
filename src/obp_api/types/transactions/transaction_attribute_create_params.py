@@ -14,4 +14,8 @@ class TransactionAttributeCreateParams(TypedDict, total=False):
 
     account_id: Required[Annotated[str, PropertyInfo(alias="ACCOUNT_ID")]]
 
-    body: Required[object]
+    name: Required[str]
+
+    type: Required[str]
+
+    value: Required[str]

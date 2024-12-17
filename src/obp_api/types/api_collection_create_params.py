@@ -8,4 +8,8 @@ __all__ = ["APICollectionCreateParams"]
 
 
 class APICollectionCreateParams(TypedDict, total=False):
-    body: Required[object]
+    api_collection_name: Required[str]
+
+    is_sharable: Required[bool]
+
+    description: str

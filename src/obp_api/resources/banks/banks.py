@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Iterable
+
 import httpx
 
 from .fx import (
@@ -314,7 +316,12 @@ class BanksResource(SyncAPIResource):
     def create(
         self,
         *,
-        body: object,
+        bank_code: str,
+        id: str | NotGiven = NOT_GIVEN,
+        bank_routings: Iterable[bank_create_params.BankRouting] | NotGiven = NOT_GIVEN,
+        full_name: str | NotGiven = NOT_GIVEN,
+        logo: str | NotGiven = NOT_GIVEN,
+        website: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -337,7 +344,17 @@ class BanksResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/obp/v5.1.0/banks",
-            body=maybe_transform(body, bank_create_params.BankCreateParams),
+            body=maybe_transform(
+                {
+                    "bank_code": bank_code,
+                    "id": id,
+                    "bank_routings": bank_routings,
+                    "full_name": full_name,
+                    "logo": logo,
+                    "website": website,
+                },
+                bank_create_params.BankCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -381,7 +398,12 @@ class BanksResource(SyncAPIResource):
     def update(
         self,
         *,
-        body: object,
+        bank_code: str,
+        id: str | NotGiven = NOT_GIVEN,
+        bank_routings: Iterable[bank_update_params.BankRouting] | NotGiven = NOT_GIVEN,
+        full_name: str | NotGiven = NOT_GIVEN,
+        logo: str | NotGiven = NOT_GIVEN,
+        website: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -404,7 +426,17 @@ class BanksResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             "/obp/v5.1.0/banks",
-            body=maybe_transform(body, bank_update_params.BankUpdateParams),
+            body=maybe_transform(
+                {
+                    "bank_code": bank_code,
+                    "id": id,
+                    "bank_routings": bank_routings,
+                    "full_name": full_name,
+                    "logo": logo,
+                    "website": website,
+                },
+                bank_update_params.BankUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -545,7 +577,12 @@ class AsyncBanksResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        body: object,
+        bank_code: str,
+        id: str | NotGiven = NOT_GIVEN,
+        bank_routings: Iterable[bank_create_params.BankRouting] | NotGiven = NOT_GIVEN,
+        full_name: str | NotGiven = NOT_GIVEN,
+        logo: str | NotGiven = NOT_GIVEN,
+        website: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -568,7 +605,17 @@ class AsyncBanksResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/obp/v5.1.0/banks",
-            body=await async_maybe_transform(body, bank_create_params.BankCreateParams),
+            body=await async_maybe_transform(
+                {
+                    "bank_code": bank_code,
+                    "id": id,
+                    "bank_routings": bank_routings,
+                    "full_name": full_name,
+                    "logo": logo,
+                    "website": website,
+                },
+                bank_create_params.BankCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -612,7 +659,12 @@ class AsyncBanksResource(AsyncAPIResource):
     async def update(
         self,
         *,
-        body: object,
+        bank_code: str,
+        id: str | NotGiven = NOT_GIVEN,
+        bank_routings: Iterable[bank_update_params.BankRouting] | NotGiven = NOT_GIVEN,
+        full_name: str | NotGiven = NOT_GIVEN,
+        logo: str | NotGiven = NOT_GIVEN,
+        website: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -635,7 +687,17 @@ class AsyncBanksResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             "/obp/v5.1.0/banks",
-            body=await async_maybe_transform(body, bank_update_params.BankUpdateParams),
+            body=await async_maybe_transform(
+                {
+                    "bank_code": bank_code,
+                    "id": id,
+                    "bank_routings": bank_routings,
+                    "full_name": full_name,
+                    "logo": logo,
+                    "website": website,
+                },
+                bank_update_params.BankUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
