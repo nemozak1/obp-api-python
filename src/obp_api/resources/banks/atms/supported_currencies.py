@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import List
-
 import httpx
 
 from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -54,7 +52,7 @@ class SupportedCurrenciesResource(SyncAPIResource):
         atm_id: str,
         *,
         bank_id: str,
-        supported_currencies: List[str],
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -81,10 +79,7 @@ class SupportedCurrenciesResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/atms/{atm_id}/supported-currencies",
-            body=maybe_transform(
-                {"supported_currencies": supported_currencies},
-                supported_currency_update_params.SupportedCurrencyUpdateParams,
-            ),
+            body=maybe_transform(body, supported_currency_update_params.SupportedCurrencyUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -117,7 +112,7 @@ class AsyncSupportedCurrenciesResource(AsyncAPIResource):
         atm_id: str,
         *,
         bank_id: str,
-        supported_currencies: List[str],
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -144,10 +139,7 @@ class AsyncSupportedCurrenciesResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/atms/{atm_id}/supported-currencies",
-            body=await async_maybe_transform(
-                {"supported_currencies": supported_currencies},
-                supported_currency_update_params.SupportedCurrencyUpdateParams,
-            ),
+            body=await async_maybe_transform(body, supported_currency_update_params.SupportedCurrencyUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

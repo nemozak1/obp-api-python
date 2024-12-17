@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import List
-
 import httpx
 
 from ..types import json_schema_validation_create_params, json_schema_validation_update_params
@@ -52,13 +50,7 @@ class JsonSchemaValidationsResource(SyncAPIResource):
     def create(
         self,
         *,
-        schema: str,
-        additional_properties: bool,
-        description: str,
-        properties: json_schema_validation_create_params.Properties,
-        required: List[str],
-        title: str,
-        type: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -81,18 +73,7 @@ class JsonSchemaValidationsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/obp/v5.1.0/management/json-schema-validations/OPERATION_ID",
-            body=maybe_transform(
-                {
-                    "schema": schema,
-                    "additional_properties": additional_properties,
-                    "description": description,
-                    "properties": properties,
-                    "required": required,
-                    "title": title,
-                    "type": type,
-                },
-                json_schema_validation_create_params.JsonSchemaValidationCreateParams,
-            ),
+            body=maybe_transform(body, json_schema_validation_create_params.JsonSchemaValidationCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -124,13 +105,7 @@ class JsonSchemaValidationsResource(SyncAPIResource):
     def update(
         self,
         *,
-        schema: str,
-        additional_properties: bool,
-        description: str,
-        properties: json_schema_validation_update_params.Properties,
-        required: List[str],
-        title: str,
-        type: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -153,18 +128,7 @@ class JsonSchemaValidationsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             "/obp/v5.1.0/management/json-schema-validations/OPERATION_ID",
-            body=maybe_transform(
-                {
-                    "schema": schema,
-                    "additional_properties": additional_properties,
-                    "description": description,
-                    "properties": properties,
-                    "required": required,
-                    "title": title,
-                    "type": type,
-                },
-                json_schema_validation_update_params.JsonSchemaValidationUpdateParams,
-            ),
+            body=maybe_transform(body, json_schema_validation_update_params.JsonSchemaValidationUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -237,13 +201,7 @@ class AsyncJsonSchemaValidationsResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        schema: str,
-        additional_properties: bool,
-        description: str,
-        properties: json_schema_validation_create_params.Properties,
-        required: List[str],
-        title: str,
-        type: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -267,16 +225,7 @@ class AsyncJsonSchemaValidationsResource(AsyncAPIResource):
         return await self._post(
             "/obp/v5.1.0/management/json-schema-validations/OPERATION_ID",
             body=await async_maybe_transform(
-                {
-                    "schema": schema,
-                    "additional_properties": additional_properties,
-                    "description": description,
-                    "properties": properties,
-                    "required": required,
-                    "title": title,
-                    "type": type,
-                },
-                json_schema_validation_create_params.JsonSchemaValidationCreateParams,
+                body, json_schema_validation_create_params.JsonSchemaValidationCreateParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -309,13 +258,7 @@ class AsyncJsonSchemaValidationsResource(AsyncAPIResource):
     async def update(
         self,
         *,
-        schema: str,
-        additional_properties: bool,
-        description: str,
-        properties: json_schema_validation_update_params.Properties,
-        required: List[str],
-        title: str,
-        type: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -339,16 +282,7 @@ class AsyncJsonSchemaValidationsResource(AsyncAPIResource):
         return await self._put(
             "/obp/v5.1.0/management/json-schema-validations/OPERATION_ID",
             body=await async_maybe_transform(
-                {
-                    "schema": schema,
-                    "additional_properties": additional_properties,
-                    "description": description,
-                    "properties": properties,
-                    "required": required,
-                    "title": title,
-                    "type": type,
-                },
-                json_schema_validation_update_params.JsonSchemaValidationUpdateParams,
+                body, json_schema_validation_update_params.JsonSchemaValidationUpdateParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout

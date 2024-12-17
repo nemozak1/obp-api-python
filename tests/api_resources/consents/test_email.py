@@ -10,7 +10,6 @@ import pytest
 from respx import MockRouter
 
 from obp_api import ObpAPI, AsyncObpAPI
-from obp_api._utils import parse_date
 from obp_api._response import (
     BinaryAPIResponse,
     AsyncBinaryAPIResponse,
@@ -32,53 +31,7 @@ class TestEmail:
         )
         email = client.consents.email.create(
             bank_id="BANK_ID",
-            email="felixsmith@example.com",
-            entitlements=[
-                {
-                    "bank_id": "gh.29.uk",
-                    "role_name": "CanGetCustomer",
-                }
-            ],
-            everything=False,
-            views=[
-                {
-                    "account_id": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-                    "bank_id": "gh.29.uk",
-                    "view_id": "owner",
-                }
-            ],
-        )
-        assert email.is_closed
-        assert email.json() == {"foo": "bar"}
-        assert cast(Any, email.is_closed) is True
-        assert isinstance(email, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_create_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.post("/obp/v5.1.0/banks/BANK_ID/my/consents/EMAIL").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        email = client.consents.email.create(
-            bank_id="BANK_ID",
-            email="felixsmith@example.com",
-            entitlements=[
-                {
-                    "bank_id": "gh.29.uk",
-                    "role_name": "CanGetCustomer",
-                }
-            ],
-            everything=False,
-            views=[
-                {
-                    "account_id": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-                    "bank_id": "gh.29.uk",
-                    "view_id": "owner",
-                }
-            ],
-            consumer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            time_to_live=3600,
-            valid_from=parse_date("2019-12-27"),
+            body={},
         )
         assert email.is_closed
         assert email.json() == {"foo": "bar"}
@@ -94,21 +47,7 @@ class TestEmail:
 
         email = client.consents.email.with_raw_response.create(
             bank_id="BANK_ID",
-            email="felixsmith@example.com",
-            entitlements=[
-                {
-                    "bank_id": "gh.29.uk",
-                    "role_name": "CanGetCustomer",
-                }
-            ],
-            everything=False,
-            views=[
-                {
-                    "account_id": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-                    "bank_id": "gh.29.uk",
-                    "view_id": "owner",
-                }
-            ],
+            body={},
         )
 
         assert email.is_closed is True
@@ -124,21 +63,7 @@ class TestEmail:
         )
         with client.consents.email.with_streaming_response.create(
             bank_id="BANK_ID",
-            email="felixsmith@example.com",
-            entitlements=[
-                {
-                    "bank_id": "gh.29.uk",
-                    "role_name": "CanGetCustomer",
-                }
-            ],
-            everything=False,
-            views=[
-                {
-                    "account_id": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-                    "bank_id": "gh.29.uk",
-                    "view_id": "owner",
-                }
-            ],
+            body={},
         ) as email:
             assert not email.is_closed
             assert email.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -155,21 +80,7 @@ class TestEmail:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             client.consents.email.with_raw_response.create(
                 bank_id="",
-                email="felixsmith@example.com",
-                entitlements=[
-                    {
-                        "bank_id": "gh.29.uk",
-                        "role_name": "CanGetCustomer",
-                    }
-                ],
-                everything=False,
-                views=[
-                    {
-                        "account_id": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-                        "bank_id": "gh.29.uk",
-                        "view_id": "owner",
-                    }
-                ],
+                body={},
             )
 
 
@@ -184,53 +95,7 @@ class TestAsyncEmail:
         )
         email = await async_client.consents.email.create(
             bank_id="BANK_ID",
-            email="felixsmith@example.com",
-            entitlements=[
-                {
-                    "bank_id": "gh.29.uk",
-                    "role_name": "CanGetCustomer",
-                }
-            ],
-            everything=False,
-            views=[
-                {
-                    "account_id": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-                    "bank_id": "gh.29.uk",
-                    "view_id": "owner",
-                }
-            ],
-        )
-        assert email.is_closed
-        assert await email.json() == {"foo": "bar"}
-        assert cast(Any, email.is_closed) is True
-        assert isinstance(email, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_create_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.post("/obp/v5.1.0/banks/BANK_ID/my/consents/EMAIL").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        email = await async_client.consents.email.create(
-            bank_id="BANK_ID",
-            email="felixsmith@example.com",
-            entitlements=[
-                {
-                    "bank_id": "gh.29.uk",
-                    "role_name": "CanGetCustomer",
-                }
-            ],
-            everything=False,
-            views=[
-                {
-                    "account_id": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-                    "bank_id": "gh.29.uk",
-                    "view_id": "owner",
-                }
-            ],
-            consumer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            time_to_live=3600,
-            valid_from=parse_date("2019-12-27"),
+            body={},
         )
         assert email.is_closed
         assert await email.json() == {"foo": "bar"}
@@ -246,21 +111,7 @@ class TestAsyncEmail:
 
         email = await async_client.consents.email.with_raw_response.create(
             bank_id="BANK_ID",
-            email="felixsmith@example.com",
-            entitlements=[
-                {
-                    "bank_id": "gh.29.uk",
-                    "role_name": "CanGetCustomer",
-                }
-            ],
-            everything=False,
-            views=[
-                {
-                    "account_id": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-                    "bank_id": "gh.29.uk",
-                    "view_id": "owner",
-                }
-            ],
+            body={},
         )
 
         assert email.is_closed is True
@@ -276,21 +127,7 @@ class TestAsyncEmail:
         )
         async with async_client.consents.email.with_streaming_response.create(
             bank_id="BANK_ID",
-            email="felixsmith@example.com",
-            entitlements=[
-                {
-                    "bank_id": "gh.29.uk",
-                    "role_name": "CanGetCustomer",
-                }
-            ],
-            everything=False,
-            views=[
-                {
-                    "account_id": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-                    "bank_id": "gh.29.uk",
-                    "view_id": "owner",
-                }
-            ],
+            body={},
         ) as email:
             assert not email.is_closed
             assert email.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -307,19 +144,5 @@ class TestAsyncEmail:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             await async_client.consents.email.with_raw_response.create(
                 bank_id="",
-                email="felixsmith@example.com",
-                entitlements=[
-                    {
-                        "bank_id": "gh.29.uk",
-                        "role_name": "CanGetCustomer",
-                    }
-                ],
-                everything=False,
-                views=[
-                    {
-                        "account_id": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-                        "bank_id": "gh.29.uk",
-                        "view_id": "owner",
-                    }
-                ],
+                body={},
             )

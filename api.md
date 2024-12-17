@@ -310,8 +310,8 @@ Methods:
 
 Methods:
 
-- <code title="post /obp/v5.1.0/banks/{BANK_ID}/accounts/{ACCOUNT_ID}/views/{VIEW_ID}/account-access/grant">client.banks.accounts.views.account_access.<a href="./src/obp_api/resources/banks/accounts/views/account_access.py">grant</a>(account_id, \*, path_view_id, bank_id, \*\*<a href="src/obp_api/types/banks/accounts/views/account_access_grant_params.py">params</a>) -> BinaryAPIResponse</code>
-- <code title="post /obp/v5.1.0/banks/{BANK_ID}/accounts/{ACCOUNT_ID}/views/{VIEW_ID}/account-access/revoke">client.banks.accounts.views.account_access.<a href="./src/obp_api/resources/banks/accounts/views/account_access.py">revoke</a>(account_id, \*, path_view_id, bank_id, \*\*<a href="src/obp_api/types/banks/accounts/views/account_access_revoke_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="post /obp/v5.1.0/banks/{BANK_ID}/accounts/{ACCOUNT_ID}/views/{VIEW_ID}/account-access/grant">client.banks.accounts.views.account_access.<a href="./src/obp_api/resources/banks/accounts/views/account_access.py">grant</a>(view_id, \*, bank_id, account_id, \*\*<a href="src/obp_api/types/banks/accounts/views/account_access_grant_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="post /obp/v5.1.0/banks/{BANK_ID}/accounts/{ACCOUNT_ID}/views/{VIEW_ID}/account-access/revoke">client.banks.accounts.views.account_access.<a href="./src/obp_api/resources/banks/accounts/views/account_access.py">revoke</a>(view_id, \*, bank_id, account_id, \*\*<a href="src/obp_api/types/banks/accounts/views/account_access_revoke_params.py">params</a>) -> BinaryAPIResponse</code>
 
 ### Transactions
 
@@ -364,9 +364,9 @@ Methods:
 
 Methods:
 
-- <code title="post /obp/v5.1.0/banks/{BANK_ID}/atms">client.banks.atms.<a href="./src/obp_api/resources/banks/atms/atms.py">create</a>(\*, path_bank_id, \*\*<a href="src/obp_api/types/banks/atm_create_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="post /obp/v5.1.0/banks/{BANK_ID}/atms">client.banks.atms.<a href="./src/obp_api/resources/banks/atms/atms.py">create</a>(bank_id, \*\*<a href="src/obp_api/types/banks/atm_create_params.py">params</a>) -> BinaryAPIResponse</code>
 - <code title="get /obp/v5.1.0/banks/{BANK_ID}/atms/{ATM_ID}">client.banks.atms.<a href="./src/obp_api/resources/banks/atms/atms.py">retrieve</a>(atm_id, \*, bank_id) -> BinaryAPIResponse</code>
-- <code title="put /obp/v5.1.0/banks/{BANK_ID}/atms/{ATM_ID}">client.banks.atms.<a href="./src/obp_api/resources/banks/atms/atms.py">update</a>(atm_id, \*, path_bank_id, \*\*<a href="src/obp_api/types/banks/atm_update_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="put /obp/v5.1.0/banks/{BANK_ID}/atms/{ATM_ID}">client.banks.atms.<a href="./src/obp_api/resources/banks/atms/atms.py">update</a>(atm_id, \*, bank_id, \*\*<a href="src/obp_api/types/banks/atm_update_params.py">params</a>) -> BinaryAPIResponse</code>
 - <code title="get /obp/v5.1.0/banks/{BANK_ID}/atms">client.banks.atms.<a href="./src/obp_api/resources/banks/atms/atms.py">list</a>(bank_id) -> BinaryAPIResponse</code>
 - <code title="delete /obp/v5.1.0/banks/{BANK_ID}/atms/{ATM_ID}">client.banks.atms.<a href="./src/obp_api/resources/banks/atms/atms.py">delete</a>(atm_id, \*, bank_id) -> None</code>
 
@@ -512,7 +512,7 @@ Methods:
 
 Methods:
 
-- <code title="post /obp/v5.1.0/banks/{BANK_ID}/branches">client.banks.branches.<a href="./src/obp_api/resources/banks/branches.py">create</a>(\*, path_bank_id, \*\*<a href="src/obp_api/types/banks/branch_create_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="post /obp/v5.1.0/banks/{BANK_ID}/branches">client.banks.branches.<a href="./src/obp_api/resources/banks/branches.py">create</a>(bank_id, \*\*<a href="src/obp_api/types/banks/branch_create_params.py">params</a>) -> BinaryAPIResponse</code>
 - <code title="get /obp/v5.1.0/banks/{BANK_ID}/branches/{BRANCH_ID}">client.banks.branches.<a href="./src/obp_api/resources/banks/branches.py">retrieve</a>(branch_id, \*, bank_id) -> BinaryAPIResponse</code>
 - <code title="get /obp/v5.1.0/banks/{BANK_ID}/branches">client.banks.branches.<a href="./src/obp_api/resources/banks/branches.py">list</a>(bank_id) -> BinaryAPIResponse</code>
 - <code title="delete /obp/v5.1.0/banks/{BANK_ID}/branches/{BRANCH_ID}">client.banks.branches.<a href="./src/obp_api/resources/banks/branches.py">delete</a>(branch_id, \*, bank_id) -> None</code>
@@ -540,7 +540,7 @@ Methods:
 Methods:
 
 - <code title="get /obp/v5.1.0/banks/{BANK_ID}/fx/{FROM_CURRENCY_CODE}/{TO_CURRENCY_CODE}">client.banks.fx.<a href="./src/obp_api/resources/banks/fx.py">retrieve</a>(to_currency_code, \*, bank_id, from_currency_code) -> BinaryAPIResponse</code>
-- <code title="put /obp/v5.1.0/banks/{BANK_ID}/fx">client.banks.fx.<a href="./src/obp_api/resources/banks/fx.py">update</a>(\*, path_bank_id, \*\*<a href="src/obp_api/types/banks/fx_update_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="put /obp/v5.1.0/banks/{BANK_ID}/fx">client.banks.fx.<a href="./src/obp_api/resources/banks/fx.py">update</a>(bank_id, \*\*<a href="src/obp_api/types/banks/fx_update_params.py">params</a>) -> BinaryAPIResponse</code>
 
 ## Management
 
@@ -596,8 +596,8 @@ Methods:
 
 Methods:
 
-- <code title="post /obp/v5.1.0/management/banks/{BANK_ID}/dynamic-entities">client.banks.dynamic_entities.<a href="./src/obp_api/resources/banks/dynamic_entities.py">create</a>(\*, path_bank_id, \*\*<a href="src/obp_api/types/banks/dynamic_entity_create_params.py">params</a>) -> BinaryAPIResponse</code>
-- <code title="put /obp/v5.1.0/management/banks/{BANK_ID}/dynamic-entities/{DYNAMIC_ENTITY_ID}">client.banks.dynamic_entities.<a href="./src/obp_api/resources/banks/dynamic_entities.py">update</a>(\*, path_dynamic_entity_id, path_bank_id, \*\*<a href="src/obp_api/types/banks/dynamic_entity_update_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="post /obp/v5.1.0/management/banks/{BANK_ID}/dynamic-entities">client.banks.dynamic_entities.<a href="./src/obp_api/resources/banks/dynamic_entities.py">create</a>(bank_id, \*\*<a href="src/obp_api/types/banks/dynamic_entity_create_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="put /obp/v5.1.0/management/banks/{BANK_ID}/dynamic-entities/{DYNAMIC_ENTITY_ID}">client.banks.dynamic_entities.<a href="./src/obp_api/resources/banks/dynamic_entities.py">update</a>(dynamic_entity_id, \*, bank_id, \*\*<a href="src/obp_api/types/banks/dynamic_entity_update_params.py">params</a>) -> BinaryAPIResponse</code>
 - <code title="get /obp/v5.1.0/management/banks/{BANK_ID}/dynamic-entities">client.banks.dynamic_entities.<a href="./src/obp_api/resources/banks/dynamic_entities.py">list</a>(bank_id) -> BinaryAPIResponse</code>
 - <code title="delete /obp/v5.1.0/management/banks/{BANK_ID}/dynamic-entities/{DYNAMIC_ENTITY_ID}">client.banks.dynamic_entities.<a href="./src/obp_api/resources/banks/dynamic_entities.py">delete</a>(dynamic_entity_id, \*, bank_id) -> None</code>
 
@@ -605,7 +605,7 @@ Methods:
 
 Methods:
 
-- <code title="post /obp/v5.1.0/management/banks/{BANK_ID}/dynamic-message-docs">client.banks.dynamic_message_docs.<a href="./src/obp_api/resources/banks/dynamic_message_docs.py">create</a>(\*, path_bank_id, \*\*<a href="src/obp_api/types/banks/dynamic_message_doc_create_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="post /obp/v5.1.0/management/banks/{BANK_ID}/dynamic-message-docs">client.banks.dynamic_message_docs.<a href="./src/obp_api/resources/banks/dynamic_message_docs.py">create</a>(bank_id, \*\*<a href="src/obp_api/types/banks/dynamic_message_doc_create_params.py">params</a>) -> BinaryAPIResponse</code>
 - <code title="get /obp/v5.1.0/management/banks/{BANK_ID}/dynamic-message-docs/DYNAMIC_MESSAGE_DOC_ID">client.banks.dynamic_message_docs.<a href="./src/obp_api/resources/banks/dynamic_message_docs.py">retrieve</a>(bank_id) -> BinaryAPIResponse</code>
 - <code title="get /obp/v5.1.0/management/banks/{BANK_ID}/dynamic-message-docs">client.banks.dynamic_message_docs.<a href="./src/obp_api/resources/banks/dynamic_message_docs.py">list</a>(bank_id) -> BinaryAPIResponse</code>
 
@@ -723,7 +723,7 @@ Methods:
 
 Methods:
 
-- <code title="post /obp/v5.1.0/banks/{BANK_ID}/customer-account-links">client.customer_account_links.<a href="./src/obp_api/resources/customer_account_links.py">create</a>(\*, path_bank_id, \*\*<a href="src/obp_api/types/customer_account_link_create_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="post /obp/v5.1.0/banks/{BANK_ID}/customer-account-links">client.customer_account_links.<a href="./src/obp_api/resources/customer_account_links.py">create</a>(bank_id, \*\*<a href="src/obp_api/types/customer_account_link_create_params.py">params</a>) -> BinaryAPIResponse</code>
 - <code title="get /obp/v5.1.0/banks/{BANK_ID}/customer-account-links/CUSTOMER_ACCOUNT_LINK_ID">client.customer_account_links.<a href="./src/obp_api/resources/customer_account_links.py">retrieve</a>(bank_id) -> BinaryAPIResponse</code>
 - <code title="put /obp/v5.1.0/banks/{BANK_ID}/customer-account-links/CUSTOMER_ACCOUNT_LINK_ID">client.customer_account_links.<a href="./src/obp_api/resources/customer_account_links.py">update</a>(bank_id, \*\*<a href="src/obp_api/types/customer_account_link_update_params.py">params</a>) -> BinaryAPIResponse</code>
 - <code title="get /obp/v5.1.0/banks/{BANK_ID}/accounts/{ACCOUNT_ID}/customer-account-links">client.customer_account_links.<a href="./src/obp_api/resources/customer_account_links.py">list</a>(account_id, \*, bank_id) -> BinaryAPIResponse</code>
@@ -1493,7 +1493,7 @@ Methods:
 Methods:
 
 - <code title="post /obp/v5.1.0/management/method_routings">client.method_routings.<a href="./src/obp_api/resources/method_routings.py">create</a>(\*\*<a href="src/obp_api/types/method_routing_create_params.py">params</a>) -> BinaryAPIResponse</code>
-- <code title="put /obp/v5.1.0/management/method_routings/{METHOD_ROUTING_ID}">client.method_routings.<a href="./src/obp_api/resources/method_routings.py">update</a>(\*, path_method_routing_id, \*\*<a href="src/obp_api/types/method_routing_update_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="put /obp/v5.1.0/management/method_routings/{METHOD_ROUTING_ID}">client.method_routings.<a href="./src/obp_api/resources/method_routings.py">update</a>(method_routing_id, \*\*<a href="src/obp_api/types/method_routing_update_params.py">params</a>) -> BinaryAPIResponse</code>
 - <code title="get /obp/v5.1.0/management/method_routings">client.method_routings.<a href="./src/obp_api/resources/method_routings.py">list</a>() -> BinaryAPIResponse</code>
 - <code title="delete /obp/v5.1.0/management/method_routings/{METHOD_ROUTING_ID}">client.method_routings.<a href="./src/obp_api/resources/method_routings.py">delete</a>(method_routing_id) -> None</code>
 
@@ -1526,7 +1526,7 @@ Methods:
 Methods:
 
 - <code title="post /obp/v5.1.0/management/system-dynamic-entities">client.system_dynamic_entities.<a href="./src/obp_api/resources/system_dynamic_entities.py">create</a>(\*\*<a href="src/obp_api/types/system_dynamic_entity_create_params.py">params</a>) -> BinaryAPIResponse</code>
-- <code title="put /obp/v5.1.0/management/system-dynamic-entities/{DYNAMIC_ENTITY_ID}">client.system_dynamic_entities.<a href="./src/obp_api/resources/system_dynamic_entities.py">update</a>(\*, path_dynamic_entity_id, \*\*<a href="src/obp_api/types/system_dynamic_entity_update_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="put /obp/v5.1.0/management/system-dynamic-entities/{DYNAMIC_ENTITY_ID}">client.system_dynamic_entities.<a href="./src/obp_api/resources/system_dynamic_entities.py">update</a>(dynamic_entity_id, \*\*<a href="src/obp_api/types/system_dynamic_entity_update_params.py">params</a>) -> BinaryAPIResponse</code>
 - <code title="get /obp/v5.1.0/management/system-dynamic-entities">client.system_dynamic_entities.<a href="./src/obp_api/resources/system_dynamic_entities.py">list</a>() -> BinaryAPIResponse</code>
 - <code title="delete /obp/v5.1.0/management/system-dynamic-entities/{DYNAMIC_ENTITY_ID}">client.system_dynamic_entities.<a href="./src/obp_api/resources/system_dynamic_entities.py">delete</a>(dynamic_entity_id) -> None</code>
 
@@ -1583,7 +1583,7 @@ Methods:
 
 Methods:
 
-- <code title="put /obp/v5.1.0/my/dynamic-entities/{DYNAMIC_ENTITY_ID}">client.dynamic_entities.<a href="./src/obp_api/resources/dynamic_entities.py">update</a>(\*, path_dynamic_entity_id, \*\*<a href="src/obp_api/types/dynamic_entity_update_params.py">params</a>) -> BinaryAPIResponse</code>
+- <code title="put /obp/v5.1.0/my/dynamic-entities/{DYNAMIC_ENTITY_ID}">client.dynamic_entities.<a href="./src/obp_api/resources/dynamic_entities.py">update</a>(dynamic_entity_id, \*\*<a href="src/obp_api/types/dynamic_entity_update_params.py">params</a>) -> BinaryAPIResponse</code>
 - <code title="get /obp/v5.1.0/my/dynamic-entities">client.dynamic_entities.<a href="./src/obp_api/resources/dynamic_entities.py">list</a>() -> BinaryAPIResponse</code>
 - <code title="delete /obp/v5.1.0/my/dynamic-entities/{DYNAMIC_ENTITY_ID}">client.dynamic_entities.<a href="./src/obp_api/resources/dynamic_entities.py">delete</a>(dynamic_entity_id) -> None</code>
 

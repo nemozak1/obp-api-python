@@ -31,7 +31,7 @@ class TestOverviewFlat:
         )
         overview_flat = client.customers.customer_number_query.overview_flat.retrieve(
             bank_id="BANK_ID",
-            customer_number="5987953",
+            body={},
         )
         assert overview_flat.is_closed
         assert overview_flat.json() == {"foo": "bar"}
@@ -47,7 +47,7 @@ class TestOverviewFlat:
 
         overview_flat = client.customers.customer_number_query.overview_flat.with_raw_response.retrieve(
             bank_id="BANK_ID",
-            customer_number="5987953",
+            body={},
         )
 
         assert overview_flat.is_closed is True
@@ -63,7 +63,7 @@ class TestOverviewFlat:
         )
         with client.customers.customer_number_query.overview_flat.with_streaming_response.retrieve(
             bank_id="BANK_ID",
-            customer_number="5987953",
+            body={},
         ) as overview_flat:
             assert not overview_flat.is_closed
             assert overview_flat.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -80,7 +80,7 @@ class TestOverviewFlat:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             client.customers.customer_number_query.overview_flat.with_raw_response.retrieve(
                 bank_id="",
-                customer_number="5987953",
+                body={},
             )
 
 
@@ -95,7 +95,7 @@ class TestAsyncOverviewFlat:
         )
         overview_flat = await async_client.customers.customer_number_query.overview_flat.retrieve(
             bank_id="BANK_ID",
-            customer_number="5987953",
+            body={},
         )
         assert overview_flat.is_closed
         assert await overview_flat.json() == {"foo": "bar"}
@@ -111,7 +111,7 @@ class TestAsyncOverviewFlat:
 
         overview_flat = await async_client.customers.customer_number_query.overview_flat.with_raw_response.retrieve(
             bank_id="BANK_ID",
-            customer_number="5987953",
+            body={},
         )
 
         assert overview_flat.is_closed is True
@@ -127,7 +127,7 @@ class TestAsyncOverviewFlat:
         )
         async with async_client.customers.customer_number_query.overview_flat.with_streaming_response.retrieve(
             bank_id="BANK_ID",
-            customer_number="5987953",
+            body={},
         ) as overview_flat:
             assert not overview_flat.is_closed
             assert overview_flat.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -144,5 +144,5 @@ class TestAsyncOverviewFlat:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             await async_client.customers.customer_number_query.overview_flat.with_raw_response.retrieve(
                 bank_id="",
-                customer_number="5987953",
+                body={},
             )

@@ -30,20 +30,7 @@ class TestEndpointMappings:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         endpoint_mapping = client.endpoint_mappings.create(
-            operation_id="OBPv4.0.0-dynamicEndpoint_POST_account",
-            request_mapping={},
-            response_mapping={
-                "balance": {
-                    "entity": "FashionBrand",
-                    "field": "number",
-                    "query": "number",
-                },
-                "name": {
-                    "entity": "FooBar",
-                    "field": "name",
-                    "query": "number",
-                },
-            },
+            body={},
         )
         assert endpoint_mapping.is_closed
         assert endpoint_mapping.json() == {"foo": "bar"}
@@ -58,20 +45,7 @@ class TestEndpointMappings:
         )
 
         endpoint_mapping = client.endpoint_mappings.with_raw_response.create(
-            operation_id="OBPv4.0.0-dynamicEndpoint_POST_account",
-            request_mapping={},
-            response_mapping={
-                "balance": {
-                    "entity": "FashionBrand",
-                    "field": "number",
-                    "query": "number",
-                },
-                "name": {
-                    "entity": "FooBar",
-                    "field": "name",
-                    "query": "number",
-                },
-            },
+            body={},
         )
 
         assert endpoint_mapping.is_closed is True
@@ -86,20 +60,7 @@ class TestEndpointMappings:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.endpoint_mappings.with_streaming_response.create(
-            operation_id="OBPv4.0.0-dynamicEndpoint_POST_account",
-            request_mapping={},
-            response_mapping={
-                "balance": {
-                    "entity": "FashionBrand",
-                    "field": "number",
-                    "query": "number",
-                },
-                "name": {
-                    "entity": "FooBar",
-                    "field": "name",
-                    "query": "number",
-                },
-            },
+            body={},
         ) as endpoint_mapping:
             assert not endpoint_mapping.is_closed
             assert endpoint_mapping.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -159,20 +120,7 @@ class TestEndpointMappings:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         endpoint_mapping = client.endpoint_mappings.update(
-            operation_id="OBPv4.0.0-dynamicEndpoint_POST_account",
-            request_mapping={},
-            response_mapping={
-                "balance": {
-                    "entity": "FashionBrand",
-                    "field": "number",
-                    "query": "number",
-                },
-                "name": {
-                    "entity": "FooBar",
-                    "field": "name",
-                    "query": "number",
-                },
-            },
+            body={},
         )
         assert endpoint_mapping.is_closed
         assert endpoint_mapping.json() == {"foo": "bar"}
@@ -187,20 +135,7 @@ class TestEndpointMappings:
         )
 
         endpoint_mapping = client.endpoint_mappings.with_raw_response.update(
-            operation_id="OBPv4.0.0-dynamicEndpoint_POST_account",
-            request_mapping={},
-            response_mapping={
-                "balance": {
-                    "entity": "FashionBrand",
-                    "field": "number",
-                    "query": "number",
-                },
-                "name": {
-                    "entity": "FooBar",
-                    "field": "name",
-                    "query": "number",
-                },
-            },
+            body={},
         )
 
         assert endpoint_mapping.is_closed is True
@@ -215,20 +150,7 @@ class TestEndpointMappings:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.endpoint_mappings.with_streaming_response.update(
-            operation_id="OBPv4.0.0-dynamicEndpoint_POST_account",
-            request_mapping={},
-            response_mapping={
-                "balance": {
-                    "entity": "FashionBrand",
-                    "field": "number",
-                    "query": "number",
-                },
-                "name": {
-                    "entity": "FooBar",
-                    "field": "name",
-                    "query": "number",
-                },
-            },
+            body={},
         ) as endpoint_mapping:
             assert not endpoint_mapping.is_closed
             assert endpoint_mapping.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -334,20 +256,7 @@ class TestAsyncEndpointMappings:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         endpoint_mapping = await async_client.endpoint_mappings.create(
-            operation_id="OBPv4.0.0-dynamicEndpoint_POST_account",
-            request_mapping={},
-            response_mapping={
-                "balance": {
-                    "entity": "FashionBrand",
-                    "field": "number",
-                    "query": "number",
-                },
-                "name": {
-                    "entity": "FooBar",
-                    "field": "name",
-                    "query": "number",
-                },
-            },
+            body={},
         )
         assert endpoint_mapping.is_closed
         assert await endpoint_mapping.json() == {"foo": "bar"}
@@ -362,20 +271,7 @@ class TestAsyncEndpointMappings:
         )
 
         endpoint_mapping = await async_client.endpoint_mappings.with_raw_response.create(
-            operation_id="OBPv4.0.0-dynamicEndpoint_POST_account",
-            request_mapping={},
-            response_mapping={
-                "balance": {
-                    "entity": "FashionBrand",
-                    "field": "number",
-                    "query": "number",
-                },
-                "name": {
-                    "entity": "FooBar",
-                    "field": "name",
-                    "query": "number",
-                },
-            },
+            body={},
         )
 
         assert endpoint_mapping.is_closed is True
@@ -390,20 +286,7 @@ class TestAsyncEndpointMappings:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.endpoint_mappings.with_streaming_response.create(
-            operation_id="OBPv4.0.0-dynamicEndpoint_POST_account",
-            request_mapping={},
-            response_mapping={
-                "balance": {
-                    "entity": "FashionBrand",
-                    "field": "number",
-                    "query": "number",
-                },
-                "name": {
-                    "entity": "FooBar",
-                    "field": "name",
-                    "query": "number",
-                },
-            },
+            body={},
         ) as endpoint_mapping:
             assert not endpoint_mapping.is_closed
             assert endpoint_mapping.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -463,20 +346,7 @@ class TestAsyncEndpointMappings:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         endpoint_mapping = await async_client.endpoint_mappings.update(
-            operation_id="OBPv4.0.0-dynamicEndpoint_POST_account",
-            request_mapping={},
-            response_mapping={
-                "balance": {
-                    "entity": "FashionBrand",
-                    "field": "number",
-                    "query": "number",
-                },
-                "name": {
-                    "entity": "FooBar",
-                    "field": "name",
-                    "query": "number",
-                },
-            },
+            body={},
         )
         assert endpoint_mapping.is_closed
         assert await endpoint_mapping.json() == {"foo": "bar"}
@@ -491,20 +361,7 @@ class TestAsyncEndpointMappings:
         )
 
         endpoint_mapping = await async_client.endpoint_mappings.with_raw_response.update(
-            operation_id="OBPv4.0.0-dynamicEndpoint_POST_account",
-            request_mapping={},
-            response_mapping={
-                "balance": {
-                    "entity": "FashionBrand",
-                    "field": "number",
-                    "query": "number",
-                },
-                "name": {
-                    "entity": "FooBar",
-                    "field": "name",
-                    "query": "number",
-                },
-            },
+            body={},
         )
 
         assert endpoint_mapping.is_closed is True
@@ -519,20 +376,7 @@ class TestAsyncEndpointMappings:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.endpoint_mappings.with_streaming_response.update(
-            operation_id="OBPv4.0.0-dynamicEndpoint_POST_account",
-            request_mapping={},
-            response_mapping={
-                "balance": {
-                    "entity": "FashionBrand",
-                    "field": "number",
-                    "query": "number",
-                },
-                "name": {
-                    "entity": "FooBar",
-                    "field": "name",
-                    "query": "number",
-                },
-            },
+            body={},
         ) as endpoint_mapping:
             assert not endpoint_mapping.is_closed
             assert endpoint_mapping.http_request.headers.get("X-Stainless-Lang") == "python"

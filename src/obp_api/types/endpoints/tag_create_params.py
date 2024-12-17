@@ -8,4 +8,4 @@ __all__ = ["TagCreateParams"]
 
 
 class TagCreateParams(TypedDict, total=False):
-    tag_name: Required[str]
+    body: Required[object]

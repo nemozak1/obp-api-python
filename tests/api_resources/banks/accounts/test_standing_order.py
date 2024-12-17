@@ -10,7 +10,6 @@ import pytest
 from respx import MockRouter
 
 from obp_api import ObpAPI, AsyncObpAPI
-from obp_api._utils import parse_date
 from obp_api._response import (
     BinaryAPIResponse,
     AsyncBinaryAPIResponse,
@@ -34,48 +33,7 @@ class TestStandingOrder:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            amount={
-                "amount": "0",
-                "currency": "EUR",
-            },
-            counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            date_starts=parse_date("2019-12-27"),
-            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
-            when={
-                "detail": "LAST_DAY",
-                "frequency": "YEARLY",
-            },
-        )
-        assert standing_order.is_closed
-        assert standing_order.json() == {"foo": "bar"}
-        assert cast(Any, standing_order.is_closed) is True
-        assert isinstance(standing_order, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_create_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.post("/obp/v5.1.0/banks/BANK_ID/accounts/ACCOUNT_ID/VIEW_ID/standing-order").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        standing_order = client.banks.accounts.standing_order.create(
-            view_id="VIEW_ID",
-            bank_id="BANK_ID",
-            account_id="ACCOUNT_ID",
-            amount={
-                "amount": "0",
-                "currency": "EUR",
-            },
-            counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            date_starts=parse_date("2019-12-27"),
-            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
-            when={
-                "detail": "LAST_DAY",
-                "frequency": "YEARLY",
-            },
-            date_expires=parse_date("2019-12-27"),
-            date_signed=parse_date("2019-12-27"),
+            body={},
         )
         assert standing_order.is_closed
         assert standing_order.json() == {"foo": "bar"}
@@ -93,18 +51,7 @@ class TestStandingOrder:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            amount={
-                "amount": "0",
-                "currency": "EUR",
-            },
-            counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            date_starts=parse_date("2019-12-27"),
-            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
-            when={
-                "detail": "LAST_DAY",
-                "frequency": "YEARLY",
-            },
+            body={},
         )
 
         assert standing_order.is_closed is True
@@ -122,18 +69,7 @@ class TestStandingOrder:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            amount={
-                "amount": "0",
-                "currency": "EUR",
-            },
-            counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            date_starts=parse_date("2019-12-27"),
-            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
-            when={
-                "detail": "LAST_DAY",
-                "frequency": "YEARLY",
-            },
+            body={},
         ) as standing_order:
             assert not standing_order.is_closed
             assert standing_order.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -152,18 +88,7 @@ class TestStandingOrder:
                 view_id="VIEW_ID",
                 bank_id="",
                 account_id="ACCOUNT_ID",
-                amount={
-                    "amount": "0",
-                    "currency": "EUR",
-                },
-                counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                date_starts=parse_date("2019-12-27"),
-                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
-                when={
-                    "detail": "LAST_DAY",
-                    "frequency": "YEARLY",
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -171,18 +96,7 @@ class TestStandingOrder:
                 view_id="VIEW_ID",
                 bank_id="BANK_ID",
                 account_id="",
-                amount={
-                    "amount": "0",
-                    "currency": "EUR",
-                },
-                counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                date_starts=parse_date("2019-12-27"),
-                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
-                when={
-                    "detail": "LAST_DAY",
-                    "frequency": "YEARLY",
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -190,18 +104,7 @@ class TestStandingOrder:
                 view_id="",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                amount={
-                    "amount": "0",
-                    "currency": "EUR",
-                },
-                counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                date_starts=parse_date("2019-12-27"),
-                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
-                when={
-                    "detail": "LAST_DAY",
-                    "frequency": "YEARLY",
-                },
+                body={},
             )
 
 
@@ -218,48 +121,7 @@ class TestAsyncStandingOrder:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            amount={
-                "amount": "0",
-                "currency": "EUR",
-            },
-            counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            date_starts=parse_date("2019-12-27"),
-            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
-            when={
-                "detail": "LAST_DAY",
-                "frequency": "YEARLY",
-            },
-        )
-        assert standing_order.is_closed
-        assert await standing_order.json() == {"foo": "bar"}
-        assert cast(Any, standing_order.is_closed) is True
-        assert isinstance(standing_order, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_create_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.post("/obp/v5.1.0/banks/BANK_ID/accounts/ACCOUNT_ID/VIEW_ID/standing-order").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        standing_order = await async_client.banks.accounts.standing_order.create(
-            view_id="VIEW_ID",
-            bank_id="BANK_ID",
-            account_id="ACCOUNT_ID",
-            amount={
-                "amount": "0",
-                "currency": "EUR",
-            },
-            counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            date_starts=parse_date("2019-12-27"),
-            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
-            when={
-                "detail": "LAST_DAY",
-                "frequency": "YEARLY",
-            },
-            date_expires=parse_date("2019-12-27"),
-            date_signed=parse_date("2019-12-27"),
+            body={},
         )
         assert standing_order.is_closed
         assert await standing_order.json() == {"foo": "bar"}
@@ -277,18 +139,7 @@ class TestAsyncStandingOrder:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            amount={
-                "amount": "0",
-                "currency": "EUR",
-            },
-            counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            date_starts=parse_date("2019-12-27"),
-            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
-            when={
-                "detail": "LAST_DAY",
-                "frequency": "YEARLY",
-            },
+            body={},
         )
 
         assert standing_order.is_closed is True
@@ -306,18 +157,7 @@ class TestAsyncStandingOrder:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            amount={
-                "amount": "0",
-                "currency": "EUR",
-            },
-            counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            date_starts=parse_date("2019-12-27"),
-            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
-            when={
-                "detail": "LAST_DAY",
-                "frequency": "YEARLY",
-            },
+            body={},
         ) as standing_order:
             assert not standing_order.is_closed
             assert standing_order.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -336,18 +176,7 @@ class TestAsyncStandingOrder:
                 view_id="VIEW_ID",
                 bank_id="",
                 account_id="ACCOUNT_ID",
-                amount={
-                    "amount": "0",
-                    "currency": "EUR",
-                },
-                counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                date_starts=parse_date("2019-12-27"),
-                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
-                when={
-                    "detail": "LAST_DAY",
-                    "frequency": "YEARLY",
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -355,18 +184,7 @@ class TestAsyncStandingOrder:
                 view_id="VIEW_ID",
                 bank_id="BANK_ID",
                 account_id="",
-                amount={
-                    "amount": "0",
-                    "currency": "EUR",
-                },
-                counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                date_starts=parse_date("2019-12-27"),
-                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
-                when={
-                    "detail": "LAST_DAY",
-                    "frequency": "YEARLY",
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -374,16 +192,5 @@ class TestAsyncStandingOrder:
                 view_id="",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                amount={
-                    "amount": "0",
-                    "currency": "EUR",
-                },
-                counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                date_starts=parse_date("2019-12-27"),
-                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
-                when={
-                    "detail": "LAST_DAY",
-                    "frequency": "YEARLY",
-                },
+                body={},
             )

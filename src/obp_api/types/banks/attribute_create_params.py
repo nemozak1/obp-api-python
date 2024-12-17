@@ -8,10 +8,4 @@ __all__ = ["AttributeCreateParams"]
 
 
 class AttributeCreateParams(TypedDict, total=False):
-    name: Required[str]
-
-    type: Required[str]
-
-    value: Required[str]
-
-    is_active: bool
+    body: Required[object]

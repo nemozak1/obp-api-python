@@ -53,12 +53,9 @@ class CustomerAccountLinksResource(SyncAPIResource):
 
     def create(
         self,
+        bank_id: str,
         *,
-        path_bank_id: str,
-        account_id: str,
-        body_bank_id: str,
-        customer_id: str,
-        relationship_type: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -78,20 +75,12 @@ class CustomerAccountLinksResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not path_bank_id:
-            raise ValueError(f"Expected a non-empty value for `path_bank_id` but received {path_bank_id!r}")
+        if not bank_id:
+            raise ValueError(f"Expected a non-empty value for `bank_id` but received {bank_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
-            f"/obp/v5.1.0/banks/{path_bank_id}/customer-account-links",
-            body=maybe_transform(
-                {
-                    "account_id": account_id,
-                    "body_bank_id": body_bank_id,
-                    "customer_id": customer_id,
-                    "relationship_type": relationship_type,
-                },
-                customer_account_link_create_params.CustomerAccountLinkCreateParams,
-            ),
+            f"/obp/v5.1.0/banks/{bank_id}/customer-account-links",
+            body=maybe_transform(body, customer_account_link_create_params.CustomerAccountLinkCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -136,7 +125,7 @@ class CustomerAccountLinksResource(SyncAPIResource):
         self,
         bank_id: str,
         *,
-        relationship_type: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -161,10 +150,7 @@ class CustomerAccountLinksResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/customer-account-links/CUSTOMER_ACCOUNT_LINK_ID",
-            body=maybe_transform(
-                {"relationship_type": relationship_type},
-                customer_account_link_update_params.CustomerAccountLinkUpdateParams,
-            ),
+            body=maybe_transform(body, customer_account_link_update_params.CustomerAccountLinkUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -265,12 +251,9 @@ class AsyncCustomerAccountLinksResource(AsyncAPIResource):
 
     async def create(
         self,
+        bank_id: str,
         *,
-        path_bank_id: str,
-        account_id: str,
-        body_bank_id: str,
-        customer_id: str,
-        relationship_type: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -290,20 +273,12 @@ class AsyncCustomerAccountLinksResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not path_bank_id:
-            raise ValueError(f"Expected a non-empty value for `path_bank_id` but received {path_bank_id!r}")
+        if not bank_id:
+            raise ValueError(f"Expected a non-empty value for `bank_id` but received {bank_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
-            f"/obp/v5.1.0/banks/{path_bank_id}/customer-account-links",
-            body=await async_maybe_transform(
-                {
-                    "account_id": account_id,
-                    "body_bank_id": body_bank_id,
-                    "customer_id": customer_id,
-                    "relationship_type": relationship_type,
-                },
-                customer_account_link_create_params.CustomerAccountLinkCreateParams,
-            ),
+            f"/obp/v5.1.0/banks/{bank_id}/customer-account-links",
+            body=await async_maybe_transform(body, customer_account_link_create_params.CustomerAccountLinkCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -348,7 +323,7 @@ class AsyncCustomerAccountLinksResource(AsyncAPIResource):
         self,
         bank_id: str,
         *,
-        relationship_type: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -373,10 +348,7 @@ class AsyncCustomerAccountLinksResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/customer-account-links/CUSTOMER_ACCOUNT_LINK_ID",
-            body=await async_maybe_transform(
-                {"relationship_type": relationship_type},
-                customer_account_link_update_params.CustomerAccountLinkUpdateParams,
-            ),
+            body=await async_maybe_transform(body, customer_account_link_update_params.CustomerAccountLinkUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

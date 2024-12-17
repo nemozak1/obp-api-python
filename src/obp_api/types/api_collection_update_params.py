@@ -8,8 +8,4 @@ __all__ = ["APICollectionUpdateParams"]
 
 
 class APICollectionUpdateParams(TypedDict, total=False):
-    api_collection_name: Required[str]
-
-    is_sharable: Required[bool]
-
-    description: str
+    body: Required[object]

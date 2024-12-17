@@ -31,13 +31,7 @@ class TestBanks:
         )
         bank = client.banks.attribute_definitions.banks.update(
             bank_id="BANK_ID",
-            alias="STRING",
-            can_be_seen_on_views=["string"],
-            category="TransactionRequest",
-            description="description",
-            is_active=True,
-            name="SPECIAL_TAX_NUMBER",
-            type="STRING",
+            body={},
         )
         assert bank.is_closed
         assert bank.json() == {"foo": "bar"}
@@ -53,13 +47,7 @@ class TestBanks:
 
         bank = client.banks.attribute_definitions.banks.with_raw_response.update(
             bank_id="BANK_ID",
-            alias="STRING",
-            can_be_seen_on_views=["string"],
-            category="TransactionRequest",
-            description="description",
-            is_active=True,
-            name="SPECIAL_TAX_NUMBER",
-            type="STRING",
+            body={},
         )
 
         assert bank.is_closed is True
@@ -75,13 +63,7 @@ class TestBanks:
         )
         with client.banks.attribute_definitions.banks.with_streaming_response.update(
             bank_id="BANK_ID",
-            alias="STRING",
-            can_be_seen_on_views=["string"],
-            category="TransactionRequest",
-            description="description",
-            is_active=True,
-            name="SPECIAL_TAX_NUMBER",
-            type="STRING",
+            body={},
         ) as bank:
             assert not bank.is_closed
             assert bank.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -98,13 +80,7 @@ class TestBanks:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             client.banks.attribute_definitions.banks.with_raw_response.update(
                 bank_id="",
-                alias="STRING",
-                can_be_seen_on_views=["string"],
-                category="TransactionRequest",
-                description="description",
-                is_active=True,
-                name="SPECIAL_TAX_NUMBER",
-                type="STRING",
+                body={},
             )
 
 
@@ -119,13 +95,7 @@ class TestAsyncBanks:
         )
         bank = await async_client.banks.attribute_definitions.banks.update(
             bank_id="BANK_ID",
-            alias="STRING",
-            can_be_seen_on_views=["string"],
-            category="TransactionRequest",
-            description="description",
-            is_active=True,
-            name="SPECIAL_TAX_NUMBER",
-            type="STRING",
+            body={},
         )
         assert bank.is_closed
         assert await bank.json() == {"foo": "bar"}
@@ -141,13 +111,7 @@ class TestAsyncBanks:
 
         bank = await async_client.banks.attribute_definitions.banks.with_raw_response.update(
             bank_id="BANK_ID",
-            alias="STRING",
-            can_be_seen_on_views=["string"],
-            category="TransactionRequest",
-            description="description",
-            is_active=True,
-            name="SPECIAL_TAX_NUMBER",
-            type="STRING",
+            body={},
         )
 
         assert bank.is_closed is True
@@ -163,13 +127,7 @@ class TestAsyncBanks:
         )
         async with async_client.banks.attribute_definitions.banks.with_streaming_response.update(
             bank_id="BANK_ID",
-            alias="STRING",
-            can_be_seen_on_views=["string"],
-            category="TransactionRequest",
-            description="description",
-            is_active=True,
-            name="SPECIAL_TAX_NUMBER",
-            type="STRING",
+            body={},
         ) as bank:
             assert not bank.is_closed
             assert bank.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -186,11 +144,5 @@ class TestAsyncBanks:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             await async_client.banks.attribute_definitions.banks.with_raw_response.update(
                 bank_id="",
-                alias="STRING",
-                can_be_seen_on_views=["string"],
-                category="TransactionRequest",
-                description="description",
-                is_active=True,
-                name="SPECIAL_TAX_NUMBER",
-                type="STRING",
+                body={},
             )

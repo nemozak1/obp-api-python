@@ -33,9 +33,7 @@ class TestAttributes:
             card_attribute_id="CARD_ATTRIBUTE_ID",
             bank_id="BANK_ID",
             card_id="CARD_ID",
-            name="OVERDRAFT_START_DATE",
-            type="DOUBLE",
-            value="2012-04-23T00:00:00.000Z",
+            body={},
         )
         assert attribute.is_closed
         assert attribute.json() == {"foo": "bar"}
@@ -53,9 +51,7 @@ class TestAttributes:
             card_attribute_id="CARD_ATTRIBUTE_ID",
             bank_id="BANK_ID",
             card_id="CARD_ID",
-            name="OVERDRAFT_START_DATE",
-            type="DOUBLE",
-            value="2012-04-23T00:00:00.000Z",
+            body={},
         )
 
         assert attribute.is_closed is True
@@ -73,9 +69,7 @@ class TestAttributes:
             card_attribute_id="CARD_ATTRIBUTE_ID",
             bank_id="BANK_ID",
             card_id="CARD_ID",
-            name="OVERDRAFT_START_DATE",
-            type="DOUBLE",
-            value="2012-04-23T00:00:00.000Z",
+            body={},
         ) as attribute:
             assert not attribute.is_closed
             assert attribute.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -94,9 +88,7 @@ class TestAttributes:
                 card_attribute_id="CARD_ATTRIBUTE_ID",
                 bank_id="",
                 card_id="CARD_ID",
-                name="OVERDRAFT_START_DATE",
-                type="DOUBLE",
-                value="2012-04-23T00:00:00.000Z",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_id` but received ''"):
@@ -104,9 +96,7 @@ class TestAttributes:
                 card_attribute_id="CARD_ATTRIBUTE_ID",
                 bank_id="BANK_ID",
                 card_id="",
-                name="OVERDRAFT_START_DATE",
-                type="DOUBLE",
-                value="2012-04-23T00:00:00.000Z",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_attribute_id` but received ''"):
@@ -114,9 +104,7 @@ class TestAttributes:
                 card_attribute_id="",
                 bank_id="BANK_ID",
                 card_id="CARD_ID",
-                name="OVERDRAFT_START_DATE",
-                type="DOUBLE",
-                value="2012-04-23T00:00:00.000Z",
+                body={},
             )
 
 
@@ -133,9 +121,7 @@ class TestAsyncAttributes:
             card_attribute_id="CARD_ATTRIBUTE_ID",
             bank_id="BANK_ID",
             card_id="CARD_ID",
-            name="OVERDRAFT_START_DATE",
-            type="DOUBLE",
-            value="2012-04-23T00:00:00.000Z",
+            body={},
         )
         assert attribute.is_closed
         assert await attribute.json() == {"foo": "bar"}
@@ -153,9 +139,7 @@ class TestAsyncAttributes:
             card_attribute_id="CARD_ATTRIBUTE_ID",
             bank_id="BANK_ID",
             card_id="CARD_ID",
-            name="OVERDRAFT_START_DATE",
-            type="DOUBLE",
-            value="2012-04-23T00:00:00.000Z",
+            body={},
         )
 
         assert attribute.is_closed is True
@@ -173,9 +157,7 @@ class TestAsyncAttributes:
             card_attribute_id="CARD_ATTRIBUTE_ID",
             bank_id="BANK_ID",
             card_id="CARD_ID",
-            name="OVERDRAFT_START_DATE",
-            type="DOUBLE",
-            value="2012-04-23T00:00:00.000Z",
+            body={},
         ) as attribute:
             assert not attribute.is_closed
             assert attribute.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -194,9 +176,7 @@ class TestAsyncAttributes:
                 card_attribute_id="CARD_ATTRIBUTE_ID",
                 bank_id="",
                 card_id="CARD_ID",
-                name="OVERDRAFT_START_DATE",
-                type="DOUBLE",
-                value="2012-04-23T00:00:00.000Z",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_id` but received ''"):
@@ -204,9 +184,7 @@ class TestAsyncAttributes:
                 card_attribute_id="CARD_ATTRIBUTE_ID",
                 bank_id="BANK_ID",
                 card_id="",
-                name="OVERDRAFT_START_DATE",
-                type="DOUBLE",
-                value="2012-04-23T00:00:00.000Z",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_attribute_id` but received ''"):
@@ -214,7 +192,5 @@ class TestAsyncAttributes:
                 card_attribute_id="",
                 bank_id="BANK_ID",
                 card_id="CARD_ID",
-                name="OVERDRAFT_START_DATE",
-                type="DOUBLE",
-                value="2012-04-23T00:00:00.000Z",
+                body={},
             )

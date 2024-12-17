@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import List
-
 import httpx
 
 from .ids import (
@@ -68,15 +66,7 @@ class SystemViewsResource(SyncAPIResource):
     def create(
         self,
         *,
-        allowed_actions: List[str],
-        description: str,
-        hide_metadata_if_alias_used: bool,
-        is_public: bool,
-        metadata_view: str,
-        name: str,
-        which_alias_to_use: str,
-        can_grant_access_to_views: List[str] | NotGiven = NOT_GIVEN,
-        can_revoke_access_to_views: List[str] | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -99,20 +89,7 @@ class SystemViewsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/obp/v5.1.0/system-views",
-            body=maybe_transform(
-                {
-                    "allowed_actions": allowed_actions,
-                    "description": description,
-                    "hide_metadata_if_alias_used": hide_metadata_if_alias_used,
-                    "is_public": is_public,
-                    "metadata_view": metadata_view,
-                    "name": name,
-                    "which_alias_to_use": which_alias_to_use,
-                    "can_grant_access_to_views": can_grant_access_to_views,
-                    "can_revoke_access_to_views": can_revoke_access_to_views,
-                },
-                system_view_create_params.SystemViewCreateParams,
-            ),
+            body=maybe_transform(body, system_view_create_params.SystemViewCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -157,15 +134,7 @@ class SystemViewsResource(SyncAPIResource):
         self,
         view_id: str,
         *,
-        allowed_actions: List[str],
-        description: str,
-        hide_metadata_if_alias_used: bool,
-        is_public: bool,
-        metadata_view: str,
-        which_alias_to_use: str,
-        can_grant_access_to_views: List[str] | NotGiven = NOT_GIVEN,
-        can_revoke_access_to_views: List[str] | NotGiven = NOT_GIVEN,
-        is_firehose: bool | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -190,20 +159,7 @@ class SystemViewsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/system-views/{view_id}",
-            body=maybe_transform(
-                {
-                    "allowed_actions": allowed_actions,
-                    "description": description,
-                    "hide_metadata_if_alias_used": hide_metadata_if_alias_used,
-                    "is_public": is_public,
-                    "metadata_view": metadata_view,
-                    "which_alias_to_use": which_alias_to_use,
-                    "can_grant_access_to_views": can_grant_access_to_views,
-                    "can_revoke_access_to_views": can_revoke_access_to_views,
-                    "is_firehose": is_firehose,
-                },
-                system_view_update_params.SystemViewUpdateParams,
-            ),
+            body=maybe_transform(body, system_view_update_params.SystemViewUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -272,15 +228,7 @@ class AsyncSystemViewsResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        allowed_actions: List[str],
-        description: str,
-        hide_metadata_if_alias_used: bool,
-        is_public: bool,
-        metadata_view: str,
-        name: str,
-        which_alias_to_use: str,
-        can_grant_access_to_views: List[str] | NotGiven = NOT_GIVEN,
-        can_revoke_access_to_views: List[str] | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -303,20 +251,7 @@ class AsyncSystemViewsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/obp/v5.1.0/system-views",
-            body=await async_maybe_transform(
-                {
-                    "allowed_actions": allowed_actions,
-                    "description": description,
-                    "hide_metadata_if_alias_used": hide_metadata_if_alias_used,
-                    "is_public": is_public,
-                    "metadata_view": metadata_view,
-                    "name": name,
-                    "which_alias_to_use": which_alias_to_use,
-                    "can_grant_access_to_views": can_grant_access_to_views,
-                    "can_revoke_access_to_views": can_revoke_access_to_views,
-                },
-                system_view_create_params.SystemViewCreateParams,
-            ),
+            body=await async_maybe_transform(body, system_view_create_params.SystemViewCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -361,15 +296,7 @@ class AsyncSystemViewsResource(AsyncAPIResource):
         self,
         view_id: str,
         *,
-        allowed_actions: List[str],
-        description: str,
-        hide_metadata_if_alias_used: bool,
-        is_public: bool,
-        metadata_view: str,
-        which_alias_to_use: str,
-        can_grant_access_to_views: List[str] | NotGiven = NOT_GIVEN,
-        can_revoke_access_to_views: List[str] | NotGiven = NOT_GIVEN,
-        is_firehose: bool | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -394,20 +321,7 @@ class AsyncSystemViewsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/system-views/{view_id}",
-            body=await async_maybe_transform(
-                {
-                    "allowed_actions": allowed_actions,
-                    "description": description,
-                    "hide_metadata_if_alias_used": hide_metadata_if_alias_used,
-                    "is_public": is_public,
-                    "metadata_view": metadata_view,
-                    "which_alias_to_use": which_alias_to_use,
-                    "can_grant_access_to_views": can_grant_access_to_views,
-                    "can_revoke_access_to_views": can_revoke_access_to_views,
-                    "is_firehose": is_firehose,
-                },
-                system_view_update_params.SystemViewUpdateParams,
-            ),
+            body=await async_maybe_transform(body, system_view_update_params.SystemViewUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

@@ -98,8 +98,7 @@ class TestProductCollections:
         product_collection = client.product_collections.update(
             collection_code="COLLECTION_CODE",
             bank_id="BANK_ID",
-            children_product_codes=["string"],
-            parent_product_code="A",
+            body={},
         )
         assert product_collection.is_closed
         assert product_collection.json() == {"foo": "bar"}
@@ -116,8 +115,7 @@ class TestProductCollections:
         product_collection = client.product_collections.with_raw_response.update(
             collection_code="COLLECTION_CODE",
             bank_id="BANK_ID",
-            children_product_codes=["string"],
-            parent_product_code="A",
+            body={},
         )
 
         assert product_collection.is_closed is True
@@ -134,8 +132,7 @@ class TestProductCollections:
         with client.product_collections.with_streaming_response.update(
             collection_code="COLLECTION_CODE",
             bank_id="BANK_ID",
-            children_product_codes=["string"],
-            parent_product_code="A",
+            body={},
         ) as product_collection:
             assert not product_collection.is_closed
             assert product_collection.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -153,16 +150,14 @@ class TestProductCollections:
             client.product_collections.with_raw_response.update(
                 collection_code="COLLECTION_CODE",
                 bank_id="",
-                children_product_codes=["string"],
-                parent_product_code="A",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `collection_code` but received ''"):
             client.product_collections.with_raw_response.update(
                 collection_code="",
                 bank_id="BANK_ID",
-                children_product_codes=["string"],
-                parent_product_code="A",
+                body={},
             )
 
 
@@ -244,8 +239,7 @@ class TestAsyncProductCollections:
         product_collection = await async_client.product_collections.update(
             collection_code="COLLECTION_CODE",
             bank_id="BANK_ID",
-            children_product_codes=["string"],
-            parent_product_code="A",
+            body={},
         )
         assert product_collection.is_closed
         assert await product_collection.json() == {"foo": "bar"}
@@ -262,8 +256,7 @@ class TestAsyncProductCollections:
         product_collection = await async_client.product_collections.with_raw_response.update(
             collection_code="COLLECTION_CODE",
             bank_id="BANK_ID",
-            children_product_codes=["string"],
-            parent_product_code="A",
+            body={},
         )
 
         assert product_collection.is_closed is True
@@ -280,8 +273,7 @@ class TestAsyncProductCollections:
         async with async_client.product_collections.with_streaming_response.update(
             collection_code="COLLECTION_CODE",
             bank_id="BANK_ID",
-            children_product_codes=["string"],
-            parent_product_code="A",
+            body={},
         ) as product_collection:
             assert not product_collection.is_closed
             assert product_collection.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -299,14 +291,12 @@ class TestAsyncProductCollections:
             await async_client.product_collections.with_raw_response.update(
                 collection_code="COLLECTION_CODE",
                 bank_id="",
-                children_product_codes=["string"],
-                parent_product_code="A",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `collection_code` but received ''"):
             await async_client.product_collections.with_raw_response.update(
                 collection_code="",
                 bank_id="BANK_ID",
-                children_product_codes=["string"],
-                parent_product_code="A",
+                body={},
             )

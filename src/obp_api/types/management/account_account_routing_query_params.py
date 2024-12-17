@@ -4,16 +4,8 @@ from __future__ import annotations
 
 from typing_extensions import Required, TypedDict
 
-__all__ = ["AccountAccountRoutingQueryParams", "AccountRouting"]
+__all__ = ["AccountAccountRoutingQueryParams"]
 
 
 class AccountAccountRoutingQueryParams(TypedDict, total=False):
-    account_routing: Required[AccountRouting]
-
-    bank_id: str
-
-
-class AccountRouting(TypedDict, total=False):
-    address: Required[str]
-
-    scheme: Required[str]
+    body: Required[object]

@@ -51,7 +51,7 @@ class OverviewResource(SyncAPIResource):
         self,
         bank_id: str,
         *,
-        customer_number: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -76,7 +76,7 @@ class OverviewResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/customers/customer-number-query/overview",
-            body=maybe_transform({"customer_number": customer_number}, overview_retrieve_params.OverviewRetrieveParams),
+            body=maybe_transform(body, overview_retrieve_params.OverviewRetrieveParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -108,7 +108,7 @@ class AsyncOverviewResource(AsyncAPIResource):
         self,
         bank_id: str,
         *,
-        customer_number: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -133,9 +133,7 @@ class AsyncOverviewResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/customers/customer-number-query/overview",
-            body=await async_maybe_transform(
-                {"customer_number": customer_number}, overview_retrieve_params.OverviewRetrieveParams
-            ),
+            body=await async_maybe_transform(body, overview_retrieve_params.OverviewRetrieveParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

@@ -12,6 +12,4 @@ __all__ = ["TaxResidenceCreateParams"]
 class TaxResidenceCreateParams(TypedDict, total=False):
     bank_id: Required[Annotated[str, PropertyInfo(alias="BANK_ID")]]
 
-    domain: Required[str]
-
-    tax_number: Required[str]
+    body: Required[object]

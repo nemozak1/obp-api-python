@@ -31,7 +31,7 @@ class TestHost:
         )
         host = client.banks.dynamic_endpoints.host.update(
             bank_id="BANK_ID",
-            host="dynamic_entity",
+            body={},
         )
         assert host.is_closed
         assert host.json() == {"foo": "bar"}
@@ -47,7 +47,7 @@ class TestHost:
 
         host = client.banks.dynamic_endpoints.host.with_raw_response.update(
             bank_id="BANK_ID",
-            host="dynamic_entity",
+            body={},
         )
 
         assert host.is_closed is True
@@ -63,7 +63,7 @@ class TestHost:
         )
         with client.banks.dynamic_endpoints.host.with_streaming_response.update(
             bank_id="BANK_ID",
-            host="dynamic_entity",
+            body={},
         ) as host:
             assert not host.is_closed
             assert host.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -80,7 +80,7 @@ class TestHost:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             client.banks.dynamic_endpoints.host.with_raw_response.update(
                 bank_id="",
-                host="dynamic_entity",
+                body={},
             )
 
 
@@ -95,7 +95,7 @@ class TestAsyncHost:
         )
         host = await async_client.banks.dynamic_endpoints.host.update(
             bank_id="BANK_ID",
-            host="dynamic_entity",
+            body={},
         )
         assert host.is_closed
         assert await host.json() == {"foo": "bar"}
@@ -111,7 +111,7 @@ class TestAsyncHost:
 
         host = await async_client.banks.dynamic_endpoints.host.with_raw_response.update(
             bank_id="BANK_ID",
-            host="dynamic_entity",
+            body={},
         )
 
         assert host.is_closed is True
@@ -127,7 +127,7 @@ class TestAsyncHost:
         )
         async with async_client.banks.dynamic_endpoints.host.with_streaming_response.update(
             bank_id="BANK_ID",
-            host="dynamic_entity",
+            body={},
         ) as host:
             assert not host.is_closed
             assert host.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -144,5 +144,5 @@ class TestAsyncHost:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             await async_client.banks.dynamic_endpoints.host.with_raw_response.update(
                 bank_id="",
-                host="dynamic_entity",
+                body={},
             )

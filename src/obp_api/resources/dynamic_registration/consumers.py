@@ -50,7 +50,7 @@ class ConsumersResource(SyncAPIResource):
     def create(
         self,
         *,
-        jwt: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -73,7 +73,7 @@ class ConsumersResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/obp/v5.1.0/dynamic-registration/consumers",
-            body=maybe_transform({"jwt": jwt}, consumer_create_params.ConsumerCreateParams),
+            body=maybe_transform(body, consumer_create_params.ConsumerCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -104,7 +104,7 @@ class AsyncConsumersResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        jwt: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -127,7 +127,7 @@ class AsyncConsumersResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/obp/v5.1.0/dynamic-registration/consumers",
-            body=await async_maybe_transform({"jwt": jwt}, consumer_create_params.ConsumerCreateParams),
+            body=await async_maybe_transform(body, consumer_create_params.ConsumerCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

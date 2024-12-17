@@ -51,9 +51,7 @@ class AccountApplicationsResource(SyncAPIResource):
         self,
         bank_id: str,
         *,
-        product_code: str,
-        customer_id: str | NotGiven = NOT_GIVEN,
-        user_id: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -78,14 +76,7 @@ class AccountApplicationsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/account-applications",
-            body=maybe_transform(
-                {
-                    "product_code": product_code,
-                    "customer_id": customer_id,
-                    "user_id": user_id,
-                },
-                account_application_create_params.AccountApplicationCreateParams,
-            ),
+            body=maybe_transform(body, account_application_create_params.AccountApplicationCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -136,7 +127,7 @@ class AccountApplicationsResource(SyncAPIResource):
         account_application_id: str,
         *,
         bank_id: str,
-        status: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -165,7 +156,7 @@ class AccountApplicationsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/account-applications/{account_application_id}",
-            body=maybe_transform({"status": status}, account_application_update_params.AccountApplicationUpdateParams),
+            body=maybe_transform(body, account_application_update_params.AccountApplicationUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -231,9 +222,7 @@ class AsyncAccountApplicationsResource(AsyncAPIResource):
         self,
         bank_id: str,
         *,
-        product_code: str,
-        customer_id: str | NotGiven = NOT_GIVEN,
-        user_id: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -258,14 +247,7 @@ class AsyncAccountApplicationsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/account-applications",
-            body=await async_maybe_transform(
-                {
-                    "product_code": product_code,
-                    "customer_id": customer_id,
-                    "user_id": user_id,
-                },
-                account_application_create_params.AccountApplicationCreateParams,
-            ),
+            body=await async_maybe_transform(body, account_application_create_params.AccountApplicationCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -316,7 +298,7 @@ class AsyncAccountApplicationsResource(AsyncAPIResource):
         account_application_id: str,
         *,
         bank_id: str,
-        status: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -345,9 +327,7 @@ class AsyncAccountApplicationsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/account-applications/{account_application_id}",
-            body=await async_maybe_transform(
-                {"status": status}, account_application_update_params.AccountApplicationUpdateParams
-            ),
+            body=await async_maybe_transform(body, account_application_update_params.AccountApplicationUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

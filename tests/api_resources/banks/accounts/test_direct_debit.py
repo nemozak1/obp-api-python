@@ -10,7 +10,6 @@ import pytest
 from respx import MockRouter
 
 from obp_api import ObpAPI, AsyncObpAPI
-from obp_api._utils import parse_date
 from obp_api._response import (
     BinaryAPIResponse,
     AsyncBinaryAPIResponse,
@@ -33,31 +32,7 @@ class TestDirectDebit:
         direct_debit = client.banks.accounts.direct_debit.create(
             account_id="ACCOUNT_ID",
             bank_id="BANK_ID",
-            counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            date_starts=parse_date("2019-12-27"),
-            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
-        )
-        assert direct_debit.is_closed
-        assert direct_debit.json() == {"foo": "bar"}
-        assert cast(Any, direct_debit.is_closed) is True
-        assert isinstance(direct_debit, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_create_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.post("/obp/v5.1.0/management/banks/BANK_ID/accounts/ACCOUNT_ID/direct-debit").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        direct_debit = client.banks.accounts.direct_debit.create(
-            account_id="ACCOUNT_ID",
-            bank_id="BANK_ID",
-            counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            date_starts=parse_date("2019-12-27"),
-            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
-            date_expires=parse_date("2019-12-27"),
-            date_signed=parse_date("2019-12-27"),
+            body={},
         )
         assert direct_debit.is_closed
         assert direct_debit.json() == {"foo": "bar"}
@@ -74,10 +49,7 @@ class TestDirectDebit:
         direct_debit = client.banks.accounts.direct_debit.with_raw_response.create(
             account_id="ACCOUNT_ID",
             bank_id="BANK_ID",
-            counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            date_starts=parse_date("2019-12-27"),
-            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+            body={},
         )
 
         assert direct_debit.is_closed is True
@@ -94,10 +66,7 @@ class TestDirectDebit:
         with client.banks.accounts.direct_debit.with_streaming_response.create(
             account_id="ACCOUNT_ID",
             bank_id="BANK_ID",
-            counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            date_starts=parse_date("2019-12-27"),
-            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+            body={},
         ) as direct_debit:
             assert not direct_debit.is_closed
             assert direct_debit.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -115,20 +84,14 @@ class TestDirectDebit:
             client.banks.accounts.direct_debit.with_raw_response.create(
                 account_id="ACCOUNT_ID",
                 bank_id="",
-                counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                date_starts=parse_date("2019-12-27"),
-                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
             client.banks.accounts.direct_debit.with_raw_response.create(
                 account_id="",
                 bank_id="BANK_ID",
-                counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                date_starts=parse_date("2019-12-27"),
-                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+                body={},
             )
 
 
@@ -144,31 +107,7 @@ class TestAsyncDirectDebit:
         direct_debit = await async_client.banks.accounts.direct_debit.create(
             account_id="ACCOUNT_ID",
             bank_id="BANK_ID",
-            counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            date_starts=parse_date("2019-12-27"),
-            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
-        )
-        assert direct_debit.is_closed
-        assert await direct_debit.json() == {"foo": "bar"}
-        assert cast(Any, direct_debit.is_closed) is True
-        assert isinstance(direct_debit, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_create_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.post("/obp/v5.1.0/management/banks/BANK_ID/accounts/ACCOUNT_ID/direct-debit").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        direct_debit = await async_client.banks.accounts.direct_debit.create(
-            account_id="ACCOUNT_ID",
-            bank_id="BANK_ID",
-            counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            date_starts=parse_date("2019-12-27"),
-            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
-            date_expires=parse_date("2019-12-27"),
-            date_signed=parse_date("2019-12-27"),
+            body={},
         )
         assert direct_debit.is_closed
         assert await direct_debit.json() == {"foo": "bar"}
@@ -185,10 +124,7 @@ class TestAsyncDirectDebit:
         direct_debit = await async_client.banks.accounts.direct_debit.with_raw_response.create(
             account_id="ACCOUNT_ID",
             bank_id="BANK_ID",
-            counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            date_starts=parse_date("2019-12-27"),
-            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+            body={},
         )
 
         assert direct_debit.is_closed is True
@@ -205,10 +141,7 @@ class TestAsyncDirectDebit:
         async with async_client.banks.accounts.direct_debit.with_streaming_response.create(
             account_id="ACCOUNT_ID",
             bank_id="BANK_ID",
-            counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            date_starts=parse_date("2019-12-27"),
-            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+            body={},
         ) as direct_debit:
             assert not direct_debit.is_closed
             assert direct_debit.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -226,18 +159,12 @@ class TestAsyncDirectDebit:
             await async_client.banks.accounts.direct_debit.with_raw_response.create(
                 account_id="ACCOUNT_ID",
                 bank_id="",
-                counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                date_starts=parse_date("2019-12-27"),
-                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
             await async_client.banks.accounts.direct_debit.with_raw_response.create(
                 account_id="",
                 bank_id="BANK_ID",
-                counterparty_id="9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                date_starts=parse_date("2019-12-27"),
-                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
+                body={},
             )

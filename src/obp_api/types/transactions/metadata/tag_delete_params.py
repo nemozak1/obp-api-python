@@ -18,4 +18,4 @@ class TagDeleteParams(TypedDict, total=False):
 
     transaction_id: Required[Annotated[str, PropertyInfo(alias="TRANSACTION_ID")]]
 
-    json_string: Required[Annotated[str, PropertyInfo(alias="jsonString")]]
+    body: Required[object]

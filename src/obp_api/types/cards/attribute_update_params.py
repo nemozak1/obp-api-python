@@ -14,8 +14,4 @@ class AttributeUpdateParams(TypedDict, total=False):
 
     card_id: Required[Annotated[str, PropertyInfo(alias="CARD_ID")]]
 
-    name: Required[str]
-
-    type: Required[str]
-
-    value: Required[str]
+    body: Required[object]

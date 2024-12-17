@@ -10,7 +10,6 @@ import pytest
 from respx import MockRouter
 
 from obp_api import ObpAPI, AsyncObpAPI
-from obp_api._utils import parse_date
 from obp_api._response import (
     BinaryAPIResponse,
     AsyncBinaryAPIResponse,
@@ -34,12 +33,7 @@ class TestKYCMedia:
             kyc_media_id="KYC_MEDIA_ID",
             bank_id="BANK_ID",
             customer_id="CUSTOMER_ID",
-            customer_number="5987953",
-            date=parse_date("2019-12-27"),
-            relates_to_kyc_check_id="123",
-            relates_to_kyc_document_id="123",
-            type="image",
-            url="http://www.example.com/id-docs/123/image.png",
+            body={},
         )
         assert kyc_media.is_closed
         assert kyc_media.json() == {"foo": "bar"}
@@ -57,12 +51,7 @@ class TestKYCMedia:
             kyc_media_id="KYC_MEDIA_ID",
             bank_id="BANK_ID",
             customer_id="CUSTOMER_ID",
-            customer_number="5987953",
-            date=parse_date("2019-12-27"),
-            relates_to_kyc_check_id="123",
-            relates_to_kyc_document_id="123",
-            type="image",
-            url="http://www.example.com/id-docs/123/image.png",
+            body={},
         )
 
         assert kyc_media.is_closed is True
@@ -80,12 +69,7 @@ class TestKYCMedia:
             kyc_media_id="KYC_MEDIA_ID",
             bank_id="BANK_ID",
             customer_id="CUSTOMER_ID",
-            customer_number="5987953",
-            date=parse_date("2019-12-27"),
-            relates_to_kyc_check_id="123",
-            relates_to_kyc_document_id="123",
-            type="image",
-            url="http://www.example.com/id-docs/123/image.png",
+            body={},
         ) as kyc_media:
             assert not kyc_media.is_closed
             assert kyc_media.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -104,12 +88,7 @@ class TestKYCMedia:
                 kyc_media_id="KYC_MEDIA_ID",
                 bank_id="",
                 customer_id="CUSTOMER_ID",
-                customer_number="5987953",
-                date=parse_date("2019-12-27"),
-                relates_to_kyc_check_id="123",
-                relates_to_kyc_document_id="123",
-                type="image",
-                url="http://www.example.com/id-docs/123/image.png",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
@@ -117,12 +96,7 @@ class TestKYCMedia:
                 kyc_media_id="KYC_MEDIA_ID",
                 bank_id="BANK_ID",
                 customer_id="",
-                customer_number="5987953",
-                date=parse_date("2019-12-27"),
-                relates_to_kyc_check_id="123",
-                relates_to_kyc_document_id="123",
-                type="image",
-                url="http://www.example.com/id-docs/123/image.png",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `kyc_media_id` but received ''"):
@@ -130,12 +104,7 @@ class TestKYCMedia:
                 kyc_media_id="",
                 bank_id="BANK_ID",
                 customer_id="CUSTOMER_ID",
-                customer_number="5987953",
-                date=parse_date("2019-12-27"),
-                relates_to_kyc_check_id="123",
-                relates_to_kyc_document_id="123",
-                type="image",
-                url="http://www.example.com/id-docs/123/image.png",
+                body={},
             )
 
     @parametrize
@@ -208,12 +177,7 @@ class TestAsyncKYCMedia:
             kyc_media_id="KYC_MEDIA_ID",
             bank_id="BANK_ID",
             customer_id="CUSTOMER_ID",
-            customer_number="5987953",
-            date=parse_date("2019-12-27"),
-            relates_to_kyc_check_id="123",
-            relates_to_kyc_document_id="123",
-            type="image",
-            url="http://www.example.com/id-docs/123/image.png",
+            body={},
         )
         assert kyc_media.is_closed
         assert await kyc_media.json() == {"foo": "bar"}
@@ -231,12 +195,7 @@ class TestAsyncKYCMedia:
             kyc_media_id="KYC_MEDIA_ID",
             bank_id="BANK_ID",
             customer_id="CUSTOMER_ID",
-            customer_number="5987953",
-            date=parse_date("2019-12-27"),
-            relates_to_kyc_check_id="123",
-            relates_to_kyc_document_id="123",
-            type="image",
-            url="http://www.example.com/id-docs/123/image.png",
+            body={},
         )
 
         assert kyc_media.is_closed is True
@@ -254,12 +213,7 @@ class TestAsyncKYCMedia:
             kyc_media_id="KYC_MEDIA_ID",
             bank_id="BANK_ID",
             customer_id="CUSTOMER_ID",
-            customer_number="5987953",
-            date=parse_date("2019-12-27"),
-            relates_to_kyc_check_id="123",
-            relates_to_kyc_document_id="123",
-            type="image",
-            url="http://www.example.com/id-docs/123/image.png",
+            body={},
         ) as kyc_media:
             assert not kyc_media.is_closed
             assert kyc_media.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -278,12 +232,7 @@ class TestAsyncKYCMedia:
                 kyc_media_id="KYC_MEDIA_ID",
                 bank_id="",
                 customer_id="CUSTOMER_ID",
-                customer_number="5987953",
-                date=parse_date("2019-12-27"),
-                relates_to_kyc_check_id="123",
-                relates_to_kyc_document_id="123",
-                type="image",
-                url="http://www.example.com/id-docs/123/image.png",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
@@ -291,12 +240,7 @@ class TestAsyncKYCMedia:
                 kyc_media_id="KYC_MEDIA_ID",
                 bank_id="BANK_ID",
                 customer_id="",
-                customer_number="5987953",
-                date=parse_date("2019-12-27"),
-                relates_to_kyc_check_id="123",
-                relates_to_kyc_document_id="123",
-                type="image",
-                url="http://www.example.com/id-docs/123/image.png",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `kyc_media_id` but received ''"):
@@ -304,12 +248,7 @@ class TestAsyncKYCMedia:
                 kyc_media_id="",
                 bank_id="BANK_ID",
                 customer_id="CUSTOMER_ID",
-                customer_number="5987953",
-                date=parse_date("2019-12-27"),
-                relates_to_kyc_check_id="123",
-                relates_to_kyc_document_id="123",
-                type="image",
-                url="http://www.example.com/id-docs/123/image.png",
+                body={},
             )
 
     @parametrize

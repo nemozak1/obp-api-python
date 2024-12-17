@@ -32,9 +32,7 @@ class TestAttribute:
         attribute = client.cards.attribute.create(
             card_id="CARD_ID",
             bank_id="BANK_ID",
-            name="OVERDRAFT_START_DATE",
-            type="DOUBLE",
-            value="2012-04-23T00:00:00.000Z",
+            body={},
         )
         assert attribute.is_closed
         assert attribute.json() == {"foo": "bar"}
@@ -51,9 +49,7 @@ class TestAttribute:
         attribute = client.cards.attribute.with_raw_response.create(
             card_id="CARD_ID",
             bank_id="BANK_ID",
-            name="OVERDRAFT_START_DATE",
-            type="DOUBLE",
-            value="2012-04-23T00:00:00.000Z",
+            body={},
         )
 
         assert attribute.is_closed is True
@@ -70,9 +66,7 @@ class TestAttribute:
         with client.cards.attribute.with_streaming_response.create(
             card_id="CARD_ID",
             bank_id="BANK_ID",
-            name="OVERDRAFT_START_DATE",
-            type="DOUBLE",
-            value="2012-04-23T00:00:00.000Z",
+            body={},
         ) as attribute:
             assert not attribute.is_closed
             assert attribute.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -90,18 +84,14 @@ class TestAttribute:
             client.cards.attribute.with_raw_response.create(
                 card_id="CARD_ID",
                 bank_id="",
-                name="OVERDRAFT_START_DATE",
-                type="DOUBLE",
-                value="2012-04-23T00:00:00.000Z",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_id` but received ''"):
             client.cards.attribute.with_raw_response.create(
                 card_id="",
                 bank_id="BANK_ID",
-                name="OVERDRAFT_START_DATE",
-                type="DOUBLE",
-                value="2012-04-23T00:00:00.000Z",
+                body={},
             )
 
 
@@ -117,9 +107,7 @@ class TestAsyncAttribute:
         attribute = await async_client.cards.attribute.create(
             card_id="CARD_ID",
             bank_id="BANK_ID",
-            name="OVERDRAFT_START_DATE",
-            type="DOUBLE",
-            value="2012-04-23T00:00:00.000Z",
+            body={},
         )
         assert attribute.is_closed
         assert await attribute.json() == {"foo": "bar"}
@@ -136,9 +124,7 @@ class TestAsyncAttribute:
         attribute = await async_client.cards.attribute.with_raw_response.create(
             card_id="CARD_ID",
             bank_id="BANK_ID",
-            name="OVERDRAFT_START_DATE",
-            type="DOUBLE",
-            value="2012-04-23T00:00:00.000Z",
+            body={},
         )
 
         assert attribute.is_closed is True
@@ -155,9 +141,7 @@ class TestAsyncAttribute:
         async with async_client.cards.attribute.with_streaming_response.create(
             card_id="CARD_ID",
             bank_id="BANK_ID",
-            name="OVERDRAFT_START_DATE",
-            type="DOUBLE",
-            value="2012-04-23T00:00:00.000Z",
+            body={},
         ) as attribute:
             assert not attribute.is_closed
             assert attribute.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -175,16 +159,12 @@ class TestAsyncAttribute:
             await async_client.cards.attribute.with_raw_response.create(
                 card_id="CARD_ID",
                 bank_id="",
-                name="OVERDRAFT_START_DATE",
-                type="DOUBLE",
-                value="2012-04-23T00:00:00.000Z",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_id` but received ''"):
             await async_client.cards.attribute.with_raw_response.create(
                 card_id="",
                 bank_id="BANK_ID",
-                name="OVERDRAFT_START_DATE",
-                type="DOUBLE",
-                value="2012-04-23T00:00:00.000Z",
+                body={},
             )

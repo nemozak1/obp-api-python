@@ -34,10 +34,7 @@ class TestWhere:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            where={
-                "latitude": 1.532,
-                "longitude": 1.535,
-            },
+            body={},
         )
         assert where.is_closed
         assert where.json() == {"foo": "bar"}
@@ -56,10 +53,7 @@ class TestWhere:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            where={
-                "latitude": 1.532,
-                "longitude": 1.535,
-            },
+            body={},
         )
 
         assert where.is_closed is True
@@ -78,10 +72,7 @@ class TestWhere:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            where={
-                "latitude": 1.532,
-                "longitude": 1.535,
-            },
+            body={},
         ) as where:
             assert not where.is_closed
             assert where.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -101,10 +92,7 @@ class TestWhere:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                where={
-                    "latitude": 1.532,
-                    "longitude": 1.535,
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -113,10 +101,7 @@ class TestWhere:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                where={
-                    "latitude": 1.532,
-                    "longitude": 1.535,
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -125,10 +110,7 @@ class TestWhere:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                where={
-                    "latitude": 1.532,
-                    "longitude": 1.535,
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `transaction_id` but received ''"):
@@ -137,10 +119,7 @@ class TestWhere:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                where={
-                    "latitude": 1.532,
-                    "longitude": 1.535,
-                },
+                body={},
             )
 
     @parametrize
@@ -246,10 +225,7 @@ class TestWhere:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            where={
-                "latitude": 1.532,
-                "longitude": 1.535,
-            },
+            body={},
         )
         assert where.is_closed
         assert where.json() == {"foo": "bar"}
@@ -268,10 +244,7 @@ class TestWhere:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            where={
-                "latitude": 1.532,
-                "longitude": 1.535,
-            },
+            body={},
         )
 
         assert where.is_closed is True
@@ -290,10 +263,7 @@ class TestWhere:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            where={
-                "latitude": 1.532,
-                "longitude": 1.535,
-            },
+            body={},
         ) as where:
             assert not where.is_closed
             assert where.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -313,10 +283,7 @@ class TestWhere:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                where={
-                    "latitude": 1.532,
-                    "longitude": 1.535,
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -325,10 +292,7 @@ class TestWhere:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                where={
-                    "latitude": 1.532,
-                    "longitude": 1.535,
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -337,10 +301,7 @@ class TestWhere:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                where={
-                    "latitude": 1.532,
-                    "longitude": 1.535,
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `transaction_id` but received ''"):
@@ -349,10 +310,7 @@ class TestWhere:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                where={
-                    "latitude": 1.532,
-                    "longitude": 1.535,
-                },
+                body={},
             )
 
     @parametrize
@@ -366,7 +324,7 @@ class TestWhere:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            json_string="{}",
+            body={},
         )
         assert where.is_closed
         assert where.json() == {"foo": "bar"}
@@ -385,7 +343,7 @@ class TestWhere:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            json_string="{}",
+            body={},
         )
 
         assert where.is_closed is True
@@ -404,7 +362,7 @@ class TestWhere:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            json_string="{}",
+            body={},
         ) as where:
             assert not where.is_closed
             assert where.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -424,7 +382,7 @@ class TestWhere:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                json_string="{}",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -433,7 +391,7 @@ class TestWhere:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                json_string="{}",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -442,7 +400,7 @@ class TestWhere:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                json_string="{}",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `transaction_id` but received ''"):
@@ -451,7 +409,7 @@ class TestWhere:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                json_string="{}",
+                body={},
             )
 
 
@@ -469,10 +427,7 @@ class TestAsyncWhere:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            where={
-                "latitude": 1.532,
-                "longitude": 1.535,
-            },
+            body={},
         )
         assert where.is_closed
         assert await where.json() == {"foo": "bar"}
@@ -491,10 +446,7 @@ class TestAsyncWhere:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            where={
-                "latitude": 1.532,
-                "longitude": 1.535,
-            },
+            body={},
         )
 
         assert where.is_closed is True
@@ -513,10 +465,7 @@ class TestAsyncWhere:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            where={
-                "latitude": 1.532,
-                "longitude": 1.535,
-            },
+            body={},
         ) as where:
             assert not where.is_closed
             assert where.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -536,10 +485,7 @@ class TestAsyncWhere:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                where={
-                    "latitude": 1.532,
-                    "longitude": 1.535,
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -548,10 +494,7 @@ class TestAsyncWhere:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                where={
-                    "latitude": 1.532,
-                    "longitude": 1.535,
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -560,10 +503,7 @@ class TestAsyncWhere:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                where={
-                    "latitude": 1.532,
-                    "longitude": 1.535,
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `transaction_id` but received ''"):
@@ -572,10 +512,7 @@ class TestAsyncWhere:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                where={
-                    "latitude": 1.532,
-                    "longitude": 1.535,
-                },
+                body={},
             )
 
     @parametrize
@@ -681,10 +618,7 @@ class TestAsyncWhere:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            where={
-                "latitude": 1.532,
-                "longitude": 1.535,
-            },
+            body={},
         )
         assert where.is_closed
         assert await where.json() == {"foo": "bar"}
@@ -703,10 +637,7 @@ class TestAsyncWhere:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            where={
-                "latitude": 1.532,
-                "longitude": 1.535,
-            },
+            body={},
         )
 
         assert where.is_closed is True
@@ -725,10 +656,7 @@ class TestAsyncWhere:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            where={
-                "latitude": 1.532,
-                "longitude": 1.535,
-            },
+            body={},
         ) as where:
             assert not where.is_closed
             assert where.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -748,10 +676,7 @@ class TestAsyncWhere:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                where={
-                    "latitude": 1.532,
-                    "longitude": 1.535,
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -760,10 +685,7 @@ class TestAsyncWhere:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                where={
-                    "latitude": 1.532,
-                    "longitude": 1.535,
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -772,10 +694,7 @@ class TestAsyncWhere:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                where={
-                    "latitude": 1.532,
-                    "longitude": 1.535,
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `transaction_id` but received ''"):
@@ -784,10 +703,7 @@ class TestAsyncWhere:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                where={
-                    "latitude": 1.532,
-                    "longitude": 1.535,
-                },
+                body={},
             )
 
     @parametrize
@@ -801,7 +717,7 @@ class TestAsyncWhere:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            json_string="{}",
+            body={},
         )
         assert where.is_closed
         assert await where.json() == {"foo": "bar"}
@@ -820,7 +736,7 @@ class TestAsyncWhere:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            json_string="{}",
+            body={},
         )
 
         assert where.is_closed is True
@@ -839,7 +755,7 @@ class TestAsyncWhere:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            json_string="{}",
+            body={},
         ) as where:
             assert not where.is_closed
             assert where.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -859,7 +775,7 @@ class TestAsyncWhere:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                json_string="{}",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -868,7 +784,7 @@ class TestAsyncWhere:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                json_string="{}",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -877,7 +793,7 @@ class TestAsyncWhere:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                json_string="{}",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `transaction_id` but received ''"):
@@ -886,5 +802,5 @@ class TestAsyncWhere:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                json_string="{}",
+                body={},
             )

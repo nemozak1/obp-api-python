@@ -28,33 +28,7 @@ class TestSystemViews:
     def test_method_create(self, client: ObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/system-views").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         system_view = client.system_views.create(
-            allowed_actions=["string"],
-            description="This view is for the owner for the account.",
-            hide_metadata_if_alias_used=False,
-            is_public=False,
-            metadata_view="This view is for the owner for the account.",
-            name="owner",
-            which_alias_to_use="public",
-        )
-        assert system_view.is_closed
-        assert system_view.json() == {"foo": "bar"}
-        assert cast(Any, system_view.is_closed) is True
-        assert isinstance(system_view, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_create_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.post("/obp/v5.1.0/system-views").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        system_view = client.system_views.create(
-            allowed_actions=["string"],
-            description="This view is for the owner for the account.",
-            hide_metadata_if_alias_used=False,
-            is_public=False,
-            metadata_view="This view is for the owner for the account.",
-            name="owner",
-            which_alias_to_use="public",
-            can_grant_access_to_views=["string"],
-            can_revoke_access_to_views=["string"],
+            body={},
         )
         assert system_view.is_closed
         assert system_view.json() == {"foo": "bar"}
@@ -67,13 +41,7 @@ class TestSystemViews:
         respx_mock.post("/obp/v5.1.0/system-views").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         system_view = client.system_views.with_raw_response.create(
-            allowed_actions=["string"],
-            description="This view is for the owner for the account.",
-            hide_metadata_if_alias_used=False,
-            is_public=False,
-            metadata_view="This view is for the owner for the account.",
-            name="owner",
-            which_alias_to_use="public",
+            body={},
         )
 
         assert system_view.is_closed is True
@@ -86,13 +54,7 @@ class TestSystemViews:
     def test_streaming_response_create(self, client: ObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/system-views").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.system_views.with_streaming_response.create(
-            allowed_actions=["string"],
-            description="This view is for the owner for the account.",
-            hide_metadata_if_alias_used=False,
-            is_public=False,
-            metadata_view="This view is for the owner for the account.",
-            name="owner",
-            which_alias_to_use="public",
+            body={},
         ) as system_view:
             assert not system_view.is_closed
             assert system_view.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -159,33 +121,7 @@ class TestSystemViews:
         respx_mock.put("/obp/v5.1.0/system-views/VIEW_ID").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         system_view = client.system_views.update(
             view_id="VIEW_ID",
-            allowed_actions=["string"],
-            description="this is for family",
-            hide_metadata_if_alias_used=True,
-            is_public=True,
-            metadata_view="owner",
-            which_alias_to_use="family",
-        )
-        assert system_view.is_closed
-        assert system_view.json() == {"foo": "bar"}
-        assert cast(Any, system_view.is_closed) is True
-        assert isinstance(system_view, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_update_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.put("/obp/v5.1.0/system-views/VIEW_ID").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        system_view = client.system_views.update(
-            view_id="VIEW_ID",
-            allowed_actions=["string"],
-            description="this is for family",
-            hide_metadata_if_alias_used=True,
-            is_public=True,
-            metadata_view="owner",
-            which_alias_to_use="family",
-            can_grant_access_to_views=["string"],
-            can_revoke_access_to_views=["string"],
-            is_firehose=True,
+            body={},
         )
         assert system_view.is_closed
         assert system_view.json() == {"foo": "bar"}
@@ -199,12 +135,7 @@ class TestSystemViews:
 
         system_view = client.system_views.with_raw_response.update(
             view_id="VIEW_ID",
-            allowed_actions=["string"],
-            description="this is for family",
-            hide_metadata_if_alias_used=True,
-            is_public=True,
-            metadata_view="owner",
-            which_alias_to_use="family",
+            body={},
         )
 
         assert system_view.is_closed is True
@@ -218,12 +149,7 @@ class TestSystemViews:
         respx_mock.put("/obp/v5.1.0/system-views/VIEW_ID").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.system_views.with_streaming_response.update(
             view_id="VIEW_ID",
-            allowed_actions=["string"],
-            description="this is for family",
-            hide_metadata_if_alias_used=True,
-            is_public=True,
-            metadata_view="owner",
-            which_alias_to_use="family",
+            body={},
         ) as system_view:
             assert not system_view.is_closed
             assert system_view.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -240,12 +166,7 @@ class TestSystemViews:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
             client.system_views.with_raw_response.update(
                 view_id="",
-                allowed_actions=["string"],
-                description="this is for family",
-                hide_metadata_if_alias_used=True,
-                is_public=True,
-                metadata_view="owner",
-                which_alias_to_use="family",
+                body={},
             )
 
     @parametrize
@@ -295,33 +216,7 @@ class TestAsyncSystemViews:
     async def test_method_create(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/system-views").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         system_view = await async_client.system_views.create(
-            allowed_actions=["string"],
-            description="This view is for the owner for the account.",
-            hide_metadata_if_alias_used=False,
-            is_public=False,
-            metadata_view="This view is for the owner for the account.",
-            name="owner",
-            which_alias_to_use="public",
-        )
-        assert system_view.is_closed
-        assert await system_view.json() == {"foo": "bar"}
-        assert cast(Any, system_view.is_closed) is True
-        assert isinstance(system_view, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_create_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.post("/obp/v5.1.0/system-views").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        system_view = await async_client.system_views.create(
-            allowed_actions=["string"],
-            description="This view is for the owner for the account.",
-            hide_metadata_if_alias_used=False,
-            is_public=False,
-            metadata_view="This view is for the owner for the account.",
-            name="owner",
-            which_alias_to_use="public",
-            can_grant_access_to_views=["string"],
-            can_revoke_access_to_views=["string"],
+            body={},
         )
         assert system_view.is_closed
         assert await system_view.json() == {"foo": "bar"}
@@ -334,13 +229,7 @@ class TestAsyncSystemViews:
         respx_mock.post("/obp/v5.1.0/system-views").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         system_view = await async_client.system_views.with_raw_response.create(
-            allowed_actions=["string"],
-            description="This view is for the owner for the account.",
-            hide_metadata_if_alias_used=False,
-            is_public=False,
-            metadata_view="This view is for the owner for the account.",
-            name="owner",
-            which_alias_to_use="public",
+            body={},
         )
 
         assert system_view.is_closed is True
@@ -353,13 +242,7 @@ class TestAsyncSystemViews:
     async def test_streaming_response_create(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/system-views").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.system_views.with_streaming_response.create(
-            allowed_actions=["string"],
-            description="This view is for the owner for the account.",
-            hide_metadata_if_alias_used=False,
-            is_public=False,
-            metadata_view="This view is for the owner for the account.",
-            name="owner",
-            which_alias_to_use="public",
+            body={},
         ) as system_view:
             assert not system_view.is_closed
             assert system_view.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -426,33 +309,7 @@ class TestAsyncSystemViews:
         respx_mock.put("/obp/v5.1.0/system-views/VIEW_ID").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         system_view = await async_client.system_views.update(
             view_id="VIEW_ID",
-            allowed_actions=["string"],
-            description="this is for family",
-            hide_metadata_if_alias_used=True,
-            is_public=True,
-            metadata_view="owner",
-            which_alias_to_use="family",
-        )
-        assert system_view.is_closed
-        assert await system_view.json() == {"foo": "bar"}
-        assert cast(Any, system_view.is_closed) is True
-        assert isinstance(system_view, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_update_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.put("/obp/v5.1.0/system-views/VIEW_ID").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        system_view = await async_client.system_views.update(
-            view_id="VIEW_ID",
-            allowed_actions=["string"],
-            description="this is for family",
-            hide_metadata_if_alias_used=True,
-            is_public=True,
-            metadata_view="owner",
-            which_alias_to_use="family",
-            can_grant_access_to_views=["string"],
-            can_revoke_access_to_views=["string"],
-            is_firehose=True,
+            body={},
         )
         assert system_view.is_closed
         assert await system_view.json() == {"foo": "bar"}
@@ -466,12 +323,7 @@ class TestAsyncSystemViews:
 
         system_view = await async_client.system_views.with_raw_response.update(
             view_id="VIEW_ID",
-            allowed_actions=["string"],
-            description="this is for family",
-            hide_metadata_if_alias_used=True,
-            is_public=True,
-            metadata_view="owner",
-            which_alias_to_use="family",
+            body={},
         )
 
         assert system_view.is_closed is True
@@ -485,12 +337,7 @@ class TestAsyncSystemViews:
         respx_mock.put("/obp/v5.1.0/system-views/VIEW_ID").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.system_views.with_streaming_response.update(
             view_id="VIEW_ID",
-            allowed_actions=["string"],
-            description="this is for family",
-            hide_metadata_if_alias_used=True,
-            is_public=True,
-            metadata_view="owner",
-            which_alias_to_use="family",
+            body={},
         ) as system_view:
             assert not system_view.is_closed
             assert system_view.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -507,12 +354,7 @@ class TestAsyncSystemViews:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
             await async_client.system_views.with_raw_response.update(
                 view_id="",
-                allowed_actions=["string"],
-                description="this is for family",
-                hide_metadata_if_alias_used=True,
-                is_public=True,
-                metadata_view="owner",
-                which_alias_to_use="family",
+                body={},
             )
 
     @parametrize

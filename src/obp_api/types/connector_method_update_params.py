@@ -8,6 +8,4 @@ __all__ = ["ConnectorMethodUpdateParams"]
 
 
 class ConnectorMethodUpdateParams(TypedDict, total=False):
-    method_body: Required[str]
-
-    programming_lang: Required[str]
+    body: Required[object]

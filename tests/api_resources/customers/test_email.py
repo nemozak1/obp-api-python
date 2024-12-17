@@ -32,7 +32,7 @@ class TestEmail:
         email = client.customers.email.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            email="marko@tesobe.com",
+            body={},
         )
         assert email.is_closed
         assert email.json() == {"foo": "bar"}
@@ -49,7 +49,7 @@ class TestEmail:
         email = client.customers.email.with_raw_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            email="marko@tesobe.com",
+            body={},
         )
 
         assert email.is_closed is True
@@ -66,7 +66,7 @@ class TestEmail:
         with client.customers.email.with_streaming_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            email="marko@tesobe.com",
+            body={},
         ) as email:
             assert not email.is_closed
             assert email.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -84,14 +84,14 @@ class TestEmail:
             client.customers.email.with_raw_response.update(
                 customer_id="CUSTOMER_ID",
                 bank_id="",
-                email="marko@tesobe.com",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             client.customers.email.with_raw_response.update(
                 customer_id="",
                 bank_id="BANK_ID",
-                email="marko@tesobe.com",
+                body={},
             )
 
 
@@ -107,7 +107,7 @@ class TestAsyncEmail:
         email = await async_client.customers.email.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            email="marko@tesobe.com",
+            body={},
         )
         assert email.is_closed
         assert await email.json() == {"foo": "bar"}
@@ -124,7 +124,7 @@ class TestAsyncEmail:
         email = await async_client.customers.email.with_raw_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            email="marko@tesobe.com",
+            body={},
         )
 
         assert email.is_closed is True
@@ -141,7 +141,7 @@ class TestAsyncEmail:
         async with async_client.customers.email.with_streaming_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            email="marko@tesobe.com",
+            body={},
         ) as email:
             assert not email.is_closed
             assert email.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -159,12 +159,12 @@ class TestAsyncEmail:
             await async_client.customers.email.with_raw_response.update(
                 customer_id="CUSTOMER_ID",
                 bank_id="",
-                email="marko@tesobe.com",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             await async_client.customers.email.with_raw_response.update(
                 customer_id="",
                 bank_id="BANK_ID",
-                email="marko@tesobe.com",
+                body={},
             )

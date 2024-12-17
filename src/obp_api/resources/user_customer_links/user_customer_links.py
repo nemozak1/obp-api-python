@@ -79,8 +79,7 @@ class UserCustomerLinksResource(SyncAPIResource):
         self,
         bank_id: str,
         *,
-        customer_id: str,
-        user_id: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -105,13 +104,7 @@ class UserCustomerLinksResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/user_customer_links",
-            body=maybe_transform(
-                {
-                    "customer_id": customer_id,
-                    "user_id": user_id,
-                },
-                user_customer_link_create_params.UserCustomerLinkCreateParams,
-            ),
+            body=maybe_transform(body, user_customer_link_create_params.UserCustomerLinkCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -185,8 +178,7 @@ class AsyncUserCustomerLinksResource(AsyncAPIResource):
         self,
         bank_id: str,
         *,
-        customer_id: str,
-        user_id: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -211,13 +203,7 @@ class AsyncUserCustomerLinksResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/user_customer_links",
-            body=await async_maybe_transform(
-                {
-                    "customer_id": customer_id,
-                    "user_id": user_id,
-                },
-                user_customer_link_create_params.UserCustomerLinkCreateParams,
-            ),
+            body=await async_maybe_transform(body, user_customer_link_create_params.UserCustomerLinkCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

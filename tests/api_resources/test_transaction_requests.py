@@ -30,21 +30,7 @@ class TestTransactionRequests:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         transaction_request = client.transaction_requests.create(
-            card={
-                "brand": "Visa",
-                "card_number": "364435172576215",
-                "card_type": "Credit",
-                "cvv": "123",
-                "expiry_month": "01",
-                "expiry_year": "2023",
-                "name_on_card": "SusanSmith",
-            },
-            description="A card payment description. ",
-            to={"counterparty_id": "9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh"},
-            value={
-                "amount": "0",
-                "currency": "EUR",
-            },
+            body={},
         )
         assert transaction_request.is_closed
         assert transaction_request.json() == {"foo": "bar"}
@@ -59,21 +45,7 @@ class TestTransactionRequests:
         )
 
         transaction_request = client.transaction_requests.with_raw_response.create(
-            card={
-                "brand": "Visa",
-                "card_number": "364435172576215",
-                "card_type": "Credit",
-                "cvv": "123",
-                "expiry_month": "01",
-                "expiry_year": "2023",
-                "name_on_card": "SusanSmith",
-            },
-            description="A card payment description. ",
-            to={"counterparty_id": "9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh"},
-            value={
-                "amount": "0",
-                "currency": "EUR",
-            },
+            body={},
         )
 
         assert transaction_request.is_closed is True
@@ -88,21 +60,7 @@ class TestTransactionRequests:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.transaction_requests.with_streaming_response.create(
-            card={
-                "brand": "Visa",
-                "card_number": "364435172576215",
-                "card_type": "Credit",
-                "cvv": "123",
-                "expiry_month": "01",
-                "expiry_year": "2023",
-                "name_on_card": "SusanSmith",
-            },
-            description="A card payment description. ",
-            to={"counterparty_id": "9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh"},
-            value={
-                "amount": "0",
-                "currency": "EUR",
-            },
+            body={},
         ) as transaction_request:
             assert not transaction_request.is_closed
             assert transaction_request.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -124,21 +82,7 @@ class TestAsyncTransactionRequests:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         transaction_request = await async_client.transaction_requests.create(
-            card={
-                "brand": "Visa",
-                "card_number": "364435172576215",
-                "card_type": "Credit",
-                "cvv": "123",
-                "expiry_month": "01",
-                "expiry_year": "2023",
-                "name_on_card": "SusanSmith",
-            },
-            description="A card payment description. ",
-            to={"counterparty_id": "9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh"},
-            value={
-                "amount": "0",
-                "currency": "EUR",
-            },
+            body={},
         )
         assert transaction_request.is_closed
         assert await transaction_request.json() == {"foo": "bar"}
@@ -153,21 +97,7 @@ class TestAsyncTransactionRequests:
         )
 
         transaction_request = await async_client.transaction_requests.with_raw_response.create(
-            card={
-                "brand": "Visa",
-                "card_number": "364435172576215",
-                "card_type": "Credit",
-                "cvv": "123",
-                "expiry_month": "01",
-                "expiry_year": "2023",
-                "name_on_card": "SusanSmith",
-            },
-            description="A card payment description. ",
-            to={"counterparty_id": "9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh"},
-            value={
-                "amount": "0",
-                "currency": "EUR",
-            },
+            body={},
         )
 
         assert transaction_request.is_closed is True
@@ -182,21 +112,7 @@ class TestAsyncTransactionRequests:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.transaction_requests.with_streaming_response.create(
-            card={
-                "brand": "Visa",
-                "card_number": "364435172576215",
-                "card_type": "Credit",
-                "cvv": "123",
-                "expiry_month": "01",
-                "expiry_year": "2023",
-                "name_on_card": "SusanSmith",
-            },
-            description="A card payment description. ",
-            to={"counterparty_id": "9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh"},
-            value={
-                "amount": "0",
-                "currency": "EUR",
-            },
+            body={},
         ) as transaction_request:
             assert not transaction_request.is_closed
             assert transaction_request.http_request.headers.get("X-Stainless-Lang") == "python"

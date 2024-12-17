@@ -2,9 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import date
-
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -92,14 +89,9 @@ class FxResource(SyncAPIResource):
 
     def update(
         self,
+        bank_id: str,
         *,
-        path_bank_id: str,
-        body_bank_id: str,
-        conversion_value: float,
-        effective_date: Union[str, date],
-        from_currency_code: str,
-        inverse_conversion_value: float,
-        to_currency_code: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -119,22 +111,12 @@ class FxResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not path_bank_id:
-            raise ValueError(f"Expected a non-empty value for `path_bank_id` but received {path_bank_id!r}")
+        if not bank_id:
+            raise ValueError(f"Expected a non-empty value for `bank_id` but received {bank_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
-            f"/obp/v5.1.0/banks/{path_bank_id}/fx",
-            body=maybe_transform(
-                {
-                    "body_bank_id": body_bank_id,
-                    "conversion_value": conversion_value,
-                    "effective_date": effective_date,
-                    "from_currency_code": from_currency_code,
-                    "inverse_conversion_value": inverse_conversion_value,
-                    "to_currency_code": to_currency_code,
-                },
-                fx_update_params.FxUpdateParams,
-            ),
+            f"/obp/v5.1.0/banks/{bank_id}/fx",
+            body=maybe_transform(body, fx_update_params.FxUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -204,14 +186,9 @@ class AsyncFxResource(AsyncAPIResource):
 
     async def update(
         self,
+        bank_id: str,
         *,
-        path_bank_id: str,
-        body_bank_id: str,
-        conversion_value: float,
-        effective_date: Union[str, date],
-        from_currency_code: str,
-        inverse_conversion_value: float,
-        to_currency_code: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -231,22 +208,12 @@ class AsyncFxResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not path_bank_id:
-            raise ValueError(f"Expected a non-empty value for `path_bank_id` but received {path_bank_id!r}")
+        if not bank_id:
+            raise ValueError(f"Expected a non-empty value for `bank_id` but received {bank_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
-            f"/obp/v5.1.0/banks/{path_bank_id}/fx",
-            body=await async_maybe_transform(
-                {
-                    "body_bank_id": body_bank_id,
-                    "conversion_value": conversion_value,
-                    "effective_date": effective_date,
-                    "from_currency_code": from_currency_code,
-                    "inverse_conversion_value": inverse_conversion_value,
-                    "to_currency_code": to_currency_code,
-                },
-                fx_update_params.FxUpdateParams,
-            ),
+            f"/obp/v5.1.0/banks/{bank_id}/fx",
+            body=await async_maybe_transform(body, fx_update_params.FxUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

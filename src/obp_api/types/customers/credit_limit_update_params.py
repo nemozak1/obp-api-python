@@ -6,16 +6,10 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
 
-__all__ = ["CreditLimitUpdateParams", "CreditLimit"]
+__all__ = ["CreditLimitUpdateParams"]
 
 
 class CreditLimitUpdateParams(TypedDict, total=False):
     bank_id: Required[Annotated[str, PropertyInfo(alias="BANK_ID")]]
 
-    credit_limit: Required[CreditLimit]
-
-
-class CreditLimit(TypedDict, total=False):
-    amount: Required[str]
-
-    currency: Required[str]
+    body: Required[object]

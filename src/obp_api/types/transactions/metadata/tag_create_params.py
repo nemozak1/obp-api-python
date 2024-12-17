@@ -16,4 +16,4 @@ class TagCreateParams(TypedDict, total=False):
 
     view_id: Required[Annotated[str, PropertyInfo(alias="VIEW_ID")]]
 
-    value: Required[str]
+    body: Required[object]

@@ -8,14 +8,4 @@ __all__ = ["AccountWebHookCreateParams"]
 
 
 class AccountWebHookCreateParams(TypedDict, total=False):
-    account_id: Required[str]
-
-    http_method: Required[str]
-
-    http_protocol: Required[str]
-
-    is_active: Required[str]
-
-    trigger_name: Required[str]
-
-    url: Required[str]
+    body: Required[object]

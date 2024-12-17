@@ -32,13 +32,7 @@ class TestViews:
         view = client.banks.accounts.views.create(
             account_id="ACCOUNT_ID",
             bank_id="BANK_ID",
-            allowed_actions=["string"],
-            description="This view is for family",
-            hide_metadata_if_alias_used=False,
-            is_public=False,
-            metadata_view="test",
-            name="test",
-            which_alias_to_use="family",
+            body={},
         )
         assert view.is_closed
         assert view.json() == {"foo": "bar"}
@@ -55,13 +49,7 @@ class TestViews:
         view = client.banks.accounts.views.with_raw_response.create(
             account_id="ACCOUNT_ID",
             bank_id="BANK_ID",
-            allowed_actions=["string"],
-            description="This view is for family",
-            hide_metadata_if_alias_used=False,
-            is_public=False,
-            metadata_view="test",
-            name="test",
-            which_alias_to_use="family",
+            body={},
         )
 
         assert view.is_closed is True
@@ -78,13 +66,7 @@ class TestViews:
         with client.banks.accounts.views.with_streaming_response.create(
             account_id="ACCOUNT_ID",
             bank_id="BANK_ID",
-            allowed_actions=["string"],
-            description="This view is for family",
-            hide_metadata_if_alias_used=False,
-            is_public=False,
-            metadata_view="test",
-            name="test",
-            which_alias_to_use="family",
+            body={},
         ) as view:
             assert not view.is_closed
             assert view.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -102,26 +84,14 @@ class TestViews:
             client.banks.accounts.views.with_raw_response.create(
                 account_id="ACCOUNT_ID",
                 bank_id="",
-                allowed_actions=["string"],
-                description="This view is for family",
-                hide_metadata_if_alias_used=False,
-                is_public=False,
-                metadata_view="test",
-                name="test",
-                which_alias_to_use="family",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
             client.banks.accounts.views.with_raw_response.create(
                 account_id="",
                 bank_id="BANK_ID",
-                allowed_actions=["string"],
-                description="This view is for family",
-                hide_metadata_if_alias_used=False,
-                is_public=False,
-                metadata_view="test",
-                name="test",
-                which_alias_to_use="family",
+                body={},
             )
 
     @parametrize
@@ -212,35 +182,7 @@ class TestViews:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            allowed_actions=["string"],
-            description="this is for family",
-            hide_metadata_if_alias_used=True,
-            is_public=True,
-            metadata_view="owner",
-            which_alias_to_use="family",
-        )
-        assert view.is_closed
-        assert view.json() == {"foo": "bar"}
-        assert cast(Any, view.is_closed) is True
-        assert isinstance(view, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_update_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.put("/obp/v5.1.0/banks/BANK_ID/accounts/ACCOUNT_ID/views/VIEW_ID").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        view = client.banks.accounts.views.update(
-            view_id="VIEW_ID",
-            bank_id="BANK_ID",
-            account_id="ACCOUNT_ID",
-            allowed_actions=["string"],
-            description="this is for family",
-            hide_metadata_if_alias_used=True,
-            is_public=True,
-            metadata_view="owner",
-            which_alias_to_use="family",
-            is_firehose=True,
+            body={},
         )
         assert view.is_closed
         assert view.json() == {"foo": "bar"}
@@ -258,12 +200,7 @@ class TestViews:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            allowed_actions=["string"],
-            description="this is for family",
-            hide_metadata_if_alias_used=True,
-            is_public=True,
-            metadata_view="owner",
-            which_alias_to_use="family",
+            body={},
         )
 
         assert view.is_closed is True
@@ -281,12 +218,7 @@ class TestViews:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            allowed_actions=["string"],
-            description="this is for family",
-            hide_metadata_if_alias_used=True,
-            is_public=True,
-            metadata_view="owner",
-            which_alias_to_use="family",
+            body={},
         ) as view:
             assert not view.is_closed
             assert view.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -305,12 +237,7 @@ class TestViews:
                 view_id="VIEW_ID",
                 bank_id="",
                 account_id="ACCOUNT_ID",
-                allowed_actions=["string"],
-                description="this is for family",
-                hide_metadata_if_alias_used=True,
-                is_public=True,
-                metadata_view="owner",
-                which_alias_to_use="family",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -318,12 +245,7 @@ class TestViews:
                 view_id="VIEW_ID",
                 bank_id="BANK_ID",
                 account_id="",
-                allowed_actions=["string"],
-                description="this is for family",
-                hide_metadata_if_alias_used=True,
-                is_public=True,
-                metadata_view="owner",
-                which_alias_to_use="family",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -331,12 +253,7 @@ class TestViews:
                 view_id="",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                allowed_actions=["string"],
-                description="this is for family",
-                hide_metadata_if_alias_used=True,
-                is_public=True,
-                metadata_view="owner",
-                which_alias_to_use="family",
+                body={},
             )
 
     @parametrize
@@ -415,7 +332,7 @@ class TestViews:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            json_string="{}",
+            body={},
         )
         assert view.is_closed
         assert view.json() == {"foo": "bar"}
@@ -433,7 +350,7 @@ class TestViews:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            json_string="{}",
+            body={},
         )
 
         assert view.is_closed is True
@@ -451,7 +368,7 @@ class TestViews:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            json_string="{}",
+            body={},
         ) as view:
             assert not view.is_closed
             assert view.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -470,7 +387,7 @@ class TestViews:
                 view_id="VIEW_ID",
                 bank_id="",
                 account_id="ACCOUNT_ID",
-                json_string="{}",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -478,7 +395,7 @@ class TestViews:
                 view_id="VIEW_ID",
                 bank_id="BANK_ID",
                 account_id="",
-                json_string="{}",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -486,7 +403,7 @@ class TestViews:
                 view_id="",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                json_string="{}",
+                body={},
             )
 
 
@@ -502,13 +419,7 @@ class TestAsyncViews:
         view = await async_client.banks.accounts.views.create(
             account_id="ACCOUNT_ID",
             bank_id="BANK_ID",
-            allowed_actions=["string"],
-            description="This view is for family",
-            hide_metadata_if_alias_used=False,
-            is_public=False,
-            metadata_view="test",
-            name="test",
-            which_alias_to_use="family",
+            body={},
         )
         assert view.is_closed
         assert await view.json() == {"foo": "bar"}
@@ -525,13 +436,7 @@ class TestAsyncViews:
         view = await async_client.banks.accounts.views.with_raw_response.create(
             account_id="ACCOUNT_ID",
             bank_id="BANK_ID",
-            allowed_actions=["string"],
-            description="This view is for family",
-            hide_metadata_if_alias_used=False,
-            is_public=False,
-            metadata_view="test",
-            name="test",
-            which_alias_to_use="family",
+            body={},
         )
 
         assert view.is_closed is True
@@ -548,13 +453,7 @@ class TestAsyncViews:
         async with async_client.banks.accounts.views.with_streaming_response.create(
             account_id="ACCOUNT_ID",
             bank_id="BANK_ID",
-            allowed_actions=["string"],
-            description="This view is for family",
-            hide_metadata_if_alias_used=False,
-            is_public=False,
-            metadata_view="test",
-            name="test",
-            which_alias_to_use="family",
+            body={},
         ) as view:
             assert not view.is_closed
             assert view.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -572,26 +471,14 @@ class TestAsyncViews:
             await async_client.banks.accounts.views.with_raw_response.create(
                 account_id="ACCOUNT_ID",
                 bank_id="",
-                allowed_actions=["string"],
-                description="This view is for family",
-                hide_metadata_if_alias_used=False,
-                is_public=False,
-                metadata_view="test",
-                name="test",
-                which_alias_to_use="family",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
             await async_client.banks.accounts.views.with_raw_response.create(
                 account_id="",
                 bank_id="BANK_ID",
-                allowed_actions=["string"],
-                description="This view is for family",
-                hide_metadata_if_alias_used=False,
-                is_public=False,
-                metadata_view="test",
-                name="test",
-                which_alias_to_use="family",
+                body={},
             )
 
     @parametrize
@@ -682,35 +569,7 @@ class TestAsyncViews:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            allowed_actions=["string"],
-            description="this is for family",
-            hide_metadata_if_alias_used=True,
-            is_public=True,
-            metadata_view="owner",
-            which_alias_to_use="family",
-        )
-        assert view.is_closed
-        assert await view.json() == {"foo": "bar"}
-        assert cast(Any, view.is_closed) is True
-        assert isinstance(view, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_update_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.put("/obp/v5.1.0/banks/BANK_ID/accounts/ACCOUNT_ID/views/VIEW_ID").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        view = await async_client.banks.accounts.views.update(
-            view_id="VIEW_ID",
-            bank_id="BANK_ID",
-            account_id="ACCOUNT_ID",
-            allowed_actions=["string"],
-            description="this is for family",
-            hide_metadata_if_alias_used=True,
-            is_public=True,
-            metadata_view="owner",
-            which_alias_to_use="family",
-            is_firehose=True,
+            body={},
         )
         assert view.is_closed
         assert await view.json() == {"foo": "bar"}
@@ -728,12 +587,7 @@ class TestAsyncViews:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            allowed_actions=["string"],
-            description="this is for family",
-            hide_metadata_if_alias_used=True,
-            is_public=True,
-            metadata_view="owner",
-            which_alias_to_use="family",
+            body={},
         )
 
         assert view.is_closed is True
@@ -751,12 +605,7 @@ class TestAsyncViews:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            allowed_actions=["string"],
-            description="this is for family",
-            hide_metadata_if_alias_used=True,
-            is_public=True,
-            metadata_view="owner",
-            which_alias_to_use="family",
+            body={},
         ) as view:
             assert not view.is_closed
             assert view.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -775,12 +624,7 @@ class TestAsyncViews:
                 view_id="VIEW_ID",
                 bank_id="",
                 account_id="ACCOUNT_ID",
-                allowed_actions=["string"],
-                description="this is for family",
-                hide_metadata_if_alias_used=True,
-                is_public=True,
-                metadata_view="owner",
-                which_alias_to_use="family",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -788,12 +632,7 @@ class TestAsyncViews:
                 view_id="VIEW_ID",
                 bank_id="BANK_ID",
                 account_id="",
-                allowed_actions=["string"],
-                description="this is for family",
-                hide_metadata_if_alias_used=True,
-                is_public=True,
-                metadata_view="owner",
-                which_alias_to_use="family",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -801,12 +640,7 @@ class TestAsyncViews:
                 view_id="",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                allowed_actions=["string"],
-                description="this is for family",
-                hide_metadata_if_alias_used=True,
-                is_public=True,
-                metadata_view="owner",
-                which_alias_to_use="family",
+                body={},
             )
 
     @parametrize
@@ -885,7 +719,7 @@ class TestAsyncViews:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            json_string="{}",
+            body={},
         )
         assert view.is_closed
         assert await view.json() == {"foo": "bar"}
@@ -903,7 +737,7 @@ class TestAsyncViews:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            json_string="{}",
+            body={},
         )
 
         assert view.is_closed is True
@@ -921,7 +755,7 @@ class TestAsyncViews:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            json_string="{}",
+            body={},
         ) as view:
             assert not view.is_closed
             assert view.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -940,7 +774,7 @@ class TestAsyncViews:
                 view_id="VIEW_ID",
                 bank_id="",
                 account_id="ACCOUNT_ID",
-                json_string="{}",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -948,7 +782,7 @@ class TestAsyncViews:
                 view_id="VIEW_ID",
                 bank_id="BANK_ID",
                 account_id="",
-                json_string="{}",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -956,5 +790,5 @@ class TestAsyncViews:
                 view_id="",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                json_string="{}",
+                body={},
             )

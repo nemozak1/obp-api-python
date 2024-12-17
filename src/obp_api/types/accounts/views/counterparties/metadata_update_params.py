@@ -6,7 +6,7 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from ....._utils import PropertyInfo
 
-__all__ = ["MetadataUpdateParams", "CorporateLocation"]
+__all__ = ["MetadataUpdateParams"]
 
 
 class MetadataUpdateParams(TypedDict, total=False):
@@ -16,10 +16,4 @@ class MetadataUpdateParams(TypedDict, total=False):
 
     view_id: Required[Annotated[str, PropertyInfo(alias="VIEW_ID")]]
 
-    corporate_location: Required[CorporateLocation]
-
-
-class CorporateLocation(TypedDict, total=False):
-    latitude: Required[float]
-
-    longitude: Required[float]
+    body: Required[object]

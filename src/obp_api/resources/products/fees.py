@@ -52,11 +52,7 @@ class FeesResource(SyncAPIResource):
         product_code: str,
         *,
         bank_id: str,
-        is_active: bool,
-        more_info: str,
-        name: str,
-        value: fee_create_params.Value,
-        product_fee_id: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -83,16 +79,7 @@ class FeesResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/products/{product_code}/fee",
-            body=maybe_transform(
-                {
-                    "is_active": is_active,
-                    "more_info": more_info,
-                    "name": name,
-                    "value": value,
-                    "product_fee_id": product_fee_id,
-                },
-                fee_create_params.FeeCreateParams,
-            ),
+            body=maybe_transform(body, fee_create_params.FeeCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -141,11 +128,7 @@ class FeesResource(SyncAPIResource):
         product_code: str,
         *,
         bank_id: str,
-        is_active: bool,
-        more_info: str,
-        name: str,
-        value: fee_update_params.Value,
-        product_fee_id: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -172,16 +155,7 @@ class FeesResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/products/{product_code}/fees/PRODUCT_FEE_ID",
-            body=maybe_transform(
-                {
-                    "is_active": is_active,
-                    "more_info": more_info,
-                    "name": name,
-                    "value": value,
-                    "product_fee_id": product_fee_id,
-                },
-                fee_update_params.FeeUpdateParams,
-            ),
+            body=maybe_transform(body, fee_update_params.FeeUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -288,11 +262,7 @@ class AsyncFeesResource(AsyncAPIResource):
         product_code: str,
         *,
         bank_id: str,
-        is_active: bool,
-        more_info: str,
-        name: str,
-        value: fee_create_params.Value,
-        product_fee_id: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -319,16 +289,7 @@ class AsyncFeesResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/products/{product_code}/fee",
-            body=await async_maybe_transform(
-                {
-                    "is_active": is_active,
-                    "more_info": more_info,
-                    "name": name,
-                    "value": value,
-                    "product_fee_id": product_fee_id,
-                },
-                fee_create_params.FeeCreateParams,
-            ),
+            body=await async_maybe_transform(body, fee_create_params.FeeCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -377,11 +338,7 @@ class AsyncFeesResource(AsyncAPIResource):
         product_code: str,
         *,
         bank_id: str,
-        is_active: bool,
-        more_info: str,
-        name: str,
-        value: fee_update_params.Value,
-        product_fee_id: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -408,16 +365,7 @@ class AsyncFeesResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/products/{product_code}/fees/PRODUCT_FEE_ID",
-            body=await async_maybe_transform(
-                {
-                    "is_active": is_active,
-                    "more_info": more_info,
-                    "name": name,
-                    "value": value,
-                    "product_fee_id": product_fee_id,
-                },
-                fee_update_params.FeeUpdateParams,
-            ),
+            body=await async_maybe_transform(body, fee_update_params.FeeUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

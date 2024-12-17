@@ -30,36 +30,7 @@ class TestEndpointCode:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         endpoint_code = client.dynamic_resource_docs.endpoint_code.create(
-            request_url="/my_user/MY_USER_ID",
-            request_verb="POST",
-        )
-        assert endpoint_code.is_closed
-        assert endpoint_code.json() == {"foo": "bar"}
-        assert cast(Any, endpoint_code.is_closed) is True
-        assert isinstance(endpoint_code, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_create_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.post("/obp/v5.1.0/management/dynamic-resource-docs/endpoint-code").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        endpoint_code = client.dynamic_resource_docs.endpoint_code.create(
-            request_url="/my_user/MY_USER_ID",
-            request_verb="POST",
-            example_request_body={
-                "_optional_fields": ["hobby"],
-                "age": 12,
-                "hobby": ["coding"],
-                "name": "Jhon",
-            },
-            success_response_body={
-                "_optional_fields": ["hobby"],
-                "age": 12,
-                "hobby": ["coding"],
-                "my_user_id": "some_id_value",
-                "name": "Jhon",
-            },
+            body={},
         )
         assert endpoint_code.is_closed
         assert endpoint_code.json() == {"foo": "bar"}
@@ -74,8 +45,7 @@ class TestEndpointCode:
         )
 
         endpoint_code = client.dynamic_resource_docs.endpoint_code.with_raw_response.create(
-            request_url="/my_user/MY_USER_ID",
-            request_verb="POST",
+            body={},
         )
 
         assert endpoint_code.is_closed is True
@@ -90,8 +60,7 @@ class TestEndpointCode:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.dynamic_resource_docs.endpoint_code.with_streaming_response.create(
-            request_url="/my_user/MY_USER_ID",
-            request_verb="POST",
+            body={},
         ) as endpoint_code:
             assert not endpoint_code.is_closed
             assert endpoint_code.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -113,36 +82,7 @@ class TestAsyncEndpointCode:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         endpoint_code = await async_client.dynamic_resource_docs.endpoint_code.create(
-            request_url="/my_user/MY_USER_ID",
-            request_verb="POST",
-        )
-        assert endpoint_code.is_closed
-        assert await endpoint_code.json() == {"foo": "bar"}
-        assert cast(Any, endpoint_code.is_closed) is True
-        assert isinstance(endpoint_code, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_create_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.post("/obp/v5.1.0/management/dynamic-resource-docs/endpoint-code").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        endpoint_code = await async_client.dynamic_resource_docs.endpoint_code.create(
-            request_url="/my_user/MY_USER_ID",
-            request_verb="POST",
-            example_request_body={
-                "_optional_fields": ["hobby"],
-                "age": 12,
-                "hobby": ["coding"],
-                "name": "Jhon",
-            },
-            success_response_body={
-                "_optional_fields": ["hobby"],
-                "age": 12,
-                "hobby": ["coding"],
-                "my_user_id": "some_id_value",
-                "name": "Jhon",
-            },
+            body={},
         )
         assert endpoint_code.is_closed
         assert await endpoint_code.json() == {"foo": "bar"}
@@ -157,8 +97,7 @@ class TestAsyncEndpointCode:
         )
 
         endpoint_code = await async_client.dynamic_resource_docs.endpoint_code.with_raw_response.create(
-            request_url="/my_user/MY_USER_ID",
-            request_verb="POST",
+            body={},
         )
 
         assert endpoint_code.is_closed is True
@@ -173,8 +112,7 @@ class TestAsyncEndpointCode:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.dynamic_resource_docs.endpoint_code.with_streaming_response.create(
-            request_url="/my_user/MY_USER_ID",
-            request_verb="POST",
+            body={},
         ) as endpoint_code:
             assert not endpoint_code.is_closed
             assert endpoint_code.http_request.headers.get("X-Stainless-Lang") == "python"

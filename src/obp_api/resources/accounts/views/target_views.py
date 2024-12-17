@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import List
-
 import httpx
 
 from ...._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
@@ -59,13 +57,7 @@ class TargetViewsResource(SyncAPIResource):
         *,
         bank_id: str,
         account_id: str,
-        allowed_permissions: List[str],
-        description: str,
-        hide_metadata_if_alias_used: bool,
-        is_public: bool,
-        metadata_view: str,
-        name: str,
-        which_alias_to_use: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -94,18 +86,7 @@ class TargetViewsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/views/{view_id}/target-views",
-            body=maybe_transform(
-                {
-                    "allowed_permissions": allowed_permissions,
-                    "description": description,
-                    "hide_metadata_if_alias_used": hide_metadata_if_alias_used,
-                    "is_public": is_public,
-                    "metadata_view": metadata_view,
-                    "name": name,
-                    "which_alias_to_use": which_alias_to_use,
-                },
-                target_view_create_params.TargetViewCreateParams,
-            ),
+            body=maybe_transform(body, target_view_create_params.TargetViewCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -158,12 +139,7 @@ class TargetViewsResource(SyncAPIResource):
         *,
         bank_id: str,
         account_id: str,
-        allowed_permissions: List[str],
-        description: str,
-        hide_metadata_if_alias_used: bool,
-        is_public: bool,
-        metadata_view: str,
-        which_alias_to_use: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -192,17 +168,7 @@ class TargetViewsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/views/{view_id}/target-views/TARGET_VIEW_ID",
-            body=maybe_transform(
-                {
-                    "allowed_permissions": allowed_permissions,
-                    "description": description,
-                    "hide_metadata_if_alias_used": hide_metadata_if_alias_used,
-                    "is_public": is_public,
-                    "metadata_view": metadata_view,
-                    "which_alias_to_use": which_alias_to_use,
-                },
-                target_view_update_params.TargetViewUpdateParams,
-            ),
+            body=maybe_transform(body, target_view_update_params.TargetViewUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -276,13 +242,7 @@ class AsyncTargetViewsResource(AsyncAPIResource):
         *,
         bank_id: str,
         account_id: str,
-        allowed_permissions: List[str],
-        description: str,
-        hide_metadata_if_alias_used: bool,
-        is_public: bool,
-        metadata_view: str,
-        name: str,
-        which_alias_to_use: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -311,18 +271,7 @@ class AsyncTargetViewsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/views/{view_id}/target-views",
-            body=await async_maybe_transform(
-                {
-                    "allowed_permissions": allowed_permissions,
-                    "description": description,
-                    "hide_metadata_if_alias_used": hide_metadata_if_alias_used,
-                    "is_public": is_public,
-                    "metadata_view": metadata_view,
-                    "name": name,
-                    "which_alias_to_use": which_alias_to_use,
-                },
-                target_view_create_params.TargetViewCreateParams,
-            ),
+            body=await async_maybe_transform(body, target_view_create_params.TargetViewCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -375,12 +324,7 @@ class AsyncTargetViewsResource(AsyncAPIResource):
         *,
         bank_id: str,
         account_id: str,
-        allowed_permissions: List[str],
-        description: str,
-        hide_metadata_if_alias_used: bool,
-        is_public: bool,
-        metadata_view: str,
-        which_alias_to_use: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -409,17 +353,7 @@ class AsyncTargetViewsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/views/{view_id}/target-views/TARGET_VIEW_ID",
-            body=await async_maybe_transform(
-                {
-                    "allowed_permissions": allowed_permissions,
-                    "description": description,
-                    "hide_metadata_if_alias_used": hide_metadata_if_alias_used,
-                    "is_public": is_public,
-                    "metadata_view": metadata_view,
-                    "which_alias_to_use": which_alias_to_use,
-                },
-                target_view_update_params.TargetViewUpdateParams,
-            ),
+            body=await async_maybe_transform(body, target_view_update_params.TargetViewUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

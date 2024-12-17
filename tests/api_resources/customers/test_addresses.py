@@ -32,16 +32,7 @@ class TestAddresses:
         address = client.customers.addresses.create(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            city="Berlin",
-            country_code="DE",
-            county="",
-            line_1="No 1 the Road",
-            line_2="The Place",
-            line_3="The Hill",
-            postcode="13359",
-            state="Brandenburg",
-            status="OK",
-            tags=["string"],
+            body={},
         )
         assert address.is_closed
         assert address.json() == {"foo": "bar"}
@@ -58,16 +49,7 @@ class TestAddresses:
         address = client.customers.addresses.with_raw_response.create(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            city="Berlin",
-            country_code="DE",
-            county="",
-            line_1="No 1 the Road",
-            line_2="The Place",
-            line_3="The Hill",
-            postcode="13359",
-            state="Brandenburg",
-            status="OK",
-            tags=["string"],
+            body={},
         )
 
         assert address.is_closed is True
@@ -84,16 +66,7 @@ class TestAddresses:
         with client.customers.addresses.with_streaming_response.create(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            city="Berlin",
-            country_code="DE",
-            county="",
-            line_1="No 1 the Road",
-            line_2="The Place",
-            line_3="The Hill",
-            postcode="13359",
-            state="Brandenburg",
-            status="OK",
-            tags=["string"],
+            body={},
         ) as address:
             assert not address.is_closed
             assert address.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -111,32 +84,14 @@ class TestAddresses:
             client.customers.addresses.with_raw_response.create(
                 customer_id="CUSTOMER_ID",
                 bank_id="",
-                city="Berlin",
-                country_code="DE",
-                county="",
-                line_1="No 1 the Road",
-                line_2="The Place",
-                line_3="The Hill",
-                postcode="13359",
-                state="Brandenburg",
-                status="OK",
-                tags=["string"],
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             client.customers.addresses.with_raw_response.create(
                 customer_id="",
                 bank_id="BANK_ID",
-                city="Berlin",
-                country_code="DE",
-                county="",
-                line_1="No 1 the Road",
-                line_2="The Place",
-                line_3="The Hill",
-                postcode="13359",
-                state="Brandenburg",
-                status="OK",
-                tags=["string"],
+                body={},
             )
 
     @parametrize
@@ -149,16 +104,7 @@ class TestAddresses:
             customer_address_id="CUSTOMER_ADDRESS_ID",
             bank_id="BANK_ID",
             customer_id="CUSTOMER_ID",
-            city="Berlin",
-            country_code="DE",
-            county="",
-            line_1="No 1 the Road",
-            line_2="The Place",
-            line_3="The Hill",
-            postcode="13359",
-            state="Brandenburg",
-            status="OK",
-            tags=["string"],
+            body={},
         )
         assert address.is_closed
         assert address.json() == {"foo": "bar"}
@@ -176,16 +122,7 @@ class TestAddresses:
             customer_address_id="CUSTOMER_ADDRESS_ID",
             bank_id="BANK_ID",
             customer_id="CUSTOMER_ID",
-            city="Berlin",
-            country_code="DE",
-            county="",
-            line_1="No 1 the Road",
-            line_2="The Place",
-            line_3="The Hill",
-            postcode="13359",
-            state="Brandenburg",
-            status="OK",
-            tags=["string"],
+            body={},
         )
 
         assert address.is_closed is True
@@ -203,16 +140,7 @@ class TestAddresses:
             customer_address_id="CUSTOMER_ADDRESS_ID",
             bank_id="BANK_ID",
             customer_id="CUSTOMER_ID",
-            city="Berlin",
-            country_code="DE",
-            county="",
-            line_1="No 1 the Road",
-            line_2="The Place",
-            line_3="The Hill",
-            postcode="13359",
-            state="Brandenburg",
-            status="OK",
-            tags=["string"],
+            body={},
         ) as address:
             assert not address.is_closed
             assert address.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -231,16 +159,7 @@ class TestAddresses:
                 customer_address_id="CUSTOMER_ADDRESS_ID",
                 bank_id="",
                 customer_id="CUSTOMER_ID",
-                city="Berlin",
-                country_code="DE",
-                county="",
-                line_1="No 1 the Road",
-                line_2="The Place",
-                line_3="The Hill",
-                postcode="13359",
-                state="Brandenburg",
-                status="OK",
-                tags=["string"],
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
@@ -248,16 +167,7 @@ class TestAddresses:
                 customer_address_id="CUSTOMER_ADDRESS_ID",
                 bank_id="BANK_ID",
                 customer_id="",
-                city="Berlin",
-                country_code="DE",
-                county="",
-                line_1="No 1 the Road",
-                line_2="The Place",
-                line_3="The Hill",
-                postcode="13359",
-                state="Brandenburg",
-                status="OK",
-                tags=["string"],
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_address_id` but received ''"):
@@ -265,16 +175,7 @@ class TestAddresses:
                 customer_address_id="",
                 bank_id="BANK_ID",
                 customer_id="CUSTOMER_ID",
-                city="Berlin",
-                country_code="DE",
-                county="",
-                line_1="No 1 the Road",
-                line_2="The Place",
-                line_3="The Hill",
-                postcode="13359",
-                state="Brandenburg",
-                status="OK",
-                tags=["string"],
+                body={},
             )
 
     @parametrize
@@ -416,16 +317,7 @@ class TestAsyncAddresses:
         address = await async_client.customers.addresses.create(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            city="Berlin",
-            country_code="DE",
-            county="",
-            line_1="No 1 the Road",
-            line_2="The Place",
-            line_3="The Hill",
-            postcode="13359",
-            state="Brandenburg",
-            status="OK",
-            tags=["string"],
+            body={},
         )
         assert address.is_closed
         assert await address.json() == {"foo": "bar"}
@@ -442,16 +334,7 @@ class TestAsyncAddresses:
         address = await async_client.customers.addresses.with_raw_response.create(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            city="Berlin",
-            country_code="DE",
-            county="",
-            line_1="No 1 the Road",
-            line_2="The Place",
-            line_3="The Hill",
-            postcode="13359",
-            state="Brandenburg",
-            status="OK",
-            tags=["string"],
+            body={},
         )
 
         assert address.is_closed is True
@@ -468,16 +351,7 @@ class TestAsyncAddresses:
         async with async_client.customers.addresses.with_streaming_response.create(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            city="Berlin",
-            country_code="DE",
-            county="",
-            line_1="No 1 the Road",
-            line_2="The Place",
-            line_3="The Hill",
-            postcode="13359",
-            state="Brandenburg",
-            status="OK",
-            tags=["string"],
+            body={},
         ) as address:
             assert not address.is_closed
             assert address.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -495,32 +369,14 @@ class TestAsyncAddresses:
             await async_client.customers.addresses.with_raw_response.create(
                 customer_id="CUSTOMER_ID",
                 bank_id="",
-                city="Berlin",
-                country_code="DE",
-                county="",
-                line_1="No 1 the Road",
-                line_2="The Place",
-                line_3="The Hill",
-                postcode="13359",
-                state="Brandenburg",
-                status="OK",
-                tags=["string"],
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             await async_client.customers.addresses.with_raw_response.create(
                 customer_id="",
                 bank_id="BANK_ID",
-                city="Berlin",
-                country_code="DE",
-                county="",
-                line_1="No 1 the Road",
-                line_2="The Place",
-                line_3="The Hill",
-                postcode="13359",
-                state="Brandenburg",
-                status="OK",
-                tags=["string"],
+                body={},
             )
 
     @parametrize
@@ -533,16 +389,7 @@ class TestAsyncAddresses:
             customer_address_id="CUSTOMER_ADDRESS_ID",
             bank_id="BANK_ID",
             customer_id="CUSTOMER_ID",
-            city="Berlin",
-            country_code="DE",
-            county="",
-            line_1="No 1 the Road",
-            line_2="The Place",
-            line_3="The Hill",
-            postcode="13359",
-            state="Brandenburg",
-            status="OK",
-            tags=["string"],
+            body={},
         )
         assert address.is_closed
         assert await address.json() == {"foo": "bar"}
@@ -560,16 +407,7 @@ class TestAsyncAddresses:
             customer_address_id="CUSTOMER_ADDRESS_ID",
             bank_id="BANK_ID",
             customer_id="CUSTOMER_ID",
-            city="Berlin",
-            country_code="DE",
-            county="",
-            line_1="No 1 the Road",
-            line_2="The Place",
-            line_3="The Hill",
-            postcode="13359",
-            state="Brandenburg",
-            status="OK",
-            tags=["string"],
+            body={},
         )
 
         assert address.is_closed is True
@@ -587,16 +425,7 @@ class TestAsyncAddresses:
             customer_address_id="CUSTOMER_ADDRESS_ID",
             bank_id="BANK_ID",
             customer_id="CUSTOMER_ID",
-            city="Berlin",
-            country_code="DE",
-            county="",
-            line_1="No 1 the Road",
-            line_2="The Place",
-            line_3="The Hill",
-            postcode="13359",
-            state="Brandenburg",
-            status="OK",
-            tags=["string"],
+            body={},
         ) as address:
             assert not address.is_closed
             assert address.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -615,16 +444,7 @@ class TestAsyncAddresses:
                 customer_address_id="CUSTOMER_ADDRESS_ID",
                 bank_id="",
                 customer_id="CUSTOMER_ID",
-                city="Berlin",
-                country_code="DE",
-                county="",
-                line_1="No 1 the Road",
-                line_2="The Place",
-                line_3="The Hill",
-                postcode="13359",
-                state="Brandenburg",
-                status="OK",
-                tags=["string"],
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
@@ -632,16 +452,7 @@ class TestAsyncAddresses:
                 customer_address_id="CUSTOMER_ADDRESS_ID",
                 bank_id="BANK_ID",
                 customer_id="",
-                city="Berlin",
-                country_code="DE",
-                county="",
-                line_1="No 1 the Road",
-                line_2="The Place",
-                line_3="The Hill",
-                postcode="13359",
-                state="Brandenburg",
-                status="OK",
-                tags=["string"],
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_address_id` but received ''"):
@@ -649,16 +460,7 @@ class TestAsyncAddresses:
                 customer_address_id="",
                 bank_id="BANK_ID",
                 customer_id="CUSTOMER_ID",
-                city="Berlin",
-                country_code="DE",
-                county="",
-                line_1="No 1 the Road",
-                line_2="The Place",
-                line_3="The Hill",
-                postcode="13359",
-                state="Brandenburg",
-                status="OK",
-                tags=["string"],
+                body={},
             )
 
     @parametrize
