@@ -12,6 +12,4 @@ __all__ = ["AuthContextUpdateCreateParams"]
 class AuthContextUpdateCreateParams(TypedDict, total=False):
     bank_id: Required[Annotated[str, PropertyInfo(alias="BANK_ID")]]
 
-    key: Required[str]
-
-    value: Required[str]
+    body: Required[object]

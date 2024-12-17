@@ -32,10 +32,7 @@ class TestMessages:
         message = client.customers.messages.create(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            from_department="Open Bank",
-            from_person="Tom",
-            message="123456",
-            transport="SMS",
+            body={},
         )
         assert message.is_closed
         assert message.json() == {"foo": "bar"}
@@ -52,10 +49,7 @@ class TestMessages:
         message = client.customers.messages.with_raw_response.create(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            from_department="Open Bank",
-            from_person="Tom",
-            message="123456",
-            transport="SMS",
+            body={},
         )
 
         assert message.is_closed is True
@@ -72,10 +66,7 @@ class TestMessages:
         with client.customers.messages.with_streaming_response.create(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            from_department="Open Bank",
-            from_person="Tom",
-            message="123456",
-            transport="SMS",
+            body={},
         ) as message:
             assert not message.is_closed
             assert message.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -93,20 +84,14 @@ class TestMessages:
             client.customers.messages.with_raw_response.create(
                 customer_id="CUSTOMER_ID",
                 bank_id="",
-                from_department="Open Bank",
-                from_person="Tom",
-                message="123456",
-                transport="SMS",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             client.customers.messages.with_raw_response.create(
                 customer_id="",
                 bank_id="BANK_ID",
-                from_department="Open Bank",
-                from_person="Tom",
-                message="123456",
-                transport="SMS",
+                body={},
             )
 
     @parametrize
@@ -188,10 +173,7 @@ class TestAsyncMessages:
         message = await async_client.customers.messages.create(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            from_department="Open Bank",
-            from_person="Tom",
-            message="123456",
-            transport="SMS",
+            body={},
         )
         assert message.is_closed
         assert await message.json() == {"foo": "bar"}
@@ -208,10 +190,7 @@ class TestAsyncMessages:
         message = await async_client.customers.messages.with_raw_response.create(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            from_department="Open Bank",
-            from_person="Tom",
-            message="123456",
-            transport="SMS",
+            body={},
         )
 
         assert message.is_closed is True
@@ -228,10 +207,7 @@ class TestAsyncMessages:
         async with async_client.customers.messages.with_streaming_response.create(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            from_department="Open Bank",
-            from_person="Tom",
-            message="123456",
-            transport="SMS",
+            body={},
         ) as message:
             assert not message.is_closed
             assert message.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -249,20 +225,14 @@ class TestAsyncMessages:
             await async_client.customers.messages.with_raw_response.create(
                 customer_id="CUSTOMER_ID",
                 bank_id="",
-                from_department="Open Bank",
-                from_person="Tom",
-                message="123456",
-                transport="SMS",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             await async_client.customers.messages.with_raw_response.create(
                 customer_id="",
                 bank_id="BANK_ID",
-                from_department="Open Bank",
-                from_person="Tom",
-                message="123456",
-                transport="SMS",
+                body={},
             )
 
     @parametrize

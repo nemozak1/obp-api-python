@@ -8,8 +8,4 @@ __all__ = ["NotificationOnCreateTransactionParams"]
 
 
 class NotificationOnCreateTransactionParams(TypedDict, total=False):
-    http_method: Required[str]
-
-    http_protocol: Required[str]
-
-    url: Required[str]
+    body: Required[object]

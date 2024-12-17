@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import List, Iterable
-
 import httpx
 
 from .notes import (
@@ -139,40 +137,9 @@ class AtmsResource(SyncAPIResource):
 
     def create(
         self,
+        bank_id: str,
         *,
-        path_bank_id: str,
-        accessibility_features: List[str],
-        address: atm_create_params.Address,
-        atm_type: str,
-        balance_inquiry_fee: str,
-        body_bank_id: str,
-        branch_identification: str,
-        cash_withdrawal_international_fee: str,
-        cash_withdrawal_national_fee: str,
-        friday: atm_create_params.Friday,
-        has_deposit_capability: str,
-        is_accessible: str,
-        located_at: str,
-        location: atm_create_params.Location,
-        location_categories: List[str],
-        meta: atm_create_params.Meta,
-        minimum_withdrawal: str,
-        monday: atm_create_params.Monday,
-        more_info: str,
-        name: str,
-        notes: List[str],
-        phone: str,
-        saturday: atm_create_params.Saturday,
-        services: List[str],
-        site_identification: str,
-        site_name: str,
-        sunday: atm_create_params.Sunday,
-        supported_currencies: List[str],
-        supported_languages: List[str],
-        thursday: atm_create_params.Thursday,
-        tuesday: atm_create_params.Tuesday,
-        wednesday: atm_create_params.Wednesday,
-        id: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -192,48 +159,12 @@ class AtmsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not path_bank_id:
-            raise ValueError(f"Expected a non-empty value for `path_bank_id` but received {path_bank_id!r}")
+        if not bank_id:
+            raise ValueError(f"Expected a non-empty value for `bank_id` but received {bank_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
-            f"/obp/v5.1.0/banks/{path_bank_id}/atms",
-            body=maybe_transform(
-                {
-                    "accessibility_features": accessibility_features,
-                    "address": address,
-                    "atm_type": atm_type,
-                    "balance_inquiry_fee": balance_inquiry_fee,
-                    "body_bank_id": body_bank_id,
-                    "branch_identification": branch_identification,
-                    "cash_withdrawal_international_fee": cash_withdrawal_international_fee,
-                    "cash_withdrawal_national_fee": cash_withdrawal_national_fee,
-                    "friday": friday,
-                    "has_deposit_capability": has_deposit_capability,
-                    "is_accessible": is_accessible,
-                    "located_at": located_at,
-                    "location": location,
-                    "location_categories": location_categories,
-                    "meta": meta,
-                    "minimum_withdrawal": minimum_withdrawal,
-                    "monday": monday,
-                    "more_info": more_info,
-                    "name": name,
-                    "notes": notes,
-                    "phone": phone,
-                    "saturday": saturday,
-                    "services": services,
-                    "site_identification": site_identification,
-                    "site_name": site_name,
-                    "sunday": sunday,
-                    "supported_currencies": supported_currencies,
-                    "supported_languages": supported_languages,
-                    "thursday": thursday,
-                    "tuesday": tuesday,
-                    "wednesday": wednesday,
-                    "id": id,
-                },
-                atm_create_params.AtmCreateParams,
-            ),
+            f"/obp/v5.1.0/banks/{bank_id}/atms",
+            body=maybe_transform(body, atm_create_params.AtmCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -281,40 +212,8 @@ class AtmsResource(SyncAPIResource):
         self,
         atm_id: str,
         *,
-        path_bank_id: str,
-        accessibility_features: List[str],
-        address: atm_update_params.Address,
-        atm_type: str,
-        balance_inquiry_fee: str,
-        body_bank_id: str,
-        branch_identification: str,
-        cash_withdrawal_international_fee: str,
-        cash_withdrawal_national_fee: str,
-        friday: atm_update_params.Friday,
-        has_deposit_capability: str,
-        is_accessible: str,
-        located_at: str,
-        location: atm_update_params.Location,
-        location_categories: List[str],
-        meta: atm_update_params.Meta,
-        minimum_withdrawal: str,
-        monday: atm_update_params.Monday,
-        more_info: str,
-        name: str,
-        notes: List[str],
-        phone: str,
-        saturday: atm_update_params.Saturday,
-        services: List[str],
-        site_identification: str,
-        site_name: str,
-        sunday: atm_update_params.Sunday,
-        supported_currencies: List[str],
-        supported_languages: List[str],
-        thursday: atm_update_params.Thursday,
-        tuesday: atm_update_params.Tuesday,
-        wednesday: atm_update_params.Wednesday,
-        id: str | NotGiven = NOT_GIVEN,
-        attributes: Iterable[atm_update_params.Attribute] | NotGiven = NOT_GIVEN,
+        bank_id: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -334,51 +233,14 @@ class AtmsResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not path_bank_id:
-            raise ValueError(f"Expected a non-empty value for `path_bank_id` but received {path_bank_id!r}")
+        if not bank_id:
+            raise ValueError(f"Expected a non-empty value for `bank_id` but received {bank_id!r}")
         if not atm_id:
             raise ValueError(f"Expected a non-empty value for `atm_id` but received {atm_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
-            f"/obp/v5.1.0/banks/{path_bank_id}/atms/{atm_id}",
-            body=maybe_transform(
-                {
-                    "accessibility_features": accessibility_features,
-                    "address": address,
-                    "atm_type": atm_type,
-                    "balance_inquiry_fee": balance_inquiry_fee,
-                    "body_bank_id": body_bank_id,
-                    "branch_identification": branch_identification,
-                    "cash_withdrawal_international_fee": cash_withdrawal_international_fee,
-                    "cash_withdrawal_national_fee": cash_withdrawal_national_fee,
-                    "friday": friday,
-                    "has_deposit_capability": has_deposit_capability,
-                    "is_accessible": is_accessible,
-                    "located_at": located_at,
-                    "location": location,
-                    "location_categories": location_categories,
-                    "meta": meta,
-                    "minimum_withdrawal": minimum_withdrawal,
-                    "monday": monday,
-                    "more_info": more_info,
-                    "name": name,
-                    "notes": notes,
-                    "phone": phone,
-                    "saturday": saturday,
-                    "services": services,
-                    "site_identification": site_identification,
-                    "site_name": site_name,
-                    "sunday": sunday,
-                    "supported_currencies": supported_currencies,
-                    "supported_languages": supported_languages,
-                    "thursday": thursday,
-                    "tuesday": tuesday,
-                    "wednesday": wednesday,
-                    "id": id,
-                    "attributes": attributes,
-                },
-                atm_update_params.AtmUpdateParams,
-            ),
+            f"/obp/v5.1.0/banks/{bank_id}/atms/{atm_id}",
+            body=maybe_transform(body, atm_update_params.AtmUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -507,40 +369,9 @@ class AsyncAtmsResource(AsyncAPIResource):
 
     async def create(
         self,
+        bank_id: str,
         *,
-        path_bank_id: str,
-        accessibility_features: List[str],
-        address: atm_create_params.Address,
-        atm_type: str,
-        balance_inquiry_fee: str,
-        body_bank_id: str,
-        branch_identification: str,
-        cash_withdrawal_international_fee: str,
-        cash_withdrawal_national_fee: str,
-        friday: atm_create_params.Friday,
-        has_deposit_capability: str,
-        is_accessible: str,
-        located_at: str,
-        location: atm_create_params.Location,
-        location_categories: List[str],
-        meta: atm_create_params.Meta,
-        minimum_withdrawal: str,
-        monday: atm_create_params.Monday,
-        more_info: str,
-        name: str,
-        notes: List[str],
-        phone: str,
-        saturday: atm_create_params.Saturday,
-        services: List[str],
-        site_identification: str,
-        site_name: str,
-        sunday: atm_create_params.Sunday,
-        supported_currencies: List[str],
-        supported_languages: List[str],
-        thursday: atm_create_params.Thursday,
-        tuesday: atm_create_params.Tuesday,
-        wednesday: atm_create_params.Wednesday,
-        id: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -560,48 +391,12 @@ class AsyncAtmsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not path_bank_id:
-            raise ValueError(f"Expected a non-empty value for `path_bank_id` but received {path_bank_id!r}")
+        if not bank_id:
+            raise ValueError(f"Expected a non-empty value for `bank_id` but received {bank_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
-            f"/obp/v5.1.0/banks/{path_bank_id}/atms",
-            body=await async_maybe_transform(
-                {
-                    "accessibility_features": accessibility_features,
-                    "address": address,
-                    "atm_type": atm_type,
-                    "balance_inquiry_fee": balance_inquiry_fee,
-                    "body_bank_id": body_bank_id,
-                    "branch_identification": branch_identification,
-                    "cash_withdrawal_international_fee": cash_withdrawal_international_fee,
-                    "cash_withdrawal_national_fee": cash_withdrawal_national_fee,
-                    "friday": friday,
-                    "has_deposit_capability": has_deposit_capability,
-                    "is_accessible": is_accessible,
-                    "located_at": located_at,
-                    "location": location,
-                    "location_categories": location_categories,
-                    "meta": meta,
-                    "minimum_withdrawal": minimum_withdrawal,
-                    "monday": monday,
-                    "more_info": more_info,
-                    "name": name,
-                    "notes": notes,
-                    "phone": phone,
-                    "saturday": saturday,
-                    "services": services,
-                    "site_identification": site_identification,
-                    "site_name": site_name,
-                    "sunday": sunday,
-                    "supported_currencies": supported_currencies,
-                    "supported_languages": supported_languages,
-                    "thursday": thursday,
-                    "tuesday": tuesday,
-                    "wednesday": wednesday,
-                    "id": id,
-                },
-                atm_create_params.AtmCreateParams,
-            ),
+            f"/obp/v5.1.0/banks/{bank_id}/atms",
+            body=await async_maybe_transform(body, atm_create_params.AtmCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -649,40 +444,8 @@ class AsyncAtmsResource(AsyncAPIResource):
         self,
         atm_id: str,
         *,
-        path_bank_id: str,
-        accessibility_features: List[str],
-        address: atm_update_params.Address,
-        atm_type: str,
-        balance_inquiry_fee: str,
-        body_bank_id: str,
-        branch_identification: str,
-        cash_withdrawal_international_fee: str,
-        cash_withdrawal_national_fee: str,
-        friday: atm_update_params.Friday,
-        has_deposit_capability: str,
-        is_accessible: str,
-        located_at: str,
-        location: atm_update_params.Location,
-        location_categories: List[str],
-        meta: atm_update_params.Meta,
-        minimum_withdrawal: str,
-        monday: atm_update_params.Monday,
-        more_info: str,
-        name: str,
-        notes: List[str],
-        phone: str,
-        saturday: atm_update_params.Saturday,
-        services: List[str],
-        site_identification: str,
-        site_name: str,
-        sunday: atm_update_params.Sunday,
-        supported_currencies: List[str],
-        supported_languages: List[str],
-        thursday: atm_update_params.Thursday,
-        tuesday: atm_update_params.Tuesday,
-        wednesday: atm_update_params.Wednesday,
-        id: str | NotGiven = NOT_GIVEN,
-        attributes: Iterable[atm_update_params.Attribute] | NotGiven = NOT_GIVEN,
+        bank_id: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -702,51 +465,14 @@ class AsyncAtmsResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not path_bank_id:
-            raise ValueError(f"Expected a non-empty value for `path_bank_id` but received {path_bank_id!r}")
+        if not bank_id:
+            raise ValueError(f"Expected a non-empty value for `bank_id` but received {bank_id!r}")
         if not atm_id:
             raise ValueError(f"Expected a non-empty value for `atm_id` but received {atm_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
-            f"/obp/v5.1.0/banks/{path_bank_id}/atms/{atm_id}",
-            body=await async_maybe_transform(
-                {
-                    "accessibility_features": accessibility_features,
-                    "address": address,
-                    "atm_type": atm_type,
-                    "balance_inquiry_fee": balance_inquiry_fee,
-                    "body_bank_id": body_bank_id,
-                    "branch_identification": branch_identification,
-                    "cash_withdrawal_international_fee": cash_withdrawal_international_fee,
-                    "cash_withdrawal_national_fee": cash_withdrawal_national_fee,
-                    "friday": friday,
-                    "has_deposit_capability": has_deposit_capability,
-                    "is_accessible": is_accessible,
-                    "located_at": located_at,
-                    "location": location,
-                    "location_categories": location_categories,
-                    "meta": meta,
-                    "minimum_withdrawal": minimum_withdrawal,
-                    "monday": monday,
-                    "more_info": more_info,
-                    "name": name,
-                    "notes": notes,
-                    "phone": phone,
-                    "saturday": saturday,
-                    "services": services,
-                    "site_identification": site_identification,
-                    "site_name": site_name,
-                    "sunday": sunday,
-                    "supported_currencies": supported_currencies,
-                    "supported_languages": supported_languages,
-                    "thursday": thursday,
-                    "tuesday": tuesday,
-                    "wednesday": wednesday,
-                    "id": id,
-                    "attributes": attributes,
-                },
-                atm_update_params.AtmUpdateParams,
-            ),
+            f"/obp/v5.1.0/banks/{bank_id}/atms/{atm_id}",
+            body=await async_maybe_transform(body, atm_update_params.AtmUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

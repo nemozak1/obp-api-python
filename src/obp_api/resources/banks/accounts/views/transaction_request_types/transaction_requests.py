@@ -56,11 +56,7 @@ class TransactionRequestsResource(SyncAPIResource):
         *,
         bank_id: str,
         account_id: str,
-        charge_policy: str,
-        description: str,
-        to: transaction_request_create_params.To,
-        value: transaction_request_create_params.Value,
-        future_date: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -89,16 +85,7 @@ class TransactionRequestsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/transaction-request-types/SIMPLE/transaction-requests",
-            body=maybe_transform(
-                {
-                    "charge_policy": charge_policy,
-                    "description": description,
-                    "to": to,
-                    "value": value,
-                    "future_date": future_date,
-                },
-                transaction_request_create_params.TransactionRequestCreateParams,
-            ),
+            body=maybe_transform(body, transaction_request_create_params.TransactionRequestCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -113,10 +100,7 @@ class TransactionRequestsResource(SyncAPIResource):
         account_id: str,
         view_id: str,
         transaction_request_type: str,
-        id: str,
-        answer: str,
-        additional_information: str | NotGiven = NOT_GIVEN,
-        reason_code: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -153,15 +137,7 @@ class TransactionRequestsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/transaction-request-types/{transaction_request_type}/transaction-requests/{transaction_request_id}/challenge",
-            body=maybe_transform(
-                {
-                    "id": id,
-                    "answer": answer,
-                    "additional_information": additional_information,
-                    "reason_code": reason_code,
-                },
-                transaction_request_challenge_params.TransactionRequestChallengeParams,
-            ),
+            body=maybe_transform(body, transaction_request_challenge_params.TransactionRequestChallengeParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -195,11 +171,7 @@ class AsyncTransactionRequestsResource(AsyncAPIResource):
         *,
         bank_id: str,
         account_id: str,
-        charge_policy: str,
-        description: str,
-        to: transaction_request_create_params.To,
-        value: transaction_request_create_params.Value,
-        future_date: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -228,16 +200,7 @@ class AsyncTransactionRequestsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/transaction-request-types/SIMPLE/transaction-requests",
-            body=await async_maybe_transform(
-                {
-                    "charge_policy": charge_policy,
-                    "description": description,
-                    "to": to,
-                    "value": value,
-                    "future_date": future_date,
-                },
-                transaction_request_create_params.TransactionRequestCreateParams,
-            ),
+            body=await async_maybe_transform(body, transaction_request_create_params.TransactionRequestCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -252,10 +215,7 @@ class AsyncTransactionRequestsResource(AsyncAPIResource):
         account_id: str,
         view_id: str,
         transaction_request_type: str,
-        id: str,
-        answer: str,
-        additional_information: str | NotGiven = NOT_GIVEN,
-        reason_code: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -293,13 +253,7 @@ class AsyncTransactionRequestsResource(AsyncAPIResource):
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/transaction-request-types/{transaction_request_type}/transaction-requests/{transaction_request_id}/challenge",
             body=await async_maybe_transform(
-                {
-                    "id": id,
-                    "answer": answer,
-                    "additional_information": additional_information,
-                    "reason_code": reason_code,
-                },
-                transaction_request_challenge_params.TransactionRequestChallengeParams,
+                body, transaction_request_challenge_params.TransactionRequestChallengeParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout

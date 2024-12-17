@@ -8,12 +8,4 @@ __all__ = ["UserCreateParams"]
 
 
 class UserCreateParams(TypedDict, total=False):
-    email: Required[str]
-
-    first_name: Required[str]
-
-    last_name: Required[str]
-
-    password: Required[str]
-
-    username: Required[str]
+    body: Required[object]

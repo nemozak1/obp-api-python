@@ -14,4 +14,4 @@ class TagCreateParams(TypedDict, total=False):
 
     account_id: Required[Annotated[str, PropertyInfo(alias="ACCOUNT_ID")]]
 
-    value: Required[str]
+    body: Required[object]

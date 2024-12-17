@@ -32,8 +32,7 @@ class TestCreditRatingAndSource:
         credit_rating_and_source = client.customers.credit_rating_and_source.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            credit_rating="Good",
-            credit_source="Bank",
+            body={},
         )
         assert credit_rating_and_source.is_closed
         assert credit_rating_and_source.json() == {"foo": "bar"}
@@ -50,8 +49,7 @@ class TestCreditRatingAndSource:
         credit_rating_and_source = client.customers.credit_rating_and_source.with_raw_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            credit_rating="Good",
-            credit_source="Bank",
+            body={},
         )
 
         assert credit_rating_and_source.is_closed is True
@@ -68,8 +66,7 @@ class TestCreditRatingAndSource:
         with client.customers.credit_rating_and_source.with_streaming_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            credit_rating="Good",
-            credit_source="Bank",
+            body={},
         ) as credit_rating_and_source:
             assert not credit_rating_and_source.is_closed
             assert credit_rating_and_source.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -87,16 +84,14 @@ class TestCreditRatingAndSource:
             client.customers.credit_rating_and_source.with_raw_response.update(
                 customer_id="CUSTOMER_ID",
                 bank_id="",
-                credit_rating="Good",
-                credit_source="Bank",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             client.customers.credit_rating_and_source.with_raw_response.update(
                 customer_id="",
                 bank_id="BANK_ID",
-                credit_rating="Good",
-                credit_source="Bank",
+                body={},
             )
 
 
@@ -112,8 +107,7 @@ class TestAsyncCreditRatingAndSource:
         credit_rating_and_source = await async_client.customers.credit_rating_and_source.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            credit_rating="Good",
-            credit_source="Bank",
+            body={},
         )
         assert credit_rating_and_source.is_closed
         assert await credit_rating_and_source.json() == {"foo": "bar"}
@@ -130,8 +124,7 @@ class TestAsyncCreditRatingAndSource:
         credit_rating_and_source = await async_client.customers.credit_rating_and_source.with_raw_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            credit_rating="Good",
-            credit_source="Bank",
+            body={},
         )
 
         assert credit_rating_and_source.is_closed is True
@@ -148,8 +141,7 @@ class TestAsyncCreditRatingAndSource:
         async with async_client.customers.credit_rating_and_source.with_streaming_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            credit_rating="Good",
-            credit_source="Bank",
+            body={},
         ) as credit_rating_and_source:
             assert not credit_rating_and_source.is_closed
             assert credit_rating_and_source.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -167,14 +159,12 @@ class TestAsyncCreditRatingAndSource:
             await async_client.customers.credit_rating_and_source.with_raw_response.update(
                 customer_id="CUSTOMER_ID",
                 bank_id="",
-                credit_rating="Good",
-                credit_source="Bank",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             await async_client.customers.credit_rating_and_source.with_raw_response.update(
                 customer_id="",
                 bank_id="BANK_ID",
-                credit_rating="Good",
-                credit_source="Bank",
+                body={},
             )

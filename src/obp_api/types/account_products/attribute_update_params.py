@@ -16,10 +16,4 @@ class AttributeUpdateParams(TypedDict, total=False):
 
     product_code: Required[Annotated[str, PropertyInfo(alias="PRODUCT_CODE")]]
 
-    name: Required[str]
-
-    type: Required[str]
-
-    value: Required[str]
-
-    product_instance_code: str
+    body: Required[object]

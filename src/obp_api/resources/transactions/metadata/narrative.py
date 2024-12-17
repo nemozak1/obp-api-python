@@ -54,7 +54,7 @@ class NarrativeResource(SyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        narrative: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -85,7 +85,7 @@ class NarrativeResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/transactions/{transaction_id}/metadata/narrative",
-            body=maybe_transform({"narrative": narrative}, narrative_create_params.NarrativeCreateParams),
+            body=maybe_transform(body, narrative_create_params.NarrativeCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -142,7 +142,7 @@ class NarrativeResource(SyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        narrative: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -173,7 +173,7 @@ class NarrativeResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/transactions/{transaction_id}/metadata/narrative",
-            body=maybe_transform({"narrative": narrative}, narrative_update_params.NarrativeUpdateParams),
+            body=maybe_transform(body, narrative_update_params.NarrativeUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -187,7 +187,7 @@ class NarrativeResource(SyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        json_string: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -218,7 +218,7 @@ class NarrativeResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/transactions/{transaction_id}/metadata/narrative",
-            body=maybe_transform({"json_string": json_string}, narrative_delete_params.NarrativeDeleteParams),
+            body=maybe_transform(body, narrative_delete_params.NarrativeDeleteParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -253,7 +253,7 @@ class AsyncNarrativeResource(AsyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        narrative: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -284,7 +284,7 @@ class AsyncNarrativeResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/transactions/{transaction_id}/metadata/narrative",
-            body=await async_maybe_transform({"narrative": narrative}, narrative_create_params.NarrativeCreateParams),
+            body=await async_maybe_transform(body, narrative_create_params.NarrativeCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -341,7 +341,7 @@ class AsyncNarrativeResource(AsyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        narrative: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -372,7 +372,7 @@ class AsyncNarrativeResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/transactions/{transaction_id}/metadata/narrative",
-            body=await async_maybe_transform({"narrative": narrative}, narrative_update_params.NarrativeUpdateParams),
+            body=await async_maybe_transform(body, narrative_update_params.NarrativeUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -386,7 +386,7 @@ class AsyncNarrativeResource(AsyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        json_string: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -417,9 +417,7 @@ class AsyncNarrativeResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/transactions/{transaction_id}/metadata/narrative",
-            body=await async_maybe_transform(
-                {"json_string": json_string}, narrative_delete_params.NarrativeDeleteParams
-            ),
+            body=await async_maybe_transform(body, narrative_delete_params.NarrativeDeleteParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

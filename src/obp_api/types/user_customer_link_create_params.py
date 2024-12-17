@@ -8,6 +8,4 @@ __all__ = ["UserCustomerLinkCreateParams"]
 
 
 class UserCustomerLinkCreateParams(TypedDict, total=False):
-    customer_id: Required[str]
-
-    user_id: Required[str]
+    body: Required[object]

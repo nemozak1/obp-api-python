@@ -31,7 +31,7 @@ class TestRedirectURL:
         )
         redirect_url = client.consumers.redirect_url.update(
             consumer_id="CONSUMER_ID",
-            redirect_url="http://localhost:8888",
+            body={},
         )
         assert redirect_url.is_closed
         assert redirect_url.json() == {"foo": "bar"}
@@ -47,7 +47,7 @@ class TestRedirectURL:
 
         redirect_url = client.consumers.redirect_url.with_raw_response.update(
             consumer_id="CONSUMER_ID",
-            redirect_url="http://localhost:8888",
+            body={},
         )
 
         assert redirect_url.is_closed is True
@@ -63,7 +63,7 @@ class TestRedirectURL:
         )
         with client.consumers.redirect_url.with_streaming_response.update(
             consumer_id="CONSUMER_ID",
-            redirect_url="http://localhost:8888",
+            body={},
         ) as redirect_url:
             assert not redirect_url.is_closed
             assert redirect_url.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -80,7 +80,7 @@ class TestRedirectURL:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `consumer_id` but received ''"):
             client.consumers.redirect_url.with_raw_response.update(
                 consumer_id="",
-                redirect_url="http://localhost:8888",
+                body={},
             )
 
 
@@ -95,7 +95,7 @@ class TestAsyncRedirectURL:
         )
         redirect_url = await async_client.consumers.redirect_url.update(
             consumer_id="CONSUMER_ID",
-            redirect_url="http://localhost:8888",
+            body={},
         )
         assert redirect_url.is_closed
         assert await redirect_url.json() == {"foo": "bar"}
@@ -111,7 +111,7 @@ class TestAsyncRedirectURL:
 
         redirect_url = await async_client.consumers.redirect_url.with_raw_response.update(
             consumer_id="CONSUMER_ID",
-            redirect_url="http://localhost:8888",
+            body={},
         )
 
         assert redirect_url.is_closed is True
@@ -127,7 +127,7 @@ class TestAsyncRedirectURL:
         )
         async with async_client.consumers.redirect_url.with_streaming_response.update(
             consumer_id="CONSUMER_ID",
-            redirect_url="http://localhost:8888",
+            body={},
         ) as redirect_url:
             assert not redirect_url.is_closed
             assert redirect_url.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -144,5 +144,5 @@ class TestAsyncRedirectURL:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `consumer_id` but received ''"):
             await async_client.consumers.redirect_url.with_raw_response.update(
                 consumer_id="",
-                redirect_url="http://localhost:8888",
+                body={},
             )

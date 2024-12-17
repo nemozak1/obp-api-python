@@ -2,9 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Union, Iterable
-from datetime import date
-
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -54,12 +51,7 @@ class ImplicitResource(SyncAPIResource):
         self,
         bank_id: str,
         *,
-        entitlements: Iterable[implicit_create_params.Entitlement],
-        everything: bool,
-        views: Iterable[implicit_create_params.View],
-        consumer_id: str | NotGiven = NOT_GIVEN,
-        time_to_live: int | NotGiven = NOT_GIVEN,
-        valid_from: Union[str, date] | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -84,17 +76,7 @@ class ImplicitResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/my/consents/IMPLICIT",
-            body=maybe_transform(
-                {
-                    "entitlements": entitlements,
-                    "everything": everything,
-                    "views": views,
-                    "consumer_id": consumer_id,
-                    "time_to_live": time_to_live,
-                    "valid_from": valid_from,
-                },
-                implicit_create_params.ImplicitCreateParams,
-            ),
+            body=maybe_transform(body, implicit_create_params.ImplicitCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -126,12 +108,7 @@ class AsyncImplicitResource(AsyncAPIResource):
         self,
         bank_id: str,
         *,
-        entitlements: Iterable[implicit_create_params.Entitlement],
-        everything: bool,
-        views: Iterable[implicit_create_params.View],
-        consumer_id: str | NotGiven = NOT_GIVEN,
-        time_to_live: int | NotGiven = NOT_GIVEN,
-        valid_from: Union[str, date] | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -156,17 +133,7 @@ class AsyncImplicitResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/my/consents/IMPLICIT",
-            body=await async_maybe_transform(
-                {
-                    "entitlements": entitlements,
-                    "everything": everything,
-                    "views": views,
-                    "consumer_id": consumer_id,
-                    "time_to_live": time_to_live,
-                    "valid_from": valid_from,
-                },
-                implicit_create_params.ImplicitCreateParams,
-            ),
+            body=await async_maybe_transform(body, implicit_create_params.ImplicitCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

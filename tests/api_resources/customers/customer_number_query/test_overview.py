@@ -31,7 +31,7 @@ class TestOverview:
         )
         overview = client.customers.customer_number_query.overview.retrieve(
             bank_id="BANK_ID",
-            customer_number="5987953",
+            body={},
         )
         assert overview.is_closed
         assert overview.json() == {"foo": "bar"}
@@ -47,7 +47,7 @@ class TestOverview:
 
         overview = client.customers.customer_number_query.overview.with_raw_response.retrieve(
             bank_id="BANK_ID",
-            customer_number="5987953",
+            body={},
         )
 
         assert overview.is_closed is True
@@ -63,7 +63,7 @@ class TestOverview:
         )
         with client.customers.customer_number_query.overview.with_streaming_response.retrieve(
             bank_id="BANK_ID",
-            customer_number="5987953",
+            body={},
         ) as overview:
             assert not overview.is_closed
             assert overview.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -80,7 +80,7 @@ class TestOverview:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             client.customers.customer_number_query.overview.with_raw_response.retrieve(
                 bank_id="",
-                customer_number="5987953",
+                body={},
             )
 
 
@@ -95,7 +95,7 @@ class TestAsyncOverview:
         )
         overview = await async_client.customers.customer_number_query.overview.retrieve(
             bank_id="BANK_ID",
-            customer_number="5987953",
+            body={},
         )
         assert overview.is_closed
         assert await overview.json() == {"foo": "bar"}
@@ -111,7 +111,7 @@ class TestAsyncOverview:
 
         overview = await async_client.customers.customer_number_query.overview.with_raw_response.retrieve(
             bank_id="BANK_ID",
-            customer_number="5987953",
+            body={},
         )
 
         assert overview.is_closed is True
@@ -127,7 +127,7 @@ class TestAsyncOverview:
         )
         async with async_client.customers.customer_number_query.overview.with_streaming_response.retrieve(
             bank_id="BANK_ID",
-            customer_number="5987953",
+            body={},
         ) as overview:
             assert not overview.is_closed
             assert overview.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -144,5 +144,5 @@ class TestAsyncOverview:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             await async_client.customers.customer_number_query.overview.with_raw_response.retrieve(
                 bank_id="",
-                customer_number="5987953",
+                body={},
             )

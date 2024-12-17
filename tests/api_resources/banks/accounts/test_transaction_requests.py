@@ -33,37 +33,7 @@ class TestTransactionRequests:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            charge_policy="SHARED",
-            description="A description for the transaction to the counterparty",
-            to={"counterparty_id": "9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh"},
-            value={
-                "amount": "0",
-                "currency": "EUR",
-            },
-        )
-        assert transaction_request.is_closed
-        assert transaction_request.json() == {"foo": "bar"}
-        assert cast(Any, transaction_request.is_closed) is True
-        assert isinstance(transaction_request, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_create_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.post(
-            "/obp/v5.1.0/banks/BANK_ID/accounts/ACCOUNT_ID/VIEW_ID/transaction-request-types/COUNTERPARTY/transaction-requests"
-        ).mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        transaction_request = client.banks.accounts.transaction_requests.create(
-            view_id="VIEW_ID",
-            bank_id="BANK_ID",
-            account_id="ACCOUNT_ID",
-            charge_policy="SHARED",
-            description="A description for the transaction to the counterparty",
-            to={"counterparty_id": "9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh"},
-            value={
-                "amount": "0",
-                "currency": "EUR",
-            },
-            future_date="20200127",
+            body={},
         )
         assert transaction_request.is_closed
         assert transaction_request.json() == {"foo": "bar"}
@@ -81,13 +51,7 @@ class TestTransactionRequests:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            charge_policy="SHARED",
-            description="A description for the transaction to the counterparty",
-            to={"counterparty_id": "9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh"},
-            value={
-                "amount": "0",
-                "currency": "EUR",
-            },
+            body={},
         )
 
         assert transaction_request.is_closed is True
@@ -105,13 +69,7 @@ class TestTransactionRequests:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            charge_policy="SHARED",
-            description="A description for the transaction to the counterparty",
-            to={"counterparty_id": "9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh"},
-            value={
-                "amount": "0",
-                "currency": "EUR",
-            },
+            body={},
         ) as transaction_request:
             assert not transaction_request.is_closed
             assert transaction_request.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -130,13 +88,7 @@ class TestTransactionRequests:
                 view_id="VIEW_ID",
                 bank_id="",
                 account_id="ACCOUNT_ID",
-                charge_policy="SHARED",
-                description="A description for the transaction to the counterparty",
-                to={"counterparty_id": "9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh"},
-                value={
-                    "amount": "0",
-                    "currency": "EUR",
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -144,13 +96,7 @@ class TestTransactionRequests:
                 view_id="VIEW_ID",
                 bank_id="BANK_ID",
                 account_id="",
-                charge_policy="SHARED",
-                description="A description for the transaction to the counterparty",
-                to={"counterparty_id": "9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh"},
-                value={
-                    "amount": "0",
-                    "currency": "EUR",
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -158,13 +104,7 @@ class TestTransactionRequests:
                 view_id="",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                charge_policy="SHARED",
-                description="A description for the transaction to the counterparty",
-                to={"counterparty_id": "9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh"},
-                value={
-                    "amount": "0",
-                    "currency": "EUR",
-                },
+                body={},
             )
 
 
@@ -181,37 +121,7 @@ class TestAsyncTransactionRequests:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            charge_policy="SHARED",
-            description="A description for the transaction to the counterparty",
-            to={"counterparty_id": "9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh"},
-            value={
-                "amount": "0",
-                "currency": "EUR",
-            },
-        )
-        assert transaction_request.is_closed
-        assert await transaction_request.json() == {"foo": "bar"}
-        assert cast(Any, transaction_request.is_closed) is True
-        assert isinstance(transaction_request, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_create_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.post(
-            "/obp/v5.1.0/banks/BANK_ID/accounts/ACCOUNT_ID/VIEW_ID/transaction-request-types/COUNTERPARTY/transaction-requests"
-        ).mock(return_value=httpx.Response(200, json={"foo": "bar"}))
-        transaction_request = await async_client.banks.accounts.transaction_requests.create(
-            view_id="VIEW_ID",
-            bank_id="BANK_ID",
-            account_id="ACCOUNT_ID",
-            charge_policy="SHARED",
-            description="A description for the transaction to the counterparty",
-            to={"counterparty_id": "9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh"},
-            value={
-                "amount": "0",
-                "currency": "EUR",
-            },
-            future_date="20200127",
+            body={},
         )
         assert transaction_request.is_closed
         assert await transaction_request.json() == {"foo": "bar"}
@@ -229,13 +139,7 @@ class TestAsyncTransactionRequests:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            charge_policy="SHARED",
-            description="A description for the transaction to the counterparty",
-            to={"counterparty_id": "9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh"},
-            value={
-                "amount": "0",
-                "currency": "EUR",
-            },
+            body={},
         )
 
         assert transaction_request.is_closed is True
@@ -253,13 +157,7 @@ class TestAsyncTransactionRequests:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            charge_policy="SHARED",
-            description="A description for the transaction to the counterparty",
-            to={"counterparty_id": "9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh"},
-            value={
-                "amount": "0",
-                "currency": "EUR",
-            },
+            body={},
         ) as transaction_request:
             assert not transaction_request.is_closed
             assert transaction_request.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -278,13 +176,7 @@ class TestAsyncTransactionRequests:
                 view_id="VIEW_ID",
                 bank_id="",
                 account_id="ACCOUNT_ID",
-                charge_policy="SHARED",
-                description="A description for the transaction to the counterparty",
-                to={"counterparty_id": "9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh"},
-                value={
-                    "amount": "0",
-                    "currency": "EUR",
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -292,13 +184,7 @@ class TestAsyncTransactionRequests:
                 view_id="VIEW_ID",
                 bank_id="BANK_ID",
                 account_id="",
-                charge_policy="SHARED",
-                description="A description for the transaction to the counterparty",
-                to={"counterparty_id": "9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh"},
-                value={
-                    "amount": "0",
-                    "currency": "EUR",
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -306,11 +192,5 @@ class TestAsyncTransactionRequests:
                 view_id="",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                charge_policy="SHARED",
-                description="A description for the transaction to the counterparty",
-                to={"counterparty_id": "9fg8a7e4-6d02-40e3-a129-0b2bf89de8uh"},
-                value={
-                    "amount": "0",
-                    "currency": "EUR",
-                },
+                body={},
             )

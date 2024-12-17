@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import List
-
 import httpx
 
 from ..types import product_collection_update_params
@@ -91,8 +89,7 @@ class ProductCollectionsResource(SyncAPIResource):
         collection_code: str,
         *,
         bank_id: str,
-        children_product_codes: List[str],
-        parent_product_code: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -119,13 +116,7 @@ class ProductCollectionsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/product-collections/{collection_code}",
-            body=maybe_transform(
-                {
-                    "children_product_codes": children_product_codes,
-                    "parent_product_code": parent_product_code,
-                },
-                product_collection_update_params.ProductCollectionUpdateParams,
-            ),
+            body=maybe_transform(body, product_collection_update_params.ProductCollectionUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -195,8 +186,7 @@ class AsyncProductCollectionsResource(AsyncAPIResource):
         collection_code: str,
         *,
         bank_id: str,
-        children_product_codes: List[str],
-        parent_product_code: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -223,13 +213,7 @@ class AsyncProductCollectionsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/product-collections/{collection_code}",
-            body=await async_maybe_transform(
-                {
-                    "children_product_codes": children_product_codes,
-                    "parent_product_code": parent_product_code,
-                },
-                product_collection_update_params.ProductCollectionUpdateParams,
-            ),
+            body=await async_maybe_transform(body, product_collection_update_params.ProductCollectionUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

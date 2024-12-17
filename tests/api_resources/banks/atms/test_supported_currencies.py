@@ -32,7 +32,7 @@ class TestSupportedCurrencies:
         supported_currency = client.banks.atms.supported_currencies.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            supported_currencies=["string"],
+            body={},
         )
         assert supported_currency.is_closed
         assert supported_currency.json() == {"foo": "bar"}
@@ -49,7 +49,7 @@ class TestSupportedCurrencies:
         supported_currency = client.banks.atms.supported_currencies.with_raw_response.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            supported_currencies=["string"],
+            body={},
         )
 
         assert supported_currency.is_closed is True
@@ -66,7 +66,7 @@ class TestSupportedCurrencies:
         with client.banks.atms.supported_currencies.with_streaming_response.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            supported_currencies=["string"],
+            body={},
         ) as supported_currency:
             assert not supported_currency.is_closed
             assert supported_currency.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -84,14 +84,14 @@ class TestSupportedCurrencies:
             client.banks.atms.supported_currencies.with_raw_response.update(
                 atm_id="ATM_ID",
                 bank_id="",
-                supported_currencies=["string"],
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `atm_id` but received ''"):
             client.banks.atms.supported_currencies.with_raw_response.update(
                 atm_id="",
                 bank_id="BANK_ID",
-                supported_currencies=["string"],
+                body={},
             )
 
 
@@ -107,7 +107,7 @@ class TestAsyncSupportedCurrencies:
         supported_currency = await async_client.banks.atms.supported_currencies.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            supported_currencies=["string"],
+            body={},
         )
         assert supported_currency.is_closed
         assert await supported_currency.json() == {"foo": "bar"}
@@ -124,7 +124,7 @@ class TestAsyncSupportedCurrencies:
         supported_currency = await async_client.banks.atms.supported_currencies.with_raw_response.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            supported_currencies=["string"],
+            body={},
         )
 
         assert supported_currency.is_closed is True
@@ -141,7 +141,7 @@ class TestAsyncSupportedCurrencies:
         async with async_client.banks.atms.supported_currencies.with_streaming_response.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            supported_currencies=["string"],
+            body={},
         ) as supported_currency:
             assert not supported_currency.is_closed
             assert supported_currency.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -159,12 +159,12 @@ class TestAsyncSupportedCurrencies:
             await async_client.banks.atms.supported_currencies.with_raw_response.update(
                 atm_id="ATM_ID",
                 bank_id="",
-                supported_currencies=["string"],
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `atm_id` but received ''"):
             await async_client.banks.atms.supported_currencies.with_raw_response.update(
                 atm_id="",
                 bank_id="BANK_ID",
-                supported_currencies=["string"],
+                body={},
             )

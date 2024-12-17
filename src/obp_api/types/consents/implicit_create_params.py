@@ -2,38 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Union, Iterable
-from datetime import date
-from typing_extensions import Required, Annotated, TypedDict
+from typing_extensions import Required, TypedDict
 
-from ..._utils import PropertyInfo
-
-__all__ = ["ImplicitCreateParams", "Entitlement", "View"]
+__all__ = ["ImplicitCreateParams"]
 
 
 class ImplicitCreateParams(TypedDict, total=False):
-    entitlements: Required[Iterable[Entitlement]]
-
-    everything: Required[bool]
-
-    views: Required[Iterable[View]]
-
-    consumer_id: str
-
-    time_to_live: int
-
-    valid_from: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
-
-
-class Entitlement(TypedDict, total=False):
-    bank_id: Required[str]
-
-    role_name: Required[str]
-
-
-class View(TypedDict, total=False):
-    account_id: Required[str]
-
-    bank_id: Required[str]
-
-    view_id: Required[str]
+    body: Required[object]

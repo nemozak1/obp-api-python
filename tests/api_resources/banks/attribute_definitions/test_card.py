@@ -87,13 +87,7 @@ class TestCard:
         )
         card = client.banks.attribute_definitions.card.update(
             bank_id="BANK_ID",
-            alias="STRING",
-            can_be_seen_on_views=["string"],
-            category="TransactionRequest",
-            description="description",
-            is_active=True,
-            name="SPECIAL_TAX_NUMBER",
-            type="STRING",
+            body={},
         )
         assert card.is_closed
         assert card.json() == {"foo": "bar"}
@@ -109,13 +103,7 @@ class TestCard:
 
         card = client.banks.attribute_definitions.card.with_raw_response.update(
             bank_id="BANK_ID",
-            alias="STRING",
-            can_be_seen_on_views=["string"],
-            category="TransactionRequest",
-            description="description",
-            is_active=True,
-            name="SPECIAL_TAX_NUMBER",
-            type="STRING",
+            body={},
         )
 
         assert card.is_closed is True
@@ -131,13 +119,7 @@ class TestCard:
         )
         with client.banks.attribute_definitions.card.with_streaming_response.update(
             bank_id="BANK_ID",
-            alias="STRING",
-            can_be_seen_on_views=["string"],
-            category="TransactionRequest",
-            description="description",
-            is_active=True,
-            name="SPECIAL_TAX_NUMBER",
-            type="STRING",
+            body={},
         ) as card:
             assert not card.is_closed
             assert card.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -154,13 +136,7 @@ class TestCard:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             client.banks.attribute_definitions.card.with_raw_response.update(
                 bank_id="",
-                alias="STRING",
-                can_be_seen_on_views=["string"],
-                category="TransactionRequest",
-                description="description",
-                is_active=True,
-                name="SPECIAL_TAX_NUMBER",
-                type="STRING",
+                body={},
             )
 
 
@@ -231,13 +207,7 @@ class TestAsyncCard:
         )
         card = await async_client.banks.attribute_definitions.card.update(
             bank_id="BANK_ID",
-            alias="STRING",
-            can_be_seen_on_views=["string"],
-            category="TransactionRequest",
-            description="description",
-            is_active=True,
-            name="SPECIAL_TAX_NUMBER",
-            type="STRING",
+            body={},
         )
         assert card.is_closed
         assert await card.json() == {"foo": "bar"}
@@ -253,13 +223,7 @@ class TestAsyncCard:
 
         card = await async_client.banks.attribute_definitions.card.with_raw_response.update(
             bank_id="BANK_ID",
-            alias="STRING",
-            can_be_seen_on_views=["string"],
-            category="TransactionRequest",
-            description="description",
-            is_active=True,
-            name="SPECIAL_TAX_NUMBER",
-            type="STRING",
+            body={},
         )
 
         assert card.is_closed is True
@@ -275,13 +239,7 @@ class TestAsyncCard:
         )
         async with async_client.banks.attribute_definitions.card.with_streaming_response.update(
             bank_id="BANK_ID",
-            alias="STRING",
-            can_be_seen_on_views=["string"],
-            category="TransactionRequest",
-            description="description",
-            is_active=True,
-            name="SPECIAL_TAX_NUMBER",
-            type="STRING",
+            body={},
         ) as card:
             assert not card.is_closed
             assert card.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -298,11 +256,5 @@ class TestAsyncCard:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             await async_client.banks.attribute_definitions.card.with_raw_response.update(
                 bank_id="",
-                alias="STRING",
-                can_be_seen_on_views=["string"],
-                category="TransactionRequest",
-                description="description",
-                is_active=True,
-                name="SPECIAL_TAX_NUMBER",
-                type="STRING",
+                body={},
             )

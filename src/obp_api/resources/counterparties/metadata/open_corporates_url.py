@@ -54,7 +54,7 @@ class OpenCorporatesURLResource(SyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        json_string: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -85,9 +85,7 @@ class OpenCorporatesURLResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/other_accounts/{other_account_id}/metadata/open_corporates_url",
-            body=maybe_transform(
-                {"json_string": json_string}, open_corporates_url_delete_params.OpenCorporatesURLDeleteParams
-            ),
+            body=maybe_transform(body, open_corporates_url_delete_params.OpenCorporatesURLDeleteParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -122,7 +120,7 @@ class AsyncOpenCorporatesURLResource(AsyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        json_string: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -153,9 +151,7 @@ class AsyncOpenCorporatesURLResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/other_accounts/{other_account_id}/metadata/open_corporates_url",
-            body=await async_maybe_transform(
-                {"json_string": json_string}, open_corporates_url_delete_params.OpenCorporatesURLDeleteParams
-            ),
+            body=await async_maybe_transform(body, open_corporates_url_delete_params.OpenCorporatesURLDeleteParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

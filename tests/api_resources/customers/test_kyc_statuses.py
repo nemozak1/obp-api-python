@@ -10,7 +10,6 @@ import pytest
 from respx import MockRouter
 
 from obp_api import ObpAPI, AsyncObpAPI
-from obp_api._utils import parse_date
 from obp_api._response import (
     BinaryAPIResponse,
     AsyncBinaryAPIResponse,
@@ -33,9 +32,7 @@ class TestKYCStatuses:
         kyc_status = client.customers.kyc_statuses.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            customer_number="5987953",
-            date=parse_date("2019-12-27"),
-            ok=True,
+            body={},
         )
         assert kyc_status.is_closed
         assert kyc_status.json() == {"foo": "bar"}
@@ -52,9 +49,7 @@ class TestKYCStatuses:
         kyc_status = client.customers.kyc_statuses.with_raw_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            customer_number="5987953",
-            date=parse_date("2019-12-27"),
-            ok=True,
+            body={},
         )
 
         assert kyc_status.is_closed is True
@@ -71,9 +66,7 @@ class TestKYCStatuses:
         with client.customers.kyc_statuses.with_streaming_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            customer_number="5987953",
-            date=parse_date("2019-12-27"),
-            ok=True,
+            body={},
         ) as kyc_status:
             assert not kyc_status.is_closed
             assert kyc_status.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -91,18 +84,14 @@ class TestKYCStatuses:
             client.customers.kyc_statuses.with_raw_response.update(
                 customer_id="CUSTOMER_ID",
                 bank_id="",
-                customer_number="5987953",
-                date=parse_date("2019-12-27"),
-                ok=True,
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             client.customers.kyc_statuses.with_raw_response.update(
                 customer_id="",
                 bank_id="BANK_ID",
-                customer_number="5987953",
-                date=parse_date("2019-12-27"),
-                ok=True,
+                body={},
             )
 
     @parametrize
@@ -174,9 +163,7 @@ class TestAsyncKYCStatuses:
         kyc_status = await async_client.customers.kyc_statuses.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            customer_number="5987953",
-            date=parse_date("2019-12-27"),
-            ok=True,
+            body={},
         )
         assert kyc_status.is_closed
         assert await kyc_status.json() == {"foo": "bar"}
@@ -193,9 +180,7 @@ class TestAsyncKYCStatuses:
         kyc_status = await async_client.customers.kyc_statuses.with_raw_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            customer_number="5987953",
-            date=parse_date("2019-12-27"),
-            ok=True,
+            body={},
         )
 
         assert kyc_status.is_closed is True
@@ -212,9 +197,7 @@ class TestAsyncKYCStatuses:
         async with async_client.customers.kyc_statuses.with_streaming_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            customer_number="5987953",
-            date=parse_date("2019-12-27"),
-            ok=True,
+            body={},
         ) as kyc_status:
             assert not kyc_status.is_closed
             assert kyc_status.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -232,18 +215,14 @@ class TestAsyncKYCStatuses:
             await async_client.customers.kyc_statuses.with_raw_response.update(
                 customer_id="CUSTOMER_ID",
                 bank_id="",
-                customer_number="5987953",
-                date=parse_date("2019-12-27"),
-                ok=True,
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             await async_client.customers.kyc_statuses.with_raw_response.update(
                 customer_id="",
                 bank_id="BANK_ID",
-                customer_number="5987953",
-                date=parse_date("2019-12-27"),
-                ok=True,
+                body={},
             )
 
     @parametrize

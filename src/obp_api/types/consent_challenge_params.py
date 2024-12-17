@@ -12,4 +12,4 @@ __all__ = ["ConsentChallengeParams"]
 class ConsentChallengeParams(TypedDict, total=False):
     bank_id: Required[Annotated[str, PropertyInfo(alias="BANK_ID")]]
 
-    answer: Required[str]
+    body: Required[object]

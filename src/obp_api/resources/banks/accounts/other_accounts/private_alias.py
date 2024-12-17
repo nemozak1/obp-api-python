@@ -54,7 +54,7 @@ class PrivateAliasResource(SyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        json_string: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -85,7 +85,7 @@ class PrivateAliasResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/other_accounts/{other_account_id}/private_alias",
-            body=maybe_transform({"json_string": json_string}, private_alias_delete_params.PrivateAliasDeleteParams),
+            body=maybe_transform(body, private_alias_delete_params.PrivateAliasDeleteParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -120,7 +120,7 @@ class AsyncPrivateAliasResource(AsyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        json_string: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -151,9 +151,7 @@ class AsyncPrivateAliasResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/other_accounts/{other_account_id}/private_alias",
-            body=await async_maybe_transform(
-                {"json_string": json_string}, private_alias_delete_params.PrivateAliasDeleteParams
-            ),
+            body=await async_maybe_transform(body, private_alias_delete_params.PrivateAliasDeleteParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

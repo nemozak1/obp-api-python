@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Iterable
-
 import httpx
 
 from ..types import regulated_entity_create_params
@@ -56,17 +54,7 @@ class RegulatedEntitiesResource(SyncAPIResource):
     def create(
         self,
         *,
-        certificate_authority_ca_owner_id: str,
-        entity_address: str,
-        entity_certificate_public_key: str,
-        entity_code: str,
-        entity_country: str,
-        entity_name: str,
-        entity_post_code: str,
-        entity_town_city: str,
-        entity_type: str,
-        entity_web_site: str,
-        services: Iterable[regulated_entity_create_params.Service],
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -89,22 +77,7 @@ class RegulatedEntitiesResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/obp/v5.1.0/regulated-entities",
-            body=maybe_transform(
-                {
-                    "certificate_authority_ca_owner_id": certificate_authority_ca_owner_id,
-                    "entity_address": entity_address,
-                    "entity_certificate_public_key": entity_certificate_public_key,
-                    "entity_code": entity_code,
-                    "entity_country": entity_country,
-                    "entity_name": entity_name,
-                    "entity_post_code": entity_post_code,
-                    "entity_town_city": entity_town_city,
-                    "entity_type": entity_type,
-                    "entity_web_site": entity_web_site,
-                    "services": services,
-                },
-                regulated_entity_create_params.RegulatedEntityCreateParams,
-            ),
+            body=maybe_transform(body, regulated_entity_create_params.RegulatedEntityCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -201,17 +174,7 @@ class AsyncRegulatedEntitiesResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        certificate_authority_ca_owner_id: str,
-        entity_address: str,
-        entity_certificate_public_key: str,
-        entity_code: str,
-        entity_country: str,
-        entity_name: str,
-        entity_post_code: str,
-        entity_town_city: str,
-        entity_type: str,
-        entity_web_site: str,
-        services: Iterable[regulated_entity_create_params.Service],
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -234,22 +197,7 @@ class AsyncRegulatedEntitiesResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/obp/v5.1.0/regulated-entities",
-            body=await async_maybe_transform(
-                {
-                    "certificate_authority_ca_owner_id": certificate_authority_ca_owner_id,
-                    "entity_address": entity_address,
-                    "entity_certificate_public_key": entity_certificate_public_key,
-                    "entity_code": entity_code,
-                    "entity_country": entity_country,
-                    "entity_name": entity_name,
-                    "entity_post_code": entity_post_code,
-                    "entity_town_city": entity_town_city,
-                    "entity_type": entity_type,
-                    "entity_web_site": entity_web_site,
-                    "services": services,
-                },
-                regulated_entity_create_params.RegulatedEntityCreateParams,
-            ),
+            body=await async_maybe_transform(body, regulated_entity_create_params.RegulatedEntityCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

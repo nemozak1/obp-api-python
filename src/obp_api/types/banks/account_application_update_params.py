@@ -12,4 +12,4 @@ __all__ = ["AccountApplicationUpdateParams"]
 class AccountApplicationUpdateParams(TypedDict, total=False):
     bank_id: Required[Annotated[str, PropertyInfo(alias="BANK_ID")]]
 
-    status: Required[str]
+    body: Required[object]

@@ -34,7 +34,7 @@ class TestComments:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            value="String",
+            body={},
         )
         assert comment.is_closed
         assert comment.json() == {"foo": "bar"}
@@ -53,7 +53,7 @@ class TestComments:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            value="String",
+            body={},
         )
 
         assert comment.is_closed is True
@@ -72,7 +72,7 @@ class TestComments:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            value="String",
+            body={},
         ) as comment:
             assert not comment.is_closed
             assert comment.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -92,7 +92,7 @@ class TestComments:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                value="String",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -101,7 +101,7 @@ class TestComments:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                value="String",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -110,7 +110,7 @@ class TestComments:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                value="String",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `transaction_id` but received ''"):
@@ -119,7 +119,7 @@ class TestComments:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                value="String",
+                body={},
             )
 
     @parametrize
@@ -226,7 +226,7 @@ class TestComments:
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
             transaction_id="TRANSACTION_ID",
-            json_string="{}",
+            body={},
         )
         assert comment.is_closed
         assert comment.json() == {"foo": "bar"}
@@ -246,7 +246,7 @@ class TestComments:
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
             transaction_id="TRANSACTION_ID",
-            json_string="{}",
+            body={},
         )
 
         assert comment.is_closed is True
@@ -266,7 +266,7 @@ class TestComments:
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
             transaction_id="TRANSACTION_ID",
-            json_string="{}",
+            body={},
         ) as comment:
             assert not comment.is_closed
             assert comment.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -287,7 +287,7 @@ class TestComments:
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
                 transaction_id="TRANSACTION_ID",
-                json_string="{}",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -297,7 +297,7 @@ class TestComments:
                 account_id="",
                 view_id="VIEW_ID",
                 transaction_id="TRANSACTION_ID",
-                json_string="{}",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -307,7 +307,7 @@ class TestComments:
                 account_id="ACCOUNT_ID",
                 view_id="",
                 transaction_id="TRANSACTION_ID",
-                json_string="{}",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `transaction_id` but received ''"):
@@ -317,7 +317,7 @@ class TestComments:
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
                 transaction_id="",
-                json_string="{}",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `comment_id` but received ''"):
@@ -327,7 +327,7 @@ class TestComments:
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
                 transaction_id="TRANSACTION_ID",
-                json_string="{}",
+                body={},
             )
 
 
@@ -345,7 +345,7 @@ class TestAsyncComments:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            value="String",
+            body={},
         )
         assert comment.is_closed
         assert await comment.json() == {"foo": "bar"}
@@ -364,7 +364,7 @@ class TestAsyncComments:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            value="String",
+            body={},
         )
 
         assert comment.is_closed is True
@@ -383,7 +383,7 @@ class TestAsyncComments:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            value="String",
+            body={},
         ) as comment:
             assert not comment.is_closed
             assert comment.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -403,7 +403,7 @@ class TestAsyncComments:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                value="String",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -412,7 +412,7 @@ class TestAsyncComments:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                value="String",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -421,7 +421,7 @@ class TestAsyncComments:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                value="String",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `transaction_id` but received ''"):
@@ -430,7 +430,7 @@ class TestAsyncComments:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                value="String",
+                body={},
             )
 
     @parametrize
@@ -537,7 +537,7 @@ class TestAsyncComments:
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
             transaction_id="TRANSACTION_ID",
-            json_string="{}",
+            body={},
         )
         assert comment.is_closed
         assert await comment.json() == {"foo": "bar"}
@@ -557,7 +557,7 @@ class TestAsyncComments:
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
             transaction_id="TRANSACTION_ID",
-            json_string="{}",
+            body={},
         )
 
         assert comment.is_closed is True
@@ -577,7 +577,7 @@ class TestAsyncComments:
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
             transaction_id="TRANSACTION_ID",
-            json_string="{}",
+            body={},
         ) as comment:
             assert not comment.is_closed
             assert comment.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -598,7 +598,7 @@ class TestAsyncComments:
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
                 transaction_id="TRANSACTION_ID",
-                json_string="{}",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -608,7 +608,7 @@ class TestAsyncComments:
                 account_id="",
                 view_id="VIEW_ID",
                 transaction_id="TRANSACTION_ID",
-                json_string="{}",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -618,7 +618,7 @@ class TestAsyncComments:
                 account_id="ACCOUNT_ID",
                 view_id="",
                 transaction_id="TRANSACTION_ID",
-                json_string="{}",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `transaction_id` but received ''"):
@@ -628,7 +628,7 @@ class TestAsyncComments:
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
                 transaction_id="",
-                json_string="{}",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `comment_id` but received ''"):
@@ -638,5 +638,5 @@ class TestAsyncComments:
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
                 transaction_id="TRANSACTION_ID",
-                json_string="{}",
+                body={},
             )

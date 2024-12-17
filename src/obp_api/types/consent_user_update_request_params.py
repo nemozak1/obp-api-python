@@ -12,4 +12,4 @@ __all__ = ["ConsentUserUpdateRequestParams"]
 class ConsentUserUpdateRequestParams(TypedDict, total=False):
     bank_id: Required[Annotated[str, PropertyInfo(alias="BANK_ID")]]
 
-    user_id: Required[str]
+    body: Required[object]

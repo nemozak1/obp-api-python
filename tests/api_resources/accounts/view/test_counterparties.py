@@ -33,24 +33,7 @@ class TestCounterparties:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            bespoke=[
-                {
-                    "key": "englishName",
-                    "value": "english Name",
-                }
-            ],
-            currency="EUR",
-            description="My landlord",
-            is_beneficiary=True,
-            name="CounterpartyName",
-            other_account_routing_address="36f8a9e6-c2b1-407a-8bd0-421b7119307e",
-            other_account_routing_scheme="OBP",
-            other_account_secondary_routing_address="DE89370400440532013000",
-            other_account_secondary_routing_scheme="IBAN",
-            other_bank_routing_address="gh.29.uk",
-            other_bank_routing_scheme="OBP",
-            other_branch_routing_address="12f8a9e6-c2b1-407a-8bd0-421b7119307e",
-            other_branch_routing_scheme="OBP",
+            body={},
         )
         assert counterparty.is_closed
         assert counterparty.json() == {"foo": "bar"}
@@ -68,24 +51,7 @@ class TestCounterparties:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            bespoke=[
-                {
-                    "key": "englishName",
-                    "value": "english Name",
-                }
-            ],
-            currency="EUR",
-            description="My landlord",
-            is_beneficiary=True,
-            name="CounterpartyName",
-            other_account_routing_address="36f8a9e6-c2b1-407a-8bd0-421b7119307e",
-            other_account_routing_scheme="OBP",
-            other_account_secondary_routing_address="DE89370400440532013000",
-            other_account_secondary_routing_scheme="IBAN",
-            other_bank_routing_address="gh.29.uk",
-            other_bank_routing_scheme="OBP",
-            other_branch_routing_address="12f8a9e6-c2b1-407a-8bd0-421b7119307e",
-            other_branch_routing_scheme="OBP",
+            body={},
         )
 
         assert counterparty.is_closed is True
@@ -103,24 +69,7 @@ class TestCounterparties:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            bespoke=[
-                {
-                    "key": "englishName",
-                    "value": "english Name",
-                }
-            ],
-            currency="EUR",
-            description="My landlord",
-            is_beneficiary=True,
-            name="CounterpartyName",
-            other_account_routing_address="36f8a9e6-c2b1-407a-8bd0-421b7119307e",
-            other_account_routing_scheme="OBP",
-            other_account_secondary_routing_address="DE89370400440532013000",
-            other_account_secondary_routing_scheme="IBAN",
-            other_bank_routing_address="gh.29.uk",
-            other_bank_routing_scheme="OBP",
-            other_branch_routing_address="12f8a9e6-c2b1-407a-8bd0-421b7119307e",
-            other_branch_routing_scheme="OBP",
+            body={},
         ) as counterparty:
             assert not counterparty.is_closed
             assert counterparty.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -139,24 +88,7 @@ class TestCounterparties:
                 view_id="VIEW_ID",
                 bank_id="",
                 account_id="ACCOUNT_ID",
-                bespoke=[
-                    {
-                        "key": "englishName",
-                        "value": "english Name",
-                    }
-                ],
-                currency="EUR",
-                description="My landlord",
-                is_beneficiary=True,
-                name="CounterpartyName",
-                other_account_routing_address="36f8a9e6-c2b1-407a-8bd0-421b7119307e",
-                other_account_routing_scheme="OBP",
-                other_account_secondary_routing_address="DE89370400440532013000",
-                other_account_secondary_routing_scheme="IBAN",
-                other_bank_routing_address="gh.29.uk",
-                other_bank_routing_scheme="OBP",
-                other_branch_routing_address="12f8a9e6-c2b1-407a-8bd0-421b7119307e",
-                other_branch_routing_scheme="OBP",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -164,24 +96,7 @@ class TestCounterparties:
                 view_id="VIEW_ID",
                 bank_id="BANK_ID",
                 account_id="",
-                bespoke=[
-                    {
-                        "key": "englishName",
-                        "value": "english Name",
-                    }
-                ],
-                currency="EUR",
-                description="My landlord",
-                is_beneficiary=True,
-                name="CounterpartyName",
-                other_account_routing_address="36f8a9e6-c2b1-407a-8bd0-421b7119307e",
-                other_account_routing_scheme="OBP",
-                other_account_secondary_routing_address="DE89370400440532013000",
-                other_account_secondary_routing_scheme="IBAN",
-                other_bank_routing_address="gh.29.uk",
-                other_bank_routing_scheme="OBP",
-                other_branch_routing_address="12f8a9e6-c2b1-407a-8bd0-421b7119307e",
-                other_branch_routing_scheme="OBP",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -189,24 +104,7 @@ class TestCounterparties:
                 view_id="",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                bespoke=[
-                    {
-                        "key": "englishName",
-                        "value": "english Name",
-                    }
-                ],
-                currency="EUR",
-                description="My landlord",
-                is_beneficiary=True,
-                name="CounterpartyName",
-                other_account_routing_address="36f8a9e6-c2b1-407a-8bd0-421b7119307e",
-                other_account_routing_scheme="OBP",
-                other_account_secondary_routing_address="DE89370400440532013000",
-                other_account_secondary_routing_scheme="IBAN",
-                other_bank_routing_address="gh.29.uk",
-                other_bank_routing_scheme="OBP",
-                other_branch_routing_address="12f8a9e6-c2b1-407a-8bd0-421b7119307e",
-                other_branch_routing_scheme="OBP",
+                body={},
             )
 
     @parametrize
@@ -467,24 +365,7 @@ class TestAsyncCounterparties:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            bespoke=[
-                {
-                    "key": "englishName",
-                    "value": "english Name",
-                }
-            ],
-            currency="EUR",
-            description="My landlord",
-            is_beneficiary=True,
-            name="CounterpartyName",
-            other_account_routing_address="36f8a9e6-c2b1-407a-8bd0-421b7119307e",
-            other_account_routing_scheme="OBP",
-            other_account_secondary_routing_address="DE89370400440532013000",
-            other_account_secondary_routing_scheme="IBAN",
-            other_bank_routing_address="gh.29.uk",
-            other_bank_routing_scheme="OBP",
-            other_branch_routing_address="12f8a9e6-c2b1-407a-8bd0-421b7119307e",
-            other_branch_routing_scheme="OBP",
+            body={},
         )
         assert counterparty.is_closed
         assert await counterparty.json() == {"foo": "bar"}
@@ -502,24 +383,7 @@ class TestAsyncCounterparties:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            bespoke=[
-                {
-                    "key": "englishName",
-                    "value": "english Name",
-                }
-            ],
-            currency="EUR",
-            description="My landlord",
-            is_beneficiary=True,
-            name="CounterpartyName",
-            other_account_routing_address="36f8a9e6-c2b1-407a-8bd0-421b7119307e",
-            other_account_routing_scheme="OBP",
-            other_account_secondary_routing_address="DE89370400440532013000",
-            other_account_secondary_routing_scheme="IBAN",
-            other_bank_routing_address="gh.29.uk",
-            other_bank_routing_scheme="OBP",
-            other_branch_routing_address="12f8a9e6-c2b1-407a-8bd0-421b7119307e",
-            other_branch_routing_scheme="OBP",
+            body={},
         )
 
         assert counterparty.is_closed is True
@@ -537,24 +401,7 @@ class TestAsyncCounterparties:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            bespoke=[
-                {
-                    "key": "englishName",
-                    "value": "english Name",
-                }
-            ],
-            currency="EUR",
-            description="My landlord",
-            is_beneficiary=True,
-            name="CounterpartyName",
-            other_account_routing_address="36f8a9e6-c2b1-407a-8bd0-421b7119307e",
-            other_account_routing_scheme="OBP",
-            other_account_secondary_routing_address="DE89370400440532013000",
-            other_account_secondary_routing_scheme="IBAN",
-            other_bank_routing_address="gh.29.uk",
-            other_bank_routing_scheme="OBP",
-            other_branch_routing_address="12f8a9e6-c2b1-407a-8bd0-421b7119307e",
-            other_branch_routing_scheme="OBP",
+            body={},
         ) as counterparty:
             assert not counterparty.is_closed
             assert counterparty.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -573,24 +420,7 @@ class TestAsyncCounterparties:
                 view_id="VIEW_ID",
                 bank_id="",
                 account_id="ACCOUNT_ID",
-                bespoke=[
-                    {
-                        "key": "englishName",
-                        "value": "english Name",
-                    }
-                ],
-                currency="EUR",
-                description="My landlord",
-                is_beneficiary=True,
-                name="CounterpartyName",
-                other_account_routing_address="36f8a9e6-c2b1-407a-8bd0-421b7119307e",
-                other_account_routing_scheme="OBP",
-                other_account_secondary_routing_address="DE89370400440532013000",
-                other_account_secondary_routing_scheme="IBAN",
-                other_bank_routing_address="gh.29.uk",
-                other_bank_routing_scheme="OBP",
-                other_branch_routing_address="12f8a9e6-c2b1-407a-8bd0-421b7119307e",
-                other_branch_routing_scheme="OBP",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -598,24 +428,7 @@ class TestAsyncCounterparties:
                 view_id="VIEW_ID",
                 bank_id="BANK_ID",
                 account_id="",
-                bespoke=[
-                    {
-                        "key": "englishName",
-                        "value": "english Name",
-                    }
-                ],
-                currency="EUR",
-                description="My landlord",
-                is_beneficiary=True,
-                name="CounterpartyName",
-                other_account_routing_address="36f8a9e6-c2b1-407a-8bd0-421b7119307e",
-                other_account_routing_scheme="OBP",
-                other_account_secondary_routing_address="DE89370400440532013000",
-                other_account_secondary_routing_scheme="IBAN",
-                other_bank_routing_address="gh.29.uk",
-                other_bank_routing_scheme="OBP",
-                other_branch_routing_address="12f8a9e6-c2b1-407a-8bd0-421b7119307e",
-                other_branch_routing_scheme="OBP",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -623,24 +436,7 @@ class TestAsyncCounterparties:
                 view_id="",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                bespoke=[
-                    {
-                        "key": "englishName",
-                        "value": "english Name",
-                    }
-                ],
-                currency="EUR",
-                description="My landlord",
-                is_beneficiary=True,
-                name="CounterpartyName",
-                other_account_routing_address="36f8a9e6-c2b1-407a-8bd0-421b7119307e",
-                other_account_routing_scheme="OBP",
-                other_account_secondary_routing_address="DE89370400440532013000",
-                other_account_secondary_routing_scheme="IBAN",
-                other_bank_routing_address="gh.29.uk",
-                other_bank_routing_scheme="OBP",
-                other_branch_routing_address="12f8a9e6-c2b1-407a-8bd0-421b7119307e",
-                other_branch_routing_scheme="OBP",
+                body={},
             )
 
     @parametrize

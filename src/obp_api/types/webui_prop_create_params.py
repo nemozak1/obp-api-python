@@ -8,8 +8,4 @@ __all__ = ["WebuiPropCreateParams"]
 
 
 class WebuiPropCreateParams(TypedDict, total=False):
-    name: Required[str]
-
-    value: Required[str]
-
-    web_ui_props_id: str
+    body: Required[object]

@@ -53,10 +53,7 @@ class AttributesResource(SyncAPIResource):
         *,
         bank_id: str,
         account_id: str,
-        name: str,
-        type: str,
-        value: str,
-        product_instance_code: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -85,15 +82,7 @@ class AttributesResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/products/{product_code}/attribute",
-            body=maybe_transform(
-                {
-                    "name": name,
-                    "type": type,
-                    "value": value,
-                    "product_instance_code": product_instance_code,
-                },
-                attribute_create_params.AttributeCreateParams,
-            ),
+            body=maybe_transform(body, attribute_create_params.AttributeCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -107,10 +96,7 @@ class AttributesResource(SyncAPIResource):
         bank_id: str,
         account_id: str,
         product_code: str,
-        name: str,
-        type: str,
-        value: str,
-        product_instance_code: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -143,15 +129,7 @@ class AttributesResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/products/{product_code}/attributes/{account_attribute_id}",
-            body=maybe_transform(
-                {
-                    "name": name,
-                    "type": type,
-                    "value": value,
-                    "product_instance_code": product_instance_code,
-                },
-                attribute_update_params.AttributeUpdateParams,
-            ),
+            body=maybe_transform(body, attribute_update_params.AttributeUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -185,10 +163,7 @@ class AsyncAttributesResource(AsyncAPIResource):
         *,
         bank_id: str,
         account_id: str,
-        name: str,
-        type: str,
-        value: str,
-        product_instance_code: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -217,15 +192,7 @@ class AsyncAttributesResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/products/{product_code}/attribute",
-            body=await async_maybe_transform(
-                {
-                    "name": name,
-                    "type": type,
-                    "value": value,
-                    "product_instance_code": product_instance_code,
-                },
-                attribute_create_params.AttributeCreateParams,
-            ),
+            body=await async_maybe_transform(body, attribute_create_params.AttributeCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -239,10 +206,7 @@ class AsyncAttributesResource(AsyncAPIResource):
         bank_id: str,
         account_id: str,
         product_code: str,
-        name: str,
-        type: str,
-        value: str,
-        product_instance_code: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -275,15 +239,7 @@ class AsyncAttributesResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/products/{product_code}/attributes/{account_attribute_id}",
-            body=await async_maybe_transform(
-                {
-                    "name": name,
-                    "type": type,
-                    "value": value,
-                    "product_instance_code": product_instance_code,
-                },
-                attribute_update_params.AttributeUpdateParams,
-            ),
+            body=await async_maybe_transform(body, attribute_update_params.AttributeUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

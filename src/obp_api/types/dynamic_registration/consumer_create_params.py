@@ -8,4 +8,4 @@ __all__ = ["ConsumerCreateParams"]
 
 
 class ConsumerCreateParams(TypedDict, total=False):
-    jwt: Required[str]
+    body: Required[object]

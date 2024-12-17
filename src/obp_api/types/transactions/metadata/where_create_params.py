@@ -6,7 +6,7 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from ...._utils import PropertyInfo
 
-__all__ = ["WhereCreateParams", "Where"]
+__all__ = ["WhereCreateParams"]
 
 
 class WhereCreateParams(TypedDict, total=False):
@@ -16,10 +16,4 @@ class WhereCreateParams(TypedDict, total=False):
 
     view_id: Required[Annotated[str, PropertyInfo(alias="VIEW_ID")]]
 
-    where: Required[Where]
-
-
-class Where(TypedDict, total=False):
-    latitude: Required[float]
-
-    longitude: Required[float]
+    body: Required[object]

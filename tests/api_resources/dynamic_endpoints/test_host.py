@@ -30,7 +30,7 @@ class TestHost:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         host = client.dynamic_endpoints.host.update(
-            host="dynamic_entity",
+            body={},
         )
         assert host.is_closed
         assert host.json() == {"foo": "bar"}
@@ -45,7 +45,7 @@ class TestHost:
         )
 
         host = client.dynamic_endpoints.host.with_raw_response.update(
-            host="dynamic_entity",
+            body={},
         )
 
         assert host.is_closed is True
@@ -60,7 +60,7 @@ class TestHost:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.dynamic_endpoints.host.with_streaming_response.update(
-            host="dynamic_entity",
+            body={},
         ) as host:
             assert not host.is_closed
             assert host.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -82,7 +82,7 @@ class TestAsyncHost:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         host = await async_client.dynamic_endpoints.host.update(
-            host="dynamic_entity",
+            body={},
         )
         assert host.is_closed
         assert await host.json() == {"foo": "bar"}
@@ -97,7 +97,7 @@ class TestAsyncHost:
         )
 
         host = await async_client.dynamic_endpoints.host.with_raw_response.update(
-            host="dynamic_entity",
+            body={},
         )
 
         assert host.is_closed is True
@@ -112,7 +112,7 @@ class TestAsyncHost:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.dynamic_endpoints.host.with_streaming_response.update(
-            host="dynamic_entity",
+            body={},
         ) as host:
             assert not host.is_closed
             assert host.http_request.headers.get("X-Stainless-Lang") == "python"

@@ -53,13 +53,9 @@ class DynamicEntitiesResource(SyncAPIResource):
 
     def update(
         self,
+        dynamic_entity_id: str,
         *,
-        path_dynamic_entity_id: str,
-        foo_bar: dynamic_entity_update_params.FooBar,
-        has_personal_entity: bool,
-        bank_id: str | NotGiven = NOT_GIVEN,
-        body_dynamic_entity_id: str | NotGiven = NOT_GIVEN,
-        user_id: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -79,23 +75,12 @@ class DynamicEntitiesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not path_dynamic_entity_id:
-            raise ValueError(
-                f"Expected a non-empty value for `path_dynamic_entity_id` but received {path_dynamic_entity_id!r}"
-            )
+        if not dynamic_entity_id:
+            raise ValueError(f"Expected a non-empty value for `dynamic_entity_id` but received {dynamic_entity_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
-            f"/obp/v5.1.0/my/dynamic-entities/{path_dynamic_entity_id}",
-            body=maybe_transform(
-                {
-                    "foo_bar": foo_bar,
-                    "has_personal_entity": has_personal_entity,
-                    "bank_id": bank_id,
-                    "body_dynamic_entity_id": body_dynamic_entity_id,
-                    "user_id": user_id,
-                },
-                dynamic_entity_update_params.DynamicEntityUpdateParams,
-            ),
+            f"/obp/v5.1.0/my/dynamic-entities/{dynamic_entity_id}",
+            body=maybe_transform(body, dynamic_entity_update_params.DynamicEntityUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -179,13 +164,9 @@ class AsyncDynamicEntitiesResource(AsyncAPIResource):
 
     async def update(
         self,
+        dynamic_entity_id: str,
         *,
-        path_dynamic_entity_id: str,
-        foo_bar: dynamic_entity_update_params.FooBar,
-        has_personal_entity: bool,
-        bank_id: str | NotGiven = NOT_GIVEN,
-        body_dynamic_entity_id: str | NotGiven = NOT_GIVEN,
-        user_id: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -205,23 +186,12 @@ class AsyncDynamicEntitiesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not path_dynamic_entity_id:
-            raise ValueError(
-                f"Expected a non-empty value for `path_dynamic_entity_id` but received {path_dynamic_entity_id!r}"
-            )
+        if not dynamic_entity_id:
+            raise ValueError(f"Expected a non-empty value for `dynamic_entity_id` but received {dynamic_entity_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
-            f"/obp/v5.1.0/my/dynamic-entities/{path_dynamic_entity_id}",
-            body=await async_maybe_transform(
-                {
-                    "foo_bar": foo_bar,
-                    "has_personal_entity": has_personal_entity,
-                    "bank_id": bank_id,
-                    "body_dynamic_entity_id": body_dynamic_entity_id,
-                    "user_id": user_id,
-                },
-                dynamic_entity_update_params.DynamicEntityUpdateParams,
-            ),
+            f"/obp/v5.1.0/my/dynamic-entities/{dynamic_entity_id}",
+            body=await async_maybe_transform(body, dynamic_entity_update_params.DynamicEntityUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

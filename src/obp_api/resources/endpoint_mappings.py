@@ -50,9 +50,7 @@ class EndpointMappingsResource(SyncAPIResource):
     def create(
         self,
         *,
-        operation_id: str,
-        request_mapping: object,
-        response_mapping: endpoint_mapping_create_params.ResponseMapping,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -75,14 +73,7 @@ class EndpointMappingsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/obp/v5.1.0/management/endpoint-mappings",
-            body=maybe_transform(
-                {
-                    "operation_id": operation_id,
-                    "request_mapping": request_mapping,
-                    "response_mapping": response_mapping,
-                },
-                endpoint_mapping_create_params.EndpointMappingCreateParams,
-            ),
+            body=maybe_transform(body, endpoint_mapping_create_params.EndpointMappingCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -114,9 +105,7 @@ class EndpointMappingsResource(SyncAPIResource):
     def update(
         self,
         *,
-        operation_id: str,
-        request_mapping: object,
-        response_mapping: endpoint_mapping_update_params.ResponseMapping,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -139,14 +128,7 @@ class EndpointMappingsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             "/obp/v5.1.0/management/endpoint-mappings/ENDPOINT_MAPPING_ID",
-            body=maybe_transform(
-                {
-                    "operation_id": operation_id,
-                    "request_mapping": request_mapping,
-                    "response_mapping": response_mapping,
-                },
-                endpoint_mapping_update_params.EndpointMappingUpdateParams,
-            ),
+            body=maybe_transform(body, endpoint_mapping_update_params.EndpointMappingUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -217,9 +199,7 @@ class AsyncEndpointMappingsResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        operation_id: str,
-        request_mapping: object,
-        response_mapping: endpoint_mapping_create_params.ResponseMapping,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -242,14 +222,7 @@ class AsyncEndpointMappingsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/obp/v5.1.0/management/endpoint-mappings",
-            body=await async_maybe_transform(
-                {
-                    "operation_id": operation_id,
-                    "request_mapping": request_mapping,
-                    "response_mapping": response_mapping,
-                },
-                endpoint_mapping_create_params.EndpointMappingCreateParams,
-            ),
+            body=await async_maybe_transform(body, endpoint_mapping_create_params.EndpointMappingCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -281,9 +254,7 @@ class AsyncEndpointMappingsResource(AsyncAPIResource):
     async def update(
         self,
         *,
-        operation_id: str,
-        request_mapping: object,
-        response_mapping: endpoint_mapping_update_params.ResponseMapping,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -306,14 +277,7 @@ class AsyncEndpointMappingsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             "/obp/v5.1.0/management/endpoint-mappings/ENDPOINT_MAPPING_ID",
-            body=await async_maybe_transform(
-                {
-                    "operation_id": operation_id,
-                    "request_mapping": request_mapping,
-                    "response_mapping": response_mapping,
-                },
-                endpoint_mapping_update_params.EndpointMappingUpdateParams,
-            ),
+            body=await async_maybe_transform(body, endpoint_mapping_update_params.EndpointMappingUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

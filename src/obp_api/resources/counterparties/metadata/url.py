@@ -54,7 +54,7 @@ class URLResource(SyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        url: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -85,7 +85,7 @@ class URLResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/other_accounts/{other_account_id}/metadata/url",
-            body=maybe_transform({"url": url}, url_create_params.URLCreateParams),
+            body=maybe_transform(body, url_create_params.URLCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -99,7 +99,7 @@ class URLResource(SyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        url: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -130,7 +130,7 @@ class URLResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/other_accounts/{other_account_id}/metadata/url",
-            body=maybe_transform({"url": url}, url_update_params.URLUpdateParams),
+            body=maybe_transform(body, url_update_params.URLUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -144,7 +144,7 @@ class URLResource(SyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        json_string: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -175,7 +175,7 @@ class URLResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/other_accounts/{other_account_id}/metadata/url",
-            body=maybe_transform({"json_string": json_string}, url_delete_params.URLDeleteParams),
+            body=maybe_transform(body, url_delete_params.URLDeleteParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -210,7 +210,7 @@ class AsyncURLResource(AsyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        url: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -241,7 +241,7 @@ class AsyncURLResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/other_accounts/{other_account_id}/metadata/url",
-            body=await async_maybe_transform({"url": url}, url_create_params.URLCreateParams),
+            body=await async_maybe_transform(body, url_create_params.URLCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -255,7 +255,7 @@ class AsyncURLResource(AsyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        url: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -286,7 +286,7 @@ class AsyncURLResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/other_accounts/{other_account_id}/metadata/url",
-            body=await async_maybe_transform({"url": url}, url_update_params.URLUpdateParams),
+            body=await async_maybe_transform(body, url_update_params.URLUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -300,7 +300,7 @@ class AsyncURLResource(AsyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        json_string: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -331,7 +331,7 @@ class AsyncURLResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/other_accounts/{other_account_id}/metadata/url",
-            body=await async_maybe_transform({"json_string": json_string}, url_delete_params.URLDeleteParams),
+            body=await async_maybe_transform(body, url_delete_params.URLDeleteParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

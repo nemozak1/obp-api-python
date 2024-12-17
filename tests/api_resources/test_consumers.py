@@ -10,7 +10,6 @@ import pytest
 from respx import MockRouter
 
 from obp_api import ObpAPI, AsyncObpAPI
-from obp_api._utils import parse_date
 from obp_api._response import (
     BinaryAPIResponse,
     AsyncBinaryAPIResponse,
@@ -29,15 +28,7 @@ class TestConsumers:
     def test_method_create(self, client: ObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/management/consumers").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         consumer = client.consumers.create(
-            app_name="Test",
-            app_type="Test",
-            client_certificate="-----BEGIN CERTIFICATE-----\nclient_certificate_content\n-----END CERTIFICATE-----",
-            created=parse_date("2019-12-27"),
-            created_by_user_id="createdby",
-            description="Description",
-            developer_email="some@email.com",
-            enabled=True,
-            redirect_url="redirecturl",
+            body={},
         )
         assert consumer.is_closed
         assert consumer.json() == {"foo": "bar"}
@@ -50,15 +41,7 @@ class TestConsumers:
         respx_mock.post("/obp/v5.1.0/management/consumers").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         consumer = client.consumers.with_raw_response.create(
-            app_name="Test",
-            app_type="Test",
-            client_certificate="-----BEGIN CERTIFICATE-----\nclient_certificate_content\n-----END CERTIFICATE-----",
-            created=parse_date("2019-12-27"),
-            created_by_user_id="createdby",
-            description="Description",
-            developer_email="some@email.com",
-            enabled=True,
-            redirect_url="redirecturl",
+            body={},
         )
 
         assert consumer.is_closed is True
@@ -71,15 +54,7 @@ class TestConsumers:
     def test_streaming_response_create(self, client: ObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/management/consumers").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.consumers.with_streaming_response.create(
-            app_name="Test",
-            app_type="Test",
-            client_certificate="-----BEGIN CERTIFICATE-----\nclient_certificate_content\n-----END CERTIFICATE-----",
-            created=parse_date("2019-12-27"),
-            created_by_user_id="createdby",
-            description="Description",
-            developer_email="some@email.com",
-            enabled=True,
-            redirect_url="redirecturl",
+            body={},
         ) as consumer:
             assert not consumer.is_closed
             assert consumer.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -154,7 +129,7 @@ class TestConsumers:
         )
         consumer = client.consumers.update(
             consumer_id="CONSUMER_ID",
-            enabled=False,
+            body={},
         )
         assert consumer.is_closed
         assert consumer.json() == {"foo": "bar"}
@@ -170,7 +145,7 @@ class TestConsumers:
 
         consumer = client.consumers.with_raw_response.update(
             consumer_id="CONSUMER_ID",
-            enabled=False,
+            body={},
         )
 
         assert consumer.is_closed is True
@@ -186,7 +161,7 @@ class TestConsumers:
         )
         with client.consumers.with_streaming_response.update(
             consumer_id="CONSUMER_ID",
-            enabled=False,
+            body={},
         ) as consumer:
             assert not consumer.is_closed
             assert consumer.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -203,7 +178,7 @@ class TestConsumers:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `consumer_id` but received ''"):
             client.consumers.with_raw_response.update(
                 consumer_id="",
-                enabled=False,
+                body={},
             )
 
     @parametrize
@@ -251,15 +226,7 @@ class TestAsyncConsumers:
     async def test_method_create(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/management/consumers").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         consumer = await async_client.consumers.create(
-            app_name="Test",
-            app_type="Test",
-            client_certificate="-----BEGIN CERTIFICATE-----\nclient_certificate_content\n-----END CERTIFICATE-----",
-            created=parse_date("2019-12-27"),
-            created_by_user_id="createdby",
-            description="Description",
-            developer_email="some@email.com",
-            enabled=True,
-            redirect_url="redirecturl",
+            body={},
         )
         assert consumer.is_closed
         assert await consumer.json() == {"foo": "bar"}
@@ -272,15 +239,7 @@ class TestAsyncConsumers:
         respx_mock.post("/obp/v5.1.0/management/consumers").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         consumer = await async_client.consumers.with_raw_response.create(
-            app_name="Test",
-            app_type="Test",
-            client_certificate="-----BEGIN CERTIFICATE-----\nclient_certificate_content\n-----END CERTIFICATE-----",
-            created=parse_date("2019-12-27"),
-            created_by_user_id="createdby",
-            description="Description",
-            developer_email="some@email.com",
-            enabled=True,
-            redirect_url="redirecturl",
+            body={},
         )
 
         assert consumer.is_closed is True
@@ -293,15 +252,7 @@ class TestAsyncConsumers:
     async def test_streaming_response_create(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/management/consumers").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.consumers.with_streaming_response.create(
-            app_name="Test",
-            app_type="Test",
-            client_certificate="-----BEGIN CERTIFICATE-----\nclient_certificate_content\n-----END CERTIFICATE-----",
-            created=parse_date("2019-12-27"),
-            created_by_user_id="createdby",
-            description="Description",
-            developer_email="some@email.com",
-            enabled=True,
-            redirect_url="redirecturl",
+            body={},
         ) as consumer:
             assert not consumer.is_closed
             assert consumer.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -376,7 +327,7 @@ class TestAsyncConsumers:
         )
         consumer = await async_client.consumers.update(
             consumer_id="CONSUMER_ID",
-            enabled=False,
+            body={},
         )
         assert consumer.is_closed
         assert await consumer.json() == {"foo": "bar"}
@@ -392,7 +343,7 @@ class TestAsyncConsumers:
 
         consumer = await async_client.consumers.with_raw_response.update(
             consumer_id="CONSUMER_ID",
-            enabled=False,
+            body={},
         )
 
         assert consumer.is_closed is True
@@ -408,7 +359,7 @@ class TestAsyncConsumers:
         )
         async with async_client.consumers.with_streaming_response.update(
             consumer_id="CONSUMER_ID",
-            enabled=False,
+            body={},
         ) as consumer:
             assert not consumer.is_closed
             assert consumer.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -425,7 +376,7 @@ class TestAsyncConsumers:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `consumer_id` but received ''"):
             await async_client.consumers.with_raw_response.update(
                 consumer_id="",
-                enabled=False,
+                body={},
             )
 
     @parametrize

@@ -2,9 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import date
-
 import httpx
 
 from .scopes import (
@@ -89,15 +86,7 @@ class ConsumersResource(SyncAPIResource):
     def create(
         self,
         *,
-        app_name: str,
-        app_type: str,
-        client_certificate: str,
-        created: Union[str, date],
-        created_by_user_id: str,
-        description: str,
-        developer_email: str,
-        enabled: bool,
-        redirect_url: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -120,20 +109,7 @@ class ConsumersResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/obp/v5.1.0/management/consumers",
-            body=maybe_transform(
-                {
-                    "app_name": app_name,
-                    "app_type": app_type,
-                    "client_certificate": client_certificate,
-                    "created": created,
-                    "created_by_user_id": created_by_user_id,
-                    "description": description,
-                    "developer_email": developer_email,
-                    "enabled": enabled,
-                    "redirect_url": redirect_url,
-                },
-                consumer_create_params.ConsumerCreateParams,
-            ),
+            body=maybe_transform(body, consumer_create_params.ConsumerCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -178,7 +154,7 @@ class ConsumersResource(SyncAPIResource):
         self,
         consumer_id: str,
         *,
-        enabled: bool,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -203,7 +179,7 @@ class ConsumersResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/management/consumers/{consumer_id}",
-            body=maybe_transform({"enabled": enabled}, consumer_update_params.ConsumerUpdateParams),
+            body=maybe_transform(body, consumer_update_params.ConsumerUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -268,15 +244,7 @@ class AsyncConsumersResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        app_name: str,
-        app_type: str,
-        client_certificate: str,
-        created: Union[str, date],
-        created_by_user_id: str,
-        description: str,
-        developer_email: str,
-        enabled: bool,
-        redirect_url: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -299,20 +267,7 @@ class AsyncConsumersResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/obp/v5.1.0/management/consumers",
-            body=await async_maybe_transform(
-                {
-                    "app_name": app_name,
-                    "app_type": app_type,
-                    "client_certificate": client_certificate,
-                    "created": created,
-                    "created_by_user_id": created_by_user_id,
-                    "description": description,
-                    "developer_email": developer_email,
-                    "enabled": enabled,
-                    "redirect_url": redirect_url,
-                },
-                consumer_create_params.ConsumerCreateParams,
-            ),
+            body=await async_maybe_transform(body, consumer_create_params.ConsumerCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -357,7 +312,7 @@ class AsyncConsumersResource(AsyncAPIResource):
         self,
         consumer_id: str,
         *,
-        enabled: bool,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -382,7 +337,7 @@ class AsyncConsumersResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/management/consumers/{consumer_id}",
-            body=await async_maybe_transform({"enabled": enabled}, consumer_update_params.ConsumerUpdateParams),
+            body=await async_maybe_transform(body, consumer_update_params.ConsumerUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

@@ -6,18 +6,10 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from ...._utils import PropertyInfo
 
-__all__ = ["StatisticCreateParams", "Query", "QueryMatchAll"]
+__all__ = ["StatisticCreateParams"]
 
 
 class StatisticCreateParams(TypedDict, total=False):
     index: Required[Annotated[str, PropertyInfo(alias="INDEX")]]
 
-    query: Required[Query]
-
-
-class QueryMatchAll(TypedDict, total=False):
-    none: str
-
-
-class Query(TypedDict, total=False):
-    match_all: Required[QueryMatchAll]
+    body: Required[object]
