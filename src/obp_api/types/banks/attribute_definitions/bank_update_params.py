@@ -2,23 +2,10 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Required, TypedDict
 
 __all__ = ["BankUpdateParams"]
 
 
 class BankUpdateParams(TypedDict, total=False):
-    alias: Required[str]
-
-    can_be_seen_on_views: Required[List[str]]
-
-    category: Required[str]
-
-    description: Required[str]
-
-    is_active: Required[bool]
-
-    name: Required[str]
-
-    type: Required[str]
+    body: Required[object]

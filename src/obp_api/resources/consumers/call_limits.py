@@ -2,9 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import date
-
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -88,17 +85,7 @@ class CallLimitsResource(SyncAPIResource):
         self,
         consumer_id: str,
         *,
-        from_date: Union[str, date],
-        per_day_call_limit: str,
-        per_hour_call_limit: str,
-        per_minute_call_limit: str,
-        per_month_call_limit: str,
-        per_second_call_limit: str,
-        per_week_call_limit: str,
-        to_date: Union[str, date],
-        api_name: str | NotGiven = NOT_GIVEN,
-        api_version: str | NotGiven = NOT_GIVEN,
-        bank_id: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -123,22 +110,7 @@ class CallLimitsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/management/consumers/{consumer_id}/consumer/call-limits",
-            body=maybe_transform(
-                {
-                    "from_date": from_date,
-                    "per_day_call_limit": per_day_call_limit,
-                    "per_hour_call_limit": per_hour_call_limit,
-                    "per_minute_call_limit": per_minute_call_limit,
-                    "per_month_call_limit": per_month_call_limit,
-                    "per_second_call_limit": per_second_call_limit,
-                    "per_week_call_limit": per_week_call_limit,
-                    "to_date": to_date,
-                    "api_name": api_name,
-                    "api_version": api_version,
-                    "bank_id": bank_id,
-                },
-                call_limit_update_params.CallLimitUpdateParams,
-            ),
+            body=maybe_transform(body, call_limit_update_params.CallLimitUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -204,17 +176,7 @@ class AsyncCallLimitsResource(AsyncAPIResource):
         self,
         consumer_id: str,
         *,
-        from_date: Union[str, date],
-        per_day_call_limit: str,
-        per_hour_call_limit: str,
-        per_minute_call_limit: str,
-        per_month_call_limit: str,
-        per_second_call_limit: str,
-        per_week_call_limit: str,
-        to_date: Union[str, date],
-        api_name: str | NotGiven = NOT_GIVEN,
-        api_version: str | NotGiven = NOT_GIVEN,
-        bank_id: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -239,22 +201,7 @@ class AsyncCallLimitsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/management/consumers/{consumer_id}/consumer/call-limits",
-            body=await async_maybe_transform(
-                {
-                    "from_date": from_date,
-                    "per_day_call_limit": per_day_call_limit,
-                    "per_hour_call_limit": per_hour_call_limit,
-                    "per_minute_call_limit": per_minute_call_limit,
-                    "per_month_call_limit": per_month_call_limit,
-                    "per_second_call_limit": per_second_call_limit,
-                    "per_week_call_limit": per_week_call_limit,
-                    "to_date": to_date,
-                    "api_name": api_name,
-                    "api_version": api_version,
-                    "bank_id": bank_id,
-                },
-                call_limit_update_params.CallLimitUpdateParams,
-            ),
+            body=await async_maybe_transform(body, call_limit_update_params.CallLimitUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

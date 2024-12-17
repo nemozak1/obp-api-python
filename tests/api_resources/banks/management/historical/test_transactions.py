@@ -31,17 +31,7 @@ class TestTransactions:
         )
         transaction = client.banks.management.historical.transactions.create(
             bank_id="BANK_ID",
-            charge_policy="SHARED",
-            completed="1100-01-01T01:01:01.000Z",
-            description="this is for work",
-            from_account_id="",
-            posted="1100-01-01T01:01:01.000Z",
-            to_account_id="",
-            type="SANDBOX_TAN",
-            value={
-                "amount": "0",
-                "currency": "EUR",
-            },
+            body={},
         )
         assert transaction.is_closed
         assert transaction.json() == {"foo": "bar"}
@@ -57,17 +47,7 @@ class TestTransactions:
 
         transaction = client.banks.management.historical.transactions.with_raw_response.create(
             bank_id="BANK_ID",
-            charge_policy="SHARED",
-            completed="1100-01-01T01:01:01.000Z",
-            description="this is for work",
-            from_account_id="",
-            posted="1100-01-01T01:01:01.000Z",
-            to_account_id="",
-            type="SANDBOX_TAN",
-            value={
-                "amount": "0",
-                "currency": "EUR",
-            },
+            body={},
         )
 
         assert transaction.is_closed is True
@@ -83,17 +63,7 @@ class TestTransactions:
         )
         with client.banks.management.historical.transactions.with_streaming_response.create(
             bank_id="BANK_ID",
-            charge_policy="SHARED",
-            completed="1100-01-01T01:01:01.000Z",
-            description="this is for work",
-            from_account_id="",
-            posted="1100-01-01T01:01:01.000Z",
-            to_account_id="",
-            type="SANDBOX_TAN",
-            value={
-                "amount": "0",
-                "currency": "EUR",
-            },
+            body={},
         ) as transaction:
             assert not transaction.is_closed
             assert transaction.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -110,17 +80,7 @@ class TestTransactions:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             client.banks.management.historical.transactions.with_raw_response.create(
                 bank_id="",
-                charge_policy="SHARED",
-                completed="1100-01-01T01:01:01.000Z",
-                description="this is for work",
-                from_account_id="",
-                posted="1100-01-01T01:01:01.000Z",
-                to_account_id="",
-                type="SANDBOX_TAN",
-                value={
-                    "amount": "0",
-                    "currency": "EUR",
-                },
+                body={},
             )
 
 
@@ -135,17 +95,7 @@ class TestAsyncTransactions:
         )
         transaction = await async_client.banks.management.historical.transactions.create(
             bank_id="BANK_ID",
-            charge_policy="SHARED",
-            completed="1100-01-01T01:01:01.000Z",
-            description="this is for work",
-            from_account_id="",
-            posted="1100-01-01T01:01:01.000Z",
-            to_account_id="",
-            type="SANDBOX_TAN",
-            value={
-                "amount": "0",
-                "currency": "EUR",
-            },
+            body={},
         )
         assert transaction.is_closed
         assert await transaction.json() == {"foo": "bar"}
@@ -161,17 +111,7 @@ class TestAsyncTransactions:
 
         transaction = await async_client.banks.management.historical.transactions.with_raw_response.create(
             bank_id="BANK_ID",
-            charge_policy="SHARED",
-            completed="1100-01-01T01:01:01.000Z",
-            description="this is for work",
-            from_account_id="",
-            posted="1100-01-01T01:01:01.000Z",
-            to_account_id="",
-            type="SANDBOX_TAN",
-            value={
-                "amount": "0",
-                "currency": "EUR",
-            },
+            body={},
         )
 
         assert transaction.is_closed is True
@@ -187,17 +127,7 @@ class TestAsyncTransactions:
         )
         async with async_client.banks.management.historical.transactions.with_streaming_response.create(
             bank_id="BANK_ID",
-            charge_policy="SHARED",
-            completed="1100-01-01T01:01:01.000Z",
-            description="this is for work",
-            from_account_id="",
-            posted="1100-01-01T01:01:01.000Z",
-            to_account_id="",
-            type="SANDBOX_TAN",
-            value={
-                "amount": "0",
-                "currency": "EUR",
-            },
+            body={},
         ) as transaction:
             assert not transaction.is_closed
             assert transaction.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -214,15 +144,5 @@ class TestAsyncTransactions:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             await async_client.banks.management.historical.transactions.with_raw_response.create(
                 bank_id="",
-                charge_policy="SHARED",
-                completed="1100-01-01T01:01:01.000Z",
-                description="this is for work",
-                from_account_id="",
-                posted="1100-01-01T01:01:01.000Z",
-                to_account_id="",
-                type="SANDBOX_TAN",
-                value={
-                    "amount": "0",
-                    "currency": "EUR",
-                },
+                body={},
             )

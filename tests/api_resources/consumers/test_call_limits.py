@@ -10,7 +10,6 @@ import pytest
 from respx import MockRouter
 
 from obp_api import ObpAPI, AsyncObpAPI
-from obp_api._utils import parse_date
 from obp_api._response import (
     BinaryAPIResponse,
     AsyncBinaryAPIResponse,
@@ -88,39 +87,7 @@ class TestCallLimits:
         )
         call_limit = client.consumers.call_limits.update(
             consumer_id="CONSUMER_ID",
-            from_date=parse_date("2019-12-27"),
-            per_day_call_limit="-1",
-            per_hour_call_limit="-1",
-            per_minute_call_limit="-1",
-            per_month_call_limit="-1",
-            per_second_call_limit="-1",
-            per_week_call_limit="-1",
-            to_date=parse_date("2019-12-27"),
-        )
-        assert call_limit.is_closed
-        assert call_limit.json() == {"foo": "bar"}
-        assert cast(Any, call_limit.is_closed) is True
-        assert isinstance(call_limit, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_update_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.put("/obp/v5.1.0/management/consumers/CONSUMER_ID/consumer/call-limits").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        call_limit = client.consumers.call_limits.update(
-            consumer_id="CONSUMER_ID",
-            from_date=parse_date("2019-12-27"),
-            per_day_call_limit="-1",
-            per_hour_call_limit="-1",
-            per_minute_call_limit="-1",
-            per_month_call_limit="-1",
-            per_second_call_limit="-1",
-            per_week_call_limit="-1",
-            to_date=parse_date("2019-12-27"),
-            api_name="api_name",
-            api_version="api_version",
-            bank_id="bank_id",
+            body={},
         )
         assert call_limit.is_closed
         assert call_limit.json() == {"foo": "bar"}
@@ -136,14 +103,7 @@ class TestCallLimits:
 
         call_limit = client.consumers.call_limits.with_raw_response.update(
             consumer_id="CONSUMER_ID",
-            from_date=parse_date("2019-12-27"),
-            per_day_call_limit="-1",
-            per_hour_call_limit="-1",
-            per_minute_call_limit="-1",
-            per_month_call_limit="-1",
-            per_second_call_limit="-1",
-            per_week_call_limit="-1",
-            to_date=parse_date("2019-12-27"),
+            body={},
         )
 
         assert call_limit.is_closed is True
@@ -159,14 +119,7 @@ class TestCallLimits:
         )
         with client.consumers.call_limits.with_streaming_response.update(
             consumer_id="CONSUMER_ID",
-            from_date=parse_date("2019-12-27"),
-            per_day_call_limit="-1",
-            per_hour_call_limit="-1",
-            per_minute_call_limit="-1",
-            per_month_call_limit="-1",
-            per_second_call_limit="-1",
-            per_week_call_limit="-1",
-            to_date=parse_date("2019-12-27"),
+            body={},
         ) as call_limit:
             assert not call_limit.is_closed
             assert call_limit.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -183,14 +136,7 @@ class TestCallLimits:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `consumer_id` but received ''"):
             client.consumers.call_limits.with_raw_response.update(
                 consumer_id="",
-                from_date=parse_date("2019-12-27"),
-                per_day_call_limit="-1",
-                per_hour_call_limit="-1",
-                per_minute_call_limit="-1",
-                per_month_call_limit="-1",
-                per_second_call_limit="-1",
-                per_week_call_limit="-1",
-                to_date=parse_date("2019-12-27"),
+                body={},
             )
 
 
@@ -261,39 +207,7 @@ class TestAsyncCallLimits:
         )
         call_limit = await async_client.consumers.call_limits.update(
             consumer_id="CONSUMER_ID",
-            from_date=parse_date("2019-12-27"),
-            per_day_call_limit="-1",
-            per_hour_call_limit="-1",
-            per_minute_call_limit="-1",
-            per_month_call_limit="-1",
-            per_second_call_limit="-1",
-            per_week_call_limit="-1",
-            to_date=parse_date("2019-12-27"),
-        )
-        assert call_limit.is_closed
-        assert await call_limit.json() == {"foo": "bar"}
-        assert cast(Any, call_limit.is_closed) is True
-        assert isinstance(call_limit, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_update_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.put("/obp/v5.1.0/management/consumers/CONSUMER_ID/consumer/call-limits").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        call_limit = await async_client.consumers.call_limits.update(
-            consumer_id="CONSUMER_ID",
-            from_date=parse_date("2019-12-27"),
-            per_day_call_limit="-1",
-            per_hour_call_limit="-1",
-            per_minute_call_limit="-1",
-            per_month_call_limit="-1",
-            per_second_call_limit="-1",
-            per_week_call_limit="-1",
-            to_date=parse_date("2019-12-27"),
-            api_name="api_name",
-            api_version="api_version",
-            bank_id="bank_id",
+            body={},
         )
         assert call_limit.is_closed
         assert await call_limit.json() == {"foo": "bar"}
@@ -309,14 +223,7 @@ class TestAsyncCallLimits:
 
         call_limit = await async_client.consumers.call_limits.with_raw_response.update(
             consumer_id="CONSUMER_ID",
-            from_date=parse_date("2019-12-27"),
-            per_day_call_limit="-1",
-            per_hour_call_limit="-1",
-            per_minute_call_limit="-1",
-            per_month_call_limit="-1",
-            per_second_call_limit="-1",
-            per_week_call_limit="-1",
-            to_date=parse_date("2019-12-27"),
+            body={},
         )
 
         assert call_limit.is_closed is True
@@ -332,14 +239,7 @@ class TestAsyncCallLimits:
         )
         async with async_client.consumers.call_limits.with_streaming_response.update(
             consumer_id="CONSUMER_ID",
-            from_date=parse_date("2019-12-27"),
-            per_day_call_limit="-1",
-            per_hour_call_limit="-1",
-            per_minute_call_limit="-1",
-            per_month_call_limit="-1",
-            per_second_call_limit="-1",
-            per_week_call_limit="-1",
-            to_date=parse_date("2019-12-27"),
+            body={},
         ) as call_limit:
             assert not call_limit.is_closed
             assert call_limit.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -356,12 +256,5 @@ class TestAsyncCallLimits:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `consumer_id` but received ''"):
             await async_client.consumers.call_limits.with_raw_response.update(
                 consumer_id="",
-                from_date=parse_date("2019-12-27"),
-                per_day_call_limit="-1",
-                per_hour_call_limit="-1",
-                per_minute_call_limit="-1",
-                per_month_call_limit="-1",
-                per_second_call_limit="-1",
-                per_week_call_limit="-1",
-                to_date=parse_date("2019-12-27"),
+                body={},
             )

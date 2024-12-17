@@ -10,7 +10,6 @@ import pytest
 from respx import MockRouter
 
 from obp_api import ObpAPI, AsyncObpAPI
-from obp_api._utils import parse_date
 from obp_api._response import (
     BinaryAPIResponse,
     AsyncBinaryAPIResponse,
@@ -31,51 +30,7 @@ class TestConsentRequests:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         consent_request = client.consumer.consent_requests.create(
-            account_access=[
-                {
-                    "account_routing": {
-                        "address": "4930396",
-                        "scheme": "AccountNumber",
-                    },
-                    "view_id": "owner",
-                }
-            ],
-            everything=False,
-        )
-        assert consent_request.is_closed
-        assert consent_request.json() == {"foo": "bar"}
-        assert cast(Any, consent_request.is_closed) is True
-        assert isinstance(consent_request, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_create_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.post("/obp/v5.1.0/consumer/consent-requests").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        consent_request = client.consumer.consent_requests.create(
-            account_access=[
-                {
-                    "account_routing": {
-                        "address": "4930396",
-                        "scheme": "AccountNumber",
-                    },
-                    "view_id": "owner",
-                }
-            ],
-            everything=False,
-            bank_id="bank_id",
-            consumer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            email="felixsmith@example.com",
-            entitlements=[
-                {
-                    "bank_id": "gh.29.uk",
-                    "role_name": "CanGetCustomer",
-                }
-            ],
-            phone_number="+44 07972 444 876",
-            time_to_live=3600,
-            valid_from=parse_date("2019-12-27"),
+            body={},
         )
         assert consent_request.is_closed
         assert consent_request.json() == {"foo": "bar"}
@@ -90,16 +45,7 @@ class TestConsentRequests:
         )
 
         consent_request = client.consumer.consent_requests.with_raw_response.create(
-            account_access=[
-                {
-                    "account_routing": {
-                        "address": "4930396",
-                        "scheme": "AccountNumber",
-                    },
-                    "view_id": "owner",
-                }
-            ],
-            everything=False,
+            body={},
         )
 
         assert consent_request.is_closed is True
@@ -114,16 +60,7 @@ class TestConsentRequests:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.consumer.consent_requests.with_streaming_response.create(
-            account_access=[
-                {
-                    "account_routing": {
-                        "address": "4930396",
-                        "scheme": "AccountNumber",
-                    },
-                    "view_id": "owner",
-                }
-            ],
-            everything=False,
+            body={},
         ) as consent_request:
             assert not consent_request.is_closed
             assert consent_request.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -187,51 +124,7 @@ class TestAsyncConsentRequests:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         consent_request = await async_client.consumer.consent_requests.create(
-            account_access=[
-                {
-                    "account_routing": {
-                        "address": "4930396",
-                        "scheme": "AccountNumber",
-                    },
-                    "view_id": "owner",
-                }
-            ],
-            everything=False,
-        )
-        assert consent_request.is_closed
-        assert await consent_request.json() == {"foo": "bar"}
-        assert cast(Any, consent_request.is_closed) is True
-        assert isinstance(consent_request, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_create_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.post("/obp/v5.1.0/consumer/consent-requests").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        consent_request = await async_client.consumer.consent_requests.create(
-            account_access=[
-                {
-                    "account_routing": {
-                        "address": "4930396",
-                        "scheme": "AccountNumber",
-                    },
-                    "view_id": "owner",
-                }
-            ],
-            everything=False,
-            bank_id="bank_id",
-            consumer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            email="felixsmith@example.com",
-            entitlements=[
-                {
-                    "bank_id": "gh.29.uk",
-                    "role_name": "CanGetCustomer",
-                }
-            ],
-            phone_number="+44 07972 444 876",
-            time_to_live=3600,
-            valid_from=parse_date("2019-12-27"),
+            body={},
         )
         assert consent_request.is_closed
         assert await consent_request.json() == {"foo": "bar"}
@@ -246,16 +139,7 @@ class TestAsyncConsentRequests:
         )
 
         consent_request = await async_client.consumer.consent_requests.with_raw_response.create(
-            account_access=[
-                {
-                    "account_routing": {
-                        "address": "4930396",
-                        "scheme": "AccountNumber",
-                    },
-                    "view_id": "owner",
-                }
-            ],
-            everything=False,
+            body={},
         )
 
         assert consent_request.is_closed is True
@@ -270,16 +154,7 @@ class TestAsyncConsentRequests:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.consumer.consent_requests.with_streaming_response.create(
-            account_access=[
-                {
-                    "account_routing": {
-                        "address": "4930396",
-                        "scheme": "AccountNumber",
-                    },
-                    "view_id": "owner",
-                }
-            ],
-            everything=False,
+            body={},
         ) as consent_request:
             assert not consent_request.is_closed
             assert consent_request.http_request.headers.get("X-Stainless-Lang") == "python"

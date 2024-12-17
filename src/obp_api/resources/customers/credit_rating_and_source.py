@@ -52,8 +52,7 @@ class CreditRatingAndSourceResource(SyncAPIResource):
         customer_id: str,
         *,
         bank_id: str,
-        credit_rating: str,
-        credit_source: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -80,13 +79,7 @@ class CreditRatingAndSourceResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/credit-rating-and-source",
-            body=maybe_transform(
-                {
-                    "credit_rating": credit_rating,
-                    "credit_source": credit_source,
-                },
-                credit_rating_and_source_update_params.CreditRatingAndSourceUpdateParams,
-            ),
+            body=maybe_transform(body, credit_rating_and_source_update_params.CreditRatingAndSourceUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -119,8 +112,7 @@ class AsyncCreditRatingAndSourceResource(AsyncAPIResource):
         customer_id: str,
         *,
         bank_id: str,
-        credit_rating: str,
-        credit_source: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -148,11 +140,7 @@ class AsyncCreditRatingAndSourceResource(AsyncAPIResource):
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/credit-rating-and-source",
             body=await async_maybe_transform(
-                {
-                    "credit_rating": credit_rating,
-                    "credit_source": credit_source,
-                },
-                credit_rating_and_source_update_params.CreditRatingAndSourceUpdateParams,
+                body, credit_rating_and_source_update_params.CreditRatingAndSourceUpdateParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout

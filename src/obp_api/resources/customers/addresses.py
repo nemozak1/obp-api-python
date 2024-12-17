@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import List
-
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NoneType, NotGiven
@@ -58,16 +56,7 @@ class AddressesResource(SyncAPIResource):
         customer_id: str,
         *,
         bank_id: str,
-        city: str,
-        country_code: str,
-        county: str,
-        line_1: str,
-        line_2: str,
-        line_3: str,
-        postcode: str,
-        state: str,
-        status: str,
-        tags: List[str],
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -94,21 +83,7 @@ class AddressesResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/address",
-            body=maybe_transform(
-                {
-                    "city": city,
-                    "country_code": country_code,
-                    "county": county,
-                    "line_1": line_1,
-                    "line_2": line_2,
-                    "line_3": line_3,
-                    "postcode": postcode,
-                    "state": state,
-                    "status": status,
-                    "tags": tags,
-                },
-                address_create_params.AddressCreateParams,
-            ),
+            body=maybe_transform(body, address_create_params.AddressCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -121,16 +96,7 @@ class AddressesResource(SyncAPIResource):
         *,
         bank_id: str,
         customer_id: str,
-        city: str,
-        country_code: str,
-        county: str,
-        line_1: str,
-        line_2: str,
-        line_3: str,
-        postcode: str,
-        state: str,
-        status: str,
-        tags: List[str],
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -161,21 +127,7 @@ class AddressesResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/addresses/{customer_address_id}",
-            body=maybe_transform(
-                {
-                    "city": city,
-                    "country_code": country_code,
-                    "county": county,
-                    "line_1": line_1,
-                    "line_2": line_2,
-                    "line_3": line_3,
-                    "postcode": postcode,
-                    "state": state,
-                    "status": status,
-                    "tags": tags,
-                },
-                address_update_params.AddressUpdateParams,
-            ),
+            body=maybe_transform(body, address_update_params.AddressUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -287,16 +239,7 @@ class AsyncAddressesResource(AsyncAPIResource):
         customer_id: str,
         *,
         bank_id: str,
-        city: str,
-        country_code: str,
-        county: str,
-        line_1: str,
-        line_2: str,
-        line_3: str,
-        postcode: str,
-        state: str,
-        status: str,
-        tags: List[str],
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -323,21 +266,7 @@ class AsyncAddressesResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/address",
-            body=await async_maybe_transform(
-                {
-                    "city": city,
-                    "country_code": country_code,
-                    "county": county,
-                    "line_1": line_1,
-                    "line_2": line_2,
-                    "line_3": line_3,
-                    "postcode": postcode,
-                    "state": state,
-                    "status": status,
-                    "tags": tags,
-                },
-                address_create_params.AddressCreateParams,
-            ),
+            body=await async_maybe_transform(body, address_create_params.AddressCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -350,16 +279,7 @@ class AsyncAddressesResource(AsyncAPIResource):
         *,
         bank_id: str,
         customer_id: str,
-        city: str,
-        country_code: str,
-        county: str,
-        line_1: str,
-        line_2: str,
-        line_3: str,
-        postcode: str,
-        state: str,
-        status: str,
-        tags: List[str],
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -390,21 +310,7 @@ class AsyncAddressesResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/addresses/{customer_address_id}",
-            body=await async_maybe_transform(
-                {
-                    "city": city,
-                    "country_code": country_code,
-                    "county": county,
-                    "line_1": line_1,
-                    "line_2": line_2,
-                    "line_3": line_3,
-                    "postcode": postcode,
-                    "state": state,
-                    "status": status,
-                    "tags": tags,
-                },
-                address_update_params.AddressUpdateParams,
-            ),
+            body=await async_maybe_transform(body, address_update_params.AddressUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

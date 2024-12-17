@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Iterable
-
 import httpx
 
 from .account import (
@@ -174,10 +172,7 @@ class AccountsResource(SyncAPIResource):
         account_id: str,
         *,
         bank_id: str,
-        account_routings: Iterable[account_update_params.AccountRouting],
-        branch_id: str,
-        label: str,
-        type: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -204,15 +199,7 @@ class AccountsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/management/banks/{bank_id}/accounts/{account_id}",
-            body=maybe_transform(
-                {
-                    "account_routings": account_routings,
-                    "branch_id": branch_id,
-                    "label": label,
-                    "type": type,
-                },
-                account_update_params.AccountUpdateParams,
-            ),
+            body=maybe_transform(body, account_update_params.AccountUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -319,10 +306,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         account_id: str,
         *,
         bank_id: str,
-        account_routings: Iterable[account_update_params.AccountRouting],
-        branch_id: str,
-        label: str,
-        type: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -349,15 +333,7 @@ class AsyncAccountsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/management/banks/{bank_id}/accounts/{account_id}",
-            body=await async_maybe_transform(
-                {
-                    "account_routings": account_routings,
-                    "branch_id": branch_id,
-                    "label": label,
-                    "type": type,
-                },
-                account_update_params.AccountUpdateParams,
-            ),
+            body=await async_maybe_transform(body, account_update_params.AccountUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

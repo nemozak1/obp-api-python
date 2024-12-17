@@ -2,9 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import date
-
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -55,10 +52,7 @@ class IdentityResource(SyncAPIResource):
         customer_id: str,
         *,
         bank_id: str,
-        date_of_birth: Union[str, date],
-        legal_name: str,
-        name_suffix: str,
-        title: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -85,15 +79,7 @@ class IdentityResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/identity",
-            body=maybe_transform(
-                {
-                    "date_of_birth": date_of_birth,
-                    "legal_name": legal_name,
-                    "name_suffix": name_suffix,
-                    "title": title,
-                },
-                identity_update_params.IdentityUpdateParams,
-            ),
+            body=maybe_transform(body, identity_update_params.IdentityUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -126,10 +112,7 @@ class AsyncIdentityResource(AsyncAPIResource):
         customer_id: str,
         *,
         bank_id: str,
-        date_of_birth: Union[str, date],
-        legal_name: str,
-        name_suffix: str,
-        title: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -156,15 +139,7 @@ class AsyncIdentityResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/identity",
-            body=await async_maybe_transform(
-                {
-                    "date_of_birth": date_of_birth,
-                    "legal_name": legal_name,
-                    "name_suffix": name_suffix,
-                    "title": title,
-                },
-                identity_update_params.IdentityUpdateParams,
-            ),
+            body=await async_maybe_transform(body, identity_update_params.IdentityUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

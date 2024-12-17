@@ -10,7 +10,6 @@ import pytest
 from respx import MockRouter
 
 from obp_api import ObpAPI, AsyncObpAPI
-from obp_api._utils import parse_date
 from obp_api._response import (
     BinaryAPIResponse,
     AsyncBinaryAPIResponse,
@@ -33,14 +32,7 @@ class TestData:
         data = client.customers.data.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            dependants=1,
-            employment_status="worker",
-            face_image={
-                "date": parse_date("2019-12-27"),
-                "url": "www.openbankproject",
-            },
-            highest_education_attained="Master",
-            relationship_status="single",
+            body={},
         )
         assert data.is_closed
         assert data.json() == {"foo": "bar"}
@@ -57,14 +49,7 @@ class TestData:
         data = client.customers.data.with_raw_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            dependants=1,
-            employment_status="worker",
-            face_image={
-                "date": parse_date("2019-12-27"),
-                "url": "www.openbankproject",
-            },
-            highest_education_attained="Master",
-            relationship_status="single",
+            body={},
         )
 
         assert data.is_closed is True
@@ -81,14 +66,7 @@ class TestData:
         with client.customers.data.with_streaming_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            dependants=1,
-            employment_status="worker",
-            face_image={
-                "date": parse_date("2019-12-27"),
-                "url": "www.openbankproject",
-            },
-            highest_education_attained="Master",
-            relationship_status="single",
+            body={},
         ) as data:
             assert not data.is_closed
             assert data.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -106,28 +84,14 @@ class TestData:
             client.customers.data.with_raw_response.update(
                 customer_id="CUSTOMER_ID",
                 bank_id="",
-                dependants=1,
-                employment_status="worker",
-                face_image={
-                    "date": parse_date("2019-12-27"),
-                    "url": "www.openbankproject",
-                },
-                highest_education_attained="Master",
-                relationship_status="single",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             client.customers.data.with_raw_response.update(
                 customer_id="",
                 bank_id="BANK_ID",
-                dependants=1,
-                employment_status="worker",
-                face_image={
-                    "date": parse_date("2019-12-27"),
-                    "url": "www.openbankproject",
-                },
-                highest_education_attained="Master",
-                relationship_status="single",
+                body={},
             )
 
 
@@ -143,14 +107,7 @@ class TestAsyncData:
         data = await async_client.customers.data.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            dependants=1,
-            employment_status="worker",
-            face_image={
-                "date": parse_date("2019-12-27"),
-                "url": "www.openbankproject",
-            },
-            highest_education_attained="Master",
-            relationship_status="single",
+            body={},
         )
         assert data.is_closed
         assert await data.json() == {"foo": "bar"}
@@ -167,14 +124,7 @@ class TestAsyncData:
         data = await async_client.customers.data.with_raw_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            dependants=1,
-            employment_status="worker",
-            face_image={
-                "date": parse_date("2019-12-27"),
-                "url": "www.openbankproject",
-            },
-            highest_education_attained="Master",
-            relationship_status="single",
+            body={},
         )
 
         assert data.is_closed is True
@@ -191,14 +141,7 @@ class TestAsyncData:
         async with async_client.customers.data.with_streaming_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            dependants=1,
-            employment_status="worker",
-            face_image={
-                "date": parse_date("2019-12-27"),
-                "url": "www.openbankproject",
-            },
-            highest_education_attained="Master",
-            relationship_status="single",
+            body={},
         ) as data:
             assert not data.is_closed
             assert data.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -216,26 +159,12 @@ class TestAsyncData:
             await async_client.customers.data.with_raw_response.update(
                 customer_id="CUSTOMER_ID",
                 bank_id="",
-                dependants=1,
-                employment_status="worker",
-                face_image={
-                    "date": parse_date("2019-12-27"),
-                    "url": "www.openbankproject",
-                },
-                highest_education_attained="Master",
-                relationship_status="single",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             await async_client.customers.data.with_raw_response.update(
                 customer_id="",
                 bank_id="BANK_ID",
-                dependants=1,
-                employment_status="worker",
-                face_image={
-                    "date": parse_date("2019-12-27"),
-                    "url": "www.openbankproject",
-                },
-                highest_education_attained="Master",
-                relationship_status="single",
+                body={},
             )

@@ -58,12 +58,7 @@ class LimitsResource(SyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        currency: str,
-        max_monthly_amount: int,
-        max_number_of_monthly_transactions: int,
-        max_number_of_yearly_transactions: int,
-        max_single_amount: int,
-        max_yearly_amount: int,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -94,17 +89,7 @@ class LimitsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/views/{view_id}/counterparties/{counterparty_id}/limits",
-            body=maybe_transform(
-                {
-                    "currency": currency,
-                    "max_monthly_amount": max_monthly_amount,
-                    "max_number_of_monthly_transactions": max_number_of_monthly_transactions,
-                    "max_number_of_yearly_transactions": max_number_of_yearly_transactions,
-                    "max_single_amount": max_single_amount,
-                    "max_yearly_amount": max_yearly_amount,
-                },
-                limit_create_params.LimitCreateParams,
-            ),
+            body=maybe_transform(body, limit_create_params.LimitCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -161,12 +146,7 @@ class LimitsResource(SyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        currency: str,
-        max_monthly_amount: int,
-        max_number_of_monthly_transactions: int,
-        max_number_of_yearly_transactions: int,
-        max_single_amount: int,
-        max_yearly_amount: int,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -197,17 +177,7 @@ class LimitsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/views/{view_id}/counterparties/{counterparty_id}/limits",
-            body=maybe_transform(
-                {
-                    "currency": currency,
-                    "max_monthly_amount": max_monthly_amount,
-                    "max_number_of_monthly_transactions": max_number_of_monthly_transactions,
-                    "max_number_of_yearly_transactions": max_number_of_yearly_transactions,
-                    "max_single_amount": max_single_amount,
-                    "max_yearly_amount": max_yearly_amount,
-                },
-                limit_update_params.LimitUpdateParams,
-            ),
+            body=maybe_transform(body, limit_update_params.LimitUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -285,12 +255,7 @@ class AsyncLimitsResource(AsyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        currency: str,
-        max_monthly_amount: int,
-        max_number_of_monthly_transactions: int,
-        max_number_of_yearly_transactions: int,
-        max_single_amount: int,
-        max_yearly_amount: int,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -321,17 +286,7 @@ class AsyncLimitsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/views/{view_id}/counterparties/{counterparty_id}/limits",
-            body=await async_maybe_transform(
-                {
-                    "currency": currency,
-                    "max_monthly_amount": max_monthly_amount,
-                    "max_number_of_monthly_transactions": max_number_of_monthly_transactions,
-                    "max_number_of_yearly_transactions": max_number_of_yearly_transactions,
-                    "max_single_amount": max_single_amount,
-                    "max_yearly_amount": max_yearly_amount,
-                },
-                limit_create_params.LimitCreateParams,
-            ),
+            body=await async_maybe_transform(body, limit_create_params.LimitCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -388,12 +343,7 @@ class AsyncLimitsResource(AsyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        currency: str,
-        max_monthly_amount: int,
-        max_number_of_monthly_transactions: int,
-        max_number_of_yearly_transactions: int,
-        max_single_amount: int,
-        max_yearly_amount: int,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -424,17 +374,7 @@ class AsyncLimitsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/views/{view_id}/counterparties/{counterparty_id}/limits",
-            body=await async_maybe_transform(
-                {
-                    "currency": currency,
-                    "max_monthly_amount": max_monthly_amount,
-                    "max_number_of_monthly_transactions": max_number_of_monthly_transactions,
-                    "max_number_of_yearly_transactions": max_number_of_yearly_transactions,
-                    "max_single_amount": max_single_amount,
-                    "max_yearly_amount": max_yearly_amount,
-                },
-                limit_update_params.LimitUpdateParams,
-            ),
+            body=await async_maybe_transform(body, limit_update_params.LimitUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

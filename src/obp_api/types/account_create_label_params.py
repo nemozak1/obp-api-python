@@ -12,4 +12,4 @@ __all__ = ["AccountCreateLabelParams"]
 class AccountCreateLabelParams(TypedDict, total=False):
     bank_id: Required[Annotated[str, PropertyInfo(alias="BANK_ID")]]
 
-    label: Required[str]
+    body: Required[object]

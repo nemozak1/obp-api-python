@@ -32,8 +32,7 @@ class TestTaxResidences:
         tax_residence = client.customers.tax_residences.create(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            domain="Enter some domain",
-            tax_number="Enter some number",
+            body={},
         )
         assert tax_residence.is_closed
         assert tax_residence.json() == {"foo": "bar"}
@@ -50,8 +49,7 @@ class TestTaxResidences:
         tax_residence = client.customers.tax_residences.with_raw_response.create(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            domain="Enter some domain",
-            tax_number="Enter some number",
+            body={},
         )
 
         assert tax_residence.is_closed is True
@@ -68,8 +66,7 @@ class TestTaxResidences:
         with client.customers.tax_residences.with_streaming_response.create(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            domain="Enter some domain",
-            tax_number="Enter some number",
+            body={},
         ) as tax_residence:
             assert not tax_residence.is_closed
             assert tax_residence.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -87,16 +84,14 @@ class TestTaxResidences:
             client.customers.tax_residences.with_raw_response.create(
                 customer_id="CUSTOMER_ID",
                 bank_id="",
-                domain="Enter some domain",
-                tax_number="Enter some number",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             client.customers.tax_residences.with_raw_response.create(
                 customer_id="",
                 bank_id="BANK_ID",
-                domain="Enter some domain",
-                tax_number="Enter some number",
+                body={},
             )
 
     @parametrize
@@ -238,8 +233,7 @@ class TestAsyncTaxResidences:
         tax_residence = await async_client.customers.tax_residences.create(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            domain="Enter some domain",
-            tax_number="Enter some number",
+            body={},
         )
         assert tax_residence.is_closed
         assert await tax_residence.json() == {"foo": "bar"}
@@ -256,8 +250,7 @@ class TestAsyncTaxResidences:
         tax_residence = await async_client.customers.tax_residences.with_raw_response.create(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            domain="Enter some domain",
-            tax_number="Enter some number",
+            body={},
         )
 
         assert tax_residence.is_closed is True
@@ -274,8 +267,7 @@ class TestAsyncTaxResidences:
         async with async_client.customers.tax_residences.with_streaming_response.create(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            domain="Enter some domain",
-            tax_number="Enter some number",
+            body={},
         ) as tax_residence:
             assert not tax_residence.is_closed
             assert tax_residence.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -293,16 +285,14 @@ class TestAsyncTaxResidences:
             await async_client.customers.tax_residences.with_raw_response.create(
                 customer_id="CUSTOMER_ID",
                 bank_id="",
-                domain="Enter some domain",
-                tax_number="Enter some number",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             await async_client.customers.tax_residences.with_raw_response.create(
                 customer_id="",
                 bank_id="BANK_ID",
-                domain="Enter some domain",
-                tax_number="Enter some number",
+                body={},
             )
 
     @parametrize

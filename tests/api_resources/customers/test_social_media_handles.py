@@ -10,7 +10,6 @@ import pytest
 from respx import MockRouter
 
 from obp_api import ObpAPI, AsyncObpAPI
-from obp_api._utils import parse_date
 from obp_api._response import (
     BinaryAPIResponse,
     AsyncBinaryAPIResponse,
@@ -33,11 +32,7 @@ class TestSocialMediaHandles:
         social_media_handle = client.customers.social_media_handles.create(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            customer_number="5987953",
-            date_activated=parse_date("2019-12-27"),
-            date_added=parse_date("2019-12-27"),
-            handle="PlaceholderString",
-            type="PlaceholderString",
+            body={},
         )
         assert social_media_handle.is_closed
         assert social_media_handle.json() == {"foo": "bar"}
@@ -54,11 +49,7 @@ class TestSocialMediaHandles:
         social_media_handle = client.customers.social_media_handles.with_raw_response.create(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            customer_number="5987953",
-            date_activated=parse_date("2019-12-27"),
-            date_added=parse_date("2019-12-27"),
-            handle="PlaceholderString",
-            type="PlaceholderString",
+            body={},
         )
 
         assert social_media_handle.is_closed is True
@@ -75,11 +66,7 @@ class TestSocialMediaHandles:
         with client.customers.social_media_handles.with_streaming_response.create(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            customer_number="5987953",
-            date_activated=parse_date("2019-12-27"),
-            date_added=parse_date("2019-12-27"),
-            handle="PlaceholderString",
-            type="PlaceholderString",
+            body={},
         ) as social_media_handle:
             assert not social_media_handle.is_closed
             assert social_media_handle.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -97,22 +84,14 @@ class TestSocialMediaHandles:
             client.customers.social_media_handles.with_raw_response.create(
                 customer_id="CUSTOMER_ID",
                 bank_id="",
-                customer_number="5987953",
-                date_activated=parse_date("2019-12-27"),
-                date_added=parse_date("2019-12-27"),
-                handle="PlaceholderString",
-                type="PlaceholderString",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             client.customers.social_media_handles.with_raw_response.create(
                 customer_id="",
                 bank_id="BANK_ID",
-                customer_number="5987953",
-                date_activated=parse_date("2019-12-27"),
-                date_added=parse_date("2019-12-27"),
-                handle="PlaceholderString",
-                type="PlaceholderString",
+                body={},
             )
 
     @parametrize
@@ -194,11 +173,7 @@ class TestAsyncSocialMediaHandles:
         social_media_handle = await async_client.customers.social_media_handles.create(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            customer_number="5987953",
-            date_activated=parse_date("2019-12-27"),
-            date_added=parse_date("2019-12-27"),
-            handle="PlaceholderString",
-            type="PlaceholderString",
+            body={},
         )
         assert social_media_handle.is_closed
         assert await social_media_handle.json() == {"foo": "bar"}
@@ -215,11 +190,7 @@ class TestAsyncSocialMediaHandles:
         social_media_handle = await async_client.customers.social_media_handles.with_raw_response.create(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            customer_number="5987953",
-            date_activated=parse_date("2019-12-27"),
-            date_added=parse_date("2019-12-27"),
-            handle="PlaceholderString",
-            type="PlaceholderString",
+            body={},
         )
 
         assert social_media_handle.is_closed is True
@@ -236,11 +207,7 @@ class TestAsyncSocialMediaHandles:
         async with async_client.customers.social_media_handles.with_streaming_response.create(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            customer_number="5987953",
-            date_activated=parse_date("2019-12-27"),
-            date_added=parse_date("2019-12-27"),
-            handle="PlaceholderString",
-            type="PlaceholderString",
+            body={},
         ) as social_media_handle:
             assert not social_media_handle.is_closed
             assert social_media_handle.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -258,22 +225,14 @@ class TestAsyncSocialMediaHandles:
             await async_client.customers.social_media_handles.with_raw_response.create(
                 customer_id="CUSTOMER_ID",
                 bank_id="",
-                customer_number="5987953",
-                date_activated=parse_date("2019-12-27"),
-                date_added=parse_date("2019-12-27"),
-                handle="PlaceholderString",
-                type="PlaceholderString",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             await async_client.customers.social_media_handles.with_raw_response.create(
                 customer_id="",
                 bank_id="BANK_ID",
-                customer_number="5987953",
-                date_activated=parse_date("2019-12-27"),
-                date_added=parse_date("2019-12-27"),
-                handle="PlaceholderString",
-                type="PlaceholderString",
+                body={},
             )
 
     @parametrize

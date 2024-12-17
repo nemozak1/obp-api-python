@@ -2,33 +2,10 @@
 
 from __future__ import annotations
 
-from typing import Iterable
 from typing_extensions import Required, TypedDict
 
-__all__ = ["AccountCreateParams", "AccountRouting", "Balance"]
+__all__ = ["AccountCreateParams"]
 
 
 class AccountCreateParams(TypedDict, total=False):
-    account_routings: Required[Iterable[AccountRouting]]
-
-    balance: Required[Balance]
-
-    branch_id: Required[str]
-
-    label: Required[str]
-
-    product_code: Required[str]
-
-    user_id: Required[str]
-
-
-class AccountRouting(TypedDict, total=False):
-    address: Required[str]
-
-    scheme: Required[str]
-
-
-class Balance(TypedDict, total=False):
-    amount: Required[str]
-
-    currency: Required[str]
+    body: Required[object]

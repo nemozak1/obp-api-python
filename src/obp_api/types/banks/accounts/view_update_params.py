@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Required, Annotated, TypedDict
 
 from ...._utils import PropertyInfo
@@ -15,16 +14,4 @@ class ViewUpdateParams(TypedDict, total=False):
 
     account_id: Required[Annotated[str, PropertyInfo(alias="ACCOUNT_ID")]]
 
-    allowed_actions: Required[List[str]]
-
-    description: Required[str]
-
-    hide_metadata_if_alias_used: Required[bool]
-
-    is_public: Required[bool]
-
-    metadata_view: Required[str]
-
-    which_alias_to_use: Required[str]
-
-    is_firehose: bool
+    body: Required[object]

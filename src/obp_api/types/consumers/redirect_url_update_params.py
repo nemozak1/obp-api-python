@@ -8,4 +8,4 @@ __all__ = ["RedirectURLUpdateParams"]
 
 
 class RedirectURLUpdateParams(TypedDict, total=False):
-    redirect_url: Required[str]
+    body: Required[object]

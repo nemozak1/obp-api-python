@@ -18,10 +18,4 @@ class TransactionRequestChallengeParams(TypedDict, total=False):
 
     transaction_request_type: Required[Annotated[str, PropertyInfo(alias="TRANSACTION_REQUEST_TYPE")]]
 
-    id: Required[str]
-
-    answer: Required[str]
-
-    additional_information: str
-
-    reason_code: str
+    body: Required[object]

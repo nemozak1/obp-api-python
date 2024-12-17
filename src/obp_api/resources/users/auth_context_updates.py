@@ -52,8 +52,7 @@ class AuthContextUpdatesResource(SyncAPIResource):
         sca_method: str,
         *,
         bank_id: str,
-        key: str,
-        value: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -80,13 +79,7 @@ class AuthContextUpdatesResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/users/current/auth-context-updates/{sca_method}",
-            body=maybe_transform(
-                {
-                    "key": key,
-                    "value": value,
-                },
-                auth_context_update_create_params.AuthContextUpdateCreateParams,
-            ),
+            body=maybe_transform(body, auth_context_update_create_params.AuthContextUpdateCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -98,7 +91,7 @@ class AuthContextUpdatesResource(SyncAPIResource):
         auth_context_update_id: str,
         *,
         bank_id: str,
-        answer: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -127,9 +120,7 @@ class AuthContextUpdatesResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/users/current/auth-context-updates/{auth_context_update_id}/challenge",
-            body=maybe_transform(
-                {"answer": answer}, auth_context_update_challenge_params.AuthContextUpdateChallengeParams
-            ),
+            body=maybe_transform(body, auth_context_update_challenge_params.AuthContextUpdateChallengeParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -162,8 +153,7 @@ class AsyncAuthContextUpdatesResource(AsyncAPIResource):
         sca_method: str,
         *,
         bank_id: str,
-        key: str,
-        value: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -190,13 +180,7 @@ class AsyncAuthContextUpdatesResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/users/current/auth-context-updates/{sca_method}",
-            body=await async_maybe_transform(
-                {
-                    "key": key,
-                    "value": value,
-                },
-                auth_context_update_create_params.AuthContextUpdateCreateParams,
-            ),
+            body=await async_maybe_transform(body, auth_context_update_create_params.AuthContextUpdateCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -208,7 +192,7 @@ class AsyncAuthContextUpdatesResource(AsyncAPIResource):
         auth_context_update_id: str,
         *,
         bank_id: str,
-        answer: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -238,7 +222,7 @@ class AsyncAuthContextUpdatesResource(AsyncAPIResource):
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/users/current/auth-context-updates/{auth_context_update_id}/challenge",
             body=await async_maybe_transform(
-                {"answer": answer}, auth_context_update_challenge_params.AuthContextUpdateChallengeParams
+                body, auth_context_update_challenge_params.AuthContextUpdateChallengeParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout

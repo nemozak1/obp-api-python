@@ -2,7 +2,6 @@
 
 from __future__ import annotations
 
-from typing import List
 from typing_extensions import Required, Annotated, TypedDict
 
 from .._utils import PropertyInfo
@@ -13,6 +12,4 @@ __all__ = ["ProductCollectionUpdateParams"]
 class ProductCollectionUpdateParams(TypedDict, total=False):
     bank_id: Required[Annotated[str, PropertyInfo(alias="BANK_ID")]]
 
-    children_product_codes: Required[List[str]]
-
-    parent_product_code: Required[str]
+    body: Required[object]

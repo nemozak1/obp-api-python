@@ -2,9 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import date
-
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -55,11 +52,7 @@ class SocialMediaHandlesResource(SyncAPIResource):
         customer_id: str,
         *,
         bank_id: str,
-        customer_number: str,
-        date_activated: Union[str, date],
-        date_added: Union[str, date],
-        handle: str,
-        type: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -86,16 +79,7 @@ class SocialMediaHandlesResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/social_media_handles",
-            body=maybe_transform(
-                {
-                    "customer_number": customer_number,
-                    "date_activated": date_activated,
-                    "date_added": date_added,
-                    "handle": handle,
-                    "type": type,
-                },
-                social_media_handle_create_params.SocialMediaHandleCreateParams,
-            ),
+            body=maybe_transform(body, social_media_handle_create_params.SocialMediaHandleCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -165,11 +149,7 @@ class AsyncSocialMediaHandlesResource(AsyncAPIResource):
         customer_id: str,
         *,
         bank_id: str,
-        customer_number: str,
-        date_activated: Union[str, date],
-        date_added: Union[str, date],
-        handle: str,
-        type: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -196,16 +176,7 @@ class AsyncSocialMediaHandlesResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/social_media_handles",
-            body=await async_maybe_transform(
-                {
-                    "customer_number": customer_number,
-                    "date_activated": date_activated,
-                    "date_added": date_added,
-                    "handle": handle,
-                    "type": type,
-                },
-                social_media_handle_create_params.SocialMediaHandleCreateParams,
-            ),
+            body=await async_maybe_transform(body, social_media_handle_create_params.SocialMediaHandleCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

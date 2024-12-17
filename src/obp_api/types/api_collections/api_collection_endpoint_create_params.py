@@ -8,4 +8,4 @@ __all__ = ["APICollectionEndpointCreateParams"]
 
 
 class APICollectionEndpointCreateParams(TypedDict, total=False):
-    operation_id: Required[str]
+    body: Required[object]

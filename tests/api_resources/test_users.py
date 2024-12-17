@@ -28,11 +28,7 @@ class TestUsers:
     def test_method_create(self, client: ObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/users").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         user = client.users.create(
-            email="felixsmith@example.com",
-            first_name="Simon",
-            last_name="Redfern",
-            password="String",
-            username="felixsmith",
+            body={},
         )
         assert user.is_closed
         assert user.json() == {"foo": "bar"}
@@ -45,11 +41,7 @@ class TestUsers:
         respx_mock.post("/obp/v5.1.0/users").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         user = client.users.with_raw_response.create(
-            email="felixsmith@example.com",
-            first_name="Simon",
-            last_name="Redfern",
-            password="String",
-            username="felixsmith",
+            body={},
         )
 
         assert user.is_closed is True
@@ -62,11 +54,7 @@ class TestUsers:
     def test_streaming_response_create(self, client: ObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/users").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.users.with_streaming_response.create(
-            email="felixsmith@example.com",
-            first_name="Simon",
-            last_name="Redfern",
-            password="String",
-            username="felixsmith",
+            body={},
         ) as user:
             assert not user.is_closed
             assert user.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -158,9 +146,7 @@ class TestUsers:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         user = client.users.reset_password_url(
-            email="jo@gmail.com",
-            user_id="74a8ebcc-10e4-4036-bef3-9835922246bf",
-            username="jobloggs",
+            body={},
         )
         assert user.is_closed
         assert user.json() == {"foo": "bar"}
@@ -175,9 +161,7 @@ class TestUsers:
         )
 
         user = client.users.with_raw_response.reset_password_url(
-            email="jo@gmail.com",
-            user_id="74a8ebcc-10e4-4036-bef3-9835922246bf",
-            username="jobloggs",
+            body={},
         )
 
         assert user.is_closed is True
@@ -192,9 +176,7 @@ class TestUsers:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.users.with_streaming_response.reset_password_url(
-            email="jo@gmail.com",
-            user_id="74a8ebcc-10e4-4036-bef3-9835922246bf",
-            username="jobloggs",
+            body={},
         ) as user:
             assert not user.is_closed
             assert user.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -214,11 +196,7 @@ class TestAsyncUsers:
     async def test_method_create(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/users").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         user = await async_client.users.create(
-            email="felixsmith@example.com",
-            first_name="Simon",
-            last_name="Redfern",
-            password="String",
-            username="felixsmith",
+            body={},
         )
         assert user.is_closed
         assert await user.json() == {"foo": "bar"}
@@ -231,11 +209,7 @@ class TestAsyncUsers:
         respx_mock.post("/obp/v5.1.0/users").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         user = await async_client.users.with_raw_response.create(
-            email="felixsmith@example.com",
-            first_name="Simon",
-            last_name="Redfern",
-            password="String",
-            username="felixsmith",
+            body={},
         )
 
         assert user.is_closed is True
@@ -248,11 +222,7 @@ class TestAsyncUsers:
     async def test_streaming_response_create(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/users").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.users.with_streaming_response.create(
-            email="felixsmith@example.com",
-            first_name="Simon",
-            last_name="Redfern",
-            password="String",
-            username="felixsmith",
+            body={},
         ) as user:
             assert not user.is_closed
             assert user.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -344,9 +314,7 @@ class TestAsyncUsers:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         user = await async_client.users.reset_password_url(
-            email="jo@gmail.com",
-            user_id="74a8ebcc-10e4-4036-bef3-9835922246bf",
-            username="jobloggs",
+            body={},
         )
         assert user.is_closed
         assert await user.json() == {"foo": "bar"}
@@ -361,9 +329,7 @@ class TestAsyncUsers:
         )
 
         user = await async_client.users.with_raw_response.reset_password_url(
-            email="jo@gmail.com",
-            user_id="74a8ebcc-10e4-4036-bef3-9835922246bf",
-            username="jobloggs",
+            body={},
         )
 
         assert user.is_closed is True
@@ -380,9 +346,7 @@ class TestAsyncUsers:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.users.with_streaming_response.reset_password_url(
-            email="jo@gmail.com",
-            user_id="74a8ebcc-10e4-4036-bef3-9835922246bf",
-            username="jobloggs",
+            body={},
         ) as user:
             assert not user.is_closed
             assert user.http_request.headers.get("X-Stainless-Lang") == "python"

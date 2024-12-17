@@ -50,20 +50,7 @@ class DynamicMessageDocsResource(SyncAPIResource):
     def create(
         self,
         *,
-        adapter_implementation: str,
-        description: str,
-        example_inbound_message: object,
-        example_outbound_message: object,
-        inbound_avro_schema: str,
-        inbound_topic: str,
-        message_format: str,
-        method_body: str,
-        outbound_avro_schema: str,
-        outbound_topic: str,
-        process: str,
-        programming_lang: str,
-        bank_id: str | NotGiven = NOT_GIVEN,
-        dynamic_message_doc_id: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -86,25 +73,7 @@ class DynamicMessageDocsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/obp/v5.1.0/management/dynamic-message-docs",
-            body=maybe_transform(
-                {
-                    "adapter_implementation": adapter_implementation,
-                    "description": description,
-                    "example_inbound_message": example_inbound_message,
-                    "example_outbound_message": example_outbound_message,
-                    "inbound_avro_schema": inbound_avro_schema,
-                    "inbound_topic": inbound_topic,
-                    "message_format": message_format,
-                    "method_body": method_body,
-                    "outbound_avro_schema": outbound_avro_schema,
-                    "outbound_topic": outbound_topic,
-                    "process": process,
-                    "programming_lang": programming_lang,
-                    "bank_id": bank_id,
-                    "dynamic_message_doc_id": dynamic_message_doc_id,
-                },
-                dynamic_message_doc_create_params.DynamicMessageDocCreateParams,
-            ),
+            body=maybe_transform(body, dynamic_message_doc_create_params.DynamicMessageDocCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -136,20 +105,7 @@ class DynamicMessageDocsResource(SyncAPIResource):
     def update(
         self,
         *,
-        adapter_implementation: str,
-        description: str,
-        example_inbound_message: object,
-        example_outbound_message: object,
-        inbound_avro_schema: str,
-        inbound_topic: str,
-        message_format: str,
-        method_body: str,
-        outbound_avro_schema: str,
-        outbound_topic: str,
-        process: str,
-        programming_lang: str,
-        bank_id: str | NotGiven = NOT_GIVEN,
-        dynamic_message_doc_id: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -172,25 +128,7 @@ class DynamicMessageDocsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             "/obp/v5.1.0/management/dynamic-message-docs/DYNAMIC_MESSAGE_DOC_ID",
-            body=maybe_transform(
-                {
-                    "adapter_implementation": adapter_implementation,
-                    "description": description,
-                    "example_inbound_message": example_inbound_message,
-                    "example_outbound_message": example_outbound_message,
-                    "inbound_avro_schema": inbound_avro_schema,
-                    "inbound_topic": inbound_topic,
-                    "message_format": message_format,
-                    "method_body": method_body,
-                    "outbound_avro_schema": outbound_avro_schema,
-                    "outbound_topic": outbound_topic,
-                    "process": process,
-                    "programming_lang": programming_lang,
-                    "bank_id": bank_id,
-                    "dynamic_message_doc_id": dynamic_message_doc_id,
-                },
-                dynamic_message_doc_update_params.DynamicMessageDocUpdateParams,
-            ),
+            body=maybe_transform(body, dynamic_message_doc_update_params.DynamicMessageDocUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -261,20 +199,7 @@ class AsyncDynamicMessageDocsResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        adapter_implementation: str,
-        description: str,
-        example_inbound_message: object,
-        example_outbound_message: object,
-        inbound_avro_schema: str,
-        inbound_topic: str,
-        message_format: str,
-        method_body: str,
-        outbound_avro_schema: str,
-        outbound_topic: str,
-        process: str,
-        programming_lang: str,
-        bank_id: str | NotGiven = NOT_GIVEN,
-        dynamic_message_doc_id: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -297,25 +222,7 @@ class AsyncDynamicMessageDocsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/obp/v5.1.0/management/dynamic-message-docs",
-            body=await async_maybe_transform(
-                {
-                    "adapter_implementation": adapter_implementation,
-                    "description": description,
-                    "example_inbound_message": example_inbound_message,
-                    "example_outbound_message": example_outbound_message,
-                    "inbound_avro_schema": inbound_avro_schema,
-                    "inbound_topic": inbound_topic,
-                    "message_format": message_format,
-                    "method_body": method_body,
-                    "outbound_avro_schema": outbound_avro_schema,
-                    "outbound_topic": outbound_topic,
-                    "process": process,
-                    "programming_lang": programming_lang,
-                    "bank_id": bank_id,
-                    "dynamic_message_doc_id": dynamic_message_doc_id,
-                },
-                dynamic_message_doc_create_params.DynamicMessageDocCreateParams,
-            ),
+            body=await async_maybe_transform(body, dynamic_message_doc_create_params.DynamicMessageDocCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -347,20 +254,7 @@ class AsyncDynamicMessageDocsResource(AsyncAPIResource):
     async def update(
         self,
         *,
-        adapter_implementation: str,
-        description: str,
-        example_inbound_message: object,
-        example_outbound_message: object,
-        inbound_avro_schema: str,
-        inbound_topic: str,
-        message_format: str,
-        method_body: str,
-        outbound_avro_schema: str,
-        outbound_topic: str,
-        process: str,
-        programming_lang: str,
-        bank_id: str | NotGiven = NOT_GIVEN,
-        dynamic_message_doc_id: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -383,25 +277,7 @@ class AsyncDynamicMessageDocsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             "/obp/v5.1.0/management/dynamic-message-docs/DYNAMIC_MESSAGE_DOC_ID",
-            body=await async_maybe_transform(
-                {
-                    "adapter_implementation": adapter_implementation,
-                    "description": description,
-                    "example_inbound_message": example_inbound_message,
-                    "example_outbound_message": example_outbound_message,
-                    "inbound_avro_schema": inbound_avro_schema,
-                    "inbound_topic": inbound_topic,
-                    "message_format": message_format,
-                    "method_body": method_body,
-                    "outbound_avro_schema": outbound_avro_schema,
-                    "outbound_topic": outbound_topic,
-                    "process": process,
-                    "programming_lang": programming_lang,
-                    "bank_id": bank_id,
-                    "dynamic_message_doc_id": dynamic_message_doc_id,
-                },
-                dynamic_message_doc_update_params.DynamicMessageDocUpdateParams,
-            ),
+            body=await async_maybe_transform(body, dynamic_message_doc_update_params.DynamicMessageDocUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

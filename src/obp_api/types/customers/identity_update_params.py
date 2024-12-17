@@ -2,8 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import date
 from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
@@ -14,10 +12,4 @@ __all__ = ["IdentityUpdateParams"]
 class IdentityUpdateParams(TypedDict, total=False):
     bank_id: Required[Annotated[str, PropertyInfo(alias="BANK_ID")]]
 
-    date_of_birth: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
-
-    legal_name: Required[str]
-
-    name_suffix: Required[str]
-
-    title: Required[str]
+    body: Required[object]

@@ -10,7 +10,6 @@ import pytest
 from respx import MockRouter
 
 from obp_api import ObpAPI, AsyncObpAPI
-from obp_api._utils import parse_date
 from obp_api._response import (
     BinaryAPIResponse,
     AsyncBinaryAPIResponse,
@@ -32,24 +31,7 @@ class TestMeetings:
         )
         meeting = client.banks.meetings.create(
             bank_id="BANK_ID",
-            creator={
-                "email_address": "felixsmith@example.com",
-                "mobile_phone": "+44 07972 444 876",
-                "name": "Simon ",
-            },
-            date=parse_date("2019-12-27"),
-            invitees=[
-                {
-                    "contact_details": {
-                        "email_address": "felixsmith@example.com",
-                        "mobile_phone": "+44 07972 444 876",
-                        "name": "Simon ",
-                    },
-                    "status": "String, eg: Good",
-                }
-            ],
-            provider_id="Chris",
-            purpose_id="String, eg: onboarding",
+            body={},
         )
         assert meeting.is_closed
         assert meeting.json() == {"foo": "bar"}
@@ -65,24 +47,7 @@ class TestMeetings:
 
         meeting = client.banks.meetings.with_raw_response.create(
             bank_id="BANK_ID",
-            creator={
-                "email_address": "felixsmith@example.com",
-                "mobile_phone": "+44 07972 444 876",
-                "name": "Simon ",
-            },
-            date=parse_date("2019-12-27"),
-            invitees=[
-                {
-                    "contact_details": {
-                        "email_address": "felixsmith@example.com",
-                        "mobile_phone": "+44 07972 444 876",
-                        "name": "Simon ",
-                    },
-                    "status": "String, eg: Good",
-                }
-            ],
-            provider_id="Chris",
-            purpose_id="String, eg: onboarding",
+            body={},
         )
 
         assert meeting.is_closed is True
@@ -98,24 +63,7 @@ class TestMeetings:
         )
         with client.banks.meetings.with_streaming_response.create(
             bank_id="BANK_ID",
-            creator={
-                "email_address": "felixsmith@example.com",
-                "mobile_phone": "+44 07972 444 876",
-                "name": "Simon ",
-            },
-            date=parse_date("2019-12-27"),
-            invitees=[
-                {
-                    "contact_details": {
-                        "email_address": "felixsmith@example.com",
-                        "mobile_phone": "+44 07972 444 876",
-                        "name": "Simon ",
-                    },
-                    "status": "String, eg: Good",
-                }
-            ],
-            provider_id="Chris",
-            purpose_id="String, eg: onboarding",
+            body={},
         ) as meeting:
             assert not meeting.is_closed
             assert meeting.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -132,24 +80,7 @@ class TestMeetings:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             client.banks.meetings.with_raw_response.create(
                 bank_id="",
-                creator={
-                    "email_address": "felixsmith@example.com",
-                    "mobile_phone": "+44 07972 444 876",
-                    "name": "Simon ",
-                },
-                date=parse_date("2019-12-27"),
-                invitees=[
-                    {
-                        "contact_details": {
-                            "email_address": "felixsmith@example.com",
-                            "mobile_phone": "+44 07972 444 876",
-                            "name": "Simon ",
-                        },
-                        "status": "String, eg: Good",
-                    }
-                ],
-                provider_id="Chris",
-                purpose_id="String, eg: onboarding",
+                body={},
             )
 
     @parametrize
@@ -280,24 +211,7 @@ class TestAsyncMeetings:
         )
         meeting = await async_client.banks.meetings.create(
             bank_id="BANK_ID",
-            creator={
-                "email_address": "felixsmith@example.com",
-                "mobile_phone": "+44 07972 444 876",
-                "name": "Simon ",
-            },
-            date=parse_date("2019-12-27"),
-            invitees=[
-                {
-                    "contact_details": {
-                        "email_address": "felixsmith@example.com",
-                        "mobile_phone": "+44 07972 444 876",
-                        "name": "Simon ",
-                    },
-                    "status": "String, eg: Good",
-                }
-            ],
-            provider_id="Chris",
-            purpose_id="String, eg: onboarding",
+            body={},
         )
         assert meeting.is_closed
         assert await meeting.json() == {"foo": "bar"}
@@ -313,24 +227,7 @@ class TestAsyncMeetings:
 
         meeting = await async_client.banks.meetings.with_raw_response.create(
             bank_id="BANK_ID",
-            creator={
-                "email_address": "felixsmith@example.com",
-                "mobile_phone": "+44 07972 444 876",
-                "name": "Simon ",
-            },
-            date=parse_date("2019-12-27"),
-            invitees=[
-                {
-                    "contact_details": {
-                        "email_address": "felixsmith@example.com",
-                        "mobile_phone": "+44 07972 444 876",
-                        "name": "Simon ",
-                    },
-                    "status": "String, eg: Good",
-                }
-            ],
-            provider_id="Chris",
-            purpose_id="String, eg: onboarding",
+            body={},
         )
 
         assert meeting.is_closed is True
@@ -346,24 +243,7 @@ class TestAsyncMeetings:
         )
         async with async_client.banks.meetings.with_streaming_response.create(
             bank_id="BANK_ID",
-            creator={
-                "email_address": "felixsmith@example.com",
-                "mobile_phone": "+44 07972 444 876",
-                "name": "Simon ",
-            },
-            date=parse_date("2019-12-27"),
-            invitees=[
-                {
-                    "contact_details": {
-                        "email_address": "felixsmith@example.com",
-                        "mobile_phone": "+44 07972 444 876",
-                        "name": "Simon ",
-                    },
-                    "status": "String, eg: Good",
-                }
-            ],
-            provider_id="Chris",
-            purpose_id="String, eg: onboarding",
+            body={},
         ) as meeting:
             assert not meeting.is_closed
             assert meeting.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -380,24 +260,7 @@ class TestAsyncMeetings:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             await async_client.banks.meetings.with_raw_response.create(
                 bank_id="",
-                creator={
-                    "email_address": "felixsmith@example.com",
-                    "mobile_phone": "+44 07972 444 876",
-                    "name": "Simon ",
-                },
-                date=parse_date("2019-12-27"),
-                invitees=[
-                    {
-                        "contact_details": {
-                            "email_address": "felixsmith@example.com",
-                            "mobile_phone": "+44 07972 444 876",
-                            "name": "Simon ",
-                        },
-                        "status": "String, eg: Good",
-                    }
-                ],
-                provider_id="Chris",
-                purpose_id="String, eg: onboarding",
+                body={},
             )
 
     @parametrize

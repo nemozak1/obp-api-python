@@ -8,4 +8,4 @@ __all__ = ["AccountCheckIbanParams"]
 
 
 class AccountCheckIbanParams(TypedDict, total=False):
-    address: Required[str]
+    body: Required[object]

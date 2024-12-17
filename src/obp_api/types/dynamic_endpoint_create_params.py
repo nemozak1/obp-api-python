@@ -8,4 +8,4 @@ __all__ = ["DynamicEndpointCreateParams"]
 
 
 class DynamicEndpointCreateParams(TypedDict, total=False):
-    swagger: Required[str]
+    body: Required[object]

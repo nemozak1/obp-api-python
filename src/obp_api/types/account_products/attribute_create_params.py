@@ -14,10 +14,4 @@ class AttributeCreateParams(TypedDict, total=False):
 
     account_id: Required[Annotated[str, PropertyInfo(alias="ACCOUNT_ID")]]
 
-    name: Required[str]
-
-    type: Required[str]
-
-    value: Required[str]
-
-    product_instance_code: str
+    body: Required[object]

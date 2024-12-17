@@ -16,4 +16,4 @@ class WhereDeleteParams(TypedDict, total=False):
 
     view_id: Required[Annotated[str, PropertyInfo(alias="VIEW_ID")]]
 
-    json_string: Required[Annotated[str, PropertyInfo(alias="jsonString")]]
+    body: Required[object]

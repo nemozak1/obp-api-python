@@ -8,10 +8,4 @@ __all__ = ["ConnectorMethodCreateParams"]
 
 
 class ConnectorMethodCreateParams(TypedDict, total=False):
-    method_body: Required[str]
-
-    method_name: Required[str]
-
-    programming_lang: Required[str]
-
-    connector_method_id: str
+    body: Required[object]

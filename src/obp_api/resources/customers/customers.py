@@ -2,9 +2,6 @@
 
 from __future__ import annotations
 
-from typing import List, Union
-from datetime import date
-
 import httpx
 
 from .data import (
@@ -354,24 +351,7 @@ class CustomersResource(SyncAPIResource):
         self,
         bank_id: str,
         *,
-        legal_name: str,
-        mobile_phone_number: str,
-        branch_id: str | NotGiven = NOT_GIVEN,
-        credit_limit: customer_create_params.CreditLimit | NotGiven = NOT_GIVEN,
-        credit_rating: customer_create_params.CreditRating | NotGiven = NOT_GIVEN,
-        customer_number: str | NotGiven = NOT_GIVEN,
-        date_of_birth: Union[str, date] | NotGiven = NOT_GIVEN,
-        dependants: int | NotGiven = NOT_GIVEN,
-        dob_of_dependants: List[Union[str, date]] | NotGiven = NOT_GIVEN,
-        email: str | NotGiven = NOT_GIVEN,
-        employment_status: str | NotGiven = NOT_GIVEN,
-        face_image: customer_create_params.FaceImage | NotGiven = NOT_GIVEN,
-        highest_education_attained: str | NotGiven = NOT_GIVEN,
-        kyc_status: bool | NotGiven = NOT_GIVEN,
-        last_ok_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        name_suffix: str | NotGiven = NOT_GIVEN,
-        relationship_status: str | NotGiven = NOT_GIVEN,
-        title: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -396,29 +376,7 @@ class CustomersResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/customers",
-            body=maybe_transform(
-                {
-                    "legal_name": legal_name,
-                    "mobile_phone_number": mobile_phone_number,
-                    "branch_id": branch_id,
-                    "credit_limit": credit_limit,
-                    "credit_rating": credit_rating,
-                    "customer_number": customer_number,
-                    "date_of_birth": date_of_birth,
-                    "dependants": dependants,
-                    "dob_of_dependants": dob_of_dependants,
-                    "email": email,
-                    "employment_status": employment_status,
-                    "face_image": face_image,
-                    "highest_education_attained": highest_education_attained,
-                    "kyc_status": kyc_status,
-                    "last_ok_date": last_ok_date,
-                    "name_suffix": name_suffix,
-                    "relationship_status": relationship_status,
-                    "title": title,
-                },
-                customer_create_params.CustomerCreateParams,
-            ),
+            body=maybe_transform(body, customer_create_params.CustomerCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -609,24 +567,7 @@ class AsyncCustomersResource(AsyncAPIResource):
         self,
         bank_id: str,
         *,
-        legal_name: str,
-        mobile_phone_number: str,
-        branch_id: str | NotGiven = NOT_GIVEN,
-        credit_limit: customer_create_params.CreditLimit | NotGiven = NOT_GIVEN,
-        credit_rating: customer_create_params.CreditRating | NotGiven = NOT_GIVEN,
-        customer_number: str | NotGiven = NOT_GIVEN,
-        date_of_birth: Union[str, date] | NotGiven = NOT_GIVEN,
-        dependants: int | NotGiven = NOT_GIVEN,
-        dob_of_dependants: List[Union[str, date]] | NotGiven = NOT_GIVEN,
-        email: str | NotGiven = NOT_GIVEN,
-        employment_status: str | NotGiven = NOT_GIVEN,
-        face_image: customer_create_params.FaceImage | NotGiven = NOT_GIVEN,
-        highest_education_attained: str | NotGiven = NOT_GIVEN,
-        kyc_status: bool | NotGiven = NOT_GIVEN,
-        last_ok_date: Union[str, date] | NotGiven = NOT_GIVEN,
-        name_suffix: str | NotGiven = NOT_GIVEN,
-        relationship_status: str | NotGiven = NOT_GIVEN,
-        title: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -651,29 +592,7 @@ class AsyncCustomersResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/customers",
-            body=await async_maybe_transform(
-                {
-                    "legal_name": legal_name,
-                    "mobile_phone_number": mobile_phone_number,
-                    "branch_id": branch_id,
-                    "credit_limit": credit_limit,
-                    "credit_rating": credit_rating,
-                    "customer_number": customer_number,
-                    "date_of_birth": date_of_birth,
-                    "dependants": dependants,
-                    "dob_of_dependants": dob_of_dependants,
-                    "email": email,
-                    "employment_status": employment_status,
-                    "face_image": face_image,
-                    "highest_education_attained": highest_education_attained,
-                    "kyc_status": kyc_status,
-                    "last_ok_date": last_ok_date,
-                    "name_suffix": name_suffix,
-                    "relationship_status": relationship_status,
-                    "title": title,
-                },
-                customer_create_params.CustomerCreateParams,
-            ),
+            body=await async_maybe_transform(body, customer_create_params.CustomerCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

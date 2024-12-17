@@ -16,4 +16,4 @@ class PublicAliasUpdateParams(TypedDict, total=False):
 
     view_id: Required[Annotated[str, PropertyInfo(alias="VIEW_ID")]]
 
-    alias: Required[str]
+    body: Required[object]

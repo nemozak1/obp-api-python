@@ -2,9 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import date
-
 import httpx
 
 from ..types import standing_order_create_params
@@ -55,14 +52,7 @@ class StandingOrdersResource(SyncAPIResource):
         account_id: str,
         *,
         bank_id: str,
-        amount: standing_order_create_params.Amount,
-        counterparty_id: str,
-        customer_id: str,
-        date_starts: Union[str, date],
-        user_id: str,
-        when: standing_order_create_params.When,
-        date_expires: Union[str, date] | NotGiven = NOT_GIVEN,
-        date_signed: Union[str, date] | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -89,19 +79,7 @@ class StandingOrdersResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/management/banks/{bank_id}/accounts/{account_id}/standing-order",
-            body=maybe_transform(
-                {
-                    "amount": amount,
-                    "counterparty_id": counterparty_id,
-                    "customer_id": customer_id,
-                    "date_starts": date_starts,
-                    "user_id": user_id,
-                    "when": when,
-                    "date_expires": date_expires,
-                    "date_signed": date_signed,
-                },
-                standing_order_create_params.StandingOrderCreateParams,
-            ),
+            body=maybe_transform(body, standing_order_create_params.StandingOrderCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -134,14 +112,7 @@ class AsyncStandingOrdersResource(AsyncAPIResource):
         account_id: str,
         *,
         bank_id: str,
-        amount: standing_order_create_params.Amount,
-        counterparty_id: str,
-        customer_id: str,
-        date_starts: Union[str, date],
-        user_id: str,
-        when: standing_order_create_params.When,
-        date_expires: Union[str, date] | NotGiven = NOT_GIVEN,
-        date_signed: Union[str, date] | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -168,19 +139,7 @@ class AsyncStandingOrdersResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/management/banks/{bank_id}/accounts/{account_id}/standing-order",
-            body=await async_maybe_transform(
-                {
-                    "amount": amount,
-                    "counterparty_id": counterparty_id,
-                    "customer_id": customer_id,
-                    "date_starts": date_starts,
-                    "user_id": user_id,
-                    "when": when,
-                    "date_expires": date_expires,
-                    "date_signed": date_signed,
-                },
-                standing_order_create_params.StandingOrderCreateParams,
-            ),
+            body=await async_maybe_transform(body, standing_order_create_params.StandingOrderCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

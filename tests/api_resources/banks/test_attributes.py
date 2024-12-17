@@ -31,27 +31,7 @@ class TestAttributes:
         )
         attribute = client.banks.attributes.create(
             bank_id="BANK_ID",
-            name="TAX_ID",
-            type="INTEGER",
-            value="12345678",
-        )
-        assert attribute.is_closed
-        assert attribute.json() == {"foo": "bar"}
-        assert cast(Any, attribute.is_closed) is True
-        assert isinstance(attribute, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_create_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.post("/obp/v5.1.0/banks/BANK_ID/attribute").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        attribute = client.banks.attributes.create(
-            bank_id="BANK_ID",
-            name="TAX_ID",
-            type="INTEGER",
-            value="12345678",
-            is_active=True,
+            body={},
         )
         assert attribute.is_closed
         assert attribute.json() == {"foo": "bar"}
@@ -67,9 +47,7 @@ class TestAttributes:
 
         attribute = client.banks.attributes.with_raw_response.create(
             bank_id="BANK_ID",
-            name="TAX_ID",
-            type="INTEGER",
-            value="12345678",
+            body={},
         )
 
         assert attribute.is_closed is True
@@ -85,9 +63,7 @@ class TestAttributes:
         )
         with client.banks.attributes.with_streaming_response.create(
             bank_id="BANK_ID",
-            name="TAX_ID",
-            type="INTEGER",
-            value="12345678",
+            body={},
         ) as attribute:
             assert not attribute.is_closed
             assert attribute.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -104,9 +80,7 @@ class TestAttributes:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             client.banks.attributes.with_raw_response.create(
                 bank_id="",
-                name="TAX_ID",
-                type="INTEGER",
-                value="12345678",
+                body={},
             )
 
     @parametrize
@@ -173,27 +147,7 @@ class TestAttributes:
         )
         attribute = client.banks.attributes.update(
             bank_id="BANK_ID",
-            name="TAX_ID",
-            type="INTEGER",
-            value="12345678",
-        )
-        assert attribute.is_closed
-        assert attribute.json() == {"foo": "bar"}
-        assert cast(Any, attribute.is_closed) is True
-        assert isinstance(attribute, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_update_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.put("/obp/v5.1.0/banks/BANK_ID/attributes/BANK_ATTRIBUTE_ID").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        attribute = client.banks.attributes.update(
-            bank_id="BANK_ID",
-            name="TAX_ID",
-            type="INTEGER",
-            value="12345678",
-            is_active=True,
+            body={},
         )
         assert attribute.is_closed
         assert attribute.json() == {"foo": "bar"}
@@ -209,9 +163,7 @@ class TestAttributes:
 
         attribute = client.banks.attributes.with_raw_response.update(
             bank_id="BANK_ID",
-            name="TAX_ID",
-            type="INTEGER",
-            value="12345678",
+            body={},
         )
 
         assert attribute.is_closed is True
@@ -227,9 +179,7 @@ class TestAttributes:
         )
         with client.banks.attributes.with_streaming_response.update(
             bank_id="BANK_ID",
-            name="TAX_ID",
-            type="INTEGER",
-            value="12345678",
+            body={},
         ) as attribute:
             assert not attribute.is_closed
             assert attribute.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -246,9 +196,7 @@ class TestAttributes:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             client.banks.attributes.with_raw_response.update(
                 bank_id="",
-                name="TAX_ID",
-                type="INTEGER",
-                value="12345678",
+                body={},
             )
 
     @parametrize
@@ -357,27 +305,7 @@ class TestAsyncAttributes:
         )
         attribute = await async_client.banks.attributes.create(
             bank_id="BANK_ID",
-            name="TAX_ID",
-            type="INTEGER",
-            value="12345678",
-        )
-        assert attribute.is_closed
-        assert await attribute.json() == {"foo": "bar"}
-        assert cast(Any, attribute.is_closed) is True
-        assert isinstance(attribute, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_create_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.post("/obp/v5.1.0/banks/BANK_ID/attribute").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        attribute = await async_client.banks.attributes.create(
-            bank_id="BANK_ID",
-            name="TAX_ID",
-            type="INTEGER",
-            value="12345678",
-            is_active=True,
+            body={},
         )
         assert attribute.is_closed
         assert await attribute.json() == {"foo": "bar"}
@@ -393,9 +321,7 @@ class TestAsyncAttributes:
 
         attribute = await async_client.banks.attributes.with_raw_response.create(
             bank_id="BANK_ID",
-            name="TAX_ID",
-            type="INTEGER",
-            value="12345678",
+            body={},
         )
 
         assert attribute.is_closed is True
@@ -411,9 +337,7 @@ class TestAsyncAttributes:
         )
         async with async_client.banks.attributes.with_streaming_response.create(
             bank_id="BANK_ID",
-            name="TAX_ID",
-            type="INTEGER",
-            value="12345678",
+            body={},
         ) as attribute:
             assert not attribute.is_closed
             assert attribute.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -430,9 +354,7 @@ class TestAsyncAttributes:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             await async_client.banks.attributes.with_raw_response.create(
                 bank_id="",
-                name="TAX_ID",
-                type="INTEGER",
-                value="12345678",
+                body={},
             )
 
     @parametrize
@@ -499,27 +421,7 @@ class TestAsyncAttributes:
         )
         attribute = await async_client.banks.attributes.update(
             bank_id="BANK_ID",
-            name="TAX_ID",
-            type="INTEGER",
-            value="12345678",
-        )
-        assert attribute.is_closed
-        assert await attribute.json() == {"foo": "bar"}
-        assert cast(Any, attribute.is_closed) is True
-        assert isinstance(attribute, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_update_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.put("/obp/v5.1.0/banks/BANK_ID/attributes/BANK_ATTRIBUTE_ID").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        attribute = await async_client.banks.attributes.update(
-            bank_id="BANK_ID",
-            name="TAX_ID",
-            type="INTEGER",
-            value="12345678",
-            is_active=True,
+            body={},
         )
         assert attribute.is_closed
         assert await attribute.json() == {"foo": "bar"}
@@ -535,9 +437,7 @@ class TestAsyncAttributes:
 
         attribute = await async_client.banks.attributes.with_raw_response.update(
             bank_id="BANK_ID",
-            name="TAX_ID",
-            type="INTEGER",
-            value="12345678",
+            body={},
         )
 
         assert attribute.is_closed is True
@@ -553,9 +453,7 @@ class TestAsyncAttributes:
         )
         async with async_client.banks.attributes.with_streaming_response.update(
             bank_id="BANK_ID",
-            name="TAX_ID",
-            type="INTEGER",
-            value="12345678",
+            body={},
         ) as attribute:
             assert not attribute.is_closed
             assert attribute.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -572,9 +470,7 @@ class TestAsyncAttributes:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             await async_client.banks.attributes.with_raw_response.update(
                 bank_id="",
-                name="TAX_ID",
-                type="INTEGER",
-                value="12345678",
+                body={},
             )
 
     @parametrize

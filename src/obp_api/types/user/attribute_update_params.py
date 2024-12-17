@@ -8,8 +8,4 @@ __all__ = ["AttributeUpdateParams"]
 
 
 class AttributeUpdateParams(TypedDict, total=False):
-    name: Required[str]
-
-    type: Required[str]
-
-    value: Required[str]
+    body: Required[object]

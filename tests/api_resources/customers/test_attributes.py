@@ -98,9 +98,7 @@ class TestAttributes:
         attribute = client.customers.attributes.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            name="SPECIAL_TAX_NUMBER",
-            type="STRING",
-            value="123456789",
+            body={},
         )
         assert attribute.is_closed
         assert attribute.json() == {"foo": "bar"}
@@ -117,9 +115,7 @@ class TestAttributes:
         attribute = client.customers.attributes.with_raw_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            name="SPECIAL_TAX_NUMBER",
-            type="STRING",
-            value="123456789",
+            body={},
         )
 
         assert attribute.is_closed is True
@@ -136,9 +132,7 @@ class TestAttributes:
         with client.customers.attributes.with_streaming_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            name="SPECIAL_TAX_NUMBER",
-            type="STRING",
-            value="123456789",
+            body={},
         ) as attribute:
             assert not attribute.is_closed
             assert attribute.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -156,18 +150,14 @@ class TestAttributes:
             client.customers.attributes.with_raw_response.update(
                 customer_id="CUSTOMER_ID",
                 bank_id="",
-                name="SPECIAL_TAX_NUMBER",
-                type="STRING",
-                value="123456789",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             client.customers.attributes.with_raw_response.update(
                 customer_id="",
                 bank_id="BANK_ID",
-                name="SPECIAL_TAX_NUMBER",
-                type="STRING",
-                value="123456789",
+                body={},
             )
 
     @parametrize
@@ -315,9 +305,7 @@ class TestAsyncAttributes:
         attribute = await async_client.customers.attributes.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            name="SPECIAL_TAX_NUMBER",
-            type="STRING",
-            value="123456789",
+            body={},
         )
         assert attribute.is_closed
         assert await attribute.json() == {"foo": "bar"}
@@ -334,9 +322,7 @@ class TestAsyncAttributes:
         attribute = await async_client.customers.attributes.with_raw_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            name="SPECIAL_TAX_NUMBER",
-            type="STRING",
-            value="123456789",
+            body={},
         )
 
         assert attribute.is_closed is True
@@ -353,9 +339,7 @@ class TestAsyncAttributes:
         async with async_client.customers.attributes.with_streaming_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            name="SPECIAL_TAX_NUMBER",
-            type="STRING",
-            value="123456789",
+            body={},
         ) as attribute:
             assert not attribute.is_closed
             assert attribute.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -373,18 +357,14 @@ class TestAsyncAttributes:
             await async_client.customers.attributes.with_raw_response.update(
                 customer_id="CUSTOMER_ID",
                 bank_id="",
-                name="SPECIAL_TAX_NUMBER",
-                type="STRING",
-                value="123456789",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             await async_client.customers.attributes.with_raw_response.update(
                 customer_id="",
                 bank_id="BANK_ID",
-                name="SPECIAL_TAX_NUMBER",
-                type="STRING",
-                value="123456789",
+                body={},
             )
 
     @parametrize

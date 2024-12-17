@@ -10,7 +10,6 @@ import pytest
 from respx import MockRouter
 
 from obp_api import ObpAPI, AsyncObpAPI
-from obp_api._utils import parse_date
 from obp_api._response import (
     BinaryAPIResponse,
     AsyncBinaryAPIResponse,
@@ -32,66 +31,7 @@ class TestCards:
         )
         card = client.cards.create(
             bank_id="BANK_ID",
-            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-            allows=["string"],
-            brand="Visa",
-            card_number="364435172576215",
-            card_type="Credit",
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            enabled=True,
-            expires_date=parse_date("2019-12-27"),
-            issue_number="1",
-            name_on_card="SusanSmith",
-            networks=["string"],
-            pin_reset=[
-                {
-                    "reason_requested": "GOOD_SECURITY_PRACTICE",
-                    "requested_date": parse_date("2019-12-27"),
-                }
-            ],
-            serial_number="1324234",
-            technology="technology1",
-            valid_from_date=parse_date("2019-12-27"),
-        )
-        assert card.is_closed
-        assert card.json() == {"foo": "bar"}
-        assert cast(Any, card.is_closed) is True
-        assert isinstance(card, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_create_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.post("/obp/v5.1.0/management/banks/BANK_ID/cards").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        card = client.cards.create(
-            bank_id="BANK_ID",
-            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-            allows=["string"],
-            brand="Visa",
-            card_number="364435172576215",
-            card_type="Credit",
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            enabled=True,
-            expires_date=parse_date("2019-12-27"),
-            issue_number="1",
-            name_on_card="SusanSmith",
-            networks=["string"],
-            pin_reset=[
-                {
-                    "reason_requested": "GOOD_SECURITY_PRACTICE",
-                    "requested_date": parse_date("2019-12-27"),
-                }
-            ],
-            serial_number="1324234",
-            technology="technology1",
-            valid_from_date=parse_date("2019-12-27"),
-            collected=parse_date("2019-12-27"),
-            posted=parse_date("2019-12-27"),
-            replacement={
-                "reason_requested": "RENEW",
-                "requested_date": parse_date("2019-12-27"),
-            },
+            body={},
         )
         assert card.is_closed
         assert card.json() == {"foo": "bar"}
@@ -107,26 +47,7 @@ class TestCards:
 
         card = client.cards.with_raw_response.create(
             bank_id="BANK_ID",
-            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-            allows=["string"],
-            brand="Visa",
-            card_number="364435172576215",
-            card_type="Credit",
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            enabled=True,
-            expires_date=parse_date("2019-12-27"),
-            issue_number="1",
-            name_on_card="SusanSmith",
-            networks=["string"],
-            pin_reset=[
-                {
-                    "reason_requested": "GOOD_SECURITY_PRACTICE",
-                    "requested_date": parse_date("2019-12-27"),
-                }
-            ],
-            serial_number="1324234",
-            technology="technology1",
-            valid_from_date=parse_date("2019-12-27"),
+            body={},
         )
 
         assert card.is_closed is True
@@ -142,26 +63,7 @@ class TestCards:
         )
         with client.cards.with_streaming_response.create(
             bank_id="BANK_ID",
-            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-            allows=["string"],
-            brand="Visa",
-            card_number="364435172576215",
-            card_type="Credit",
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            enabled=True,
-            expires_date=parse_date("2019-12-27"),
-            issue_number="1",
-            name_on_card="SusanSmith",
-            networks=["string"],
-            pin_reset=[
-                {
-                    "reason_requested": "GOOD_SECURITY_PRACTICE",
-                    "requested_date": parse_date("2019-12-27"),
-                }
-            ],
-            serial_number="1324234",
-            technology="technology1",
-            valid_from_date=parse_date("2019-12-27"),
+            body={},
         ) as card:
             assert not card.is_closed
             assert card.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -178,26 +80,7 @@ class TestCards:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             client.cards.with_raw_response.create(
                 bank_id="",
-                account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-                allows=["string"],
-                brand="Visa",
-                card_number="364435172576215",
-                card_type="Credit",
-                customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                enabled=True,
-                expires_date=parse_date("2019-12-27"),
-                issue_number="1",
-                name_on_card="SusanSmith",
-                networks=["string"],
-                pin_reset=[
-                    {
-                        "reason_requested": "GOOD_SECURITY_PRACTICE",
-                        "requested_date": parse_date("2019-12-27"),
-                    }
-                ],
-                serial_number="1324234",
-                technology="technology1",
-                valid_from_date=parse_date("2019-12-27"),
+                body={},
             )
 
     @parametrize
@@ -275,30 +158,7 @@ class TestCards:
         card = client.cards.update(
             card_id="CARD_ID",
             bank_id="BANK_ID",
-            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-            allows=["string"],
-            card_type="Credit",
-            collected=parse_date("2019-12-27"),
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            enabled=True,
-            expires_date=parse_date("2019-12-27"),
-            issue_number="1",
-            name_on_card="SusanSmith",
-            networks=["string"],
-            pin_reset=[
-                {
-                    "reason_requested": "GOOD_SECURITY_PRACTICE",
-                    "requested_date": parse_date("2019-12-27"),
-                }
-            ],
-            posted=parse_date("2019-12-27"),
-            replacement={
-                "reason_requested": "RENEW",
-                "requested_date": parse_date("2019-12-27"),
-            },
-            serial_number="1324234",
-            technology="technology1",
-            valid_from_date=parse_date("2019-12-27"),
+            body={},
         )
         assert card.is_closed
         assert card.json() == {"foo": "bar"}
@@ -315,30 +175,7 @@ class TestCards:
         card = client.cards.with_raw_response.update(
             card_id="CARD_ID",
             bank_id="BANK_ID",
-            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-            allows=["string"],
-            card_type="Credit",
-            collected=parse_date("2019-12-27"),
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            enabled=True,
-            expires_date=parse_date("2019-12-27"),
-            issue_number="1",
-            name_on_card="SusanSmith",
-            networks=["string"],
-            pin_reset=[
-                {
-                    "reason_requested": "GOOD_SECURITY_PRACTICE",
-                    "requested_date": parse_date("2019-12-27"),
-                }
-            ],
-            posted=parse_date("2019-12-27"),
-            replacement={
-                "reason_requested": "RENEW",
-                "requested_date": parse_date("2019-12-27"),
-            },
-            serial_number="1324234",
-            technology="technology1",
-            valid_from_date=parse_date("2019-12-27"),
+            body={},
         )
 
         assert card.is_closed is True
@@ -355,30 +192,7 @@ class TestCards:
         with client.cards.with_streaming_response.update(
             card_id="CARD_ID",
             bank_id="BANK_ID",
-            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-            allows=["string"],
-            card_type="Credit",
-            collected=parse_date("2019-12-27"),
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            enabled=True,
-            expires_date=parse_date("2019-12-27"),
-            issue_number="1",
-            name_on_card="SusanSmith",
-            networks=["string"],
-            pin_reset=[
-                {
-                    "reason_requested": "GOOD_SECURITY_PRACTICE",
-                    "requested_date": parse_date("2019-12-27"),
-                }
-            ],
-            posted=parse_date("2019-12-27"),
-            replacement={
-                "reason_requested": "RENEW",
-                "requested_date": parse_date("2019-12-27"),
-            },
-            serial_number="1324234",
-            technology="technology1",
-            valid_from_date=parse_date("2019-12-27"),
+            body={},
         ) as card:
             assert not card.is_closed
             assert card.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -396,60 +210,14 @@ class TestCards:
             client.cards.with_raw_response.update(
                 card_id="CARD_ID",
                 bank_id="",
-                account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-                allows=["string"],
-                card_type="Credit",
-                collected=parse_date("2019-12-27"),
-                customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                enabled=True,
-                expires_date=parse_date("2019-12-27"),
-                issue_number="1",
-                name_on_card="SusanSmith",
-                networks=["string"],
-                pin_reset=[
-                    {
-                        "reason_requested": "GOOD_SECURITY_PRACTICE",
-                        "requested_date": parse_date("2019-12-27"),
-                    }
-                ],
-                posted=parse_date("2019-12-27"),
-                replacement={
-                    "reason_requested": "RENEW",
-                    "requested_date": parse_date("2019-12-27"),
-                },
-                serial_number="1324234",
-                technology="technology1",
-                valid_from_date=parse_date("2019-12-27"),
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_id` but received ''"):
             client.cards.with_raw_response.update(
                 card_id="",
                 bank_id="BANK_ID",
-                account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-                allows=["string"],
-                card_type="Credit",
-                collected=parse_date("2019-12-27"),
-                customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                enabled=True,
-                expires_date=parse_date("2019-12-27"),
-                issue_number="1",
-                name_on_card="SusanSmith",
-                networks=["string"],
-                pin_reset=[
-                    {
-                        "reason_requested": "GOOD_SECURITY_PRACTICE",
-                        "requested_date": parse_date("2019-12-27"),
-                    }
-                ],
-                posted=parse_date("2019-12-27"),
-                replacement={
-                    "reason_requested": "RENEW",
-                    "requested_date": parse_date("2019-12-27"),
-                },
-                serial_number="1324234",
-                technology="technology1",
-                valid_from_date=parse_date("2019-12-27"),
+                body={},
             )
 
     @parametrize
@@ -568,66 +336,7 @@ class TestAsyncCards:
         )
         card = await async_client.cards.create(
             bank_id="BANK_ID",
-            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-            allows=["string"],
-            brand="Visa",
-            card_number="364435172576215",
-            card_type="Credit",
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            enabled=True,
-            expires_date=parse_date("2019-12-27"),
-            issue_number="1",
-            name_on_card="SusanSmith",
-            networks=["string"],
-            pin_reset=[
-                {
-                    "reason_requested": "GOOD_SECURITY_PRACTICE",
-                    "requested_date": parse_date("2019-12-27"),
-                }
-            ],
-            serial_number="1324234",
-            technology="technology1",
-            valid_from_date=parse_date("2019-12-27"),
-        )
-        assert card.is_closed
-        assert await card.json() == {"foo": "bar"}
-        assert cast(Any, card.is_closed) is True
-        assert isinstance(card, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_create_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.post("/obp/v5.1.0/management/banks/BANK_ID/cards").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        card = await async_client.cards.create(
-            bank_id="BANK_ID",
-            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-            allows=["string"],
-            brand="Visa",
-            card_number="364435172576215",
-            card_type="Credit",
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            enabled=True,
-            expires_date=parse_date("2019-12-27"),
-            issue_number="1",
-            name_on_card="SusanSmith",
-            networks=["string"],
-            pin_reset=[
-                {
-                    "reason_requested": "GOOD_SECURITY_PRACTICE",
-                    "requested_date": parse_date("2019-12-27"),
-                }
-            ],
-            serial_number="1324234",
-            technology="technology1",
-            valid_from_date=parse_date("2019-12-27"),
-            collected=parse_date("2019-12-27"),
-            posted=parse_date("2019-12-27"),
-            replacement={
-                "reason_requested": "RENEW",
-                "requested_date": parse_date("2019-12-27"),
-            },
+            body={},
         )
         assert card.is_closed
         assert await card.json() == {"foo": "bar"}
@@ -643,26 +352,7 @@ class TestAsyncCards:
 
         card = await async_client.cards.with_raw_response.create(
             bank_id="BANK_ID",
-            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-            allows=["string"],
-            brand="Visa",
-            card_number="364435172576215",
-            card_type="Credit",
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            enabled=True,
-            expires_date=parse_date("2019-12-27"),
-            issue_number="1",
-            name_on_card="SusanSmith",
-            networks=["string"],
-            pin_reset=[
-                {
-                    "reason_requested": "GOOD_SECURITY_PRACTICE",
-                    "requested_date": parse_date("2019-12-27"),
-                }
-            ],
-            serial_number="1324234",
-            technology="technology1",
-            valid_from_date=parse_date("2019-12-27"),
+            body={},
         )
 
         assert card.is_closed is True
@@ -678,26 +368,7 @@ class TestAsyncCards:
         )
         async with async_client.cards.with_streaming_response.create(
             bank_id="BANK_ID",
-            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-            allows=["string"],
-            brand="Visa",
-            card_number="364435172576215",
-            card_type="Credit",
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            enabled=True,
-            expires_date=parse_date("2019-12-27"),
-            issue_number="1",
-            name_on_card="SusanSmith",
-            networks=["string"],
-            pin_reset=[
-                {
-                    "reason_requested": "GOOD_SECURITY_PRACTICE",
-                    "requested_date": parse_date("2019-12-27"),
-                }
-            ],
-            serial_number="1324234",
-            technology="technology1",
-            valid_from_date=parse_date("2019-12-27"),
+            body={},
         ) as card:
             assert not card.is_closed
             assert card.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -714,26 +385,7 @@ class TestAsyncCards:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             await async_client.cards.with_raw_response.create(
                 bank_id="",
-                account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-                allows=["string"],
-                brand="Visa",
-                card_number="364435172576215",
-                card_type="Credit",
-                customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                enabled=True,
-                expires_date=parse_date("2019-12-27"),
-                issue_number="1",
-                name_on_card="SusanSmith",
-                networks=["string"],
-                pin_reset=[
-                    {
-                        "reason_requested": "GOOD_SECURITY_PRACTICE",
-                        "requested_date": parse_date("2019-12-27"),
-                    }
-                ],
-                serial_number="1324234",
-                technology="technology1",
-                valid_from_date=parse_date("2019-12-27"),
+                body={},
             )
 
     @parametrize
@@ -811,30 +463,7 @@ class TestAsyncCards:
         card = await async_client.cards.update(
             card_id="CARD_ID",
             bank_id="BANK_ID",
-            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-            allows=["string"],
-            card_type="Credit",
-            collected=parse_date("2019-12-27"),
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            enabled=True,
-            expires_date=parse_date("2019-12-27"),
-            issue_number="1",
-            name_on_card="SusanSmith",
-            networks=["string"],
-            pin_reset=[
-                {
-                    "reason_requested": "GOOD_SECURITY_PRACTICE",
-                    "requested_date": parse_date("2019-12-27"),
-                }
-            ],
-            posted=parse_date("2019-12-27"),
-            replacement={
-                "reason_requested": "RENEW",
-                "requested_date": parse_date("2019-12-27"),
-            },
-            serial_number="1324234",
-            technology="technology1",
-            valid_from_date=parse_date("2019-12-27"),
+            body={},
         )
         assert card.is_closed
         assert await card.json() == {"foo": "bar"}
@@ -851,30 +480,7 @@ class TestAsyncCards:
         card = await async_client.cards.with_raw_response.update(
             card_id="CARD_ID",
             bank_id="BANK_ID",
-            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-            allows=["string"],
-            card_type="Credit",
-            collected=parse_date("2019-12-27"),
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            enabled=True,
-            expires_date=parse_date("2019-12-27"),
-            issue_number="1",
-            name_on_card="SusanSmith",
-            networks=["string"],
-            pin_reset=[
-                {
-                    "reason_requested": "GOOD_SECURITY_PRACTICE",
-                    "requested_date": parse_date("2019-12-27"),
-                }
-            ],
-            posted=parse_date("2019-12-27"),
-            replacement={
-                "reason_requested": "RENEW",
-                "requested_date": parse_date("2019-12-27"),
-            },
-            serial_number="1324234",
-            technology="technology1",
-            valid_from_date=parse_date("2019-12-27"),
+            body={},
         )
 
         assert card.is_closed is True
@@ -891,30 +497,7 @@ class TestAsyncCards:
         async with async_client.cards.with_streaming_response.update(
             card_id="CARD_ID",
             bank_id="BANK_ID",
-            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-            allows=["string"],
-            card_type="Credit",
-            collected=parse_date("2019-12-27"),
-            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-            enabled=True,
-            expires_date=parse_date("2019-12-27"),
-            issue_number="1",
-            name_on_card="SusanSmith",
-            networks=["string"],
-            pin_reset=[
-                {
-                    "reason_requested": "GOOD_SECURITY_PRACTICE",
-                    "requested_date": parse_date("2019-12-27"),
-                }
-            ],
-            posted=parse_date("2019-12-27"),
-            replacement={
-                "reason_requested": "RENEW",
-                "requested_date": parse_date("2019-12-27"),
-            },
-            serial_number="1324234",
-            technology="technology1",
-            valid_from_date=parse_date("2019-12-27"),
+            body={},
         ) as card:
             assert not card.is_closed
             assert card.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -932,60 +515,14 @@ class TestAsyncCards:
             await async_client.cards.with_raw_response.update(
                 card_id="CARD_ID",
                 bank_id="",
-                account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-                allows=["string"],
-                card_type="Credit",
-                collected=parse_date("2019-12-27"),
-                customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                enabled=True,
-                expires_date=parse_date("2019-12-27"),
-                issue_number="1",
-                name_on_card="SusanSmith",
-                networks=["string"],
-                pin_reset=[
-                    {
-                        "reason_requested": "GOOD_SECURITY_PRACTICE",
-                        "requested_date": parse_date("2019-12-27"),
-                    }
-                ],
-                posted=parse_date("2019-12-27"),
-                replacement={
-                    "reason_requested": "RENEW",
-                    "requested_date": parse_date("2019-12-27"),
-                },
-                serial_number="1324234",
-                technology="technology1",
-                valid_from_date=parse_date("2019-12-27"),
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `card_id` but received ''"):
             await async_client.cards.with_raw_response.update(
                 card_id="",
                 bank_id="BANK_ID",
-                account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
-                allows=["string"],
-                card_type="Credit",
-                collected=parse_date("2019-12-27"),
-                customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
-                enabled=True,
-                expires_date=parse_date("2019-12-27"),
-                issue_number="1",
-                name_on_card="SusanSmith",
-                networks=["string"],
-                pin_reset=[
-                    {
-                        "reason_requested": "GOOD_SECURITY_PRACTICE",
-                        "requested_date": parse_date("2019-12-27"),
-                    }
-                ],
-                posted=parse_date("2019-12-27"),
-                replacement={
-                    "reason_requested": "RENEW",
-                    "requested_date": parse_date("2019-12-27"),
-                },
-                serial_number="1324234",
-                technology="technology1",
-                valid_from_date=parse_date("2019-12-27"),
+                body={},
             )
 
     @parametrize

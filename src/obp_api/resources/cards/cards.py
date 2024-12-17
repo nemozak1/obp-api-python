@@ -2,9 +2,6 @@
 
 from __future__ import annotations
 
-from typing import List, Union, Iterable
-from datetime import date
-
 import httpx
 
 from ...types import card_create_params, card_update_params
@@ -82,24 +79,7 @@ class CardsResource(SyncAPIResource):
         self,
         bank_id: str,
         *,
-        account_id: str,
-        allows: List[str],
-        brand: str,
-        card_number: str,
-        card_type: str,
-        customer_id: str,
-        enabled: bool,
-        expires_date: Union[str, date],
-        issue_number: str,
-        name_on_card: str,
-        networks: List[str],
-        pin_reset: Iterable[card_create_params.PinReset],
-        serial_number: str,
-        technology: str,
-        valid_from_date: Union[str, date],
-        collected: Union[str, date] | NotGiven = NOT_GIVEN,
-        posted: Union[str, date] | NotGiven = NOT_GIVEN,
-        replacement: card_create_params.Replacement | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -124,29 +104,7 @@ class CardsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/management/banks/{bank_id}/cards",
-            body=maybe_transform(
-                {
-                    "account_id": account_id,
-                    "allows": allows,
-                    "brand": brand,
-                    "card_number": card_number,
-                    "card_type": card_type,
-                    "customer_id": customer_id,
-                    "enabled": enabled,
-                    "expires_date": expires_date,
-                    "issue_number": issue_number,
-                    "name_on_card": name_on_card,
-                    "networks": networks,
-                    "pin_reset": pin_reset,
-                    "serial_number": serial_number,
-                    "technology": technology,
-                    "valid_from_date": valid_from_date,
-                    "collected": collected,
-                    "posted": posted,
-                    "replacement": replacement,
-                },
-                card_create_params.CardCreateParams,
-            ),
+            body=maybe_transform(body, card_create_params.CardCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -195,22 +153,7 @@ class CardsResource(SyncAPIResource):
         card_id: str,
         *,
         bank_id: str,
-        account_id: str,
-        allows: List[str],
-        card_type: str,
-        collected: Union[str, date],
-        customer_id: str,
-        enabled: bool,
-        expires_date: Union[str, date],
-        issue_number: str,
-        name_on_card: str,
-        networks: List[str],
-        pin_reset: Iterable[card_update_params.PinReset],
-        posted: Union[str, date],
-        replacement: card_update_params.Replacement,
-        serial_number: str,
-        technology: str,
-        valid_from_date: Union[str, date],
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -237,27 +180,7 @@ class CardsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/management/banks/{bank_id}/cards/{card_id}",
-            body=maybe_transform(
-                {
-                    "account_id": account_id,
-                    "allows": allows,
-                    "card_type": card_type,
-                    "collected": collected,
-                    "customer_id": customer_id,
-                    "enabled": enabled,
-                    "expires_date": expires_date,
-                    "issue_number": issue_number,
-                    "name_on_card": name_on_card,
-                    "networks": networks,
-                    "pin_reset": pin_reset,
-                    "posted": posted,
-                    "replacement": replacement,
-                    "serial_number": serial_number,
-                    "technology": technology,
-                    "valid_from_date": valid_from_date,
-                },
-                card_update_params.CardUpdateParams,
-            ),
+            body=maybe_transform(body, card_update_params.CardUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -368,24 +291,7 @@ class AsyncCardsResource(AsyncAPIResource):
         self,
         bank_id: str,
         *,
-        account_id: str,
-        allows: List[str],
-        brand: str,
-        card_number: str,
-        card_type: str,
-        customer_id: str,
-        enabled: bool,
-        expires_date: Union[str, date],
-        issue_number: str,
-        name_on_card: str,
-        networks: List[str],
-        pin_reset: Iterable[card_create_params.PinReset],
-        serial_number: str,
-        technology: str,
-        valid_from_date: Union[str, date],
-        collected: Union[str, date] | NotGiven = NOT_GIVEN,
-        posted: Union[str, date] | NotGiven = NOT_GIVEN,
-        replacement: card_create_params.Replacement | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -410,29 +316,7 @@ class AsyncCardsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/management/banks/{bank_id}/cards",
-            body=await async_maybe_transform(
-                {
-                    "account_id": account_id,
-                    "allows": allows,
-                    "brand": brand,
-                    "card_number": card_number,
-                    "card_type": card_type,
-                    "customer_id": customer_id,
-                    "enabled": enabled,
-                    "expires_date": expires_date,
-                    "issue_number": issue_number,
-                    "name_on_card": name_on_card,
-                    "networks": networks,
-                    "pin_reset": pin_reset,
-                    "serial_number": serial_number,
-                    "technology": technology,
-                    "valid_from_date": valid_from_date,
-                    "collected": collected,
-                    "posted": posted,
-                    "replacement": replacement,
-                },
-                card_create_params.CardCreateParams,
-            ),
+            body=await async_maybe_transform(body, card_create_params.CardCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -481,22 +365,7 @@ class AsyncCardsResource(AsyncAPIResource):
         card_id: str,
         *,
         bank_id: str,
-        account_id: str,
-        allows: List[str],
-        card_type: str,
-        collected: Union[str, date],
-        customer_id: str,
-        enabled: bool,
-        expires_date: Union[str, date],
-        issue_number: str,
-        name_on_card: str,
-        networks: List[str],
-        pin_reset: Iterable[card_update_params.PinReset],
-        posted: Union[str, date],
-        replacement: card_update_params.Replacement,
-        serial_number: str,
-        technology: str,
-        valid_from_date: Union[str, date],
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -523,27 +392,7 @@ class AsyncCardsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/management/banks/{bank_id}/cards/{card_id}",
-            body=await async_maybe_transform(
-                {
-                    "account_id": account_id,
-                    "allows": allows,
-                    "card_type": card_type,
-                    "collected": collected,
-                    "customer_id": customer_id,
-                    "enabled": enabled,
-                    "expires_date": expires_date,
-                    "issue_number": issue_number,
-                    "name_on_card": name_on_card,
-                    "networks": networks,
-                    "pin_reset": pin_reset,
-                    "posted": posted,
-                    "replacement": replacement,
-                    "serial_number": serial_number,
-                    "technology": technology,
-                    "valid_from_date": valid_from_date,
-                },
-                card_update_params.CardUpdateParams,
-            ),
+            body=await async_maybe_transform(body, card_update_params.CardUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

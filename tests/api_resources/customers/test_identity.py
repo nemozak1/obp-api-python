@@ -10,7 +10,6 @@ import pytest
 from respx import MockRouter
 
 from obp_api import ObpAPI, AsyncObpAPI
-from obp_api._utils import parse_date
 from obp_api._response import (
     BinaryAPIResponse,
     AsyncBinaryAPIResponse,
@@ -33,10 +32,7 @@ class TestIdentity:
         identity = client.customers.identity.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            date_of_birth=parse_date("2019-12-27"),
-            legal_name="Eveline Tripman",
-            name_suffix="Sr",
-            title="Dr.",
+            body={},
         )
         assert identity.is_closed
         assert identity.json() == {"foo": "bar"}
@@ -53,10 +49,7 @@ class TestIdentity:
         identity = client.customers.identity.with_raw_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            date_of_birth=parse_date("2019-12-27"),
-            legal_name="Eveline Tripman",
-            name_suffix="Sr",
-            title="Dr.",
+            body={},
         )
 
         assert identity.is_closed is True
@@ -73,10 +66,7 @@ class TestIdentity:
         with client.customers.identity.with_streaming_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            date_of_birth=parse_date("2019-12-27"),
-            legal_name="Eveline Tripman",
-            name_suffix="Sr",
-            title="Dr.",
+            body={},
         ) as identity:
             assert not identity.is_closed
             assert identity.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -94,20 +84,14 @@ class TestIdentity:
             client.customers.identity.with_raw_response.update(
                 customer_id="CUSTOMER_ID",
                 bank_id="",
-                date_of_birth=parse_date("2019-12-27"),
-                legal_name="Eveline Tripman",
-                name_suffix="Sr",
-                title="Dr.",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             client.customers.identity.with_raw_response.update(
                 customer_id="",
                 bank_id="BANK_ID",
-                date_of_birth=parse_date("2019-12-27"),
-                legal_name="Eveline Tripman",
-                name_suffix="Sr",
-                title="Dr.",
+                body={},
             )
 
 
@@ -123,10 +107,7 @@ class TestAsyncIdentity:
         identity = await async_client.customers.identity.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            date_of_birth=parse_date("2019-12-27"),
-            legal_name="Eveline Tripman",
-            name_suffix="Sr",
-            title="Dr.",
+            body={},
         )
         assert identity.is_closed
         assert await identity.json() == {"foo": "bar"}
@@ -143,10 +124,7 @@ class TestAsyncIdentity:
         identity = await async_client.customers.identity.with_raw_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            date_of_birth=parse_date("2019-12-27"),
-            legal_name="Eveline Tripman",
-            name_suffix="Sr",
-            title="Dr.",
+            body={},
         )
 
         assert identity.is_closed is True
@@ -163,10 +141,7 @@ class TestAsyncIdentity:
         async with async_client.customers.identity.with_streaming_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            date_of_birth=parse_date("2019-12-27"),
-            legal_name="Eveline Tripman",
-            name_suffix="Sr",
-            title="Dr.",
+            body={},
         ) as identity:
             assert not identity.is_closed
             assert identity.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -184,18 +159,12 @@ class TestAsyncIdentity:
             await async_client.customers.identity.with_raw_response.update(
                 customer_id="CUSTOMER_ID",
                 bank_id="",
-                date_of_birth=parse_date("2019-12-27"),
-                legal_name="Eveline Tripman",
-                name_suffix="Sr",
-                title="Dr.",
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             await async_client.customers.identity.with_raw_response.update(
                 customer_id="",
                 bank_id="BANK_ID",
-                date_of_birth=parse_date("2019-12-27"),
-                legal_name="Eveline Tripman",
-                name_suffix="Sr",
-                title="Dr.",
+                body={},
             )

@@ -2,9 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import date
-
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -56,12 +53,7 @@ class KYCDocumentsResource(SyncAPIResource):
         *,
         bank_id: str,
         customer_id: str,
-        customer_number: str,
-        expiry_date: Union[str, date],
-        issue_date: Union[str, date],
-        issue_place: str,
-        number: str,
-        type: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -91,17 +83,7 @@ class KYCDocumentsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/kyc_documents/{kyc_document_id}",
-            body=maybe_transform(
-                {
-                    "customer_number": customer_number,
-                    "expiry_date": expiry_date,
-                    "issue_date": issue_date,
-                    "issue_place": issue_place,
-                    "number": number,
-                    "type": type,
-                },
-                kyc_document_update_params.KYCDocumentUpdateParams,
-            ),
+            body=maybe_transform(body, kyc_document_update_params.KYCDocumentUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -169,12 +151,7 @@ class AsyncKYCDocumentsResource(AsyncAPIResource):
         *,
         bank_id: str,
         customer_id: str,
-        customer_number: str,
-        expiry_date: Union[str, date],
-        issue_date: Union[str, date],
-        issue_place: str,
-        number: str,
-        type: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -204,17 +181,7 @@ class AsyncKYCDocumentsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/kyc_documents/{kyc_document_id}",
-            body=await async_maybe_transform(
-                {
-                    "customer_number": customer_number,
-                    "expiry_date": expiry_date,
-                    "issue_date": issue_date,
-                    "issue_place": issue_place,
-                    "number": number,
-                    "type": type,
-                },
-                kyc_document_update_params.KYCDocumentUpdateParams,
-            ),
+            body=await async_maybe_transform(body, kyc_document_update_params.KYCDocumentUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

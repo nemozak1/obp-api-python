@@ -10,10 +10,8 @@ __all__ = ["AccountAccessRevokeParams"]
 
 
 class AccountAccessRevokeParams(TypedDict, total=False):
-    path_view_id: Required[Annotated[str, PropertyInfo(alias="VIEW_ID")]]
-
     bank_id: Required[Annotated[str, PropertyInfo(alias="BANK_ID")]]
 
-    user_id: Required[str]
+    account_id: Required[Annotated[str, PropertyInfo(alias="ACCOUNT_ID")]]
 
-    body_view_id: Required[Annotated[str, PropertyInfo(alias="view_id")]]
+    body: Required[object]

@@ -2,9 +2,6 @@
 
 from __future__ import annotations
 
-from typing import Union
-from datetime import date
-
 import httpx
 
 from ..types import consent_request_create_params
@@ -53,12 +50,7 @@ class ConsentRequestsResource(SyncAPIResource):
     def create(
         self,
         *,
-        from_account: consent_request_create_params.FromAccount,
-        to_account: consent_request_create_params.ToAccount,
-        email: str | NotGiven = NOT_GIVEN,
-        phone_number: str | NotGiven = NOT_GIVEN,
-        time_to_live: int | NotGiven = NOT_GIVEN,
-        valid_from: Union[str, date] | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -81,17 +73,7 @@ class ConsentRequestsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/obp/v5.1.0/consumer/vrp-consent-requests",
-            body=maybe_transform(
-                {
-                    "from_account": from_account,
-                    "to_account": to_account,
-                    "email": email,
-                    "phone_number": phone_number,
-                    "time_to_live": time_to_live,
-                    "valid_from": valid_from,
-                },
-                consent_request_create_params.ConsentRequestCreateParams,
-            ),
+            body=maybe_transform(body, consent_request_create_params.ConsentRequestCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -122,12 +104,7 @@ class AsyncConsentRequestsResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        from_account: consent_request_create_params.FromAccount,
-        to_account: consent_request_create_params.ToAccount,
-        email: str | NotGiven = NOT_GIVEN,
-        phone_number: str | NotGiven = NOT_GIVEN,
-        time_to_live: int | NotGiven = NOT_GIVEN,
-        valid_from: Union[str, date] | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -150,17 +127,7 @@ class AsyncConsentRequestsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/obp/v5.1.0/consumer/vrp-consent-requests",
-            body=await async_maybe_transform(
-                {
-                    "from_account": from_account,
-                    "to_account": to_account,
-                    "email": email,
-                    "phone_number": phone_number,
-                    "time_to_live": time_to_live,
-                    "valid_from": valid_from,
-                },
-                consent_request_create_params.ConsentRequestCreateParams,
-            ),
+            body=await async_maybe_transform(body, consent_request_create_params.ConsentRequestCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

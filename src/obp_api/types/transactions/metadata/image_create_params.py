@@ -16,6 +16,4 @@ class ImageCreateParams(TypedDict, total=False):
 
     view_id: Required[Annotated[str, PropertyInfo(alias="VIEW_ID")]]
 
-    label: Required[str]
-
-    url: Required[Annotated[str, PropertyInfo(alias="URL")]]
+    body: Required[object]

@@ -8,4 +8,4 @@ __all__ = ["HostUpdateParams"]
 
 
 class HostUpdateParams(TypedDict, total=False):
-    host: Required[str]
+    body: Required[object]

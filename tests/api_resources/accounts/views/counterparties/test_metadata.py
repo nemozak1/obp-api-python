@@ -126,10 +126,7 @@ class TestMetadata:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            corporate_location={
-                "latitude": 1.532,
-                "longitude": 1.535,
-            },
+            body={},
         )
         assert metadata.is_closed
         assert metadata.json() == {"foo": "bar"}
@@ -148,10 +145,7 @@ class TestMetadata:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            corporate_location={
-                "latitude": 1.532,
-                "longitude": 1.535,
-            },
+            body={},
         )
 
         assert metadata.is_closed is True
@@ -170,10 +164,7 @@ class TestMetadata:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            corporate_location={
-                "latitude": 1.532,
-                "longitude": 1.535,
-            },
+            body={},
         ) as metadata:
             assert not metadata.is_closed
             assert metadata.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -193,10 +184,7 @@ class TestMetadata:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                corporate_location={
-                    "latitude": 1.532,
-                    "longitude": 1.535,
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -205,10 +193,7 @@ class TestMetadata:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                corporate_location={
-                    "latitude": 1.532,
-                    "longitude": 1.535,
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -217,10 +202,7 @@ class TestMetadata:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                corporate_location={
-                    "latitude": 1.532,
-                    "longitude": 1.535,
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `other_account_id` but received ''"):
@@ -229,10 +211,7 @@ class TestMetadata:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                corporate_location={
-                    "latitude": 1.532,
-                    "longitude": 1.535,
-                },
+                body={},
             )
 
 
@@ -342,10 +321,7 @@ class TestAsyncMetadata:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            corporate_location={
-                "latitude": 1.532,
-                "longitude": 1.535,
-            },
+            body={},
         )
         assert metadata.is_closed
         assert await metadata.json() == {"foo": "bar"}
@@ -364,10 +340,7 @@ class TestAsyncMetadata:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            corporate_location={
-                "latitude": 1.532,
-                "longitude": 1.535,
-            },
+            body={},
         )
 
         assert metadata.is_closed is True
@@ -386,10 +359,7 @@ class TestAsyncMetadata:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            corporate_location={
-                "latitude": 1.532,
-                "longitude": 1.535,
-            },
+            body={},
         ) as metadata:
             assert not metadata.is_closed
             assert metadata.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -409,10 +379,7 @@ class TestAsyncMetadata:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                corporate_location={
-                    "latitude": 1.532,
-                    "longitude": 1.535,
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -421,10 +388,7 @@ class TestAsyncMetadata:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                corporate_location={
-                    "latitude": 1.532,
-                    "longitude": 1.535,
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -433,10 +397,7 @@ class TestAsyncMetadata:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                corporate_location={
-                    "latitude": 1.532,
-                    "longitude": 1.535,
-                },
+                body={},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `other_account_id` but received ''"):
@@ -445,8 +406,5 @@ class TestAsyncMetadata:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                corporate_location={
-                    "latitude": 1.532,
-                    "longitude": 1.535,
-                },
+                body={},
             )

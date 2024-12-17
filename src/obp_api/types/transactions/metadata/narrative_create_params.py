@@ -16,4 +16,4 @@ class NarrativeCreateParams(TypedDict, total=False):
 
     view_id: Required[Annotated[str, PropertyInfo(alias="VIEW_ID")]]
 
-    narrative: Required[str]
+    body: Required[object]

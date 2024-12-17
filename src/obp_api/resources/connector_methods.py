@@ -50,10 +50,7 @@ class ConnectorMethodsResource(SyncAPIResource):
     def create(
         self,
         *,
-        method_body: str,
-        method_name: str,
-        programming_lang: str,
-        connector_method_id: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -76,15 +73,7 @@ class ConnectorMethodsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/obp/v5.1.0/management/connector-methods",
-            body=maybe_transform(
-                {
-                    "method_body": method_body,
-                    "method_name": method_name,
-                    "programming_lang": programming_lang,
-                    "connector_method_id": connector_method_id,
-                },
-                connector_method_create_params.ConnectorMethodCreateParams,
-            ),
+            body=maybe_transform(body, connector_method_create_params.ConnectorMethodCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -116,8 +105,7 @@ class ConnectorMethodsResource(SyncAPIResource):
     def update(
         self,
         *,
-        method_body: str,
-        programming_lang: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -140,13 +128,7 @@ class ConnectorMethodsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             "/obp/v5.1.0/management/connector-methods/CONNECTOR_METHOD_ID",
-            body=maybe_transform(
-                {
-                    "method_body": method_body,
-                    "programming_lang": programming_lang,
-                },
-                connector_method_update_params.ConnectorMethodUpdateParams,
-            ),
+            body=maybe_transform(body, connector_method_update_params.ConnectorMethodUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -197,10 +179,7 @@ class AsyncConnectorMethodsResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        method_body: str,
-        method_name: str,
-        programming_lang: str,
-        connector_method_id: str | NotGiven = NOT_GIVEN,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -223,15 +202,7 @@ class AsyncConnectorMethodsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/obp/v5.1.0/management/connector-methods",
-            body=await async_maybe_transform(
-                {
-                    "method_body": method_body,
-                    "method_name": method_name,
-                    "programming_lang": programming_lang,
-                    "connector_method_id": connector_method_id,
-                },
-                connector_method_create_params.ConnectorMethodCreateParams,
-            ),
+            body=await async_maybe_transform(body, connector_method_create_params.ConnectorMethodCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -263,8 +234,7 @@ class AsyncConnectorMethodsResource(AsyncAPIResource):
     async def update(
         self,
         *,
-        method_body: str,
-        programming_lang: str,
+        body: object,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -287,13 +257,7 @@ class AsyncConnectorMethodsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             "/obp/v5.1.0/management/connector-methods/CONNECTOR_METHOD_ID",
-            body=await async_maybe_transform(
-                {
-                    "method_body": method_body,
-                    "programming_lang": programming_lang,
-                },
-                connector_method_update_params.ConnectorMethodUpdateParams,
-            ),
+            body=await async_maybe_transform(body, connector_method_update_params.ConnectorMethodUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

@@ -30,60 +30,7 @@ class TestSystemDynamicEntities:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         system_dynamic_entity = client.system_dynamic_entities.create(
-            foo_bar={
-                "description": "description of this entity, can be markdown text.",
-                "properties": {
-                    "name": {
-                        "description": "description of **name** field, can be markdown text.",
-                        "example": "James Brown",
-                        "max_length": 20,
-                        "min_length": 3,
-                        "type": "number",
-                    },
-                    "number": {
-                        "description": "description of **number** field, can be markdown text.",
-                        "example": 698761728,
-                        "type": "number",
-                    },
-                },
-                "required": ["string"],
-            },
-            has_personal_entity=True,
-        )
-        assert system_dynamic_entity.is_closed
-        assert system_dynamic_entity.json() == {"foo": "bar"}
-        assert cast(Any, system_dynamic_entity.is_closed) is True
-        assert isinstance(system_dynamic_entity, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_create_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.post("/obp/v5.1.0/management/system-dynamic-entities").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        system_dynamic_entity = client.system_dynamic_entities.create(
-            foo_bar={
-                "description": "description of this entity, can be markdown text.",
-                "properties": {
-                    "name": {
-                        "description": "description of **name** field, can be markdown text.",
-                        "example": "James Brown",
-                        "max_length": 20,
-                        "min_length": 3,
-                        "type": "number",
-                    },
-                    "number": {
-                        "description": "description of **number** field, can be markdown text.",
-                        "example": 698761728,
-                        "type": "number",
-                    },
-                },
-                "required": ["string"],
-            },
-            has_personal_entity=True,
-            bank_id="bankId",
-            dynamic_entity_id="dynamicEntityId",
-            user_id="userId",
+            body={},
         )
         assert system_dynamic_entity.is_closed
         assert system_dynamic_entity.json() == {"foo": "bar"}
@@ -98,25 +45,7 @@ class TestSystemDynamicEntities:
         )
 
         system_dynamic_entity = client.system_dynamic_entities.with_raw_response.create(
-            foo_bar={
-                "description": "description of this entity, can be markdown text.",
-                "properties": {
-                    "name": {
-                        "description": "description of **name** field, can be markdown text.",
-                        "example": "James Brown",
-                        "max_length": 20,
-                        "min_length": 3,
-                        "type": "number",
-                    },
-                    "number": {
-                        "description": "description of **number** field, can be markdown text.",
-                        "example": 698761728,
-                        "type": "number",
-                    },
-                },
-                "required": ["string"],
-            },
-            has_personal_entity=True,
+            body={},
         )
 
         assert system_dynamic_entity.is_closed is True
@@ -131,25 +60,7 @@ class TestSystemDynamicEntities:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.system_dynamic_entities.with_streaming_response.create(
-            foo_bar={
-                "description": "description of this entity, can be markdown text.",
-                "properties": {
-                    "name": {
-                        "description": "description of **name** field, can be markdown text.",
-                        "example": "James Brown",
-                        "max_length": 20,
-                        "min_length": 3,
-                        "type": "number",
-                    },
-                    "number": {
-                        "description": "description of **number** field, can be markdown text.",
-                        "example": 698761728,
-                        "type": "number",
-                    },
-                },
-                "required": ["string"],
-            },
-            has_personal_entity=True,
+            body={},
         ) as system_dynamic_entity:
             assert not system_dynamic_entity.is_closed
             assert system_dynamic_entity.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -167,62 +78,8 @@ class TestSystemDynamicEntities:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         system_dynamic_entity = client.system_dynamic_entities.update(
-            path_dynamic_entity_id="DYNAMIC_ENTITY_ID",
-            foo_bar={
-                "description": "description of this entity, can be markdown text.",
-                "properties": {
-                    "name": {
-                        "description": "description of **name** field, can be markdown text.",
-                        "example": "James Brown",
-                        "max_length": 20,
-                        "min_length": 3,
-                        "type": "number",
-                    },
-                    "number": {
-                        "description": "description of **number** field, can be markdown text.",
-                        "example": 698761728,
-                        "type": "number",
-                    },
-                },
-                "required": ["string"],
-            },
-            has_personal_entity=True,
-        )
-        assert system_dynamic_entity.is_closed
-        assert system_dynamic_entity.json() == {"foo": "bar"}
-        assert cast(Any, system_dynamic_entity.is_closed) is True
-        assert isinstance(system_dynamic_entity, BinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    def test_method_update_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.put("/obp/v5.1.0/management/system-dynamic-entities/DYNAMIC_ENTITY_ID").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        system_dynamic_entity = client.system_dynamic_entities.update(
-            path_dynamic_entity_id="DYNAMIC_ENTITY_ID",
-            foo_bar={
-                "description": "description of this entity, can be markdown text.",
-                "properties": {
-                    "name": {
-                        "description": "description of **name** field, can be markdown text.",
-                        "example": "James Brown",
-                        "max_length": 20,
-                        "min_length": 3,
-                        "type": "number",
-                    },
-                    "number": {
-                        "description": "description of **number** field, can be markdown text.",
-                        "example": 698761728,
-                        "type": "number",
-                    },
-                },
-                "required": ["string"],
-            },
-            has_personal_entity=True,
-            bank_id="bankId",
-            body_dynamic_entity_id="dynamicEntityId",
-            user_id="userId",
+            dynamic_entity_id="DYNAMIC_ENTITY_ID",
+            body={},
         )
         assert system_dynamic_entity.is_closed
         assert system_dynamic_entity.json() == {"foo": "bar"}
@@ -237,26 +94,8 @@ class TestSystemDynamicEntities:
         )
 
         system_dynamic_entity = client.system_dynamic_entities.with_raw_response.update(
-            path_dynamic_entity_id="DYNAMIC_ENTITY_ID",
-            foo_bar={
-                "description": "description of this entity, can be markdown text.",
-                "properties": {
-                    "name": {
-                        "description": "description of **name** field, can be markdown text.",
-                        "example": "James Brown",
-                        "max_length": 20,
-                        "min_length": 3,
-                        "type": "number",
-                    },
-                    "number": {
-                        "description": "description of **number** field, can be markdown text.",
-                        "example": 698761728,
-                        "type": "number",
-                    },
-                },
-                "required": ["string"],
-            },
-            has_personal_entity=True,
+            dynamic_entity_id="DYNAMIC_ENTITY_ID",
+            body={},
         )
 
         assert system_dynamic_entity.is_closed is True
@@ -271,26 +110,8 @@ class TestSystemDynamicEntities:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.system_dynamic_entities.with_streaming_response.update(
-            path_dynamic_entity_id="DYNAMIC_ENTITY_ID",
-            foo_bar={
-                "description": "description of this entity, can be markdown text.",
-                "properties": {
-                    "name": {
-                        "description": "description of **name** field, can be markdown text.",
-                        "example": "James Brown",
-                        "max_length": 20,
-                        "min_length": 3,
-                        "type": "number",
-                    },
-                    "number": {
-                        "description": "description of **number** field, can be markdown text.",
-                        "example": 698761728,
-                        "type": "number",
-                    },
-                },
-                "required": ["string"],
-            },
-            has_personal_entity=True,
+            dynamic_entity_id="DYNAMIC_ENTITY_ID",
+            body={},
         ) as system_dynamic_entity:
             assert not system_dynamic_entity.is_closed
             assert system_dynamic_entity.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -304,30 +125,10 @@ class TestSystemDynamicEntities:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_path_params_update(self, client: ObpAPI) -> None:
-        with pytest.raises(
-            ValueError, match=r"Expected a non-empty value for `path_dynamic_entity_id` but received ''"
-        ):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `dynamic_entity_id` but received ''"):
             client.system_dynamic_entities.with_raw_response.update(
-                path_dynamic_entity_id="",
-                foo_bar={
-                    "description": "description of this entity, can be markdown text.",
-                    "properties": {
-                        "name": {
-                            "description": "description of **name** field, can be markdown text.",
-                            "example": "James Brown",
-                            "max_length": 20,
-                            "min_length": 3,
-                            "type": "number",
-                        },
-                        "number": {
-                            "description": "description of **number** field, can be markdown text.",
-                            "example": 698761728,
-                            "type": "number",
-                        },
-                    },
-                    "required": ["string"],
-                },
-                has_personal_entity=True,
+                dynamic_entity_id="",
+                body={},
             )
 
     @parametrize
@@ -421,60 +222,7 @@ class TestAsyncSystemDynamicEntities:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         system_dynamic_entity = await async_client.system_dynamic_entities.create(
-            foo_bar={
-                "description": "description of this entity, can be markdown text.",
-                "properties": {
-                    "name": {
-                        "description": "description of **name** field, can be markdown text.",
-                        "example": "James Brown",
-                        "max_length": 20,
-                        "min_length": 3,
-                        "type": "number",
-                    },
-                    "number": {
-                        "description": "description of **number** field, can be markdown text.",
-                        "example": 698761728,
-                        "type": "number",
-                    },
-                },
-                "required": ["string"],
-            },
-            has_personal_entity=True,
-        )
-        assert system_dynamic_entity.is_closed
-        assert await system_dynamic_entity.json() == {"foo": "bar"}
-        assert cast(Any, system_dynamic_entity.is_closed) is True
-        assert isinstance(system_dynamic_entity, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_create_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.post("/obp/v5.1.0/management/system-dynamic-entities").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        system_dynamic_entity = await async_client.system_dynamic_entities.create(
-            foo_bar={
-                "description": "description of this entity, can be markdown text.",
-                "properties": {
-                    "name": {
-                        "description": "description of **name** field, can be markdown text.",
-                        "example": "James Brown",
-                        "max_length": 20,
-                        "min_length": 3,
-                        "type": "number",
-                    },
-                    "number": {
-                        "description": "description of **number** field, can be markdown text.",
-                        "example": 698761728,
-                        "type": "number",
-                    },
-                },
-                "required": ["string"],
-            },
-            has_personal_entity=True,
-            bank_id="bankId",
-            dynamic_entity_id="dynamicEntityId",
-            user_id="userId",
+            body={},
         )
         assert system_dynamic_entity.is_closed
         assert await system_dynamic_entity.json() == {"foo": "bar"}
@@ -489,25 +237,7 @@ class TestAsyncSystemDynamicEntities:
         )
 
         system_dynamic_entity = await async_client.system_dynamic_entities.with_raw_response.create(
-            foo_bar={
-                "description": "description of this entity, can be markdown text.",
-                "properties": {
-                    "name": {
-                        "description": "description of **name** field, can be markdown text.",
-                        "example": "James Brown",
-                        "max_length": 20,
-                        "min_length": 3,
-                        "type": "number",
-                    },
-                    "number": {
-                        "description": "description of **number** field, can be markdown text.",
-                        "example": 698761728,
-                        "type": "number",
-                    },
-                },
-                "required": ["string"],
-            },
-            has_personal_entity=True,
+            body={},
         )
 
         assert system_dynamic_entity.is_closed is True
@@ -522,25 +252,7 @@ class TestAsyncSystemDynamicEntities:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.system_dynamic_entities.with_streaming_response.create(
-            foo_bar={
-                "description": "description of this entity, can be markdown text.",
-                "properties": {
-                    "name": {
-                        "description": "description of **name** field, can be markdown text.",
-                        "example": "James Brown",
-                        "max_length": 20,
-                        "min_length": 3,
-                        "type": "number",
-                    },
-                    "number": {
-                        "description": "description of **number** field, can be markdown text.",
-                        "example": 698761728,
-                        "type": "number",
-                    },
-                },
-                "required": ["string"],
-            },
-            has_personal_entity=True,
+            body={},
         ) as system_dynamic_entity:
             assert not system_dynamic_entity.is_closed
             assert system_dynamic_entity.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -558,62 +270,8 @@ class TestAsyncSystemDynamicEntities:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         system_dynamic_entity = await async_client.system_dynamic_entities.update(
-            path_dynamic_entity_id="DYNAMIC_ENTITY_ID",
-            foo_bar={
-                "description": "description of this entity, can be markdown text.",
-                "properties": {
-                    "name": {
-                        "description": "description of **name** field, can be markdown text.",
-                        "example": "James Brown",
-                        "max_length": 20,
-                        "min_length": 3,
-                        "type": "number",
-                    },
-                    "number": {
-                        "description": "description of **number** field, can be markdown text.",
-                        "example": 698761728,
-                        "type": "number",
-                    },
-                },
-                "required": ["string"],
-            },
-            has_personal_entity=True,
-        )
-        assert system_dynamic_entity.is_closed
-        assert await system_dynamic_entity.json() == {"foo": "bar"}
-        assert cast(Any, system_dynamic_entity.is_closed) is True
-        assert isinstance(system_dynamic_entity, AsyncBinaryAPIResponse)
-
-    @parametrize
-    @pytest.mark.respx(base_url=base_url)
-    async def test_method_update_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
-        respx_mock.put("/obp/v5.1.0/management/system-dynamic-entities/DYNAMIC_ENTITY_ID").mock(
-            return_value=httpx.Response(200, json={"foo": "bar"})
-        )
-        system_dynamic_entity = await async_client.system_dynamic_entities.update(
-            path_dynamic_entity_id="DYNAMIC_ENTITY_ID",
-            foo_bar={
-                "description": "description of this entity, can be markdown text.",
-                "properties": {
-                    "name": {
-                        "description": "description of **name** field, can be markdown text.",
-                        "example": "James Brown",
-                        "max_length": 20,
-                        "min_length": 3,
-                        "type": "number",
-                    },
-                    "number": {
-                        "description": "description of **number** field, can be markdown text.",
-                        "example": 698761728,
-                        "type": "number",
-                    },
-                },
-                "required": ["string"],
-            },
-            has_personal_entity=True,
-            bank_id="bankId",
-            body_dynamic_entity_id="dynamicEntityId",
-            user_id="userId",
+            dynamic_entity_id="DYNAMIC_ENTITY_ID",
+            body={},
         )
         assert system_dynamic_entity.is_closed
         assert await system_dynamic_entity.json() == {"foo": "bar"}
@@ -628,26 +286,8 @@ class TestAsyncSystemDynamicEntities:
         )
 
         system_dynamic_entity = await async_client.system_dynamic_entities.with_raw_response.update(
-            path_dynamic_entity_id="DYNAMIC_ENTITY_ID",
-            foo_bar={
-                "description": "description of this entity, can be markdown text.",
-                "properties": {
-                    "name": {
-                        "description": "description of **name** field, can be markdown text.",
-                        "example": "James Brown",
-                        "max_length": 20,
-                        "min_length": 3,
-                        "type": "number",
-                    },
-                    "number": {
-                        "description": "description of **number** field, can be markdown text.",
-                        "example": 698761728,
-                        "type": "number",
-                    },
-                },
-                "required": ["string"],
-            },
-            has_personal_entity=True,
+            dynamic_entity_id="DYNAMIC_ENTITY_ID",
+            body={},
         )
 
         assert system_dynamic_entity.is_closed is True
@@ -662,26 +302,8 @@ class TestAsyncSystemDynamicEntities:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.system_dynamic_entities.with_streaming_response.update(
-            path_dynamic_entity_id="DYNAMIC_ENTITY_ID",
-            foo_bar={
-                "description": "description of this entity, can be markdown text.",
-                "properties": {
-                    "name": {
-                        "description": "description of **name** field, can be markdown text.",
-                        "example": "James Brown",
-                        "max_length": 20,
-                        "min_length": 3,
-                        "type": "number",
-                    },
-                    "number": {
-                        "description": "description of **number** field, can be markdown text.",
-                        "example": 698761728,
-                        "type": "number",
-                    },
-                },
-                "required": ["string"],
-            },
-            has_personal_entity=True,
+            dynamic_entity_id="DYNAMIC_ENTITY_ID",
+            body={},
         ) as system_dynamic_entity:
             assert not system_dynamic_entity.is_closed
             assert system_dynamic_entity.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -695,30 +317,10 @@ class TestAsyncSystemDynamicEntities:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_path_params_update(self, async_client: AsyncObpAPI) -> None:
-        with pytest.raises(
-            ValueError, match=r"Expected a non-empty value for `path_dynamic_entity_id` but received ''"
-        ):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `dynamic_entity_id` but received ''"):
             await async_client.system_dynamic_entities.with_raw_response.update(
-                path_dynamic_entity_id="",
-                foo_bar={
-                    "description": "description of this entity, can be markdown text.",
-                    "properties": {
-                        "name": {
-                            "description": "description of **name** field, can be markdown text.",
-                            "example": "James Brown",
-                            "max_length": 20,
-                            "min_length": 3,
-                            "type": "number",
-                        },
-                        "number": {
-                            "description": "description of **number** field, can be markdown text.",
-                            "example": 698761728,
-                            "type": "number",
-                        },
-                    },
-                    "required": ["string"],
-                },
-                has_personal_entity=True,
+                dynamic_entity_id="",
+                body={},
             )
 
     @parametrize
