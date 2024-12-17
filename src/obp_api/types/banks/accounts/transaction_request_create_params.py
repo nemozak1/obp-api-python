@@ -6,7 +6,7 @@ from typing_extensions import Required, Annotated, TypedDict
 
 from ...._utils import PropertyInfo
 
-__all__ = ["TransactionRequestCreateParams"]
+__all__ = ["TransactionRequestCreateParams", "To", "Value"]
 
 
 class TransactionRequestCreateParams(TypedDict, total=False):
@@ -14,4 +14,22 @@ class TransactionRequestCreateParams(TypedDict, total=False):
 
     account_id: Required[Annotated[str, PropertyInfo(alias="ACCOUNT_ID")]]
 
-    body: Required[object]
+    charge_policy: Required[str]
+
+    description: Required[str]
+
+    to: Required[To]
+
+    value: Required[Value]
+
+    future_date: str
+
+
+class To(TypedDict, total=False):
+    counterparty_id: Required[str]
+
+
+class Value(TypedDict, total=False):
+    amount: Required[str]
+
+    currency: Required[str]

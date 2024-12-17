@@ -32,7 +32,7 @@ client = ObpAPI(
 )
 
 response = client.accounts.check_iban(
-    body={},
+    address="DE75512108001245126199",
 )
 ```
 
@@ -52,7 +52,7 @@ client = AsyncObpAPI(
 
 async def main() -> None:
     response = await client.accounts.check_iban(
-        body={},
+        address="DE75512108001245126199",
     )
 
 
@@ -87,7 +87,7 @@ client = ObpAPI()
 
 try:
     client.accounts.check_iban(
-        body={},
+        address="DE75512108001245126199",
     )
 except obp_api.APIConnectionError as e:
     print("The server could not be reached")
@@ -132,7 +132,7 @@ client = ObpAPI(
 
 # Or, configure per-request:
 client.with_options(max_retries=5).accounts.check_iban(
-    body={},
+    address="DE75512108001245126199",
 )
 ```
 
@@ -157,7 +157,7 @@ client = ObpAPI(
 
 # Override per-request:
 client.with_options(timeout=5.0).accounts.check_iban(
-    body={},
+    address="DE75512108001245126199",
 )
 ```
 
@@ -200,7 +200,7 @@ from obp_api import ObpAPI
 
 client = ObpAPI()
 response = client.accounts.with_raw_response.check_iban(
-    body={},
+    address="DE75512108001245126199",
 )
 print(response.headers.get('X-My-Header'))
 
@@ -220,7 +220,7 @@ To stream the response body, use `.with_streaming_response` instead, which requi
 
 ```python
 with client.accounts.with_streaming_response.check_iban(
-    body={},
+    address="DE75512108001245126199",
 ) as response:
     print(response.headers.get("X-My-Header"))
 
@@ -296,6 +296,16 @@ client.with_options(http_client=DefaultHttpxClient(...))
 ### Managing HTTP resources
 
 By default the library closes underlying HTTP connections whenever the client is [garbage collected](https://docs.python.org/3/reference/datamodel.html#object.__del__). You can manually close the client using the `.close()` method if desired, or with a context manager that closes when exiting.
+
+```py
+from obp_api import ObpAPI
+
+with ObpAPI() as client:
+  # make requests here
+  ...
+
+# HTTP client is now closed
+```
 
 ## Versioning
 

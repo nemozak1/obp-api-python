@@ -8,4 +8,6 @@ __all__ = ["EntitlementRequestCreateParams"]
 
 
 class EntitlementRequestCreateParams(TypedDict, total=False):
-    body: Required[object]
+    bank_id: Required[str]
+
+    role_name: Required[str]

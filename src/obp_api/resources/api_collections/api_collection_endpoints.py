@@ -50,7 +50,7 @@ class APICollectionEndpointsResource(SyncAPIResource):
     def create(
         self,
         *,
-        body: object,
+        operation_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -73,7 +73,9 @@ class APICollectionEndpointsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/obp/v5.1.0/my/api-collections/API_COLLECTION_NAME/api-collection-endpoints",
-            body=maybe_transform(body, api_collection_endpoint_create_params.APICollectionEndpointCreateParams),
+            body=maybe_transform(
+                {"operation_id": operation_id}, api_collection_endpoint_create_params.APICollectionEndpointCreateParams
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -170,7 +172,7 @@ class AsyncAPICollectionEndpointsResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        body: object,
+        operation_id: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -194,7 +196,7 @@ class AsyncAPICollectionEndpointsResource(AsyncAPIResource):
         return await self._post(
             "/obp/v5.1.0/my/api-collections/API_COLLECTION_NAME/api-collection-endpoints",
             body=await async_maybe_transform(
-                body, api_collection_endpoint_create_params.APICollectionEndpointCreateParams
+                {"operation_id": operation_id}, api_collection_endpoint_create_params.APICollectionEndpointCreateParams
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout

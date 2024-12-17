@@ -52,7 +52,7 @@ class MobileNumberResource(SyncAPIResource):
         customer_id: str,
         *,
         bank_id: str,
-        body: object,
+        mobile_phone_number: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -79,7 +79,9 @@ class MobileNumberResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/mobile-number",
-            body=maybe_transform(body, mobile_number_update_params.MobileNumberUpdateParams),
+            body=maybe_transform(
+                {"mobile_phone_number": mobile_phone_number}, mobile_number_update_params.MobileNumberUpdateParams
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -112,7 +114,7 @@ class AsyncMobileNumberResource(AsyncAPIResource):
         customer_id: str,
         *,
         bank_id: str,
-        body: object,
+        mobile_phone_number: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -139,7 +141,9 @@ class AsyncMobileNumberResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/mobile-number",
-            body=await async_maybe_transform(body, mobile_number_update_params.MobileNumberUpdateParams),
+            body=await async_maybe_transform(
+                {"mobile_phone_number": mobile_phone_number}, mobile_number_update_params.MobileNumberUpdateParams
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

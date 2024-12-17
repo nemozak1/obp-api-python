@@ -31,7 +31,9 @@ class TestNotifications:
         )
         notification = client.web_hooks.notifications.on_create_transaction(
             bank_id="BANK_ID",
-            body={},
+            http_method="POST",
+            http_protocol="HTTP/1.1",
+            url="https://localhost.openbankproject.com",
         )
         assert notification.is_closed
         assert notification.json() == {"foo": "bar"}
@@ -47,7 +49,9 @@ class TestNotifications:
 
         notification = client.web_hooks.notifications.with_raw_response.on_create_transaction(
             bank_id="BANK_ID",
-            body={},
+            http_method="POST",
+            http_protocol="HTTP/1.1",
+            url="https://localhost.openbankproject.com",
         )
 
         assert notification.is_closed is True
@@ -63,7 +67,9 @@ class TestNotifications:
         )
         with client.web_hooks.notifications.with_streaming_response.on_create_transaction(
             bank_id="BANK_ID",
-            body={},
+            http_method="POST",
+            http_protocol="HTTP/1.1",
+            url="https://localhost.openbankproject.com",
         ) as notification:
             assert not notification.is_closed
             assert notification.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -80,7 +86,9 @@ class TestNotifications:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             client.web_hooks.notifications.with_raw_response.on_create_transaction(
                 bank_id="",
-                body={},
+                http_method="POST",
+                http_protocol="HTTP/1.1",
+                url="https://localhost.openbankproject.com",
             )
 
 
@@ -95,7 +103,9 @@ class TestAsyncNotifications:
         )
         notification = await async_client.web_hooks.notifications.on_create_transaction(
             bank_id="BANK_ID",
-            body={},
+            http_method="POST",
+            http_protocol="HTTP/1.1",
+            url="https://localhost.openbankproject.com",
         )
         assert notification.is_closed
         assert await notification.json() == {"foo": "bar"}
@@ -111,7 +121,9 @@ class TestAsyncNotifications:
 
         notification = await async_client.web_hooks.notifications.with_raw_response.on_create_transaction(
             bank_id="BANK_ID",
-            body={},
+            http_method="POST",
+            http_protocol="HTTP/1.1",
+            url="https://localhost.openbankproject.com",
         )
 
         assert notification.is_closed is True
@@ -129,7 +141,9 @@ class TestAsyncNotifications:
         )
         async with async_client.web_hooks.notifications.with_streaming_response.on_create_transaction(
             bank_id="BANK_ID",
-            body={},
+            http_method="POST",
+            http_protocol="HTTP/1.1",
+            url="https://localhost.openbankproject.com",
         ) as notification:
             assert not notification.is_closed
             assert notification.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -146,5 +160,7 @@ class TestAsyncNotifications:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             await async_client.web_hooks.notifications.with_raw_response.on_create_transaction(
                 bank_id="",
-                body={},
+                http_method="POST",
+                http_protocol="HTTP/1.1",
+                url="https://localhost.openbankproject.com",
             )

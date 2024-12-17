@@ -97,7 +97,7 @@ class MetadataResource(SyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        body: object,
+        corporate_location: metadata_update_params.CorporateLocation,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -128,7 +128,9 @@ class MetadataResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/other_accounts/{other_account_id}/metadata/corporate_location",
-            body=maybe_transform(body, metadata_update_params.MetadataUpdateParams),
+            body=maybe_transform(
+                {"corporate_location": corporate_location}, metadata_update_params.MetadataUpdateParams
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -206,7 +208,7 @@ class AsyncMetadataResource(AsyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        body: object,
+        corporate_location: metadata_update_params.CorporateLocation,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -237,7 +239,9 @@ class AsyncMetadataResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/other_accounts/{other_account_id}/metadata/corporate_location",
-            body=await async_maybe_transform(body, metadata_update_params.MetadataUpdateParams),
+            body=await async_maybe_transform(
+                {"corporate_location": corporate_location}, metadata_update_params.MetadataUpdateParams
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+import datetime
+from typing import Union
 from typing_extensions import Required, Annotated, TypedDict
 
 from ..._utils import PropertyInfo
@@ -14,4 +16,16 @@ class KYCCheckUpdateParams(TypedDict, total=False):
 
     customer_id: Required[Annotated[str, PropertyInfo(alias="CUSTOMER_ID")]]
 
-    body: Required[object]
+    comments: Required[str]
+
+    customer_number: Required[str]
+
+    date: Required[Annotated[Union[str, datetime.date], PropertyInfo(format="iso8601")]]
+
+    how: Required[str]
+
+    satisfied: Required[bool]
+
+    staff_name: Required[str]
+
+    staff_user_id: Required[str]

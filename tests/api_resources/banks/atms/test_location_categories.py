@@ -32,7 +32,7 @@ class TestLocationCategories:
         location_category = client.banks.atms.location_categories.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            location_categories=["string"],
         )
         assert location_category.is_closed
         assert location_category.json() == {"foo": "bar"}
@@ -49,7 +49,7 @@ class TestLocationCategories:
         location_category = client.banks.atms.location_categories.with_raw_response.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            location_categories=["string"],
         )
 
         assert location_category.is_closed is True
@@ -66,7 +66,7 @@ class TestLocationCategories:
         with client.banks.atms.location_categories.with_streaming_response.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            location_categories=["string"],
         ) as location_category:
             assert not location_category.is_closed
             assert location_category.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -84,14 +84,14 @@ class TestLocationCategories:
             client.banks.atms.location_categories.with_raw_response.update(
                 atm_id="ATM_ID",
                 bank_id="",
-                body={},
+                location_categories=["string"],
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `atm_id` but received ''"):
             client.banks.atms.location_categories.with_raw_response.update(
                 atm_id="",
                 bank_id="BANK_ID",
-                body={},
+                location_categories=["string"],
             )
 
 
@@ -107,7 +107,7 @@ class TestAsyncLocationCategories:
         location_category = await async_client.banks.atms.location_categories.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            location_categories=["string"],
         )
         assert location_category.is_closed
         assert await location_category.json() == {"foo": "bar"}
@@ -124,7 +124,7 @@ class TestAsyncLocationCategories:
         location_category = await async_client.banks.atms.location_categories.with_raw_response.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            location_categories=["string"],
         )
 
         assert location_category.is_closed is True
@@ -141,7 +141,7 @@ class TestAsyncLocationCategories:
         async with async_client.banks.atms.location_categories.with_streaming_response.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            location_categories=["string"],
         ) as location_category:
             assert not location_category.is_closed
             assert location_category.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -159,12 +159,12 @@ class TestAsyncLocationCategories:
             await async_client.banks.atms.location_categories.with_raw_response.update(
                 atm_id="ATM_ID",
                 bank_id="",
-                body={},
+                location_categories=["string"],
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `atm_id` but received ''"):
             await async_client.banks.atms.location_categories.with_raw_response.update(
                 atm_id="",
                 bank_id="BANK_ID",
-                body={},
+                location_categories=["string"],
             )

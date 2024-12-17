@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Iterable
+
 import httpx
 
 from ..types import sandbox_data_import_params
@@ -50,7 +52,14 @@ class SandboxResource(SyncAPIResource):
     def data_import(
         self,
         *,
-        body: object,
+        accounts: Iterable[sandbox_data_import_params.Account],
+        atms: Iterable[sandbox_data_import_params.Atm],
+        banks: Iterable[sandbox_data_import_params.Bank],
+        branches: Iterable[sandbox_data_import_params.Branch],
+        crm_events: Iterable[sandbox_data_import_params.CRMEvent],
+        products: Iterable[sandbox_data_import_params.Product],
+        transactions: Iterable[sandbox_data_import_params.Transaction],
+        users: Iterable[sandbox_data_import_params.User],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -73,7 +82,19 @@ class SandboxResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/obp/v5.1.0/sandbox/data-import",
-            body=maybe_transform(body, sandbox_data_import_params.SandboxDataImportParams),
+            body=maybe_transform(
+                {
+                    "accounts": accounts,
+                    "atms": atms,
+                    "banks": banks,
+                    "branches": branches,
+                    "crm_events": crm_events,
+                    "products": products,
+                    "transactions": transactions,
+                    "users": users,
+                },
+                sandbox_data_import_params.SandboxDataImportParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -104,7 +125,14 @@ class AsyncSandboxResource(AsyncAPIResource):
     async def data_import(
         self,
         *,
-        body: object,
+        accounts: Iterable[sandbox_data_import_params.Account],
+        atms: Iterable[sandbox_data_import_params.Atm],
+        banks: Iterable[sandbox_data_import_params.Bank],
+        branches: Iterable[sandbox_data_import_params.Branch],
+        crm_events: Iterable[sandbox_data_import_params.CRMEvent],
+        products: Iterable[sandbox_data_import_params.Product],
+        transactions: Iterable[sandbox_data_import_params.Transaction],
+        users: Iterable[sandbox_data_import_params.User],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -127,7 +155,19 @@ class AsyncSandboxResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/obp/v5.1.0/sandbox/data-import",
-            body=await async_maybe_transform(body, sandbox_data_import_params.SandboxDataImportParams),
+            body=await async_maybe_transform(
+                {
+                    "accounts": accounts,
+                    "atms": atms,
+                    "banks": banks,
+                    "branches": branches,
+                    "crm_events": crm_events,
+                    "products": products,
+                    "transactions": transactions,
+                    "users": users,
+                },
+                sandbox_data_import_params.SandboxDataImportParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

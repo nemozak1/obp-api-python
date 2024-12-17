@@ -2,6 +2,7 @@
 
 from __future__ import annotations
 
+from typing import List
 from typing_extensions import Required, Annotated, TypedDict
 
 from ...._utils import PropertyInfo
@@ -12,4 +13,4 @@ __all__ = ["SupportedCurrencyUpdateParams"]
 class SupportedCurrencyUpdateParams(TypedDict, total=False):
     bank_id: Required[Annotated[str, PropertyInfo(alias="BANK_ID")]]
 
-    body: Required[object]
+    supported_currencies: Required[List[str]]

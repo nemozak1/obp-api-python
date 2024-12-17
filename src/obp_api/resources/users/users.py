@@ -138,7 +138,11 @@ class UsersResource(SyncAPIResource):
     def create(
         self,
         *,
-        body: object,
+        email: str,
+        first_name: str,
+        last_name: str,
+        password: str,
+        username: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -161,7 +165,16 @@ class UsersResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/obp/v5.1.0/users",
-            body=maybe_transform(body, user_create_params.UserCreateParams),
+            body=maybe_transform(
+                {
+                    "email": email,
+                    "first_name": first_name,
+                    "last_name": last_name,
+                    "password": password,
+                    "username": username,
+                },
+                user_create_params.UserCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -227,7 +240,9 @@ class UsersResource(SyncAPIResource):
     def reset_password_url(
         self,
         *,
-        body: object,
+        email: str,
+        user_id: str,
+        username: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -250,7 +265,14 @@ class UsersResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/obp/v5.1.0/management/user/reset-password-url",
-            body=maybe_transform(body, user_reset_password_url_params.UserResetPasswordURLParams),
+            body=maybe_transform(
+                {
+                    "email": email,
+                    "user_id": user_id,
+                    "username": username,
+                },
+                user_reset_password_url_params.UserResetPasswordURLParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -309,7 +331,11 @@ class AsyncUsersResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        body: object,
+        email: str,
+        first_name: str,
+        last_name: str,
+        password: str,
+        username: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -332,7 +358,16 @@ class AsyncUsersResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/obp/v5.1.0/users",
-            body=await async_maybe_transform(body, user_create_params.UserCreateParams),
+            body=await async_maybe_transform(
+                {
+                    "email": email,
+                    "first_name": first_name,
+                    "last_name": last_name,
+                    "password": password,
+                    "username": username,
+                },
+                user_create_params.UserCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -398,7 +433,9 @@ class AsyncUsersResource(AsyncAPIResource):
     async def reset_password_url(
         self,
         *,
-        body: object,
+        email: str,
+        user_id: str,
+        username: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -421,7 +458,14 @@ class AsyncUsersResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/obp/v5.1.0/management/user/reset-password-url",
-            body=await async_maybe_transform(body, user_reset_password_url_params.UserResetPasswordURLParams),
+            body=await async_maybe_transform(
+                {
+                    "email": email,
+                    "user_id": user_id,
+                    "username": username,
+                },
+                user_reset_password_url_params.UserResetPasswordURLParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

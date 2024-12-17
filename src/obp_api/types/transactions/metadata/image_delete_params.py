@@ -18,4 +18,4 @@ class ImageDeleteParams(TypedDict, total=False):
 
     transaction_id: Required[Annotated[str, PropertyInfo(alias="TRANSACTION_ID")]]
 
-    body: Required[object]
+    json_string: Required[Annotated[str, PropertyInfo(alias="jsonString")]]

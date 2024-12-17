@@ -58,7 +58,7 @@ class PublicAliasResource(SyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        body: object,
+        alias: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -89,7 +89,7 @@ class PublicAliasResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/other_accounts/{other_account_id}/public_alias",
-            body=maybe_transform(body, public_alias_create_params.PublicAliasCreateParams),
+            body=maybe_transform({"alias": alias}, public_alias_create_params.PublicAliasCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -146,7 +146,7 @@ class PublicAliasResource(SyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        body: object,
+        alias: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -177,7 +177,7 @@ class PublicAliasResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/other_accounts/{other_account_id}/public_alias",
-            body=maybe_transform(body, public_alias_update_params.PublicAliasUpdateParams),
+            body=maybe_transform({"alias": alias}, public_alias_update_params.PublicAliasUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -191,7 +191,7 @@ class PublicAliasResource(SyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        body: object,
+        json_string: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -222,7 +222,7 @@ class PublicAliasResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/other_accounts/{other_account_id}/public_alias",
-            body=maybe_transform(body, public_alias_delete_params.PublicAliasDeleteParams),
+            body=maybe_transform({"json_string": json_string}, public_alias_delete_params.PublicAliasDeleteParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -257,7 +257,7 @@ class AsyncPublicAliasResource(AsyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        body: object,
+        alias: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -288,7 +288,7 @@ class AsyncPublicAliasResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/other_accounts/{other_account_id}/public_alias",
-            body=await async_maybe_transform(body, public_alias_create_params.PublicAliasCreateParams),
+            body=await async_maybe_transform({"alias": alias}, public_alias_create_params.PublicAliasCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -345,7 +345,7 @@ class AsyncPublicAliasResource(AsyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        body: object,
+        alias: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -376,7 +376,7 @@ class AsyncPublicAliasResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/other_accounts/{other_account_id}/public_alias",
-            body=await async_maybe_transform(body, public_alias_update_params.PublicAliasUpdateParams),
+            body=await async_maybe_transform({"alias": alias}, public_alias_update_params.PublicAliasUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -390,7 +390,7 @@ class AsyncPublicAliasResource(AsyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        body: object,
+        json_string: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -421,7 +421,9 @@ class AsyncPublicAliasResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/other_accounts/{other_account_id}/public_alias",
-            body=await async_maybe_transform(body, public_alias_delete_params.PublicAliasDeleteParams),
+            body=await async_maybe_transform(
+                {"json_string": json_string}, public_alias_delete_params.PublicAliasDeleteParams
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

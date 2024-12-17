@@ -30,8 +30,11 @@ class TestCustomerAccountLinks:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         customer_account_link = client.customer_account_links.create(
-            bank_id="BANK_ID",
-            body={},
+            path_bank_id="BANK_ID",
+            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+            body_bank_id="gh.29.uk",
+            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
+            relationship_type="Owner",
         )
         assert customer_account_link.is_closed
         assert customer_account_link.json() == {"foo": "bar"}
@@ -46,8 +49,11 @@ class TestCustomerAccountLinks:
         )
 
         customer_account_link = client.customer_account_links.with_raw_response.create(
-            bank_id="BANK_ID",
-            body={},
+            path_bank_id="BANK_ID",
+            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+            body_bank_id="gh.29.uk",
+            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
+            relationship_type="Owner",
         )
 
         assert customer_account_link.is_closed is True
@@ -62,8 +68,11 @@ class TestCustomerAccountLinks:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.customer_account_links.with_streaming_response.create(
-            bank_id="BANK_ID",
-            body={},
+            path_bank_id="BANK_ID",
+            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+            body_bank_id="gh.29.uk",
+            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
+            relationship_type="Owner",
         ) as customer_account_link:
             assert not customer_account_link.is_closed
             assert customer_account_link.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -77,10 +86,13 @@ class TestCustomerAccountLinks:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_path_params_create(self, client: ObpAPI) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_bank_id` but received ''"):
             client.customer_account_links.with_raw_response.create(
-                bank_id="",
-                body={},
+                path_bank_id="",
+                account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+                body_bank_id="gh.29.uk",
+                customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
+                relationship_type="Owner",
             )
 
     @parametrize
@@ -147,7 +159,7 @@ class TestCustomerAccountLinks:
         )
         customer_account_link = client.customer_account_links.update(
             bank_id="BANK_ID",
-            body={},
+            relationship_type="Owner",
         )
         assert customer_account_link.is_closed
         assert customer_account_link.json() == {"foo": "bar"}
@@ -163,7 +175,7 @@ class TestCustomerAccountLinks:
 
         customer_account_link = client.customer_account_links.with_raw_response.update(
             bank_id="BANK_ID",
-            body={},
+            relationship_type="Owner",
         )
 
         assert customer_account_link.is_closed is True
@@ -179,7 +191,7 @@ class TestCustomerAccountLinks:
         )
         with client.customer_account_links.with_streaming_response.update(
             bank_id="BANK_ID",
-            body={},
+            relationship_type="Owner",
         ) as customer_account_link:
             assert not customer_account_link.is_closed
             assert customer_account_link.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -196,7 +208,7 @@ class TestCustomerAccountLinks:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             client.customer_account_links.with_raw_response.update(
                 bank_id="",
-                body={},
+                relationship_type="Owner",
             )
 
     @parametrize
@@ -314,8 +326,11 @@ class TestAsyncCustomerAccountLinks:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         customer_account_link = await async_client.customer_account_links.create(
-            bank_id="BANK_ID",
-            body={},
+            path_bank_id="BANK_ID",
+            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+            body_bank_id="gh.29.uk",
+            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
+            relationship_type="Owner",
         )
         assert customer_account_link.is_closed
         assert await customer_account_link.json() == {"foo": "bar"}
@@ -330,8 +345,11 @@ class TestAsyncCustomerAccountLinks:
         )
 
         customer_account_link = await async_client.customer_account_links.with_raw_response.create(
-            bank_id="BANK_ID",
-            body={},
+            path_bank_id="BANK_ID",
+            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+            body_bank_id="gh.29.uk",
+            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
+            relationship_type="Owner",
         )
 
         assert customer_account_link.is_closed is True
@@ -346,8 +364,11 @@ class TestAsyncCustomerAccountLinks:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.customer_account_links.with_streaming_response.create(
-            bank_id="BANK_ID",
-            body={},
+            path_bank_id="BANK_ID",
+            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+            body_bank_id="gh.29.uk",
+            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
+            relationship_type="Owner",
         ) as customer_account_link:
             assert not customer_account_link.is_closed
             assert customer_account_link.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -361,10 +382,13 @@ class TestAsyncCustomerAccountLinks:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_path_params_create(self, async_client: AsyncObpAPI) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
+        with pytest.raises(ValueError, match=r"Expected a non-empty value for `path_bank_id` but received ''"):
             await async_client.customer_account_links.with_raw_response.create(
-                bank_id="",
-                body={},
+                path_bank_id="",
+                account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+                body_bank_id="gh.29.uk",
+                customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
+                relationship_type="Owner",
             )
 
     @parametrize
@@ -431,7 +455,7 @@ class TestAsyncCustomerAccountLinks:
         )
         customer_account_link = await async_client.customer_account_links.update(
             bank_id="BANK_ID",
-            body={},
+            relationship_type="Owner",
         )
         assert customer_account_link.is_closed
         assert await customer_account_link.json() == {"foo": "bar"}
@@ -447,7 +471,7 @@ class TestAsyncCustomerAccountLinks:
 
         customer_account_link = await async_client.customer_account_links.with_raw_response.update(
             bank_id="BANK_ID",
-            body={},
+            relationship_type="Owner",
         )
 
         assert customer_account_link.is_closed is True
@@ -463,7 +487,7 @@ class TestAsyncCustomerAccountLinks:
         )
         async with async_client.customer_account_links.with_streaming_response.update(
             bank_id="BANK_ID",
-            body={},
+            relationship_type="Owner",
         ) as customer_account_link:
             assert not customer_account_link.is_closed
             assert customer_account_link.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -480,7 +504,7 @@ class TestAsyncCustomerAccountLinks:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             await async_client.customer_account_links.with_raw_response.update(
                 bank_id="",
-                body={},
+                relationship_type="Owner",
             )
 
     @parametrize
