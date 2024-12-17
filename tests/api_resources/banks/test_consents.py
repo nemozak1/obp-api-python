@@ -32,7 +32,7 @@ class TestConsents:
         consent = client.banks.consents.update(
             consent_id="CONSENT_ID",
             bank_id="BANK_ID",
-            body={},
+            status="AUTHORISED",
         )
         assert consent.is_closed
         assert consent.json() == {"foo": "bar"}
@@ -49,7 +49,7 @@ class TestConsents:
         consent = client.banks.consents.with_raw_response.update(
             consent_id="CONSENT_ID",
             bank_id="BANK_ID",
-            body={},
+            status="AUTHORISED",
         )
 
         assert consent.is_closed is True
@@ -66,7 +66,7 @@ class TestConsents:
         with client.banks.consents.with_streaming_response.update(
             consent_id="CONSENT_ID",
             bank_id="BANK_ID",
-            body={},
+            status="AUTHORISED",
         ) as consent:
             assert not consent.is_closed
             assert consent.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -84,14 +84,14 @@ class TestConsents:
             client.banks.consents.with_raw_response.update(
                 consent_id="CONSENT_ID",
                 bank_id="",
-                body={},
+                status="AUTHORISED",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `consent_id` but received ''"):
             client.banks.consents.with_raw_response.update(
                 consent_id="",
                 bank_id="BANK_ID",
-                body={},
+                status="AUTHORISED",
             )
 
 
@@ -107,7 +107,7 @@ class TestAsyncConsents:
         consent = await async_client.banks.consents.update(
             consent_id="CONSENT_ID",
             bank_id="BANK_ID",
-            body={},
+            status="AUTHORISED",
         )
         assert consent.is_closed
         assert await consent.json() == {"foo": "bar"}
@@ -124,7 +124,7 @@ class TestAsyncConsents:
         consent = await async_client.banks.consents.with_raw_response.update(
             consent_id="CONSENT_ID",
             bank_id="BANK_ID",
-            body={},
+            status="AUTHORISED",
         )
 
         assert consent.is_closed is True
@@ -141,7 +141,7 @@ class TestAsyncConsents:
         async with async_client.banks.consents.with_streaming_response.update(
             consent_id="CONSENT_ID",
             bank_id="BANK_ID",
-            body={},
+            status="AUTHORISED",
         ) as consent:
             assert not consent.is_closed
             assert consent.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -159,12 +159,12 @@ class TestAsyncConsents:
             await async_client.banks.consents.with_raw_response.update(
                 consent_id="CONSENT_ID",
                 bank_id="",
-                body={},
+                status="AUTHORISED",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `consent_id` but received ''"):
             await async_client.banks.consents.with_raw_response.update(
                 consent_id="",
                 bank_id="BANK_ID",
-                body={},
+                status="AUTHORISED",
             )

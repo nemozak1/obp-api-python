@@ -33,7 +33,7 @@ class TestTags:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            value="String",
         )
         assert tag.is_closed
         assert tag.json() == {"foo": "bar"}
@@ -51,7 +51,7 @@ class TestTags:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            value="String",
         )
 
         assert tag.is_closed is True
@@ -69,7 +69,7 @@ class TestTags:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            value="String",
         ) as tag:
             assert not tag.is_closed
             assert tag.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -88,7 +88,7 @@ class TestTags:
                 view_id="VIEW_ID",
                 bank_id="",
                 account_id="ACCOUNT_ID",
-                body={},
+                value="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -96,7 +96,7 @@ class TestTags:
                 view_id="VIEW_ID",
                 bank_id="BANK_ID",
                 account_id="",
-                body={},
+                value="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -104,7 +104,7 @@ class TestTags:
                 view_id="",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                body={},
+                value="String",
             )
 
     @parametrize
@@ -273,7 +273,7 @@ class TestAsyncTags:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            value="String",
         )
         assert tag.is_closed
         assert await tag.json() == {"foo": "bar"}
@@ -291,7 +291,7 @@ class TestAsyncTags:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            value="String",
         )
 
         assert tag.is_closed is True
@@ -309,7 +309,7 @@ class TestAsyncTags:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            value="String",
         ) as tag:
             assert not tag.is_closed
             assert tag.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -328,7 +328,7 @@ class TestAsyncTags:
                 view_id="VIEW_ID",
                 bank_id="",
                 account_id="ACCOUNT_ID",
-                body={},
+                value="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -336,7 +336,7 @@ class TestAsyncTags:
                 view_id="VIEW_ID",
                 bank_id="BANK_ID",
                 account_id="",
-                body={},
+                value="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -344,7 +344,7 @@ class TestAsyncTags:
                 view_id="",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                body={},
+                value="String",
             )
 
     @parametrize

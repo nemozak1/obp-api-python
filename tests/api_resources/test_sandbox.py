@@ -28,7 +28,142 @@ class TestSandbox:
     def test_method_data_import(self, client: ObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/sandbox/data-import").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         sandbox = client.sandbox.data_import(
-            body={},
+            accounts=[
+                {
+                    "id": "account1",
+                    "balance": {
+                        "amount": "1000.00",
+                        "currency": "EUR",
+                    },
+                    "bank": "bank2",
+                    "generate_accountants_view": True,
+                    "generate_auditors_view": True,
+                    "generate_public_view": False,
+                    "iban": "21234567890",
+                    "label": "Account 1 at Bank 2",
+                    "number": "22",
+                    "owners": ["string"],
+                    "type": "savings",
+                }
+            ],
+            atms=[
+                {
+                    "id": "atm1",
+                    "address": {
+                        "city": "Ashbourne",
+                        "country_code": "UK",
+                        "county": "Derbyshire",
+                        "line_1": "5 Some Street",
+                        "line_2": "Rosy Place",
+                        "line_3": "Sunny Village",
+                        "post_code": "WHY RU4",
+                        "state": "",
+                    },
+                    "bank_id": "bank1",
+                    "location": {
+                        "latitude": 52.556198,
+                        "longitude": 13.384099,
+                    },
+                    "meta": {
+                        "license": {
+                            "id": "pddl",
+                            "name": "Open Data Commons Public Domain Dedication and License (PDDL)",
+                        }
+                    },
+                    "name": "Ashbourne Atm 1",
+                }
+            ],
+            banks=[
+                {
+                    "id": "bank2",
+                    "full_name": "Bank 2 Inc.",
+                    "logo": "http://example.com/logo2",
+                    "short_name": "bank 2",
+                    "website": "http://example.com/2",
+                }
+            ],
+            branches=[
+                {
+                    "id": "branch1",
+                    "address": {
+                        "city": "Ashbourne",
+                        "country_code": "UK",
+                        "county": "Derbyshire",
+                        "line_1": "5 Some Street",
+                        "line_2": "Rosy Place",
+                        "line_3": "Sunny Village",
+                        "post_code": "WHY RU4",
+                        "state": "",
+                    },
+                    "bank_id": "bank1",
+                    "location": {
+                        "latitude": 52.556198,
+                        "longitude": 13.384099,
+                    },
+                    "meta": {
+                        "license": {
+                            "id": "pddl",
+                            "name": "Open Data Commons Public Domain Dedication and License (PDDL)",
+                        }
+                    },
+                    "name": "Genel Müdürlük",
+                }
+            ],
+            crm_events=[
+                {
+                    "id": "KIFJA76876AS",
+                    "actual_date": "1100-01-01T01:01:01.000Z",
+                    "bank_id": "bank1",
+                    "category": "Call",
+                    "channel": "Phone",
+                    "customer": {
+                        "name": "James Brown",
+                        "number": "698761728934",
+                    },
+                    "detail": "Check mortgage",
+                }
+            ],
+            products=[
+                {
+                    "bank_id": "bank1",
+                    "category": "cat1",
+                    "code": "prd1",
+                    "family": "fam1",
+                    "meta": {
+                        "license": {
+                            "id": "pddl",
+                            "name": "Open Data Commons Public Domain Dedication and License (PDDL)",
+                        }
+                    },
+                    "more_info_url": "www.example.com/index1",
+                    "name": "product 1",
+                    "super_family": "sup fam 1",
+                }
+            ],
+            transactions=[
+                {
+                    "id": "blankCounterpartNameTransaction",
+                    "details": {
+                        "completed": "2012-04-07T00:00:00.001Z",
+                        "description": "some description",
+                        "new_balance": "1244.00",
+                        "posted": "2012-03-07T00:00:00.001Z",
+                        "type": "SEPA",
+                        "value": "-135.33",
+                    },
+                    "this_account": {
+                        "id": "account1",
+                        "bank": "bank1",
+                    },
+                }
+            ],
+            users=[
+                {
+                    "email": "user1@example.com",
+                    "password": "TESOBE520berlin123!",
+                    "user_name": "User 1",
+                }
+            ],
         )
         assert sandbox.is_closed
         assert sandbox.json() == {"foo": "bar"}
@@ -41,7 +176,142 @@ class TestSandbox:
         respx_mock.post("/obp/v5.1.0/sandbox/data-import").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         sandbox = client.sandbox.with_raw_response.data_import(
-            body={},
+            accounts=[
+                {
+                    "id": "account1",
+                    "balance": {
+                        "amount": "1000.00",
+                        "currency": "EUR",
+                    },
+                    "bank": "bank2",
+                    "generate_accountants_view": True,
+                    "generate_auditors_view": True,
+                    "generate_public_view": False,
+                    "iban": "21234567890",
+                    "label": "Account 1 at Bank 2",
+                    "number": "22",
+                    "owners": ["string"],
+                    "type": "savings",
+                }
+            ],
+            atms=[
+                {
+                    "id": "atm1",
+                    "address": {
+                        "city": "Ashbourne",
+                        "country_code": "UK",
+                        "county": "Derbyshire",
+                        "line_1": "5 Some Street",
+                        "line_2": "Rosy Place",
+                        "line_3": "Sunny Village",
+                        "post_code": "WHY RU4",
+                        "state": "",
+                    },
+                    "bank_id": "bank1",
+                    "location": {
+                        "latitude": 52.556198,
+                        "longitude": 13.384099,
+                    },
+                    "meta": {
+                        "license": {
+                            "id": "pddl",
+                            "name": "Open Data Commons Public Domain Dedication and License (PDDL)",
+                        }
+                    },
+                    "name": "Ashbourne Atm 1",
+                }
+            ],
+            banks=[
+                {
+                    "id": "bank2",
+                    "full_name": "Bank 2 Inc.",
+                    "logo": "http://example.com/logo2",
+                    "short_name": "bank 2",
+                    "website": "http://example.com/2",
+                }
+            ],
+            branches=[
+                {
+                    "id": "branch1",
+                    "address": {
+                        "city": "Ashbourne",
+                        "country_code": "UK",
+                        "county": "Derbyshire",
+                        "line_1": "5 Some Street",
+                        "line_2": "Rosy Place",
+                        "line_3": "Sunny Village",
+                        "post_code": "WHY RU4",
+                        "state": "",
+                    },
+                    "bank_id": "bank1",
+                    "location": {
+                        "latitude": 52.556198,
+                        "longitude": 13.384099,
+                    },
+                    "meta": {
+                        "license": {
+                            "id": "pddl",
+                            "name": "Open Data Commons Public Domain Dedication and License (PDDL)",
+                        }
+                    },
+                    "name": "Genel Müdürlük",
+                }
+            ],
+            crm_events=[
+                {
+                    "id": "KIFJA76876AS",
+                    "actual_date": "1100-01-01T01:01:01.000Z",
+                    "bank_id": "bank1",
+                    "category": "Call",
+                    "channel": "Phone",
+                    "customer": {
+                        "name": "James Brown",
+                        "number": "698761728934",
+                    },
+                    "detail": "Check mortgage",
+                }
+            ],
+            products=[
+                {
+                    "bank_id": "bank1",
+                    "category": "cat1",
+                    "code": "prd1",
+                    "family": "fam1",
+                    "meta": {
+                        "license": {
+                            "id": "pddl",
+                            "name": "Open Data Commons Public Domain Dedication and License (PDDL)",
+                        }
+                    },
+                    "more_info_url": "www.example.com/index1",
+                    "name": "product 1",
+                    "super_family": "sup fam 1",
+                }
+            ],
+            transactions=[
+                {
+                    "id": "blankCounterpartNameTransaction",
+                    "details": {
+                        "completed": "2012-04-07T00:00:00.001Z",
+                        "description": "some description",
+                        "new_balance": "1244.00",
+                        "posted": "2012-03-07T00:00:00.001Z",
+                        "type": "SEPA",
+                        "value": "-135.33",
+                    },
+                    "this_account": {
+                        "id": "account1",
+                        "bank": "bank1",
+                    },
+                }
+            ],
+            users=[
+                {
+                    "email": "user1@example.com",
+                    "password": "TESOBE520berlin123!",
+                    "user_name": "User 1",
+                }
+            ],
         )
 
         assert sandbox.is_closed is True
@@ -54,7 +324,142 @@ class TestSandbox:
     def test_streaming_response_data_import(self, client: ObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/sandbox/data-import").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.sandbox.with_streaming_response.data_import(
-            body={},
+            accounts=[
+                {
+                    "id": "account1",
+                    "balance": {
+                        "amount": "1000.00",
+                        "currency": "EUR",
+                    },
+                    "bank": "bank2",
+                    "generate_accountants_view": True,
+                    "generate_auditors_view": True,
+                    "generate_public_view": False,
+                    "iban": "21234567890",
+                    "label": "Account 1 at Bank 2",
+                    "number": "22",
+                    "owners": ["string"],
+                    "type": "savings",
+                }
+            ],
+            atms=[
+                {
+                    "id": "atm1",
+                    "address": {
+                        "city": "Ashbourne",
+                        "country_code": "UK",
+                        "county": "Derbyshire",
+                        "line_1": "5 Some Street",
+                        "line_2": "Rosy Place",
+                        "line_3": "Sunny Village",
+                        "post_code": "WHY RU4",
+                        "state": "",
+                    },
+                    "bank_id": "bank1",
+                    "location": {
+                        "latitude": 52.556198,
+                        "longitude": 13.384099,
+                    },
+                    "meta": {
+                        "license": {
+                            "id": "pddl",
+                            "name": "Open Data Commons Public Domain Dedication and License (PDDL)",
+                        }
+                    },
+                    "name": "Ashbourne Atm 1",
+                }
+            ],
+            banks=[
+                {
+                    "id": "bank2",
+                    "full_name": "Bank 2 Inc.",
+                    "logo": "http://example.com/logo2",
+                    "short_name": "bank 2",
+                    "website": "http://example.com/2",
+                }
+            ],
+            branches=[
+                {
+                    "id": "branch1",
+                    "address": {
+                        "city": "Ashbourne",
+                        "country_code": "UK",
+                        "county": "Derbyshire",
+                        "line_1": "5 Some Street",
+                        "line_2": "Rosy Place",
+                        "line_3": "Sunny Village",
+                        "post_code": "WHY RU4",
+                        "state": "",
+                    },
+                    "bank_id": "bank1",
+                    "location": {
+                        "latitude": 52.556198,
+                        "longitude": 13.384099,
+                    },
+                    "meta": {
+                        "license": {
+                            "id": "pddl",
+                            "name": "Open Data Commons Public Domain Dedication and License (PDDL)",
+                        }
+                    },
+                    "name": "Genel Müdürlük",
+                }
+            ],
+            crm_events=[
+                {
+                    "id": "KIFJA76876AS",
+                    "actual_date": "1100-01-01T01:01:01.000Z",
+                    "bank_id": "bank1",
+                    "category": "Call",
+                    "channel": "Phone",
+                    "customer": {
+                        "name": "James Brown",
+                        "number": "698761728934",
+                    },
+                    "detail": "Check mortgage",
+                }
+            ],
+            products=[
+                {
+                    "bank_id": "bank1",
+                    "category": "cat1",
+                    "code": "prd1",
+                    "family": "fam1",
+                    "meta": {
+                        "license": {
+                            "id": "pddl",
+                            "name": "Open Data Commons Public Domain Dedication and License (PDDL)",
+                        }
+                    },
+                    "more_info_url": "www.example.com/index1",
+                    "name": "product 1",
+                    "super_family": "sup fam 1",
+                }
+            ],
+            transactions=[
+                {
+                    "id": "blankCounterpartNameTransaction",
+                    "details": {
+                        "completed": "2012-04-07T00:00:00.001Z",
+                        "description": "some description",
+                        "new_balance": "1244.00",
+                        "posted": "2012-03-07T00:00:00.001Z",
+                        "type": "SEPA",
+                        "value": "-135.33",
+                    },
+                    "this_account": {
+                        "id": "account1",
+                        "bank": "bank1",
+                    },
+                }
+            ],
+            users=[
+                {
+                    "email": "user1@example.com",
+                    "password": "TESOBE520berlin123!",
+                    "user_name": "User 1",
+                }
+            ],
         ) as sandbox:
             assert not sandbox.is_closed
             assert sandbox.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -74,7 +479,142 @@ class TestAsyncSandbox:
     async def test_method_data_import(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/sandbox/data-import").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         sandbox = await async_client.sandbox.data_import(
-            body={},
+            accounts=[
+                {
+                    "id": "account1",
+                    "balance": {
+                        "amount": "1000.00",
+                        "currency": "EUR",
+                    },
+                    "bank": "bank2",
+                    "generate_accountants_view": True,
+                    "generate_auditors_view": True,
+                    "generate_public_view": False,
+                    "iban": "21234567890",
+                    "label": "Account 1 at Bank 2",
+                    "number": "22",
+                    "owners": ["string"],
+                    "type": "savings",
+                }
+            ],
+            atms=[
+                {
+                    "id": "atm1",
+                    "address": {
+                        "city": "Ashbourne",
+                        "country_code": "UK",
+                        "county": "Derbyshire",
+                        "line_1": "5 Some Street",
+                        "line_2": "Rosy Place",
+                        "line_3": "Sunny Village",
+                        "post_code": "WHY RU4",
+                        "state": "",
+                    },
+                    "bank_id": "bank1",
+                    "location": {
+                        "latitude": 52.556198,
+                        "longitude": 13.384099,
+                    },
+                    "meta": {
+                        "license": {
+                            "id": "pddl",
+                            "name": "Open Data Commons Public Domain Dedication and License (PDDL)",
+                        }
+                    },
+                    "name": "Ashbourne Atm 1",
+                }
+            ],
+            banks=[
+                {
+                    "id": "bank2",
+                    "full_name": "Bank 2 Inc.",
+                    "logo": "http://example.com/logo2",
+                    "short_name": "bank 2",
+                    "website": "http://example.com/2",
+                }
+            ],
+            branches=[
+                {
+                    "id": "branch1",
+                    "address": {
+                        "city": "Ashbourne",
+                        "country_code": "UK",
+                        "county": "Derbyshire",
+                        "line_1": "5 Some Street",
+                        "line_2": "Rosy Place",
+                        "line_3": "Sunny Village",
+                        "post_code": "WHY RU4",
+                        "state": "",
+                    },
+                    "bank_id": "bank1",
+                    "location": {
+                        "latitude": 52.556198,
+                        "longitude": 13.384099,
+                    },
+                    "meta": {
+                        "license": {
+                            "id": "pddl",
+                            "name": "Open Data Commons Public Domain Dedication and License (PDDL)",
+                        }
+                    },
+                    "name": "Genel Müdürlük",
+                }
+            ],
+            crm_events=[
+                {
+                    "id": "KIFJA76876AS",
+                    "actual_date": "1100-01-01T01:01:01.000Z",
+                    "bank_id": "bank1",
+                    "category": "Call",
+                    "channel": "Phone",
+                    "customer": {
+                        "name": "James Brown",
+                        "number": "698761728934",
+                    },
+                    "detail": "Check mortgage",
+                }
+            ],
+            products=[
+                {
+                    "bank_id": "bank1",
+                    "category": "cat1",
+                    "code": "prd1",
+                    "family": "fam1",
+                    "meta": {
+                        "license": {
+                            "id": "pddl",
+                            "name": "Open Data Commons Public Domain Dedication and License (PDDL)",
+                        }
+                    },
+                    "more_info_url": "www.example.com/index1",
+                    "name": "product 1",
+                    "super_family": "sup fam 1",
+                }
+            ],
+            transactions=[
+                {
+                    "id": "blankCounterpartNameTransaction",
+                    "details": {
+                        "completed": "2012-04-07T00:00:00.001Z",
+                        "description": "some description",
+                        "new_balance": "1244.00",
+                        "posted": "2012-03-07T00:00:00.001Z",
+                        "type": "SEPA",
+                        "value": "-135.33",
+                    },
+                    "this_account": {
+                        "id": "account1",
+                        "bank": "bank1",
+                    },
+                }
+            ],
+            users=[
+                {
+                    "email": "user1@example.com",
+                    "password": "TESOBE520berlin123!",
+                    "user_name": "User 1",
+                }
+            ],
         )
         assert sandbox.is_closed
         assert await sandbox.json() == {"foo": "bar"}
@@ -87,7 +627,142 @@ class TestAsyncSandbox:
         respx_mock.post("/obp/v5.1.0/sandbox/data-import").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         sandbox = await async_client.sandbox.with_raw_response.data_import(
-            body={},
+            accounts=[
+                {
+                    "id": "account1",
+                    "balance": {
+                        "amount": "1000.00",
+                        "currency": "EUR",
+                    },
+                    "bank": "bank2",
+                    "generate_accountants_view": True,
+                    "generate_auditors_view": True,
+                    "generate_public_view": False,
+                    "iban": "21234567890",
+                    "label": "Account 1 at Bank 2",
+                    "number": "22",
+                    "owners": ["string"],
+                    "type": "savings",
+                }
+            ],
+            atms=[
+                {
+                    "id": "atm1",
+                    "address": {
+                        "city": "Ashbourne",
+                        "country_code": "UK",
+                        "county": "Derbyshire",
+                        "line_1": "5 Some Street",
+                        "line_2": "Rosy Place",
+                        "line_3": "Sunny Village",
+                        "post_code": "WHY RU4",
+                        "state": "",
+                    },
+                    "bank_id": "bank1",
+                    "location": {
+                        "latitude": 52.556198,
+                        "longitude": 13.384099,
+                    },
+                    "meta": {
+                        "license": {
+                            "id": "pddl",
+                            "name": "Open Data Commons Public Domain Dedication and License (PDDL)",
+                        }
+                    },
+                    "name": "Ashbourne Atm 1",
+                }
+            ],
+            banks=[
+                {
+                    "id": "bank2",
+                    "full_name": "Bank 2 Inc.",
+                    "logo": "http://example.com/logo2",
+                    "short_name": "bank 2",
+                    "website": "http://example.com/2",
+                }
+            ],
+            branches=[
+                {
+                    "id": "branch1",
+                    "address": {
+                        "city": "Ashbourne",
+                        "country_code": "UK",
+                        "county": "Derbyshire",
+                        "line_1": "5 Some Street",
+                        "line_2": "Rosy Place",
+                        "line_3": "Sunny Village",
+                        "post_code": "WHY RU4",
+                        "state": "",
+                    },
+                    "bank_id": "bank1",
+                    "location": {
+                        "latitude": 52.556198,
+                        "longitude": 13.384099,
+                    },
+                    "meta": {
+                        "license": {
+                            "id": "pddl",
+                            "name": "Open Data Commons Public Domain Dedication and License (PDDL)",
+                        }
+                    },
+                    "name": "Genel Müdürlük",
+                }
+            ],
+            crm_events=[
+                {
+                    "id": "KIFJA76876AS",
+                    "actual_date": "1100-01-01T01:01:01.000Z",
+                    "bank_id": "bank1",
+                    "category": "Call",
+                    "channel": "Phone",
+                    "customer": {
+                        "name": "James Brown",
+                        "number": "698761728934",
+                    },
+                    "detail": "Check mortgage",
+                }
+            ],
+            products=[
+                {
+                    "bank_id": "bank1",
+                    "category": "cat1",
+                    "code": "prd1",
+                    "family": "fam1",
+                    "meta": {
+                        "license": {
+                            "id": "pddl",
+                            "name": "Open Data Commons Public Domain Dedication and License (PDDL)",
+                        }
+                    },
+                    "more_info_url": "www.example.com/index1",
+                    "name": "product 1",
+                    "super_family": "sup fam 1",
+                }
+            ],
+            transactions=[
+                {
+                    "id": "blankCounterpartNameTransaction",
+                    "details": {
+                        "completed": "2012-04-07T00:00:00.001Z",
+                        "description": "some description",
+                        "new_balance": "1244.00",
+                        "posted": "2012-03-07T00:00:00.001Z",
+                        "type": "SEPA",
+                        "value": "-135.33",
+                    },
+                    "this_account": {
+                        "id": "account1",
+                        "bank": "bank1",
+                    },
+                }
+            ],
+            users=[
+                {
+                    "email": "user1@example.com",
+                    "password": "TESOBE520berlin123!",
+                    "user_name": "User 1",
+                }
+            ],
         )
 
         assert sandbox.is_closed is True
@@ -100,7 +775,142 @@ class TestAsyncSandbox:
     async def test_streaming_response_data_import(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/sandbox/data-import").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.sandbox.with_streaming_response.data_import(
-            body={},
+            accounts=[
+                {
+                    "id": "account1",
+                    "balance": {
+                        "amount": "1000.00",
+                        "currency": "EUR",
+                    },
+                    "bank": "bank2",
+                    "generate_accountants_view": True,
+                    "generate_auditors_view": True,
+                    "generate_public_view": False,
+                    "iban": "21234567890",
+                    "label": "Account 1 at Bank 2",
+                    "number": "22",
+                    "owners": ["string"],
+                    "type": "savings",
+                }
+            ],
+            atms=[
+                {
+                    "id": "atm1",
+                    "address": {
+                        "city": "Ashbourne",
+                        "country_code": "UK",
+                        "county": "Derbyshire",
+                        "line_1": "5 Some Street",
+                        "line_2": "Rosy Place",
+                        "line_3": "Sunny Village",
+                        "post_code": "WHY RU4",
+                        "state": "",
+                    },
+                    "bank_id": "bank1",
+                    "location": {
+                        "latitude": 52.556198,
+                        "longitude": 13.384099,
+                    },
+                    "meta": {
+                        "license": {
+                            "id": "pddl",
+                            "name": "Open Data Commons Public Domain Dedication and License (PDDL)",
+                        }
+                    },
+                    "name": "Ashbourne Atm 1",
+                }
+            ],
+            banks=[
+                {
+                    "id": "bank2",
+                    "full_name": "Bank 2 Inc.",
+                    "logo": "http://example.com/logo2",
+                    "short_name": "bank 2",
+                    "website": "http://example.com/2",
+                }
+            ],
+            branches=[
+                {
+                    "id": "branch1",
+                    "address": {
+                        "city": "Ashbourne",
+                        "country_code": "UK",
+                        "county": "Derbyshire",
+                        "line_1": "5 Some Street",
+                        "line_2": "Rosy Place",
+                        "line_3": "Sunny Village",
+                        "post_code": "WHY RU4",
+                        "state": "",
+                    },
+                    "bank_id": "bank1",
+                    "location": {
+                        "latitude": 52.556198,
+                        "longitude": 13.384099,
+                    },
+                    "meta": {
+                        "license": {
+                            "id": "pddl",
+                            "name": "Open Data Commons Public Domain Dedication and License (PDDL)",
+                        }
+                    },
+                    "name": "Genel Müdürlük",
+                }
+            ],
+            crm_events=[
+                {
+                    "id": "KIFJA76876AS",
+                    "actual_date": "1100-01-01T01:01:01.000Z",
+                    "bank_id": "bank1",
+                    "category": "Call",
+                    "channel": "Phone",
+                    "customer": {
+                        "name": "James Brown",
+                        "number": "698761728934",
+                    },
+                    "detail": "Check mortgage",
+                }
+            ],
+            products=[
+                {
+                    "bank_id": "bank1",
+                    "category": "cat1",
+                    "code": "prd1",
+                    "family": "fam1",
+                    "meta": {
+                        "license": {
+                            "id": "pddl",
+                            "name": "Open Data Commons Public Domain Dedication and License (PDDL)",
+                        }
+                    },
+                    "more_info_url": "www.example.com/index1",
+                    "name": "product 1",
+                    "super_family": "sup fam 1",
+                }
+            ],
+            transactions=[
+                {
+                    "id": "blankCounterpartNameTransaction",
+                    "details": {
+                        "completed": "2012-04-07T00:00:00.001Z",
+                        "description": "some description",
+                        "new_balance": "1244.00",
+                        "posted": "2012-03-07T00:00:00.001Z",
+                        "type": "SEPA",
+                        "value": "-135.33",
+                    },
+                    "this_account": {
+                        "id": "account1",
+                        "bank": "bank1",
+                    },
+                }
+            ],
+            users=[
+                {
+                    "email": "user1@example.com",
+                    "password": "TESOBE520berlin123!",
+                    "user_name": "User 1",
+                }
+            ],
         ) as sandbox:
             assert not sandbox.is_closed
             assert sandbox.http_request.headers.get("X-Stainless-Lang") == "python"

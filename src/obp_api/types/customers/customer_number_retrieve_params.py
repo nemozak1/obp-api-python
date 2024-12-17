@@ -8,4 +8,4 @@ __all__ = ["CustomerNumberRetrieveParams"]
 
 
 class CustomerNumberRetrieveParams(TypedDict, total=False):
-    body: Required[object]
+    customer_number: Required[str]

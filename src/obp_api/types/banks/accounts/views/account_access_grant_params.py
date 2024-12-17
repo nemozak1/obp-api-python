@@ -10,8 +10,10 @@ __all__ = ["AccountAccessGrantParams"]
 
 
 class AccountAccessGrantParams(TypedDict, total=False):
+    path_view_id: Required[Annotated[str, PropertyInfo(alias="VIEW_ID")]]
+
     bank_id: Required[Annotated[str, PropertyInfo(alias="BANK_ID")]]
 
-    account_id: Required[Annotated[str, PropertyInfo(alias="ACCOUNT_ID")]]
+    user_id: Required[str]
 
-    body: Required[object]
+    body_view_id: Required[Annotated[str, PropertyInfo(alias="view_id")]]

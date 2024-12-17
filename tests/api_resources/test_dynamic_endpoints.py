@@ -30,7 +30,7 @@ class TestDynamicEndpoints:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         dynamic_endpoint = client.dynamic_endpoints.create(
-            body={},
+            swagger="2.0",
         )
         assert dynamic_endpoint.is_closed
         assert dynamic_endpoint.json() == {"foo": "bar"}
@@ -45,7 +45,7 @@ class TestDynamicEndpoints:
         )
 
         dynamic_endpoint = client.dynamic_endpoints.with_raw_response.create(
-            body={},
+            swagger="2.0",
         )
 
         assert dynamic_endpoint.is_closed is True
@@ -60,7 +60,7 @@ class TestDynamicEndpoints:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.dynamic_endpoints.with_streaming_response.create(
-            body={},
+            swagger="2.0",
         ) as dynamic_endpoint:
             assert not dynamic_endpoint.is_closed
             assert dynamic_endpoint.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -185,7 +185,7 @@ class TestAsyncDynamicEndpoints:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         dynamic_endpoint = await async_client.dynamic_endpoints.create(
-            body={},
+            swagger="2.0",
         )
         assert dynamic_endpoint.is_closed
         assert await dynamic_endpoint.json() == {"foo": "bar"}
@@ -200,7 +200,7 @@ class TestAsyncDynamicEndpoints:
         )
 
         dynamic_endpoint = await async_client.dynamic_endpoints.with_raw_response.create(
-            body={},
+            swagger="2.0",
         )
 
         assert dynamic_endpoint.is_closed is True
@@ -215,7 +215,7 @@ class TestAsyncDynamicEndpoints:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.dynamic_endpoints.with_streaming_response.create(
-            body={},
+            swagger="2.0",
         ) as dynamic_endpoint:
             assert not dynamic_endpoint.is_closed
             assert dynamic_endpoint.http_request.headers.get("X-Stainless-Lang") == "python"

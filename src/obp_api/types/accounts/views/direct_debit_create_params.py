@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Union
+from datetime import date
 from typing_extensions import Required, Annotated, TypedDict
 
 from ...._utils import PropertyInfo
@@ -14,4 +16,14 @@ class DirectDebitCreateParams(TypedDict, total=False):
 
     account_id: Required[Annotated[str, PropertyInfo(alias="ACCOUNT_ID")]]
 
-    body: Required[object]
+    counterparty_id: Required[str]
+
+    customer_id: Required[str]
+
+    date_starts: Required[Annotated[Union[str, date], PropertyInfo(format="iso8601")]]
+
+    user_id: Required[str]
+
+    date_expires: Annotated[Union[str, date], PropertyInfo(format="iso8601")]
+
+    date_signed: Annotated[Union[str, date], PropertyInfo(format="iso8601")]

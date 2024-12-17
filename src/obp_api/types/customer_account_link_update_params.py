@@ -8,4 +8,4 @@ __all__ = ["CustomerAccountLinkUpdateParams"]
 
 
 class CustomerAccountLinkUpdateParams(TypedDict, total=False):
-    body: Required[object]
+    relationship_type: Required[str]

@@ -10,6 +10,7 @@ import pytest
 from respx import MockRouter
 
 from obp_api import ObpAPI, AsyncObpAPI
+from obp_api._utils import parse_date
 from obp_api._response import (
     BinaryAPIResponse,
     AsyncBinaryAPIResponse,
@@ -31,7 +32,53 @@ class TestSMS:
         )
         sms = client.consents.sms.create(
             bank_id="BANK_ID",
-            body={},
+            entitlements=[
+                {
+                    "bank_id": "gh.29.uk",
+                    "role_name": "CanGetCustomer",
+                }
+            ],
+            everything=False,
+            phone_number="+44 07972 444 876",
+            views=[
+                {
+                    "account_id": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+                    "bank_id": "gh.29.uk",
+                    "view_id": "owner",
+                }
+            ],
+        )
+        assert sms.is_closed
+        assert sms.json() == {"foo": "bar"}
+        assert cast(Any, sms.is_closed) is True
+        assert isinstance(sms, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_create_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.post("/obp/v5.1.0/banks/BANK_ID/my/consents/SMS").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        sms = client.consents.sms.create(
+            bank_id="BANK_ID",
+            entitlements=[
+                {
+                    "bank_id": "gh.29.uk",
+                    "role_name": "CanGetCustomer",
+                }
+            ],
+            everything=False,
+            phone_number="+44 07972 444 876",
+            views=[
+                {
+                    "account_id": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+                    "bank_id": "gh.29.uk",
+                    "view_id": "owner",
+                }
+            ],
+            consumer_id="consumer_id",
+            time_to_live=3600,
+            valid_from=parse_date("2019-12-27"),
         )
         assert sms.is_closed
         assert sms.json() == {"foo": "bar"}
@@ -47,7 +94,21 @@ class TestSMS:
 
         sms = client.consents.sms.with_raw_response.create(
             bank_id="BANK_ID",
-            body={},
+            entitlements=[
+                {
+                    "bank_id": "gh.29.uk",
+                    "role_name": "CanGetCustomer",
+                }
+            ],
+            everything=False,
+            phone_number="+44 07972 444 876",
+            views=[
+                {
+                    "account_id": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+                    "bank_id": "gh.29.uk",
+                    "view_id": "owner",
+                }
+            ],
         )
 
         assert sms.is_closed is True
@@ -63,7 +124,21 @@ class TestSMS:
         )
         with client.consents.sms.with_streaming_response.create(
             bank_id="BANK_ID",
-            body={},
+            entitlements=[
+                {
+                    "bank_id": "gh.29.uk",
+                    "role_name": "CanGetCustomer",
+                }
+            ],
+            everything=False,
+            phone_number="+44 07972 444 876",
+            views=[
+                {
+                    "account_id": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+                    "bank_id": "gh.29.uk",
+                    "view_id": "owner",
+                }
+            ],
         ) as sms:
             assert not sms.is_closed
             assert sms.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -80,7 +155,21 @@ class TestSMS:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             client.consents.sms.with_raw_response.create(
                 bank_id="",
-                body={},
+                entitlements=[
+                    {
+                        "bank_id": "gh.29.uk",
+                        "role_name": "CanGetCustomer",
+                    }
+                ],
+                everything=False,
+                phone_number="+44 07972 444 876",
+                views=[
+                    {
+                        "account_id": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+                        "bank_id": "gh.29.uk",
+                        "view_id": "owner",
+                    }
+                ],
             )
 
 
@@ -95,7 +184,53 @@ class TestAsyncSMS:
         )
         sms = await async_client.consents.sms.create(
             bank_id="BANK_ID",
-            body={},
+            entitlements=[
+                {
+                    "bank_id": "gh.29.uk",
+                    "role_name": "CanGetCustomer",
+                }
+            ],
+            everything=False,
+            phone_number="+44 07972 444 876",
+            views=[
+                {
+                    "account_id": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+                    "bank_id": "gh.29.uk",
+                    "view_id": "owner",
+                }
+            ],
+        )
+        assert sms.is_closed
+        assert await sms.json() == {"foo": "bar"}
+        assert cast(Any, sms.is_closed) is True
+        assert isinstance(sms, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_create_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.post("/obp/v5.1.0/banks/BANK_ID/my/consents/SMS").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        sms = await async_client.consents.sms.create(
+            bank_id="BANK_ID",
+            entitlements=[
+                {
+                    "bank_id": "gh.29.uk",
+                    "role_name": "CanGetCustomer",
+                }
+            ],
+            everything=False,
+            phone_number="+44 07972 444 876",
+            views=[
+                {
+                    "account_id": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+                    "bank_id": "gh.29.uk",
+                    "view_id": "owner",
+                }
+            ],
+            consumer_id="consumer_id",
+            time_to_live=3600,
+            valid_from=parse_date("2019-12-27"),
         )
         assert sms.is_closed
         assert await sms.json() == {"foo": "bar"}
@@ -111,7 +246,21 @@ class TestAsyncSMS:
 
         sms = await async_client.consents.sms.with_raw_response.create(
             bank_id="BANK_ID",
-            body={},
+            entitlements=[
+                {
+                    "bank_id": "gh.29.uk",
+                    "role_name": "CanGetCustomer",
+                }
+            ],
+            everything=False,
+            phone_number="+44 07972 444 876",
+            views=[
+                {
+                    "account_id": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+                    "bank_id": "gh.29.uk",
+                    "view_id": "owner",
+                }
+            ],
         )
 
         assert sms.is_closed is True
@@ -127,7 +276,21 @@ class TestAsyncSMS:
         )
         async with async_client.consents.sms.with_streaming_response.create(
             bank_id="BANK_ID",
-            body={},
+            entitlements=[
+                {
+                    "bank_id": "gh.29.uk",
+                    "role_name": "CanGetCustomer",
+                }
+            ],
+            everything=False,
+            phone_number="+44 07972 444 876",
+            views=[
+                {
+                    "account_id": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+                    "bank_id": "gh.29.uk",
+                    "view_id": "owner",
+                }
+            ],
         ) as sms:
             assert not sms.is_closed
             assert sms.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -144,5 +307,19 @@ class TestAsyncSMS:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             await async_client.consents.sms.with_raw_response.create(
                 bank_id="",
-                body={},
+                entitlements=[
+                    {
+                        "bank_id": "gh.29.uk",
+                        "role_name": "CanGetCustomer",
+                    }
+                ],
+                everything=False,
+                phone_number="+44 07972 444 876",
+                views=[
+                    {
+                        "account_id": "8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+                        "bank_id": "gh.29.uk",
+                        "view_id": "owner",
+                    }
+                ],
             )

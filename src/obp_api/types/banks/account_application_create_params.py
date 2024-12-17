@@ -8,4 +8,8 @@ __all__ = ["AccountApplicationCreateParams"]
 
 
 class AccountApplicationCreateParams(TypedDict, total=False):
-    body: Required[object]
+    product_code: Required[str]
+
+    customer_id: str
+
+    user_id: str

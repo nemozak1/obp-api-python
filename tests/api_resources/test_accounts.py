@@ -31,7 +31,20 @@ class TestAccounts:
         )
         account = client.accounts.create(
             bank_id="BANK_ID",
-            body={},
+            account_routings=[
+                {
+                    "address": "4930396",
+                    "scheme": "AccountNumber",
+                }
+            ],
+            balance={
+                "amount": "0",
+                "currency": "EUR",
+            },
+            branch_id="DERBY6",
+            label="My Account",
+            product_code="1234BW",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
         )
         assert account.is_closed
         assert account.json() == {"foo": "bar"}
@@ -47,7 +60,20 @@ class TestAccounts:
 
         account = client.accounts.with_raw_response.create(
             bank_id="BANK_ID",
-            body={},
+            account_routings=[
+                {
+                    "address": "4930396",
+                    "scheme": "AccountNumber",
+                }
+            ],
+            balance={
+                "amount": "0",
+                "currency": "EUR",
+            },
+            branch_id="DERBY6",
+            label="My Account",
+            product_code="1234BW",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
         )
 
         assert account.is_closed is True
@@ -63,7 +89,20 @@ class TestAccounts:
         )
         with client.accounts.with_streaming_response.create(
             bank_id="BANK_ID",
-            body={},
+            account_routings=[
+                {
+                    "address": "4930396",
+                    "scheme": "AccountNumber",
+                }
+            ],
+            balance={
+                "amount": "0",
+                "currency": "EUR",
+            },
+            branch_id="DERBY6",
+            label="My Account",
+            product_code="1234BW",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
         ) as account:
             assert not account.is_closed
             assert account.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -80,7 +119,20 @@ class TestAccounts:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             client.accounts.with_raw_response.create(
                 bank_id="",
-                body={},
+                account_routings=[
+                    {
+                        "address": "4930396",
+                        "scheme": "AccountNumber",
+                    }
+                ],
+                balance={
+                    "amount": "0",
+                    "currency": "EUR",
+                },
+                branch_id="DERBY6",
+                label="My Account",
+                product_code="1234BW",
+                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
             )
 
     @parametrize
@@ -92,7 +144,37 @@ class TestAccounts:
         account = client.accounts.update(
             account_id="ACCOUNT_ID",
             bank_id="BANK_ID",
-            body={},
+            label="My Account",
+            product_code="1234BW",
+        )
+        assert account.is_closed
+        assert account.json() == {"foo": "bar"}
+        assert cast(Any, account.is_closed) is True
+        assert isinstance(account, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_update_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.put("/obp/v5.1.0/banks/BANK_ID/accounts/ACCOUNT_ID").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        account = client.accounts.update(
+            account_id="ACCOUNT_ID",
+            bank_id="BANK_ID",
+            label="My Account",
+            product_code="1234BW",
+            account_routings=[
+                {
+                    "address": "4930396",
+                    "scheme": "AccountNumber",
+                }
+            ],
+            balance={
+                "amount": "0",
+                "currency": "EUR",
+            },
+            branch_id="DERBY6",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
         )
         assert account.is_closed
         assert account.json() == {"foo": "bar"}
@@ -109,7 +191,8 @@ class TestAccounts:
         account = client.accounts.with_raw_response.update(
             account_id="ACCOUNT_ID",
             bank_id="BANK_ID",
-            body={},
+            label="My Account",
+            product_code="1234BW",
         )
 
         assert account.is_closed is True
@@ -126,7 +209,8 @@ class TestAccounts:
         with client.accounts.with_streaming_response.update(
             account_id="ACCOUNT_ID",
             bank_id="BANK_ID",
-            body={},
+            label="My Account",
+            product_code="1234BW",
         ) as account:
             assert not account.is_closed
             assert account.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -144,14 +228,16 @@ class TestAccounts:
             client.accounts.with_raw_response.update(
                 account_id="ACCOUNT_ID",
                 bank_id="",
-                body={},
+                label="My Account",
+                product_code="1234BW",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
             client.accounts.with_raw_response.update(
                 account_id="",
                 bank_id="BANK_ID",
-                body={},
+                label="My Account",
+                product_code="1234BW",
             )
 
     @parametrize
@@ -197,7 +283,7 @@ class TestAccounts:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         account = client.accounts.check_iban(
-            body={},
+            address="DE75512108001245126199",
         )
         assert account.is_closed
         assert account.json() == {"foo": "bar"}
@@ -212,7 +298,7 @@ class TestAccounts:
         )
 
         account = client.accounts.with_raw_response.check_iban(
-            body={},
+            address="DE75512108001245126199",
         )
 
         assert account.is_closed is True
@@ -227,7 +313,7 @@ class TestAccounts:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.accounts.with_streaming_response.check_iban(
-            body={},
+            address="DE75512108001245126199",
         ) as account:
             assert not account.is_closed
             assert account.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -247,7 +333,7 @@ class TestAccounts:
         account = client.accounts.create_label(
             account_id="ACCOUNT_ID",
             bank_id="BANK_ID",
-            body={},
+            label="updated label",
         )
         assert account.is_closed
         assert account.json() == {"foo": "bar"}
@@ -264,7 +350,7 @@ class TestAccounts:
         account = client.accounts.with_raw_response.create_label(
             account_id="ACCOUNT_ID",
             bank_id="BANK_ID",
-            body={},
+            label="updated label",
         )
 
         assert account.is_closed is True
@@ -281,7 +367,7 @@ class TestAccounts:
         with client.accounts.with_streaming_response.create_label(
             account_id="ACCOUNT_ID",
             bank_id="BANK_ID",
-            body={},
+            label="updated label",
         ) as account:
             assert not account.is_closed
             assert account.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -299,14 +385,14 @@ class TestAccounts:
             client.accounts.with_raw_response.create_label(
                 account_id="ACCOUNT_ID",
                 bank_id="",
-                body={},
+                label="updated label",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
             client.accounts.with_raw_response.create_label(
                 account_id="",
                 bank_id="BANK_ID",
-                body={},
+                label="updated label",
             )
 
 
@@ -321,7 +407,20 @@ class TestAsyncAccounts:
         )
         account = await async_client.accounts.create(
             bank_id="BANK_ID",
-            body={},
+            account_routings=[
+                {
+                    "address": "4930396",
+                    "scheme": "AccountNumber",
+                }
+            ],
+            balance={
+                "amount": "0",
+                "currency": "EUR",
+            },
+            branch_id="DERBY6",
+            label="My Account",
+            product_code="1234BW",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
         )
         assert account.is_closed
         assert await account.json() == {"foo": "bar"}
@@ -337,7 +436,20 @@ class TestAsyncAccounts:
 
         account = await async_client.accounts.with_raw_response.create(
             bank_id="BANK_ID",
-            body={},
+            account_routings=[
+                {
+                    "address": "4930396",
+                    "scheme": "AccountNumber",
+                }
+            ],
+            balance={
+                "amount": "0",
+                "currency": "EUR",
+            },
+            branch_id="DERBY6",
+            label="My Account",
+            product_code="1234BW",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
         )
 
         assert account.is_closed is True
@@ -353,7 +465,20 @@ class TestAsyncAccounts:
         )
         async with async_client.accounts.with_streaming_response.create(
             bank_id="BANK_ID",
-            body={},
+            account_routings=[
+                {
+                    "address": "4930396",
+                    "scheme": "AccountNumber",
+                }
+            ],
+            balance={
+                "amount": "0",
+                "currency": "EUR",
+            },
+            branch_id="DERBY6",
+            label="My Account",
+            product_code="1234BW",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
         ) as account:
             assert not account.is_closed
             assert account.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -370,7 +495,20 @@ class TestAsyncAccounts:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             await async_client.accounts.with_raw_response.create(
                 bank_id="",
-                body={},
+                account_routings=[
+                    {
+                        "address": "4930396",
+                        "scheme": "AccountNumber",
+                    }
+                ],
+                balance={
+                    "amount": "0",
+                    "currency": "EUR",
+                },
+                branch_id="DERBY6",
+                label="My Account",
+                product_code="1234BW",
+                user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
             )
 
     @parametrize
@@ -382,7 +520,37 @@ class TestAsyncAccounts:
         account = await async_client.accounts.update(
             account_id="ACCOUNT_ID",
             bank_id="BANK_ID",
-            body={},
+            label="My Account",
+            product_code="1234BW",
+        )
+        assert account.is_closed
+        assert await account.json() == {"foo": "bar"}
+        assert cast(Any, account.is_closed) is True
+        assert isinstance(account, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_update_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.put("/obp/v5.1.0/banks/BANK_ID/accounts/ACCOUNT_ID").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        account = await async_client.accounts.update(
+            account_id="ACCOUNT_ID",
+            bank_id="BANK_ID",
+            label="My Account",
+            product_code="1234BW",
+            account_routings=[
+                {
+                    "address": "4930396",
+                    "scheme": "AccountNumber",
+                }
+            ],
+            balance={
+                "amount": "0",
+                "currency": "EUR",
+            },
+            branch_id="DERBY6",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
         )
         assert account.is_closed
         assert await account.json() == {"foo": "bar"}
@@ -399,7 +567,8 @@ class TestAsyncAccounts:
         account = await async_client.accounts.with_raw_response.update(
             account_id="ACCOUNT_ID",
             bank_id="BANK_ID",
-            body={},
+            label="My Account",
+            product_code="1234BW",
         )
 
         assert account.is_closed is True
@@ -416,7 +585,8 @@ class TestAsyncAccounts:
         async with async_client.accounts.with_streaming_response.update(
             account_id="ACCOUNT_ID",
             bank_id="BANK_ID",
-            body={},
+            label="My Account",
+            product_code="1234BW",
         ) as account:
             assert not account.is_closed
             assert account.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -434,14 +604,16 @@ class TestAsyncAccounts:
             await async_client.accounts.with_raw_response.update(
                 account_id="ACCOUNT_ID",
                 bank_id="",
-                body={},
+                label="My Account",
+                product_code="1234BW",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
             await async_client.accounts.with_raw_response.update(
                 account_id="",
                 bank_id="BANK_ID",
-                body={},
+                label="My Account",
+                product_code="1234BW",
             )
 
     @parametrize
@@ -487,7 +659,7 @@ class TestAsyncAccounts:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         account = await async_client.accounts.check_iban(
-            body={},
+            address="DE75512108001245126199",
         )
         assert account.is_closed
         assert await account.json() == {"foo": "bar"}
@@ -502,7 +674,7 @@ class TestAsyncAccounts:
         )
 
         account = await async_client.accounts.with_raw_response.check_iban(
-            body={},
+            address="DE75512108001245126199",
         )
 
         assert account.is_closed is True
@@ -517,7 +689,7 @@ class TestAsyncAccounts:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.accounts.with_streaming_response.check_iban(
-            body={},
+            address="DE75512108001245126199",
         ) as account:
             assert not account.is_closed
             assert account.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -537,7 +709,7 @@ class TestAsyncAccounts:
         account = await async_client.accounts.create_label(
             account_id="ACCOUNT_ID",
             bank_id="BANK_ID",
-            body={},
+            label="updated label",
         )
         assert account.is_closed
         assert await account.json() == {"foo": "bar"}
@@ -554,7 +726,7 @@ class TestAsyncAccounts:
         account = await async_client.accounts.with_raw_response.create_label(
             account_id="ACCOUNT_ID",
             bank_id="BANK_ID",
-            body={},
+            label="updated label",
         )
 
         assert account.is_closed is True
@@ -571,7 +743,7 @@ class TestAsyncAccounts:
         async with async_client.accounts.with_streaming_response.create_label(
             account_id="ACCOUNT_ID",
             bank_id="BANK_ID",
-            body={},
+            label="updated label",
         ) as account:
             assert not account.is_closed
             assert account.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -589,12 +761,12 @@ class TestAsyncAccounts:
             await async_client.accounts.with_raw_response.create_label(
                 account_id="ACCOUNT_ID",
                 bank_id="",
-                body={},
+                label="updated label",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
             await async_client.accounts.with_raw_response.create_label(
                 account_id="",
                 bank_id="BANK_ID",
-                body={},
+                label="updated label",
             )

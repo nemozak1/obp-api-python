@@ -52,7 +52,10 @@ class MessagesResource(SyncAPIResource):
         customer_id: str,
         *,
         bank_id: str,
-        body: object,
+        from_department: str,
+        from_person: str,
+        message: str,
+        transport: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -79,7 +82,15 @@ class MessagesResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/messages",
-            body=maybe_transform(body, message_create_params.MessageCreateParams),
+            body=maybe_transform(
+                {
+                    "from_department": from_department,
+                    "from_person": from_person,
+                    "message": message,
+                    "transport": transport,
+                },
+                message_create_params.MessageCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -149,7 +160,10 @@ class AsyncMessagesResource(AsyncAPIResource):
         customer_id: str,
         *,
         bank_id: str,
-        body: object,
+        from_department: str,
+        from_person: str,
+        message: str,
+        transport: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -176,7 +190,15 @@ class AsyncMessagesResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/messages",
-            body=await async_maybe_transform(body, message_create_params.MessageCreateParams),
+            body=await async_maybe_transform(
+                {
+                    "from_department": from_department,
+                    "from_person": from_person,
+                    "message": message,
+                    "transport": transport,
+                },
+                message_create_params.MessageCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

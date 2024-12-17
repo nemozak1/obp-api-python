@@ -14,4 +14,4 @@ class ViewDeleteParams(TypedDict, total=False):
 
     account_id: Required[Annotated[str, PropertyInfo(alias="ACCOUNT_ID")]]
 
-    body: Required[object]
+    json_string: Required[Annotated[str, PropertyInfo(alias="jsonString")]]
