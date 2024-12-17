@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+from typing import Union
+from datetime import date
+
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -52,7 +55,9 @@ class KYCStatusesResource(SyncAPIResource):
         customer_id: str,
         *,
         bank_id: str,
-        body: object,
+        customer_number: str,
+        date: Union[str, date],
+        ok: bool,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -80,7 +85,14 @@ class KYCStatusesResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/kyc_statuses",
-            body=maybe_transform(body, kyc_status_update_params.KYCStatusUpdateParams),
+            body=maybe_transform(
+                {
+                    "customer_number": customer_number,
+                    "date": date,
+                    "ok": ok,
+                },
+                kyc_status_update_params.KYCStatusUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -147,7 +159,9 @@ class AsyncKYCStatusesResource(AsyncAPIResource):
         customer_id: str,
         *,
         bank_id: str,
-        body: object,
+        customer_number: str,
+        date: Union[str, date],
+        ok: bool,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -175,7 +189,14 @@ class AsyncKYCStatusesResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/kyc_statuses",
-            body=await async_maybe_transform(body, kyc_status_update_params.KYCStatusUpdateParams),
+            body=await async_maybe_transform(
+                {
+                    "customer_number": customer_number,
+                    "date": date,
+                    "ok": ok,
+                },
+                kyc_status_update_params.KYCStatusUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

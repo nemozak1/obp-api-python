@@ -52,7 +52,7 @@ class StatisticsResource(SyncAPIResource):
         field: str,
         *,
         index: str,
-        body: object,
+        query: statistic_create_params.Query,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -79,7 +79,7 @@ class StatisticsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/search/warehouse/statistics/{index}/{field}",
-            body=maybe_transform(body, statistic_create_params.StatisticCreateParams),
+            body=maybe_transform({"query": query}, statistic_create_params.StatisticCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -112,7 +112,7 @@ class AsyncStatisticsResource(AsyncAPIResource):
         field: str,
         *,
         index: str,
-        body: object,
+        query: statistic_create_params.Query,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -139,7 +139,7 @@ class AsyncStatisticsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/search/warehouse/statistics/{index}/{field}",
-            body=await async_maybe_transform(body, statistic_create_params.StatisticCreateParams),
+            body=await async_maybe_transform({"query": query}, statistic_create_params.StatisticCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

@@ -87,7 +87,13 @@ class TestCustomer:
         )
         customer = client.banks.attribute_definitions.customer.update(
             bank_id="BANK_ID",
-            body={},
+            alias="STRING",
+            can_be_seen_on_views=["string"],
+            category="TransactionRequest",
+            description="description",
+            is_active=True,
+            name="SPECIAL_TAX_NUMBER",
+            type="STRING",
         )
         assert customer.is_closed
         assert customer.json() == {"foo": "bar"}
@@ -103,7 +109,13 @@ class TestCustomer:
 
         customer = client.banks.attribute_definitions.customer.with_raw_response.update(
             bank_id="BANK_ID",
-            body={},
+            alias="STRING",
+            can_be_seen_on_views=["string"],
+            category="TransactionRequest",
+            description="description",
+            is_active=True,
+            name="SPECIAL_TAX_NUMBER",
+            type="STRING",
         )
 
         assert customer.is_closed is True
@@ -119,7 +131,13 @@ class TestCustomer:
         )
         with client.banks.attribute_definitions.customer.with_streaming_response.update(
             bank_id="BANK_ID",
-            body={},
+            alias="STRING",
+            can_be_seen_on_views=["string"],
+            category="TransactionRequest",
+            description="description",
+            is_active=True,
+            name="SPECIAL_TAX_NUMBER",
+            type="STRING",
         ) as customer:
             assert not customer.is_closed
             assert customer.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -136,7 +154,13 @@ class TestCustomer:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             client.banks.attribute_definitions.customer.with_raw_response.update(
                 bank_id="",
-                body={},
+                alias="STRING",
+                can_be_seen_on_views=["string"],
+                category="TransactionRequest",
+                description="description",
+                is_active=True,
+                name="SPECIAL_TAX_NUMBER",
+                type="STRING",
             )
 
 
@@ -207,7 +231,13 @@ class TestAsyncCustomer:
         )
         customer = await async_client.banks.attribute_definitions.customer.update(
             bank_id="BANK_ID",
-            body={},
+            alias="STRING",
+            can_be_seen_on_views=["string"],
+            category="TransactionRequest",
+            description="description",
+            is_active=True,
+            name="SPECIAL_TAX_NUMBER",
+            type="STRING",
         )
         assert customer.is_closed
         assert await customer.json() == {"foo": "bar"}
@@ -223,7 +253,13 @@ class TestAsyncCustomer:
 
         customer = await async_client.banks.attribute_definitions.customer.with_raw_response.update(
             bank_id="BANK_ID",
-            body={},
+            alias="STRING",
+            can_be_seen_on_views=["string"],
+            category="TransactionRequest",
+            description="description",
+            is_active=True,
+            name="SPECIAL_TAX_NUMBER",
+            type="STRING",
         )
 
         assert customer.is_closed is True
@@ -239,7 +275,13 @@ class TestAsyncCustomer:
         )
         async with async_client.banks.attribute_definitions.customer.with_streaming_response.update(
             bank_id="BANK_ID",
-            body={},
+            alias="STRING",
+            can_be_seen_on_views=["string"],
+            category="TransactionRequest",
+            description="description",
+            is_active=True,
+            name="SPECIAL_TAX_NUMBER",
+            type="STRING",
         ) as customer:
             assert not customer.is_closed
             assert customer.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -256,5 +298,11 @@ class TestAsyncCustomer:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             await async_client.banks.attribute_definitions.customer.with_raw_response.update(
                 bank_id="",
-                body={},
+                alias="STRING",
+                can_be_seen_on_views=["string"],
+                category="TransactionRequest",
+                description="description",
+                is_active=True,
+                name="SPECIAL_TAX_NUMBER",
+                type="STRING",
             )

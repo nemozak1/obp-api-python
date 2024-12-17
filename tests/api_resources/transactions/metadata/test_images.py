@@ -34,7 +34,8 @@ class TestImages:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            label="String",
+            url="String",
         )
         assert image.is_closed
         assert image.json() == {"foo": "bar"}
@@ -53,7 +54,8 @@ class TestImages:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            label="String",
+            url="String",
         )
 
         assert image.is_closed is True
@@ -72,7 +74,8 @@ class TestImages:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            label="String",
+            url="String",
         ) as image:
             assert not image.is_closed
             assert image.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -92,7 +95,8 @@ class TestImages:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                label="String",
+                url="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -101,7 +105,8 @@ class TestImages:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                body={},
+                label="String",
+                url="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -110,7 +115,8 @@ class TestImages:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                body={},
+                label="String",
+                url="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `transaction_id` but received ''"):
@@ -119,7 +125,8 @@ class TestImages:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                label="String",
+                url="String",
             )
 
     @parametrize
@@ -226,7 +233,7 @@ class TestImages:
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
             transaction_id="TRANSACTION_ID",
-            body={},
+            json_string="{}",
         )
         assert image.is_closed
         assert image.json() == {"foo": "bar"}
@@ -246,7 +253,7 @@ class TestImages:
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
             transaction_id="TRANSACTION_ID",
-            body={},
+            json_string="{}",
         )
 
         assert image.is_closed is True
@@ -266,7 +273,7 @@ class TestImages:
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
             transaction_id="TRANSACTION_ID",
-            body={},
+            json_string="{}",
         ) as image:
             assert not image.is_closed
             assert image.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -287,7 +294,7 @@ class TestImages:
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
                 transaction_id="TRANSACTION_ID",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -297,7 +304,7 @@ class TestImages:
                 account_id="",
                 view_id="VIEW_ID",
                 transaction_id="TRANSACTION_ID",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -307,7 +314,7 @@ class TestImages:
                 account_id="ACCOUNT_ID",
                 view_id="",
                 transaction_id="TRANSACTION_ID",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `transaction_id` but received ''"):
@@ -317,7 +324,7 @@ class TestImages:
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
                 transaction_id="",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `image_id` but received ''"):
@@ -327,7 +334,7 @@ class TestImages:
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
                 transaction_id="TRANSACTION_ID",
-                body={},
+                json_string="{}",
             )
 
 
@@ -345,7 +352,8 @@ class TestAsyncImages:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            label="String",
+            url="String",
         )
         assert image.is_closed
         assert await image.json() == {"foo": "bar"}
@@ -364,7 +372,8 @@ class TestAsyncImages:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            label="String",
+            url="String",
         )
 
         assert image.is_closed is True
@@ -383,7 +392,8 @@ class TestAsyncImages:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            label="String",
+            url="String",
         ) as image:
             assert not image.is_closed
             assert image.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -403,7 +413,8 @@ class TestAsyncImages:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                label="String",
+                url="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -412,7 +423,8 @@ class TestAsyncImages:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                body={},
+                label="String",
+                url="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -421,7 +433,8 @@ class TestAsyncImages:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                body={},
+                label="String",
+                url="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `transaction_id` but received ''"):
@@ -430,7 +443,8 @@ class TestAsyncImages:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                label="String",
+                url="String",
             )
 
     @parametrize
@@ -537,7 +551,7 @@ class TestAsyncImages:
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
             transaction_id="TRANSACTION_ID",
-            body={},
+            json_string="{}",
         )
         assert image.is_closed
         assert await image.json() == {"foo": "bar"}
@@ -557,7 +571,7 @@ class TestAsyncImages:
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
             transaction_id="TRANSACTION_ID",
-            body={},
+            json_string="{}",
         )
 
         assert image.is_closed is True
@@ -577,7 +591,7 @@ class TestAsyncImages:
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
             transaction_id="TRANSACTION_ID",
-            body={},
+            json_string="{}",
         ) as image:
             assert not image.is_closed
             assert image.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -598,7 +612,7 @@ class TestAsyncImages:
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
                 transaction_id="TRANSACTION_ID",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -608,7 +622,7 @@ class TestAsyncImages:
                 account_id="",
                 view_id="VIEW_ID",
                 transaction_id="TRANSACTION_ID",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -618,7 +632,7 @@ class TestAsyncImages:
                 account_id="ACCOUNT_ID",
                 view_id="",
                 transaction_id="TRANSACTION_ID",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `transaction_id` but received ''"):
@@ -628,7 +642,7 @@ class TestAsyncImages:
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
                 transaction_id="",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `image_id` but received ''"):
@@ -638,5 +652,5 @@ class TestAsyncImages:
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
                 transaction_id="TRANSACTION_ID",
-                body={},
+                json_string="{}",
             )

@@ -30,7 +30,7 @@ class TestAPICollectionEndpoints:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         api_collection_endpoint = client.api_collections.api_collection_endpoints.create(
-            body={},
+            operation_id="OBPv4.0.0-getBanks",
         )
         assert api_collection_endpoint.is_closed
         assert api_collection_endpoint.json() == {"foo": "bar"}
@@ -45,7 +45,7 @@ class TestAPICollectionEndpoints:
         )
 
         api_collection_endpoint = client.api_collections.api_collection_endpoints.with_raw_response.create(
-            body={},
+            operation_id="OBPv4.0.0-getBanks",
         )
 
         assert api_collection_endpoint.is_closed is True
@@ -60,7 +60,7 @@ class TestAPICollectionEndpoints:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.api_collections.api_collection_endpoints.with_streaming_response.create(
-            body={},
+            operation_id="OBPv4.0.0-getBanks",
         ) as api_collection_endpoint:
             assert not api_collection_endpoint.is_closed
             assert api_collection_endpoint.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -208,7 +208,7 @@ class TestAsyncAPICollectionEndpoints:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         api_collection_endpoint = await async_client.api_collections.api_collection_endpoints.create(
-            body={},
+            operation_id="OBPv4.0.0-getBanks",
         )
         assert api_collection_endpoint.is_closed
         assert await api_collection_endpoint.json() == {"foo": "bar"}
@@ -223,7 +223,7 @@ class TestAsyncAPICollectionEndpoints:
         )
 
         api_collection_endpoint = await async_client.api_collections.api_collection_endpoints.with_raw_response.create(
-            body={},
+            operation_id="OBPv4.0.0-getBanks",
         )
 
         assert api_collection_endpoint.is_closed is True
@@ -238,7 +238,7 @@ class TestAsyncAPICollectionEndpoints:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.api_collections.api_collection_endpoints.with_streaming_response.create(
-            body={},
+            operation_id="OBPv4.0.0-getBanks",
         ) as api_collection_endpoint:
             assert not api_collection_endpoint.is_closed
             assert api_collection_endpoint.http_request.headers.get("X-Stainless-Lang") == "python"

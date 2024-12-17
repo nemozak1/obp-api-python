@@ -34,7 +34,7 @@ class TestURL:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            url="String",
         )
         assert url.is_closed
         assert url.json() == {"foo": "bar"}
@@ -53,7 +53,7 @@ class TestURL:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            url="String",
         )
 
         assert url.is_closed is True
@@ -72,7 +72,7 @@ class TestURL:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            url="String",
         ) as url:
             assert not url.is_closed
             assert url.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -92,7 +92,7 @@ class TestURL:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                url="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -101,7 +101,7 @@ class TestURL:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                body={},
+                url="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -110,7 +110,7 @@ class TestURL:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                body={},
+                url="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `other_account_id` but received ''"):
@@ -119,7 +119,7 @@ class TestURL:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                url="String",
             )
 
     @parametrize
@@ -133,7 +133,7 @@ class TestURL:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            url="String",
         )
         assert url.is_closed
         assert url.json() == {"foo": "bar"}
@@ -152,7 +152,7 @@ class TestURL:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            url="String",
         )
 
         assert url.is_closed is True
@@ -171,7 +171,7 @@ class TestURL:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            url="String",
         ) as url:
             assert not url.is_closed
             assert url.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -191,7 +191,7 @@ class TestURL:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                url="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -200,7 +200,7 @@ class TestURL:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                body={},
+                url="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -209,7 +209,7 @@ class TestURL:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                body={},
+                url="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `other_account_id` but received ''"):
@@ -218,7 +218,7 @@ class TestURL:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                url="String",
             )
 
     @parametrize
@@ -232,7 +232,7 @@ class TestURL:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            json_string="{}",
         )
         assert url.is_closed
         assert url.json() == {"foo": "bar"}
@@ -251,7 +251,7 @@ class TestURL:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            json_string="{}",
         )
 
         assert url.is_closed is True
@@ -270,7 +270,7 @@ class TestURL:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            json_string="{}",
         ) as url:
             assert not url.is_closed
             assert url.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -290,7 +290,7 @@ class TestURL:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -299,7 +299,7 @@ class TestURL:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -308,7 +308,7 @@ class TestURL:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `other_account_id` but received ''"):
@@ -317,7 +317,7 @@ class TestURL:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                json_string="{}",
             )
 
 
@@ -335,7 +335,7 @@ class TestAsyncURL:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            url="String",
         )
         assert url.is_closed
         assert await url.json() == {"foo": "bar"}
@@ -354,7 +354,7 @@ class TestAsyncURL:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            url="String",
         )
 
         assert url.is_closed is True
@@ -373,7 +373,7 @@ class TestAsyncURL:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            url="String",
         ) as url:
             assert not url.is_closed
             assert url.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -393,7 +393,7 @@ class TestAsyncURL:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                url="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -402,7 +402,7 @@ class TestAsyncURL:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                body={},
+                url="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -411,7 +411,7 @@ class TestAsyncURL:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                body={},
+                url="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `other_account_id` but received ''"):
@@ -420,7 +420,7 @@ class TestAsyncURL:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                url="String",
             )
 
     @parametrize
@@ -434,7 +434,7 @@ class TestAsyncURL:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            url="String",
         )
         assert url.is_closed
         assert await url.json() == {"foo": "bar"}
@@ -453,7 +453,7 @@ class TestAsyncURL:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            url="String",
         )
 
         assert url.is_closed is True
@@ -472,7 +472,7 @@ class TestAsyncURL:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            url="String",
         ) as url:
             assert not url.is_closed
             assert url.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -492,7 +492,7 @@ class TestAsyncURL:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                url="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -501,7 +501,7 @@ class TestAsyncURL:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                body={},
+                url="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -510,7 +510,7 @@ class TestAsyncURL:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                body={},
+                url="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `other_account_id` but received ''"):
@@ -519,7 +519,7 @@ class TestAsyncURL:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                url="String",
             )
 
     @parametrize
@@ -533,7 +533,7 @@ class TestAsyncURL:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            json_string="{}",
         )
         assert url.is_closed
         assert await url.json() == {"foo": "bar"}
@@ -552,7 +552,7 @@ class TestAsyncURL:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            json_string="{}",
         )
 
         assert url.is_closed is True
@@ -571,7 +571,7 @@ class TestAsyncURL:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            json_string="{}",
         ) as url:
             assert not url.is_closed
             assert url.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -591,7 +591,7 @@ class TestAsyncURL:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -600,7 +600,7 @@ class TestAsyncURL:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -609,7 +609,7 @@ class TestAsyncURL:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `other_account_id` but received ''"):
@@ -618,5 +618,5 @@ class TestAsyncURL:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                json_string="{}",
             )

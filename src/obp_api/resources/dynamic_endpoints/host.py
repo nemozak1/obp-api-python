@@ -50,7 +50,7 @@ class HostResource(SyncAPIResource):
     def update(
         self,
         *,
-        body: object,
+        host: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -73,7 +73,7 @@ class HostResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             "/obp/v5.1.0/management/dynamic-endpoints/DYNAMIC_ENDPOINT_ID/host",
-            body=maybe_transform(body, host_update_params.HostUpdateParams),
+            body=maybe_transform({"host": host}, host_update_params.HostUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -104,7 +104,7 @@ class AsyncHostResource(AsyncAPIResource):
     async def update(
         self,
         *,
-        body: object,
+        host: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -127,7 +127,7 @@ class AsyncHostResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             "/obp/v5.1.0/management/dynamic-endpoints/DYNAMIC_ENDPOINT_ID/host",
-            body=await async_maybe_transform(body, host_update_params.HostUpdateParams),
+            body=await async_maybe_transform({"host": host}, host_update_params.HostUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

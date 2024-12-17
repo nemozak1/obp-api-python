@@ -54,7 +54,7 @@ class WhereResource(SyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        body: object,
+        where: where_create_params.Where,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -85,7 +85,7 @@ class WhereResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/transactions/{transaction_id}/metadata/where",
-            body=maybe_transform(body, where_create_params.WhereCreateParams),
+            body=maybe_transform({"where": where}, where_create_params.WhereCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -142,7 +142,7 @@ class WhereResource(SyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        body: object,
+        where: where_update_params.Where,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -173,7 +173,7 @@ class WhereResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/transactions/{transaction_id}/metadata/where",
-            body=maybe_transform(body, where_update_params.WhereUpdateParams),
+            body=maybe_transform({"where": where}, where_update_params.WhereUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -187,7 +187,7 @@ class WhereResource(SyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        body: object,
+        json_string: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -218,7 +218,7 @@ class WhereResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/transactions/{transaction_id}/metadata/where",
-            body=maybe_transform(body, where_delete_params.WhereDeleteParams),
+            body=maybe_transform({"json_string": json_string}, where_delete_params.WhereDeleteParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -253,7 +253,7 @@ class AsyncWhereResource(AsyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        body: object,
+        where: where_create_params.Where,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -284,7 +284,7 @@ class AsyncWhereResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/transactions/{transaction_id}/metadata/where",
-            body=await async_maybe_transform(body, where_create_params.WhereCreateParams),
+            body=await async_maybe_transform({"where": where}, where_create_params.WhereCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -341,7 +341,7 @@ class AsyncWhereResource(AsyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        body: object,
+        where: where_update_params.Where,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -372,7 +372,7 @@ class AsyncWhereResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/transactions/{transaction_id}/metadata/where",
-            body=await async_maybe_transform(body, where_update_params.WhereUpdateParams),
+            body=await async_maybe_transform({"where": where}, where_update_params.WhereUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -386,7 +386,7 @@ class AsyncWhereResource(AsyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        body: object,
+        json_string: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -417,7 +417,7 @@ class AsyncWhereResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/transactions/{transaction_id}/metadata/where",
-            body=await async_maybe_transform(body, where_delete_params.WhereDeleteParams),
+            body=await async_maybe_transform({"json_string": json_string}, where_delete_params.WhereDeleteParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

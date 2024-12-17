@@ -33,7 +33,14 @@ class TestUserAccountAccess:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            provider="dauth.ETHEREUM",
+            username="felixsmith",
+            views=[
+                {
+                    "is_system": True,
+                    "view_id": "owner",
+                }
+            ],
         )
         assert user_account_access.is_closed
         assert user_account_access.json() == {"foo": "bar"}
@@ -51,7 +58,14 @@ class TestUserAccountAccess:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            provider="dauth.ETHEREUM",
+            username="felixsmith",
+            views=[
+                {
+                    "is_system": True,
+                    "view_id": "owner",
+                }
+            ],
         )
 
         assert user_account_access.is_closed is True
@@ -69,7 +83,14 @@ class TestUserAccountAccess:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            provider="dauth.ETHEREUM",
+            username="felixsmith",
+            views=[
+                {
+                    "is_system": True,
+                    "view_id": "owner",
+                }
+            ],
         ) as user_account_access:
             assert not user_account_access.is_closed
             assert user_account_access.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -88,7 +109,14 @@ class TestUserAccountAccess:
                 view_id="VIEW_ID",
                 bank_id="",
                 account_id="ACCOUNT_ID",
-                body={},
+                provider="dauth.ETHEREUM",
+                username="felixsmith",
+                views=[
+                    {
+                        "is_system": True,
+                        "view_id": "owner",
+                    }
+                ],
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -96,7 +124,14 @@ class TestUserAccountAccess:
                 view_id="VIEW_ID",
                 bank_id="BANK_ID",
                 account_id="",
-                body={},
+                provider="dauth.ETHEREUM",
+                username="felixsmith",
+                views=[
+                    {
+                        "is_system": True,
+                        "view_id": "owner",
+                    }
+                ],
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -104,7 +139,14 @@ class TestUserAccountAccess:
                 view_id="",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                body={},
+                provider="dauth.ETHEREUM",
+                username="felixsmith",
+                views=[
+                    {
+                        "is_system": True,
+                        "view_id": "owner",
+                    }
+                ],
             )
 
 
@@ -121,7 +163,14 @@ class TestAsyncUserAccountAccess:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            provider="dauth.ETHEREUM",
+            username="felixsmith",
+            views=[
+                {
+                    "is_system": True,
+                    "view_id": "owner",
+                }
+            ],
         )
         assert user_account_access.is_closed
         assert await user_account_access.json() == {"foo": "bar"}
@@ -139,7 +188,14 @@ class TestAsyncUserAccountAccess:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            provider="dauth.ETHEREUM",
+            username="felixsmith",
+            views=[
+                {
+                    "is_system": True,
+                    "view_id": "owner",
+                }
+            ],
         )
 
         assert user_account_access.is_closed is True
@@ -157,7 +213,14 @@ class TestAsyncUserAccountAccess:
             view_id="VIEW_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            provider="dauth.ETHEREUM",
+            username="felixsmith",
+            views=[
+                {
+                    "is_system": True,
+                    "view_id": "owner",
+                }
+            ],
         ) as user_account_access:
             assert not user_account_access.is_closed
             assert user_account_access.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -176,7 +239,14 @@ class TestAsyncUserAccountAccess:
                 view_id="VIEW_ID",
                 bank_id="",
                 account_id="ACCOUNT_ID",
-                body={},
+                provider="dauth.ETHEREUM",
+                username="felixsmith",
+                views=[
+                    {
+                        "is_system": True,
+                        "view_id": "owner",
+                    }
+                ],
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -184,7 +254,14 @@ class TestAsyncUserAccountAccess:
                 view_id="VIEW_ID",
                 bank_id="BANK_ID",
                 account_id="",
-                body={},
+                provider="dauth.ETHEREUM",
+                username="felixsmith",
+                views=[
+                    {
+                        "is_system": True,
+                        "view_id": "owner",
+                    }
+                ],
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -192,5 +269,12 @@ class TestAsyncUserAccountAccess:
                 view_id="",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                body={},
+                provider="dauth.ETHEREUM",
+                username="felixsmith",
+                views=[
+                    {
+                        "is_system": True,
+                        "view_id": "owner",
+                    }
+                ],
             )

@@ -34,7 +34,10 @@ class TestPhysicalLocation:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            physical_location={
+                "latitude": 1.532,
+                "longitude": 1.535,
+            },
         )
         assert physical_location.is_closed
         assert physical_location.json() == {"foo": "bar"}
@@ -53,7 +56,10 @@ class TestPhysicalLocation:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            physical_location={
+                "latitude": 1.532,
+                "longitude": 1.535,
+            },
         )
 
         assert physical_location.is_closed is True
@@ -72,7 +78,10 @@ class TestPhysicalLocation:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            physical_location={
+                "latitude": 1.532,
+                "longitude": 1.535,
+            },
         ) as physical_location:
             assert not physical_location.is_closed
             assert physical_location.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -92,7 +101,10 @@ class TestPhysicalLocation:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                physical_location={
+                    "latitude": 1.532,
+                    "longitude": 1.535,
+                },
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -101,7 +113,10 @@ class TestPhysicalLocation:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                body={},
+                physical_location={
+                    "latitude": 1.532,
+                    "longitude": 1.535,
+                },
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -110,7 +125,10 @@ class TestPhysicalLocation:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                body={},
+                physical_location={
+                    "latitude": 1.532,
+                    "longitude": 1.535,
+                },
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `other_account_id` but received ''"):
@@ -119,7 +137,10 @@ class TestPhysicalLocation:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                physical_location={
+                    "latitude": 1.532,
+                    "longitude": 1.535,
+                },
             )
 
     @parametrize
@@ -133,7 +154,10 @@ class TestPhysicalLocation:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            physical_location={
+                "latitude": 1.532,
+                "longitude": 1.535,
+            },
         )
         assert physical_location.is_closed
         assert physical_location.json() == {"foo": "bar"}
@@ -152,7 +176,10 @@ class TestPhysicalLocation:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            physical_location={
+                "latitude": 1.532,
+                "longitude": 1.535,
+            },
         )
 
         assert physical_location.is_closed is True
@@ -171,7 +198,10 @@ class TestPhysicalLocation:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            physical_location={
+                "latitude": 1.532,
+                "longitude": 1.535,
+            },
         ) as physical_location:
             assert not physical_location.is_closed
             assert physical_location.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -191,7 +221,10 @@ class TestPhysicalLocation:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                physical_location={
+                    "latitude": 1.532,
+                    "longitude": 1.535,
+                },
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -200,7 +233,10 @@ class TestPhysicalLocation:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                body={},
+                physical_location={
+                    "latitude": 1.532,
+                    "longitude": 1.535,
+                },
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -209,7 +245,10 @@ class TestPhysicalLocation:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                body={},
+                physical_location={
+                    "latitude": 1.532,
+                    "longitude": 1.535,
+                },
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `other_account_id` but received ''"):
@@ -218,7 +257,10 @@ class TestPhysicalLocation:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                physical_location={
+                    "latitude": 1.532,
+                    "longitude": 1.535,
+                },
             )
 
     @parametrize
@@ -232,7 +274,7 @@ class TestPhysicalLocation:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            json_string="{}",
         )
         assert physical_location.is_closed
         assert physical_location.json() == {"foo": "bar"}
@@ -251,7 +293,7 @@ class TestPhysicalLocation:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            json_string="{}",
         )
 
         assert physical_location.is_closed is True
@@ -270,7 +312,7 @@ class TestPhysicalLocation:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            json_string="{}",
         ) as physical_location:
             assert not physical_location.is_closed
             assert physical_location.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -290,7 +332,7 @@ class TestPhysicalLocation:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -299,7 +341,7 @@ class TestPhysicalLocation:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -308,7 +350,7 @@ class TestPhysicalLocation:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `other_account_id` but received ''"):
@@ -317,7 +359,7 @@ class TestPhysicalLocation:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                json_string="{}",
             )
 
 
@@ -335,7 +377,10 @@ class TestAsyncPhysicalLocation:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            physical_location={
+                "latitude": 1.532,
+                "longitude": 1.535,
+            },
         )
         assert physical_location.is_closed
         assert await physical_location.json() == {"foo": "bar"}
@@ -354,7 +399,10 @@ class TestAsyncPhysicalLocation:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            physical_location={
+                "latitude": 1.532,
+                "longitude": 1.535,
+            },
         )
 
         assert physical_location.is_closed is True
@@ -373,7 +421,10 @@ class TestAsyncPhysicalLocation:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            physical_location={
+                "latitude": 1.532,
+                "longitude": 1.535,
+            },
         ) as physical_location:
             assert not physical_location.is_closed
             assert physical_location.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -393,7 +444,10 @@ class TestAsyncPhysicalLocation:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                physical_location={
+                    "latitude": 1.532,
+                    "longitude": 1.535,
+                },
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -402,7 +456,10 @@ class TestAsyncPhysicalLocation:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                body={},
+                physical_location={
+                    "latitude": 1.532,
+                    "longitude": 1.535,
+                },
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -411,7 +468,10 @@ class TestAsyncPhysicalLocation:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                body={},
+                physical_location={
+                    "latitude": 1.532,
+                    "longitude": 1.535,
+                },
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `other_account_id` but received ''"):
@@ -420,7 +480,10 @@ class TestAsyncPhysicalLocation:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                physical_location={
+                    "latitude": 1.532,
+                    "longitude": 1.535,
+                },
             )
 
     @parametrize
@@ -434,7 +497,10 @@ class TestAsyncPhysicalLocation:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            physical_location={
+                "latitude": 1.532,
+                "longitude": 1.535,
+            },
         )
         assert physical_location.is_closed
         assert await physical_location.json() == {"foo": "bar"}
@@ -453,7 +519,10 @@ class TestAsyncPhysicalLocation:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            physical_location={
+                "latitude": 1.532,
+                "longitude": 1.535,
+            },
         )
 
         assert physical_location.is_closed is True
@@ -472,7 +541,10 @@ class TestAsyncPhysicalLocation:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            physical_location={
+                "latitude": 1.532,
+                "longitude": 1.535,
+            },
         ) as physical_location:
             assert not physical_location.is_closed
             assert physical_location.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -492,7 +564,10 @@ class TestAsyncPhysicalLocation:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                physical_location={
+                    "latitude": 1.532,
+                    "longitude": 1.535,
+                },
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -501,7 +576,10 @@ class TestAsyncPhysicalLocation:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                body={},
+                physical_location={
+                    "latitude": 1.532,
+                    "longitude": 1.535,
+                },
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -510,7 +588,10 @@ class TestAsyncPhysicalLocation:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                body={},
+                physical_location={
+                    "latitude": 1.532,
+                    "longitude": 1.535,
+                },
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `other_account_id` but received ''"):
@@ -519,7 +600,10 @@ class TestAsyncPhysicalLocation:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                physical_location={
+                    "latitude": 1.532,
+                    "longitude": 1.535,
+                },
             )
 
     @parametrize
@@ -533,7 +617,7 @@ class TestAsyncPhysicalLocation:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            json_string="{}",
         )
         assert physical_location.is_closed
         assert await physical_location.json() == {"foo": "bar"}
@@ -552,7 +636,7 @@ class TestAsyncPhysicalLocation:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            json_string="{}",
         )
 
         assert physical_location.is_closed is True
@@ -571,7 +655,7 @@ class TestAsyncPhysicalLocation:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            json_string="{}",
         ) as physical_location:
             assert not physical_location.is_closed
             assert physical_location.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -591,7 +675,7 @@ class TestAsyncPhysicalLocation:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -600,7 +684,7 @@ class TestAsyncPhysicalLocation:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -609,7 +693,7 @@ class TestAsyncPhysicalLocation:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `other_account_id` but received ''"):
@@ -618,5 +702,5 @@ class TestAsyncPhysicalLocation:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                json_string="{}",
             )

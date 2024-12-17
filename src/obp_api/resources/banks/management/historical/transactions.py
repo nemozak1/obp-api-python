@@ -51,7 +51,14 @@ class TransactionsResource(SyncAPIResource):
         self,
         bank_id: str,
         *,
-        body: object,
+        charge_policy: str,
+        completed: str,
+        description: str,
+        from_account_id: str,
+        posted: str,
+        to_account_id: str,
+        type: str,
+        value: transaction_create_params.Value,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -76,7 +83,19 @@ class TransactionsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/management/historical/transactions",
-            body=maybe_transform(body, transaction_create_params.TransactionCreateParams),
+            body=maybe_transform(
+                {
+                    "charge_policy": charge_policy,
+                    "completed": completed,
+                    "description": description,
+                    "from_account_id": from_account_id,
+                    "posted": posted,
+                    "to_account_id": to_account_id,
+                    "type": type,
+                    "value": value,
+                },
+                transaction_create_params.TransactionCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -108,7 +127,14 @@ class AsyncTransactionsResource(AsyncAPIResource):
         self,
         bank_id: str,
         *,
-        body: object,
+        charge_policy: str,
+        completed: str,
+        description: str,
+        from_account_id: str,
+        posted: str,
+        to_account_id: str,
+        type: str,
+        value: transaction_create_params.Value,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -133,7 +159,19 @@ class AsyncTransactionsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/management/historical/transactions",
-            body=await async_maybe_transform(body, transaction_create_params.TransactionCreateParams),
+            body=await async_maybe_transform(
+                {
+                    "charge_policy": charge_policy,
+                    "completed": completed,
+                    "description": description,
+                    "from_account_id": from_account_id,
+                    "posted": posted,
+                    "to_account_id": to_account_id,
+                    "type": type,
+                    "value": value,
+                },
+                transaction_create_params.TransactionCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

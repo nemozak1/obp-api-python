@@ -8,4 +8,6 @@ __all__ = ["AccountWebHookUpdateParams"]
 
 
 class AccountWebHookUpdateParams(TypedDict, total=False):
-    body: Required[object]
+    account_webhook_id: Required[str]
+
+    is_active: Required[str]

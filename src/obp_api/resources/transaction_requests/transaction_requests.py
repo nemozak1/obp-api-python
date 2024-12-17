@@ -62,7 +62,10 @@ class TransactionRequestsResource(SyncAPIResource):
     def create(
         self,
         *,
-        body: object,
+        card: transaction_request_create_params.Card,
+        description: str,
+        to: transaction_request_create_params.To,
+        value: transaction_request_create_params.Value,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -85,7 +88,15 @@ class TransactionRequestsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/obp/v5.1.0/transaction-request-types/CARD/transaction-requests",
-            body=maybe_transform(body, transaction_request_create_params.TransactionRequestCreateParams),
+            body=maybe_transform(
+                {
+                    "card": card,
+                    "description": description,
+                    "to": to,
+                    "value": value,
+                },
+                transaction_request_create_params.TransactionRequestCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -120,7 +131,10 @@ class AsyncTransactionRequestsResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        body: object,
+        card: transaction_request_create_params.Card,
+        description: str,
+        to: transaction_request_create_params.To,
+        value: transaction_request_create_params.Value,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -143,7 +157,15 @@ class AsyncTransactionRequestsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/obp/v5.1.0/transaction-request-types/CARD/transaction-requests",
-            body=await async_maybe_transform(body, transaction_request_create_params.TransactionRequestCreateParams),
+            body=await async_maybe_transform(
+                {
+                    "card": card,
+                    "description": description,
+                    "to": to,
+                    "value": value,
+                },
+                transaction_request_create_params.TransactionRequestCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

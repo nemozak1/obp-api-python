@@ -2,10 +2,41 @@
 
 from __future__ import annotations
 
-from typing_extensions import Required, TypedDict
+from typing import List
+from typing_extensions import Required, Annotated, TypedDict
 
-__all__ = ["EndpointCodeCreateParams"]
+from ..._utils import PropertyInfo
+
+__all__ = ["EndpointCodeCreateParams", "ExampleRequestBody", "SuccessResponseBody"]
 
 
 class EndpointCodeCreateParams(TypedDict, total=False):
-    body: Required[object]
+    request_url: Required[str]
+
+    request_verb: Required[str]
+
+    example_request_body: ExampleRequestBody
+
+    success_response_body: SuccessResponseBody
+
+
+class ExampleRequestBody(TypedDict, total=False):
+    _optional_fields: Required[Annotated[List[str], PropertyInfo(alias="_optional_fields_")]]
+
+    age: Required[int]
+
+    hobby: Required[List[str]]
+
+    name: Required[str]
+
+
+class SuccessResponseBody(TypedDict, total=False):
+    _optional_fields: Required[Annotated[List[str], PropertyInfo(alias="_optional_fields_")]]
+
+    age: Required[int]
+
+    hobby: Required[List[str]]
+
+    my_user_id: Required[str]
+
+    name: Required[str]

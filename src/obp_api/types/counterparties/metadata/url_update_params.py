@@ -16,4 +16,4 @@ class URLUpdateParams(TypedDict, total=False):
 
     view_id: Required[Annotated[str, PropertyInfo(alias="VIEW_ID")]]
 
-    body: Required[object]
+    url: Required[Annotated[str, PropertyInfo(alias="URL")]]

@@ -30,8 +30,62 @@ class TestDynamicEntities:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         dynamic_entity = client.dynamic_entities.update(
-            dynamic_entity_id="DYNAMIC_ENTITY_ID",
-            body={},
+            path_dynamic_entity_id="DYNAMIC_ENTITY_ID",
+            foo_bar={
+                "description": "description of this entity, can be markdown text.",
+                "properties": {
+                    "name": {
+                        "description": "description of **name** field, can be markdown text.",
+                        "example": "James Brown",
+                        "max_length": 20,
+                        "min_length": 3,
+                        "type": "number",
+                    },
+                    "number": {
+                        "description": "description of **number** field, can be markdown text.",
+                        "example": 698761728,
+                        "type": "number",
+                    },
+                },
+                "required": ["string"],
+            },
+            has_personal_entity=True,
+        )
+        assert dynamic_entity.is_closed
+        assert dynamic_entity.json() == {"foo": "bar"}
+        assert cast(Any, dynamic_entity.is_closed) is True
+        assert isinstance(dynamic_entity, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_update_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.put("/obp/v5.1.0/my/dynamic-entities/DYNAMIC_ENTITY_ID").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        dynamic_entity = client.dynamic_entities.update(
+            path_dynamic_entity_id="DYNAMIC_ENTITY_ID",
+            foo_bar={
+                "description": "description of this entity, can be markdown text.",
+                "properties": {
+                    "name": {
+                        "description": "description of **name** field, can be markdown text.",
+                        "example": "James Brown",
+                        "max_length": 20,
+                        "min_length": 3,
+                        "type": "number",
+                    },
+                    "number": {
+                        "description": "description of **number** field, can be markdown text.",
+                        "example": 698761728,
+                        "type": "number",
+                    },
+                },
+                "required": ["string"],
+            },
+            has_personal_entity=True,
+            bank_id="bankId",
+            body_dynamic_entity_id="dynamicEntityId",
+            user_id="userId",
         )
         assert dynamic_entity.is_closed
         assert dynamic_entity.json() == {"foo": "bar"}
@@ -46,8 +100,26 @@ class TestDynamicEntities:
         )
 
         dynamic_entity = client.dynamic_entities.with_raw_response.update(
-            dynamic_entity_id="DYNAMIC_ENTITY_ID",
-            body={},
+            path_dynamic_entity_id="DYNAMIC_ENTITY_ID",
+            foo_bar={
+                "description": "description of this entity, can be markdown text.",
+                "properties": {
+                    "name": {
+                        "description": "description of **name** field, can be markdown text.",
+                        "example": "James Brown",
+                        "max_length": 20,
+                        "min_length": 3,
+                        "type": "number",
+                    },
+                    "number": {
+                        "description": "description of **number** field, can be markdown text.",
+                        "example": 698761728,
+                        "type": "number",
+                    },
+                },
+                "required": ["string"],
+            },
+            has_personal_entity=True,
         )
 
         assert dynamic_entity.is_closed is True
@@ -62,8 +134,26 @@ class TestDynamicEntities:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         with client.dynamic_entities.with_streaming_response.update(
-            dynamic_entity_id="DYNAMIC_ENTITY_ID",
-            body={},
+            path_dynamic_entity_id="DYNAMIC_ENTITY_ID",
+            foo_bar={
+                "description": "description of this entity, can be markdown text.",
+                "properties": {
+                    "name": {
+                        "description": "description of **name** field, can be markdown text.",
+                        "example": "James Brown",
+                        "max_length": 20,
+                        "min_length": 3,
+                        "type": "number",
+                    },
+                    "number": {
+                        "description": "description of **number** field, can be markdown text.",
+                        "example": 698761728,
+                        "type": "number",
+                    },
+                },
+                "required": ["string"],
+            },
+            has_personal_entity=True,
         ) as dynamic_entity:
             assert not dynamic_entity.is_closed
             assert dynamic_entity.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -77,10 +167,30 @@ class TestDynamicEntities:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     def test_path_params_update(self, client: ObpAPI) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `dynamic_entity_id` but received ''"):
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `path_dynamic_entity_id` but received ''"
+        ):
             client.dynamic_entities.with_raw_response.update(
-                dynamic_entity_id="",
-                body={},
+                path_dynamic_entity_id="",
+                foo_bar={
+                    "description": "description of this entity, can be markdown text.",
+                    "properties": {
+                        "name": {
+                            "description": "description of **name** field, can be markdown text.",
+                            "example": "James Brown",
+                            "max_length": 20,
+                            "min_length": 3,
+                            "type": "number",
+                        },
+                        "number": {
+                            "description": "description of **number** field, can be markdown text.",
+                            "example": 698761728,
+                            "type": "number",
+                        },
+                    },
+                    "required": ["string"],
+                },
+                has_personal_entity=True,
             )
 
     @parametrize
@@ -168,8 +278,62 @@ class TestAsyncDynamicEntities:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         dynamic_entity = await async_client.dynamic_entities.update(
-            dynamic_entity_id="DYNAMIC_ENTITY_ID",
-            body={},
+            path_dynamic_entity_id="DYNAMIC_ENTITY_ID",
+            foo_bar={
+                "description": "description of this entity, can be markdown text.",
+                "properties": {
+                    "name": {
+                        "description": "description of **name** field, can be markdown text.",
+                        "example": "James Brown",
+                        "max_length": 20,
+                        "min_length": 3,
+                        "type": "number",
+                    },
+                    "number": {
+                        "description": "description of **number** field, can be markdown text.",
+                        "example": 698761728,
+                        "type": "number",
+                    },
+                },
+                "required": ["string"],
+            },
+            has_personal_entity=True,
+        )
+        assert dynamic_entity.is_closed
+        assert await dynamic_entity.json() == {"foo": "bar"}
+        assert cast(Any, dynamic_entity.is_closed) is True
+        assert isinstance(dynamic_entity, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_update_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.put("/obp/v5.1.0/my/dynamic-entities/DYNAMIC_ENTITY_ID").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        dynamic_entity = await async_client.dynamic_entities.update(
+            path_dynamic_entity_id="DYNAMIC_ENTITY_ID",
+            foo_bar={
+                "description": "description of this entity, can be markdown text.",
+                "properties": {
+                    "name": {
+                        "description": "description of **name** field, can be markdown text.",
+                        "example": "James Brown",
+                        "max_length": 20,
+                        "min_length": 3,
+                        "type": "number",
+                    },
+                    "number": {
+                        "description": "description of **number** field, can be markdown text.",
+                        "example": 698761728,
+                        "type": "number",
+                    },
+                },
+                "required": ["string"],
+            },
+            has_personal_entity=True,
+            bank_id="bankId",
+            body_dynamic_entity_id="dynamicEntityId",
+            user_id="userId",
         )
         assert dynamic_entity.is_closed
         assert await dynamic_entity.json() == {"foo": "bar"}
@@ -184,8 +348,26 @@ class TestAsyncDynamicEntities:
         )
 
         dynamic_entity = await async_client.dynamic_entities.with_raw_response.update(
-            dynamic_entity_id="DYNAMIC_ENTITY_ID",
-            body={},
+            path_dynamic_entity_id="DYNAMIC_ENTITY_ID",
+            foo_bar={
+                "description": "description of this entity, can be markdown text.",
+                "properties": {
+                    "name": {
+                        "description": "description of **name** field, can be markdown text.",
+                        "example": "James Brown",
+                        "max_length": 20,
+                        "min_length": 3,
+                        "type": "number",
+                    },
+                    "number": {
+                        "description": "description of **number** field, can be markdown text.",
+                        "example": 698761728,
+                        "type": "number",
+                    },
+                },
+                "required": ["string"],
+            },
+            has_personal_entity=True,
         )
 
         assert dynamic_entity.is_closed is True
@@ -200,8 +382,26 @@ class TestAsyncDynamicEntities:
             return_value=httpx.Response(200, json={"foo": "bar"})
         )
         async with async_client.dynamic_entities.with_streaming_response.update(
-            dynamic_entity_id="DYNAMIC_ENTITY_ID",
-            body={},
+            path_dynamic_entity_id="DYNAMIC_ENTITY_ID",
+            foo_bar={
+                "description": "description of this entity, can be markdown text.",
+                "properties": {
+                    "name": {
+                        "description": "description of **name** field, can be markdown text.",
+                        "example": "James Brown",
+                        "max_length": 20,
+                        "min_length": 3,
+                        "type": "number",
+                    },
+                    "number": {
+                        "description": "description of **number** field, can be markdown text.",
+                        "example": 698761728,
+                        "type": "number",
+                    },
+                },
+                "required": ["string"],
+            },
+            has_personal_entity=True,
         ) as dynamic_entity:
             assert not dynamic_entity.is_closed
             assert dynamic_entity.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -215,10 +415,30 @@ class TestAsyncDynamicEntities:
     @parametrize
     @pytest.mark.respx(base_url=base_url)
     async def test_path_params_update(self, async_client: AsyncObpAPI) -> None:
-        with pytest.raises(ValueError, match=r"Expected a non-empty value for `dynamic_entity_id` but received ''"):
+        with pytest.raises(
+            ValueError, match=r"Expected a non-empty value for `path_dynamic_entity_id` but received ''"
+        ):
             await async_client.dynamic_entities.with_raw_response.update(
-                dynamic_entity_id="",
-                body={},
+                path_dynamic_entity_id="",
+                foo_bar={
+                    "description": "description of this entity, can be markdown text.",
+                    "properties": {
+                        "name": {
+                            "description": "description of **name** field, can be markdown text.",
+                            "example": "James Brown",
+                            "max_length": 20,
+                            "min_length": 3,
+                            "type": "number",
+                        },
+                        "number": {
+                            "description": "description of **number** field, can be markdown text.",
+                            "example": 698761728,
+                            "type": "number",
+                        },
+                    },
+                    "required": ["string"],
+                },
+                has_personal_entity=True,
             )
 
     @parametrize

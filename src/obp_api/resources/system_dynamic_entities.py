@@ -54,7 +54,11 @@ class SystemDynamicEntitiesResource(SyncAPIResource):
     def create(
         self,
         *,
-        body: object,
+        foo_bar: system_dynamic_entity_create_params.FooBar,
+        has_personal_entity: bool,
+        bank_id: str | NotGiven = NOT_GIVEN,
+        dynamic_entity_id: str | NotGiven = NOT_GIVEN,
+        user_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -77,7 +81,16 @@ class SystemDynamicEntitiesResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/obp/v5.1.0/management/system-dynamic-entities",
-            body=maybe_transform(body, system_dynamic_entity_create_params.SystemDynamicEntityCreateParams),
+            body=maybe_transform(
+                {
+                    "foo_bar": foo_bar,
+                    "has_personal_entity": has_personal_entity,
+                    "bank_id": bank_id,
+                    "dynamic_entity_id": dynamic_entity_id,
+                    "user_id": user_id,
+                },
+                system_dynamic_entity_create_params.SystemDynamicEntityCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -86,9 +99,13 @@ class SystemDynamicEntitiesResource(SyncAPIResource):
 
     def update(
         self,
-        dynamic_entity_id: str,
         *,
-        body: object,
+        path_dynamic_entity_id: str,
+        foo_bar: system_dynamic_entity_update_params.FooBar,
+        has_personal_entity: bool,
+        bank_id: str | NotGiven = NOT_GIVEN,
+        body_dynamic_entity_id: str | NotGiven = NOT_GIVEN,
+        user_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -108,12 +125,23 @@ class SystemDynamicEntitiesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not dynamic_entity_id:
-            raise ValueError(f"Expected a non-empty value for `dynamic_entity_id` but received {dynamic_entity_id!r}")
+        if not path_dynamic_entity_id:
+            raise ValueError(
+                f"Expected a non-empty value for `path_dynamic_entity_id` but received {path_dynamic_entity_id!r}"
+            )
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
-            f"/obp/v5.1.0/management/system-dynamic-entities/{dynamic_entity_id}",
-            body=maybe_transform(body, system_dynamic_entity_update_params.SystemDynamicEntityUpdateParams),
+            f"/obp/v5.1.0/management/system-dynamic-entities/{path_dynamic_entity_id}",
+            body=maybe_transform(
+                {
+                    "foo_bar": foo_bar,
+                    "has_personal_entity": has_personal_entity,
+                    "bank_id": bank_id,
+                    "body_dynamic_entity_id": body_dynamic_entity_id,
+                    "user_id": user_id,
+                },
+                system_dynamic_entity_update_params.SystemDynamicEntityUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -198,7 +226,11 @@ class AsyncSystemDynamicEntitiesResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        body: object,
+        foo_bar: system_dynamic_entity_create_params.FooBar,
+        has_personal_entity: bool,
+        bank_id: str | NotGiven = NOT_GIVEN,
+        dynamic_entity_id: str | NotGiven = NOT_GIVEN,
+        user_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -221,7 +253,16 @@ class AsyncSystemDynamicEntitiesResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/obp/v5.1.0/management/system-dynamic-entities",
-            body=await async_maybe_transform(body, system_dynamic_entity_create_params.SystemDynamicEntityCreateParams),
+            body=await async_maybe_transform(
+                {
+                    "foo_bar": foo_bar,
+                    "has_personal_entity": has_personal_entity,
+                    "bank_id": bank_id,
+                    "dynamic_entity_id": dynamic_entity_id,
+                    "user_id": user_id,
+                },
+                system_dynamic_entity_create_params.SystemDynamicEntityCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -230,9 +271,13 @@ class AsyncSystemDynamicEntitiesResource(AsyncAPIResource):
 
     async def update(
         self,
-        dynamic_entity_id: str,
         *,
-        body: object,
+        path_dynamic_entity_id: str,
+        foo_bar: system_dynamic_entity_update_params.FooBar,
+        has_personal_entity: bool,
+        bank_id: str | NotGiven = NOT_GIVEN,
+        body_dynamic_entity_id: str | NotGiven = NOT_GIVEN,
+        user_id: str | NotGiven = NOT_GIVEN,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -252,12 +297,23 @@ class AsyncSystemDynamicEntitiesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not dynamic_entity_id:
-            raise ValueError(f"Expected a non-empty value for `dynamic_entity_id` but received {dynamic_entity_id!r}")
+        if not path_dynamic_entity_id:
+            raise ValueError(
+                f"Expected a non-empty value for `path_dynamic_entity_id` but received {path_dynamic_entity_id!r}"
+            )
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
-            f"/obp/v5.1.0/management/system-dynamic-entities/{dynamic_entity_id}",
-            body=await async_maybe_transform(body, system_dynamic_entity_update_params.SystemDynamicEntityUpdateParams),
+            f"/obp/v5.1.0/management/system-dynamic-entities/{path_dynamic_entity_id}",
+            body=await async_maybe_transform(
+                {
+                    "foo_bar": foo_bar,
+                    "has_personal_entity": has_personal_entity,
+                    "bank_id": bank_id,
+                    "body_dynamic_entity_id": body_dynamic_entity_id,
+                    "user_id": user_id,
+                },
+                system_dynamic_entity_update_params.SystemDynamicEntityUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

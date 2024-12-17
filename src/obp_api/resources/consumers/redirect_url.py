@@ -51,7 +51,7 @@ class RedirectURLResource(SyncAPIResource):
         self,
         consumer_id: str,
         *,
-        body: object,
+        redirect_url: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -76,7 +76,7 @@ class RedirectURLResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/management/consumers/{consumer_id}/consumer/redirect_url",
-            body=maybe_transform(body, redirect_url_update_params.RedirectURLUpdateParams),
+            body=maybe_transform({"redirect_url": redirect_url}, redirect_url_update_params.RedirectURLUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -108,7 +108,7 @@ class AsyncRedirectURLResource(AsyncAPIResource):
         self,
         consumer_id: str,
         *,
-        body: object,
+        redirect_url: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -133,7 +133,9 @@ class AsyncRedirectURLResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/management/consumers/{consumer_id}/consumer/redirect_url",
-            body=await async_maybe_transform(body, redirect_url_update_params.RedirectURLUpdateParams),
+            body=await async_maybe_transform(
+                {"redirect_url": redirect_url}, redirect_url_update_params.RedirectURLUpdateParams
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
