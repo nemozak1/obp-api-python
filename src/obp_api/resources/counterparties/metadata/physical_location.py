@@ -58,7 +58,7 @@ class PhysicalLocationResource(SyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        body: object,
+        physical_location: physical_location_create_params.PhysicalLocation,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -89,7 +89,9 @@ class PhysicalLocationResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/other_accounts/{other_account_id}/metadata/physical_location",
-            body=maybe_transform(body, physical_location_create_params.PhysicalLocationCreateParams),
+            body=maybe_transform(
+                {"physical_location": physical_location}, physical_location_create_params.PhysicalLocationCreateParams
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -103,7 +105,7 @@ class PhysicalLocationResource(SyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        body: object,
+        physical_location: physical_location_update_params.PhysicalLocation,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -134,7 +136,9 @@ class PhysicalLocationResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/other_accounts/{other_account_id}/metadata/physical_location",
-            body=maybe_transform(body, physical_location_update_params.PhysicalLocationUpdateParams),
+            body=maybe_transform(
+                {"physical_location": physical_location}, physical_location_update_params.PhysicalLocationUpdateParams
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -148,7 +152,7 @@ class PhysicalLocationResource(SyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        body: object,
+        json_string: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -179,7 +183,9 @@ class PhysicalLocationResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._delete(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/other_accounts/{other_account_id}/metadata/physical_location",
-            body=maybe_transform(body, physical_location_delete_params.PhysicalLocationDeleteParams),
+            body=maybe_transform(
+                {"json_string": json_string}, physical_location_delete_params.PhysicalLocationDeleteParams
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -214,7 +220,7 @@ class AsyncPhysicalLocationResource(AsyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        body: object,
+        physical_location: physical_location_create_params.PhysicalLocation,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -245,7 +251,9 @@ class AsyncPhysicalLocationResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/other_accounts/{other_account_id}/metadata/physical_location",
-            body=await async_maybe_transform(body, physical_location_create_params.PhysicalLocationCreateParams),
+            body=await async_maybe_transform(
+                {"physical_location": physical_location}, physical_location_create_params.PhysicalLocationCreateParams
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -259,7 +267,7 @@ class AsyncPhysicalLocationResource(AsyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        body: object,
+        physical_location: physical_location_update_params.PhysicalLocation,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -290,7 +298,9 @@ class AsyncPhysicalLocationResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/other_accounts/{other_account_id}/metadata/physical_location",
-            body=await async_maybe_transform(body, physical_location_update_params.PhysicalLocationUpdateParams),
+            body=await async_maybe_transform(
+                {"physical_location": physical_location}, physical_location_update_params.PhysicalLocationUpdateParams
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -304,7 +314,7 @@ class AsyncPhysicalLocationResource(AsyncAPIResource):
         bank_id: str,
         account_id: str,
         view_id: str,
-        body: object,
+        json_string: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -335,7 +345,9 @@ class AsyncPhysicalLocationResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._delete(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/{view_id}/other_accounts/{other_account_id}/metadata/physical_location",
-            body=await async_maybe_transform(body, physical_location_delete_params.PhysicalLocationDeleteParams),
+            body=await async_maybe_transform(
+                {"json_string": json_string}, physical_location_delete_params.PhysicalLocationDeleteParams
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

@@ -32,7 +32,7 @@ class TestAccessibilityFeatures:
         accessibility_feature = client.banks.atms.accessibility_features.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            accessibility_features=["string"],
         )
         assert accessibility_feature.is_closed
         assert accessibility_feature.json() == {"foo": "bar"}
@@ -49,7 +49,7 @@ class TestAccessibilityFeatures:
         accessibility_feature = client.banks.atms.accessibility_features.with_raw_response.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            accessibility_features=["string"],
         )
 
         assert accessibility_feature.is_closed is True
@@ -66,7 +66,7 @@ class TestAccessibilityFeatures:
         with client.banks.atms.accessibility_features.with_streaming_response.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            accessibility_features=["string"],
         ) as accessibility_feature:
             assert not accessibility_feature.is_closed
             assert accessibility_feature.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -84,14 +84,14 @@ class TestAccessibilityFeatures:
             client.banks.atms.accessibility_features.with_raw_response.update(
                 atm_id="ATM_ID",
                 bank_id="",
-                body={},
+                accessibility_features=["string"],
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `atm_id` but received ''"):
             client.banks.atms.accessibility_features.with_raw_response.update(
                 atm_id="",
                 bank_id="BANK_ID",
-                body={},
+                accessibility_features=["string"],
             )
 
 
@@ -107,7 +107,7 @@ class TestAsyncAccessibilityFeatures:
         accessibility_feature = await async_client.banks.atms.accessibility_features.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            accessibility_features=["string"],
         )
         assert accessibility_feature.is_closed
         assert await accessibility_feature.json() == {"foo": "bar"}
@@ -124,7 +124,7 @@ class TestAsyncAccessibilityFeatures:
         accessibility_feature = await async_client.banks.atms.accessibility_features.with_raw_response.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            accessibility_features=["string"],
         )
 
         assert accessibility_feature.is_closed is True
@@ -141,7 +141,7 @@ class TestAsyncAccessibilityFeatures:
         async with async_client.banks.atms.accessibility_features.with_streaming_response.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            accessibility_features=["string"],
         ) as accessibility_feature:
             assert not accessibility_feature.is_closed
             assert accessibility_feature.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -159,12 +159,12 @@ class TestAsyncAccessibilityFeatures:
             await async_client.banks.atms.accessibility_features.with_raw_response.update(
                 atm_id="ATM_ID",
                 bank_id="",
-                body={},
+                accessibility_features=["string"],
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `atm_id` but received ''"):
             await async_client.banks.atms.accessibility_features.with_raw_response.update(
                 atm_id="",
                 bank_id="BANK_ID",
-                body={},
+                accessibility_features=["string"],
             )

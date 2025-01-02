@@ -53,7 +53,9 @@ class TransactionAttributesResource(SyncAPIResource):
         *,
         bank_id: str,
         account_id: str,
-        body: object,
+        name: str,
+        type: str,
+        value: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -82,7 +84,14 @@ class TransactionAttributesResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/transactions/{transaction_id}/attribute",
-            body=maybe_transform(body, transaction_attribute_create_params.TransactionAttributeCreateParams),
+            body=maybe_transform(
+                {
+                    "name": name,
+                    "type": type,
+                    "value": value,
+                },
+                transaction_attribute_create_params.TransactionAttributeCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -116,7 +125,9 @@ class AsyncTransactionAttributesResource(AsyncAPIResource):
         *,
         bank_id: str,
         account_id: str,
-        body: object,
+        name: str,
+        type: str,
+        value: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -146,7 +157,12 @@ class AsyncTransactionAttributesResource(AsyncAPIResource):
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/transactions/{transaction_id}/attribute",
             body=await async_maybe_transform(
-                body, transaction_attribute_create_params.TransactionAttributeCreateParams
+                {
+                    "name": name,
+                    "type": type,
+                    "value": value,
+                },
+                transaction_attribute_create_params.TransactionAttributeCreateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout

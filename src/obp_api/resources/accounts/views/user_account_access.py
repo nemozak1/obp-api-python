@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Iterable
+
 import httpx
 
 from ...._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -53,7 +55,9 @@ class UserAccountAccessResource(SyncAPIResource):
         *,
         bank_id: str,
         account_id: str,
-        body: object,
+        provider: str,
+        username: str,
+        views: Iterable[user_account_access_create_params.View],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -83,7 +87,14 @@ class UserAccountAccessResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/views/{view_id}/user-account-access",
-            body=maybe_transform(body, user_account_access_create_params.UserAccountAccessCreateParams),
+            body=maybe_transform(
+                {
+                    "provider": provider,
+                    "username": username,
+                    "views": views,
+                },
+                user_account_access_create_params.UserAccountAccessCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -117,7 +128,9 @@ class AsyncUserAccountAccessResource(AsyncAPIResource):
         *,
         bank_id: str,
         account_id: str,
-        body: object,
+        provider: str,
+        username: str,
+        views: Iterable[user_account_access_create_params.View],
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -147,7 +160,14 @@ class AsyncUserAccountAccessResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/views/{view_id}/user-account-access",
-            body=await async_maybe_transform(body, user_account_access_create_params.UserAccountAccessCreateParams),
+            body=await async_maybe_transform(
+                {
+                    "provider": provider,
+                    "username": username,
+                    "views": views,
+                },
+                user_account_access_create_params.UserAccountAccessCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

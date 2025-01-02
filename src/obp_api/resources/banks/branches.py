@@ -53,9 +53,22 @@ class BranchesResource(SyncAPIResource):
 
     def create(
         self,
-        bank_id: str,
         *,
-        body: object,
+        path_bank_id: str,
+        id: str,
+        accessible_features: str,
+        address: branch_create_params.Address,
+        body_bank_id: str,
+        branch_routing: branch_create_params.BranchRouting,
+        branch_type: str,
+        drive_up: branch_create_params.DriveUp,
+        is_accessible: str,
+        lobby: branch_create_params.Lobby,
+        location: branch_create_params.Location,
+        meta: branch_create_params.Meta,
+        more_info: str,
+        name: str,
+        phone_number: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -75,12 +88,30 @@ class BranchesResource(SyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not bank_id:
-            raise ValueError(f"Expected a non-empty value for `bank_id` but received {bank_id!r}")
+        if not path_bank_id:
+            raise ValueError(f"Expected a non-empty value for `path_bank_id` but received {path_bank_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
-            f"/obp/v5.1.0/banks/{bank_id}/branches",
-            body=maybe_transform(body, branch_create_params.BranchCreateParams),
+            f"/obp/v5.1.0/banks/{path_bank_id}/branches",
+            body=maybe_transform(
+                {
+                    "id": id,
+                    "accessible_features": accessible_features,
+                    "address": address,
+                    "body_bank_id": body_bank_id,
+                    "branch_routing": branch_routing,
+                    "branch_type": branch_type,
+                    "drive_up": drive_up,
+                    "is_accessible": is_accessible,
+                    "lobby": lobby,
+                    "location": location,
+                    "meta": meta,
+                    "more_info": more_info,
+                    "name": name,
+                    "phone_number": phone_number,
+                },
+                branch_create_params.BranchCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -218,9 +249,22 @@ class AsyncBranchesResource(AsyncAPIResource):
 
     async def create(
         self,
-        bank_id: str,
         *,
-        body: object,
+        path_bank_id: str,
+        id: str,
+        accessible_features: str,
+        address: branch_create_params.Address,
+        body_bank_id: str,
+        branch_routing: branch_create_params.BranchRouting,
+        branch_type: str,
+        drive_up: branch_create_params.DriveUp,
+        is_accessible: str,
+        lobby: branch_create_params.Lobby,
+        location: branch_create_params.Location,
+        meta: branch_create_params.Meta,
+        more_info: str,
+        name: str,
+        phone_number: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -240,12 +284,30 @@ class AsyncBranchesResource(AsyncAPIResource):
 
           timeout: Override the client-level default timeout for this request, in seconds
         """
-        if not bank_id:
-            raise ValueError(f"Expected a non-empty value for `bank_id` but received {bank_id!r}")
+        if not path_bank_id:
+            raise ValueError(f"Expected a non-empty value for `path_bank_id` but received {path_bank_id!r}")
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
-            f"/obp/v5.1.0/banks/{bank_id}/branches",
-            body=await async_maybe_transform(body, branch_create_params.BranchCreateParams),
+            f"/obp/v5.1.0/banks/{path_bank_id}/branches",
+            body=await async_maybe_transform(
+                {
+                    "id": id,
+                    "accessible_features": accessible_features,
+                    "address": address,
+                    "body_bank_id": body_bank_id,
+                    "branch_routing": branch_routing,
+                    "branch_type": branch_type,
+                    "drive_up": drive_up,
+                    "is_accessible": is_accessible,
+                    "lobby": lobby,
+                    "location": location,
+                    "meta": meta,
+                    "more_info": more_info,
+                    "name": name,
+                    "phone_number": phone_number,
+                },
+                branch_create_params.BranchCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

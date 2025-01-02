@@ -12,4 +12,6 @@ __all__ = ["CreditRatingAndSourceUpdateParams"]
 class CreditRatingAndSourceUpdateParams(TypedDict, total=False):
     bank_id: Required[Annotated[str, PropertyInfo(alias="BANK_ID")]]
 
-    body: Required[object]
+    credit_rating: Required[str]
+
+    credit_source: Required[str]

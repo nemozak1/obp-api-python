@@ -56,7 +56,9 @@ class TransactionRequestAttributesResource(SyncAPIResource):
         *,
         bank_id: str,
         account_id: str,
-        body: object,
+        name: str,
+        type: str,
+        value: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -88,7 +90,12 @@ class TransactionRequestAttributesResource(SyncAPIResource):
         return self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/transaction-requests/{transaction_request_id}/attribute",
             body=maybe_transform(
-                body, transaction_request_attribute_create_params.TransactionRequestAttributeCreateParams
+                {
+                    "name": name,
+                    "type": type,
+                    "value": value,
+                },
+                transaction_request_attribute_create_params.TransactionRequestAttributeCreateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -144,7 +151,9 @@ class TransactionRequestAttributesResource(SyncAPIResource):
         *,
         bank_id: str,
         account_id: str,
-        body: object,
+        name: str,
+        type: str,
+        value: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -176,7 +185,12 @@ class TransactionRequestAttributesResource(SyncAPIResource):
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/transaction-requests/{transaction_request_id}/attributes/ATTRIBUTE_ID",
             body=maybe_transform(
-                body, transaction_request_attribute_update_params.TransactionRequestAttributeUpdateParams
+                {
+                    "name": name,
+                    "type": type,
+                    "value": value,
+                },
+                transaction_request_attribute_update_params.TransactionRequestAttributeUpdateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -253,7 +267,9 @@ class AsyncTransactionRequestAttributesResource(AsyncAPIResource):
         *,
         bank_id: str,
         account_id: str,
-        body: object,
+        name: str,
+        type: str,
+        value: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -285,7 +301,12 @@ class AsyncTransactionRequestAttributesResource(AsyncAPIResource):
         return await self._post(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/transaction-requests/{transaction_request_id}/attribute",
             body=await async_maybe_transform(
-                body, transaction_request_attribute_create_params.TransactionRequestAttributeCreateParams
+                {
+                    "name": name,
+                    "type": type,
+                    "value": value,
+                },
+                transaction_request_attribute_create_params.TransactionRequestAttributeCreateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
@@ -341,7 +362,9 @@ class AsyncTransactionRequestAttributesResource(AsyncAPIResource):
         *,
         bank_id: str,
         account_id: str,
-        body: object,
+        name: str,
+        type: str,
+        value: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -373,7 +396,12 @@ class AsyncTransactionRequestAttributesResource(AsyncAPIResource):
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/accounts/{account_id}/transaction-requests/{transaction_request_id}/attributes/ATTRIBUTE_ID",
             body=await async_maybe_transform(
-                body, transaction_request_attribute_update_params.TransactionRequestAttributeUpdateParams
+                {
+                    "name": name,
+                    "type": type,
+                    "value": value,
+                },
+                transaction_request_attribute_update_params.TransactionRequestAttributeUpdateParams,
             ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout

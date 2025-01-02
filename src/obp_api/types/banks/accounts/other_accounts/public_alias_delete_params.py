@@ -16,4 +16,4 @@ class PublicAliasDeleteParams(TypedDict, total=False):
 
     view_id: Required[Annotated[str, PropertyInfo(alias="VIEW_ID")]]
 
-    body: Required[object]
+    json_string: Required[Annotated[str, PropertyInfo(alias="jsonString")]]

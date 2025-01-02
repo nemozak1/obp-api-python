@@ -3,7 +3,8 @@
 from __future__ import annotations
 
 from ...._compat import cached_property
-from .historical import (
+from ...._resource import SyncAPIResource, AsyncAPIResource
+from .historical.historical import (
     HistoricalResource,
     AsyncHistoricalResource,
     HistoricalResourceWithRawResponse,
@@ -11,8 +12,6 @@ from .historical import (
     HistoricalResourceWithStreamingResponse,
     AsyncHistoricalResourceWithStreamingResponse,
 )
-from ...._resource import SyncAPIResource, AsyncAPIResource
-from .historical.historical import HistoricalResource, AsyncHistoricalResource
 
 __all__ = ["ManagementResource", "AsyncManagementResource"]
 

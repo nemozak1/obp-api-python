@@ -31,7 +31,24 @@ class TestAccountApplications:
         )
         account_application = client.banks.account_applications.create(
             bank_id="BANK_ID",
-            body={},
+            product_code="1234BW",
+        )
+        assert account_application.is_closed
+        assert account_application.json() == {"foo": "bar"}
+        assert cast(Any, account_application.is_closed) is True
+        assert isinstance(account_application, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_create_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.post("/obp/v5.1.0/banks/BANK_ID/account-applications").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        account_application = client.banks.account_applications.create(
+            bank_id="BANK_ID",
+            product_code="1234BW",
+            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
         )
         assert account_application.is_closed
         assert account_application.json() == {"foo": "bar"}
@@ -47,7 +64,7 @@ class TestAccountApplications:
 
         account_application = client.banks.account_applications.with_raw_response.create(
             bank_id="BANK_ID",
-            body={},
+            product_code="1234BW",
         )
 
         assert account_application.is_closed is True
@@ -63,7 +80,7 @@ class TestAccountApplications:
         )
         with client.banks.account_applications.with_streaming_response.create(
             bank_id="BANK_ID",
-            body={},
+            product_code="1234BW",
         ) as account_application:
             assert not account_application.is_closed
             assert account_application.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -80,7 +97,7 @@ class TestAccountApplications:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             client.banks.account_applications.with_raw_response.create(
                 bank_id="",
-                body={},
+                product_code="1234BW",
             )
 
     @parametrize
@@ -160,7 +177,7 @@ class TestAccountApplications:
         account_application = client.banks.account_applications.update(
             account_application_id="ACCOUNT_APPLICATION_ID",
             bank_id="BANK_ID",
-            body={},
+            status="ACCEPTED",
         )
         assert account_application.is_closed
         assert account_application.json() == {"foo": "bar"}
@@ -177,7 +194,7 @@ class TestAccountApplications:
         account_application = client.banks.account_applications.with_raw_response.update(
             account_application_id="ACCOUNT_APPLICATION_ID",
             bank_id="BANK_ID",
-            body={},
+            status="ACCEPTED",
         )
 
         assert account_application.is_closed is True
@@ -194,7 +211,7 @@ class TestAccountApplications:
         with client.banks.account_applications.with_streaming_response.update(
             account_application_id="ACCOUNT_APPLICATION_ID",
             bank_id="BANK_ID",
-            body={},
+            status="ACCEPTED",
         ) as account_application:
             assert not account_application.is_closed
             assert account_application.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -212,7 +229,7 @@ class TestAccountApplications:
             client.banks.account_applications.with_raw_response.update(
                 account_application_id="ACCOUNT_APPLICATION_ID",
                 bank_id="",
-                body={},
+                status="ACCEPTED",
             )
 
         with pytest.raises(
@@ -221,7 +238,7 @@ class TestAccountApplications:
             client.banks.account_applications.with_raw_response.update(
                 account_application_id="",
                 bank_id="BANK_ID",
-                body={},
+                status="ACCEPTED",
             )
 
     @parametrize
@@ -292,7 +309,24 @@ class TestAsyncAccountApplications:
         )
         account_application = await async_client.banks.account_applications.create(
             bank_id="BANK_ID",
-            body={},
+            product_code="1234BW",
+        )
+        assert account_application.is_closed
+        assert await account_application.json() == {"foo": "bar"}
+        assert cast(Any, account_application.is_closed) is True
+        assert isinstance(account_application, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_create_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.post("/obp/v5.1.0/banks/BANK_ID/account-applications").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        account_application = await async_client.banks.account_applications.create(
+            bank_id="BANK_ID",
+            product_code="1234BW",
+            customer_id="7uy8a7e4-6d02-40e3-a129-0b2bf89de8uh",
+            user_id="9ca9a7e4-6d02-40e3-a129-0b2bf89de9b1",
         )
         assert account_application.is_closed
         assert await account_application.json() == {"foo": "bar"}
@@ -308,7 +342,7 @@ class TestAsyncAccountApplications:
 
         account_application = await async_client.banks.account_applications.with_raw_response.create(
             bank_id="BANK_ID",
-            body={},
+            product_code="1234BW",
         )
 
         assert account_application.is_closed is True
@@ -324,7 +358,7 @@ class TestAsyncAccountApplications:
         )
         async with async_client.banks.account_applications.with_streaming_response.create(
             bank_id="BANK_ID",
-            body={},
+            product_code="1234BW",
         ) as account_application:
             assert not account_application.is_closed
             assert account_application.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -341,7 +375,7 @@ class TestAsyncAccountApplications:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             await async_client.banks.account_applications.with_raw_response.create(
                 bank_id="",
-                body={},
+                product_code="1234BW",
             )
 
     @parametrize
@@ -421,7 +455,7 @@ class TestAsyncAccountApplications:
         account_application = await async_client.banks.account_applications.update(
             account_application_id="ACCOUNT_APPLICATION_ID",
             bank_id="BANK_ID",
-            body={},
+            status="ACCEPTED",
         )
         assert account_application.is_closed
         assert await account_application.json() == {"foo": "bar"}
@@ -438,7 +472,7 @@ class TestAsyncAccountApplications:
         account_application = await async_client.banks.account_applications.with_raw_response.update(
             account_application_id="ACCOUNT_APPLICATION_ID",
             bank_id="BANK_ID",
-            body={},
+            status="ACCEPTED",
         )
 
         assert account_application.is_closed is True
@@ -455,7 +489,7 @@ class TestAsyncAccountApplications:
         async with async_client.banks.account_applications.with_streaming_response.update(
             account_application_id="ACCOUNT_APPLICATION_ID",
             bank_id="BANK_ID",
-            body={},
+            status="ACCEPTED",
         ) as account_application:
             assert not account_application.is_closed
             assert account_application.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -473,7 +507,7 @@ class TestAsyncAccountApplications:
             await async_client.banks.account_applications.with_raw_response.update(
                 account_application_id="ACCOUNT_APPLICATION_ID",
                 bank_id="",
-                body={},
+                status="ACCEPTED",
             )
 
         with pytest.raises(
@@ -482,7 +516,7 @@ class TestAsyncAccountApplications:
             await async_client.banks.account_applications.with_raw_response.update(
                 account_application_id="",
                 bank_id="BANK_ID",
-                body={},
+                status="ACCEPTED",
             )
 
     @parametrize

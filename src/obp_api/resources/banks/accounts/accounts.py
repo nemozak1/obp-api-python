@@ -2,16 +2,10 @@
 
 from __future__ import annotations
 
+from typing import Iterable
+
 import httpx
 
-from .views import (
-    ViewsResource,
-    AsyncViewsResource,
-    ViewsResourceWithRawResponse,
-    AsyncViewsResourceWithRawResponse,
-    ViewsResourceWithStreamingResponse,
-    AsyncViewsResourceWithStreamingResponse,
-)
 from .account import (
     AccountResource,
     AsyncAccountResource,
@@ -26,7 +20,14 @@ from ...._utils import (
     async_maybe_transform,
 )
 from ...._compat import cached_property
-from .views.views import ViewsResource, AsyncViewsResource
+from .views.views import (
+    ViewsResource,
+    AsyncViewsResource,
+    ViewsResourceWithRawResponse,
+    AsyncViewsResourceWithRawResponse,
+    ViewsResourceWithStreamingResponse,
+    AsyncViewsResourceWithStreamingResponse,
+)
 from ...._resource import SyncAPIResource, AsyncAPIResource
 from ...._response import (
     BinaryAPIResponse,
@@ -46,14 +47,6 @@ from .direct_debit import (
     DirectDebitResourceWithStreamingResponse,
     AsyncDirectDebitResourceWithStreamingResponse,
 )
-from .transactions import (
-    TransactionsResource,
-    AsyncTransactionsResource,
-    TransactionsResourceWithRawResponse,
-    AsyncTransactionsResourceWithRawResponse,
-    TransactionsResourceWithStreamingResponse,
-    AsyncTransactionsResourceWithStreamingResponse,
-)
 from ....types.banks import account_update_params
 from .counterparties import (
     CounterpartiesResource,
@@ -62,14 +55,6 @@ from .counterparties import (
     AsyncCounterpartiesResourceWithRawResponse,
     CounterpartiesResourceWithStreamingResponse,
     AsyncCounterpartiesResourceWithStreamingResponse,
-)
-from .other_accounts import (
-    OtherAccountsResource,
-    AsyncOtherAccountsResource,
-    OtherAccountsResourceWithRawResponse,
-    AsyncOtherAccountsResourceWithRawResponse,
-    OtherAccountsResourceWithStreamingResponse,
-    AsyncOtherAccountsResourceWithStreamingResponse,
 )
 from .standing_order import (
     StandingOrderResource,
@@ -104,8 +89,22 @@ from .transaction_request_types import (
     TransactionRequestTypesResourceWithStreamingResponse,
     AsyncTransactionRequestTypesResourceWithStreamingResponse,
 )
-from .transactions.transactions import TransactionsResource, AsyncTransactionsResource
-from .other_accounts.other_accounts import OtherAccountsResource, AsyncOtherAccountsResource
+from .transactions.transactions import (
+    TransactionsResource,
+    AsyncTransactionsResource,
+    TransactionsResourceWithRawResponse,
+    AsyncTransactionsResourceWithRawResponse,
+    TransactionsResourceWithStreamingResponse,
+    AsyncTransactionsResourceWithStreamingResponse,
+)
+from .other_accounts.other_accounts import (
+    OtherAccountsResource,
+    AsyncOtherAccountsResource,
+    OtherAccountsResourceWithRawResponse,
+    AsyncOtherAccountsResourceWithRawResponse,
+    OtherAccountsResourceWithStreamingResponse,
+    AsyncOtherAccountsResourceWithStreamingResponse,
+)
 
 __all__ = ["AccountsResource", "AsyncAccountsResource"]
 
@@ -175,7 +174,10 @@ class AccountsResource(SyncAPIResource):
         account_id: str,
         *,
         bank_id: str,
-        body: object,
+        account_routings: Iterable[account_update_params.AccountRouting],
+        branch_id: str,
+        label: str,
+        type: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -202,7 +204,15 @@ class AccountsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/management/banks/{bank_id}/accounts/{account_id}",
-            body=maybe_transform(body, account_update_params.AccountUpdateParams),
+            body=maybe_transform(
+                {
+                    "account_routings": account_routings,
+                    "branch_id": branch_id,
+                    "label": label,
+                    "type": type,
+                },
+                account_update_params.AccountUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -309,7 +319,10 @@ class AsyncAccountsResource(AsyncAPIResource):
         account_id: str,
         *,
         bank_id: str,
-        body: object,
+        account_routings: Iterable[account_update_params.AccountRouting],
+        branch_id: str,
+        label: str,
+        type: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -336,7 +349,15 @@ class AsyncAccountsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/management/banks/{bank_id}/accounts/{account_id}",
-            body=await async_maybe_transform(body, account_update_params.AccountUpdateParams),
+            body=await async_maybe_transform(
+                {
+                    "account_routings": account_routings,
+                    "branch_id": branch_id,
+                    "label": label,
+                    "type": type,
+                },
+                account_update_params.AccountUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

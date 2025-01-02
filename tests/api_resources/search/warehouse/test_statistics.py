@@ -32,7 +32,7 @@ class TestStatistics:
         statistic = client.search.warehouse.statistics.create(
             field="FIELD",
             index="INDEX",
-            body={},
+            query={"match_all": {}},
         )
         assert statistic.is_closed
         assert statistic.json() == {"foo": "bar"}
@@ -49,7 +49,7 @@ class TestStatistics:
         statistic = client.search.warehouse.statistics.with_raw_response.create(
             field="FIELD",
             index="INDEX",
-            body={},
+            query={"match_all": {}},
         )
 
         assert statistic.is_closed is True
@@ -66,7 +66,7 @@ class TestStatistics:
         with client.search.warehouse.statistics.with_streaming_response.create(
             field="FIELD",
             index="INDEX",
-            body={},
+            query={"match_all": {}},
         ) as statistic:
             assert not statistic.is_closed
             assert statistic.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -84,14 +84,14 @@ class TestStatistics:
             client.search.warehouse.statistics.with_raw_response.create(
                 field="FIELD",
                 index="",
-                body={},
+                query={"match_all": {}},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `field` but received ''"):
             client.search.warehouse.statistics.with_raw_response.create(
                 field="",
                 index="INDEX",
-                body={},
+                query={"match_all": {}},
             )
 
 
@@ -107,7 +107,7 @@ class TestAsyncStatistics:
         statistic = await async_client.search.warehouse.statistics.create(
             field="FIELD",
             index="INDEX",
-            body={},
+            query={"match_all": {}},
         )
         assert statistic.is_closed
         assert await statistic.json() == {"foo": "bar"}
@@ -124,7 +124,7 @@ class TestAsyncStatistics:
         statistic = await async_client.search.warehouse.statistics.with_raw_response.create(
             field="FIELD",
             index="INDEX",
-            body={},
+            query={"match_all": {}},
         )
 
         assert statistic.is_closed is True
@@ -141,7 +141,7 @@ class TestAsyncStatistics:
         async with async_client.search.warehouse.statistics.with_streaming_response.create(
             field="FIELD",
             index="INDEX",
-            body={},
+            query={"match_all": {}},
         ) as statistic:
             assert not statistic.is_closed
             assert statistic.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -159,12 +159,12 @@ class TestAsyncStatistics:
             await async_client.search.warehouse.statistics.with_raw_response.create(
                 field="FIELD",
                 index="",
-                body={},
+                query={"match_all": {}},
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `field` but received ''"):
             await async_client.search.warehouse.statistics.with_raw_response.create(
                 field="",
                 index="INDEX",
-                body={},
+                query={"match_all": {}},
             )

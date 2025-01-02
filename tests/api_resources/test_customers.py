@@ -10,6 +10,7 @@ import pytest
 from respx import MockRouter
 
 from obp_api import ObpAPI, AsyncObpAPI
+from obp_api._utils import parse_date
 from obp_api._response import (
     BinaryAPIResponse,
     AsyncBinaryAPIResponse,
@@ -31,7 +32,49 @@ class TestCustomers:
         )
         customer = client.customers.create(
             bank_id="BANK_ID",
-            body={},
+            legal_name="Eveline Tripman",
+            mobile_phone_number="+49 30 901820",
+        )
+        assert customer.is_closed
+        assert customer.json() == {"foo": "bar"}
+        assert cast(Any, customer.is_closed) is True
+        assert isinstance(customer, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_create_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.post("/obp/v5.1.0/banks/BANK_ID/customers").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        customer = client.customers.create(
+            bank_id="BANK_ID",
+            legal_name="Eveline Tripman",
+            mobile_phone_number="+49 30 901820",
+            branch_id="DERBY6",
+            credit_limit={
+                "amount": "0",
+                "currency": "EUR",
+            },
+            credit_rating={
+                "rating": "OBP",
+                "source": "OBP",
+            },
+            customer_number="5987953",
+            date_of_birth=parse_date("2019-12-27"),
+            dependants=1,
+            dob_of_dependants=[parse_date("2019-12-27")],
+            email="felixsmith@example.com",
+            employment_status="worker",
+            face_image={
+                "date": parse_date("2019-12-27"),
+                "url": "www.openbankproject",
+            },
+            highest_education_attained="Master",
+            kyc_status=False,
+            last_ok_date=parse_date("2019-12-27"),
+            name_suffix="Sr",
+            relationship_status="single",
+            title="Dr.",
         )
         assert customer.is_closed
         assert customer.json() == {"foo": "bar"}
@@ -47,7 +90,8 @@ class TestCustomers:
 
         customer = client.customers.with_raw_response.create(
             bank_id="BANK_ID",
-            body={},
+            legal_name="Eveline Tripman",
+            mobile_phone_number="+49 30 901820",
         )
 
         assert customer.is_closed is True
@@ -63,7 +107,8 @@ class TestCustomers:
         )
         with client.customers.with_streaming_response.create(
             bank_id="BANK_ID",
-            body={},
+            legal_name="Eveline Tripman",
+            mobile_phone_number="+49 30 901820",
         ) as customer:
             assert not customer.is_closed
             assert customer.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -80,7 +125,8 @@ class TestCustomers:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             client.customers.with_raw_response.create(
                 bank_id="",
-                body={},
+                legal_name="Eveline Tripman",
+                mobile_phone_number="+49 30 901820",
             )
 
     @parametrize
@@ -197,7 +243,49 @@ class TestAsyncCustomers:
         )
         customer = await async_client.customers.create(
             bank_id="BANK_ID",
-            body={},
+            legal_name="Eveline Tripman",
+            mobile_phone_number="+49 30 901820",
+        )
+        assert customer.is_closed
+        assert await customer.json() == {"foo": "bar"}
+        assert cast(Any, customer.is_closed) is True
+        assert isinstance(customer, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_create_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.post("/obp/v5.1.0/banks/BANK_ID/customers").mock(
+            return_value=httpx.Response(200, json={"foo": "bar"})
+        )
+        customer = await async_client.customers.create(
+            bank_id="BANK_ID",
+            legal_name="Eveline Tripman",
+            mobile_phone_number="+49 30 901820",
+            branch_id="DERBY6",
+            credit_limit={
+                "amount": "0",
+                "currency": "EUR",
+            },
+            credit_rating={
+                "rating": "OBP",
+                "source": "OBP",
+            },
+            customer_number="5987953",
+            date_of_birth=parse_date("2019-12-27"),
+            dependants=1,
+            dob_of_dependants=[parse_date("2019-12-27")],
+            email="felixsmith@example.com",
+            employment_status="worker",
+            face_image={
+                "date": parse_date("2019-12-27"),
+                "url": "www.openbankproject",
+            },
+            highest_education_attained="Master",
+            kyc_status=False,
+            last_ok_date=parse_date("2019-12-27"),
+            name_suffix="Sr",
+            relationship_status="single",
+            title="Dr.",
         )
         assert customer.is_closed
         assert await customer.json() == {"foo": "bar"}
@@ -213,7 +301,8 @@ class TestAsyncCustomers:
 
         customer = await async_client.customers.with_raw_response.create(
             bank_id="BANK_ID",
-            body={},
+            legal_name="Eveline Tripman",
+            mobile_phone_number="+49 30 901820",
         )
 
         assert customer.is_closed is True
@@ -229,7 +318,8 @@ class TestAsyncCustomers:
         )
         async with async_client.customers.with_streaming_response.create(
             bank_id="BANK_ID",
-            body={},
+            legal_name="Eveline Tripman",
+            mobile_phone_number="+49 30 901820",
         ) as customer:
             assert not customer.is_closed
             assert customer.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -246,7 +336,8 @@ class TestAsyncCustomers:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             await async_client.customers.with_raw_response.create(
                 bank_id="",
-                body={},
+                legal_name="Eveline Tripman",
+                mobile_phone_number="+49 30 901820",
             )
 
     @parametrize

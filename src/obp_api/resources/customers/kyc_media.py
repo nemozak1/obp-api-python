@@ -2,6 +2,9 @@
 
 from __future__ import annotations
 
+from typing import Union
+from datetime import date
+
 import httpx
 
 from ..._types import NOT_GIVEN, Body, Query, Headers, NotGiven
@@ -53,7 +56,12 @@ class KYCMediaResource(SyncAPIResource):
         *,
         bank_id: str,
         customer_id: str,
-        body: object,
+        customer_number: str,
+        date: Union[str, date],
+        relates_to_kyc_check_id: str,
+        relates_to_kyc_document_id: str,
+        type: str,
+        url: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -83,7 +91,17 @@ class KYCMediaResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/kyc_media/{kyc_media_id}",
-            body=maybe_transform(body, kyc_media_update_params.KYCMediaUpdateParams),
+            body=maybe_transform(
+                {
+                    "customer_number": customer_number,
+                    "date": date,
+                    "relates_to_kyc_check_id": relates_to_kyc_check_id,
+                    "relates_to_kyc_document_id": relates_to_kyc_document_id,
+                    "type": type,
+                    "url": url,
+                },
+                kyc_media_update_params.KYCMediaUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -151,7 +169,12 @@ class AsyncKYCMediaResource(AsyncAPIResource):
         *,
         bank_id: str,
         customer_id: str,
-        body: object,
+        customer_number: str,
+        date: Union[str, date],
+        relates_to_kyc_check_id: str,
+        relates_to_kyc_document_id: str,
+        type: str,
+        url: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -181,7 +204,17 @@ class AsyncKYCMediaResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             f"/obp/v5.1.0/banks/{bank_id}/customers/{customer_id}/kyc_media/{kyc_media_id}",
-            body=await async_maybe_transform(body, kyc_media_update_params.KYCMediaUpdateParams),
+            body=await async_maybe_transform(
+                {
+                    "customer_number": customer_number,
+                    "date": date,
+                    "relates_to_kyc_check_id": relates_to_kyc_check_id,
+                    "relates_to_kyc_document_id": relates_to_kyc_document_id,
+                    "type": type,
+                    "url": url,
+                },
+                kyc_media_update_params.KYCMediaUpdateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

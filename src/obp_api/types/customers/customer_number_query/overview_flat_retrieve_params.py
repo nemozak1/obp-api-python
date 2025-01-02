@@ -8,4 +8,4 @@ __all__ = ["OverviewFlatRetrieveParams"]
 
 
 class OverviewFlatRetrieveParams(TypedDict, total=False):
-    body: Required[object]
+    customer_number: Required[str]

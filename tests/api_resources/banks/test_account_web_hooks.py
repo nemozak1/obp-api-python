@@ -31,7 +31,12 @@ class TestAccountWebHooks:
         )
         account_web_hook = client.banks.account_web_hooks.create(
             bank_id="BANK_ID",
-            body={},
+            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+            http_method="POST",
+            http_protocol="HTTP/1.1",
+            is_active="true",
+            trigger_name="OnBalanceChange",
+            url="https://localhost.openbankproject.com",
         )
         assert account_web_hook.is_closed
         assert account_web_hook.json() == {"foo": "bar"}
@@ -47,7 +52,12 @@ class TestAccountWebHooks:
 
         account_web_hook = client.banks.account_web_hooks.with_raw_response.create(
             bank_id="BANK_ID",
-            body={},
+            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+            http_method="POST",
+            http_protocol="HTTP/1.1",
+            is_active="true",
+            trigger_name="OnBalanceChange",
+            url="https://localhost.openbankproject.com",
         )
 
         assert account_web_hook.is_closed is True
@@ -63,7 +73,12 @@ class TestAccountWebHooks:
         )
         with client.banks.account_web_hooks.with_streaming_response.create(
             bank_id="BANK_ID",
-            body={},
+            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+            http_method="POST",
+            http_protocol="HTTP/1.1",
+            is_active="true",
+            trigger_name="OnBalanceChange",
+            url="https://localhost.openbankproject.com",
         ) as account_web_hook:
             assert not account_web_hook.is_closed
             assert account_web_hook.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -80,7 +95,12 @@ class TestAccountWebHooks:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             client.banks.account_web_hooks.with_raw_response.create(
                 bank_id="",
-                body={},
+                account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+                http_method="POST",
+                http_protocol="HTTP/1.1",
+                is_active="true",
+                trigger_name="OnBalanceChange",
+                url="https://localhost.openbankproject.com",
             )
 
     @parametrize
@@ -91,7 +111,8 @@ class TestAccountWebHooks:
         )
         account_web_hook = client.banks.account_web_hooks.update(
             bank_id="BANK_ID",
-            body={},
+            account_webhook_id="fc23a7e2-7dd2-4bdf-a0b4-ae31232a4762",
+            is_active="true",
         )
         assert account_web_hook.is_closed
         assert account_web_hook.json() == {"foo": "bar"}
@@ -107,7 +128,8 @@ class TestAccountWebHooks:
 
         account_web_hook = client.banks.account_web_hooks.with_raw_response.update(
             bank_id="BANK_ID",
-            body={},
+            account_webhook_id="fc23a7e2-7dd2-4bdf-a0b4-ae31232a4762",
+            is_active="true",
         )
 
         assert account_web_hook.is_closed is True
@@ -123,7 +145,8 @@ class TestAccountWebHooks:
         )
         with client.banks.account_web_hooks.with_streaming_response.update(
             bank_id="BANK_ID",
-            body={},
+            account_webhook_id="fc23a7e2-7dd2-4bdf-a0b4-ae31232a4762",
+            is_active="true",
         ) as account_web_hook:
             assert not account_web_hook.is_closed
             assert account_web_hook.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -140,7 +163,8 @@ class TestAccountWebHooks:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             client.banks.account_web_hooks.with_raw_response.update(
                 bank_id="",
-                body={},
+                account_webhook_id="fc23a7e2-7dd2-4bdf-a0b4-ae31232a4762",
+                is_active="true",
             )
 
 
@@ -155,7 +179,12 @@ class TestAsyncAccountWebHooks:
         )
         account_web_hook = await async_client.banks.account_web_hooks.create(
             bank_id="BANK_ID",
-            body={},
+            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+            http_method="POST",
+            http_protocol="HTTP/1.1",
+            is_active="true",
+            trigger_name="OnBalanceChange",
+            url="https://localhost.openbankproject.com",
         )
         assert account_web_hook.is_closed
         assert await account_web_hook.json() == {"foo": "bar"}
@@ -171,7 +200,12 @@ class TestAsyncAccountWebHooks:
 
         account_web_hook = await async_client.banks.account_web_hooks.with_raw_response.create(
             bank_id="BANK_ID",
-            body={},
+            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+            http_method="POST",
+            http_protocol="HTTP/1.1",
+            is_active="true",
+            trigger_name="OnBalanceChange",
+            url="https://localhost.openbankproject.com",
         )
 
         assert account_web_hook.is_closed is True
@@ -187,7 +221,12 @@ class TestAsyncAccountWebHooks:
         )
         async with async_client.banks.account_web_hooks.with_streaming_response.create(
             bank_id="BANK_ID",
-            body={},
+            account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+            http_method="POST",
+            http_protocol="HTTP/1.1",
+            is_active="true",
+            trigger_name="OnBalanceChange",
+            url="https://localhost.openbankproject.com",
         ) as account_web_hook:
             assert not account_web_hook.is_closed
             assert account_web_hook.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -204,7 +243,12 @@ class TestAsyncAccountWebHooks:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             await async_client.banks.account_web_hooks.with_raw_response.create(
                 bank_id="",
-                body={},
+                account_id="8ca8a7e4-6d02-40e3-a129-0b2bf89de9f0",
+                http_method="POST",
+                http_protocol="HTTP/1.1",
+                is_active="true",
+                trigger_name="OnBalanceChange",
+                url="https://localhost.openbankproject.com",
             )
 
     @parametrize
@@ -215,7 +259,8 @@ class TestAsyncAccountWebHooks:
         )
         account_web_hook = await async_client.banks.account_web_hooks.update(
             bank_id="BANK_ID",
-            body={},
+            account_webhook_id="fc23a7e2-7dd2-4bdf-a0b4-ae31232a4762",
+            is_active="true",
         )
         assert account_web_hook.is_closed
         assert await account_web_hook.json() == {"foo": "bar"}
@@ -231,7 +276,8 @@ class TestAsyncAccountWebHooks:
 
         account_web_hook = await async_client.banks.account_web_hooks.with_raw_response.update(
             bank_id="BANK_ID",
-            body={},
+            account_webhook_id="fc23a7e2-7dd2-4bdf-a0b4-ae31232a4762",
+            is_active="true",
         )
 
         assert account_web_hook.is_closed is True
@@ -247,7 +293,8 @@ class TestAsyncAccountWebHooks:
         )
         async with async_client.banks.account_web_hooks.with_streaming_response.update(
             bank_id="BANK_ID",
-            body={},
+            account_webhook_id="fc23a7e2-7dd2-4bdf-a0b4-ae31232a4762",
+            is_active="true",
         ) as account_web_hook:
             assert not account_web_hook.is_closed
             assert account_web_hook.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -264,5 +311,6 @@ class TestAsyncAccountWebHooks:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             await async_client.banks.account_web_hooks.with_raw_response.update(
                 bank_id="",
-                body={},
+                account_webhook_id="fc23a7e2-7dd2-4bdf-a0b4-ae31232a4762",
+                is_active="true",
             )

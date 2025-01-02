@@ -33,7 +33,9 @@ class TestTransactionRequestAttributes:
             transaction_request_id="TRANSACTION_REQUEST_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            name="HOUSE_RENT",
+            type="DATE_WITH_DAY",
+            value="123456789",
         )
         assert transaction_request_attribute.is_closed
         assert transaction_request_attribute.json() == {"foo": "bar"}
@@ -52,7 +54,9 @@ class TestTransactionRequestAttributes:
                 transaction_request_id="TRANSACTION_REQUEST_ID",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                body={},
+                name="HOUSE_RENT",
+                type="DATE_WITH_DAY",
+                value="123456789",
             )
         )
 
@@ -71,7 +75,9 @@ class TestTransactionRequestAttributes:
             transaction_request_id="TRANSACTION_REQUEST_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            name="HOUSE_RENT",
+            type="DATE_WITH_DAY",
+            value="123456789",
         ) as transaction_request_attribute:
             assert not transaction_request_attribute.is_closed
             assert transaction_request_attribute.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -90,7 +96,9 @@ class TestTransactionRequestAttributes:
                 transaction_request_id="TRANSACTION_REQUEST_ID",
                 bank_id="",
                 account_id="ACCOUNT_ID",
-                body={},
+                name="HOUSE_RENT",
+                type="DATE_WITH_DAY",
+                value="123456789",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -98,7 +106,9 @@ class TestTransactionRequestAttributes:
                 transaction_request_id="TRANSACTION_REQUEST_ID",
                 bank_id="BANK_ID",
                 account_id="",
-                body={},
+                name="HOUSE_RENT",
+                type="DATE_WITH_DAY",
+                value="123456789",
             )
 
         with pytest.raises(
@@ -108,7 +118,9 @@ class TestTransactionRequestAttributes:
                 transaction_request_id="",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                body={},
+                name="HOUSE_RENT",
+                type="DATE_WITH_DAY",
+                value="123456789",
             )
 
     @parametrize
@@ -203,7 +215,9 @@ class TestTransactionRequestAttributes:
             transaction_request_id="TRANSACTION_REQUEST_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            name="HOUSE_RENT",
+            type="DATE_WITH_DAY",
+            value="123456789",
         )
         assert transaction_request_attribute.is_closed
         assert transaction_request_attribute.json() == {"foo": "bar"}
@@ -222,7 +236,9 @@ class TestTransactionRequestAttributes:
                 transaction_request_id="TRANSACTION_REQUEST_ID",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                body={},
+                name="HOUSE_RENT",
+                type="DATE_WITH_DAY",
+                value="123456789",
             )
         )
 
@@ -241,7 +257,9 @@ class TestTransactionRequestAttributes:
             transaction_request_id="TRANSACTION_REQUEST_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            name="HOUSE_RENT",
+            type="DATE_WITH_DAY",
+            value="123456789",
         ) as transaction_request_attribute:
             assert not transaction_request_attribute.is_closed
             assert transaction_request_attribute.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -260,7 +278,9 @@ class TestTransactionRequestAttributes:
                 transaction_request_id="TRANSACTION_REQUEST_ID",
                 bank_id="",
                 account_id="ACCOUNT_ID",
-                body={},
+                name="HOUSE_RENT",
+                type="DATE_WITH_DAY",
+                value="123456789",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -268,7 +288,9 @@ class TestTransactionRequestAttributes:
                 transaction_request_id="TRANSACTION_REQUEST_ID",
                 bank_id="BANK_ID",
                 account_id="",
-                body={},
+                name="HOUSE_RENT",
+                type="DATE_WITH_DAY",
+                value="123456789",
             )
 
         with pytest.raises(
@@ -278,7 +300,9 @@ class TestTransactionRequestAttributes:
                 transaction_request_id="",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                body={},
+                name="HOUSE_RENT",
+                type="DATE_WITH_DAY",
+                value="123456789",
             )
 
     @parametrize
@@ -377,7 +401,9 @@ class TestAsyncTransactionRequestAttributes:
             transaction_request_id="TRANSACTION_REQUEST_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            name="HOUSE_RENT",
+            type="DATE_WITH_DAY",
+            value="123456789",
         )
         assert transaction_request_attribute.is_closed
         assert await transaction_request_attribute.json() == {"foo": "bar"}
@@ -396,7 +422,9 @@ class TestAsyncTransactionRequestAttributes:
                 transaction_request_id="TRANSACTION_REQUEST_ID",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                body={},
+                name="HOUSE_RENT",
+                type="DATE_WITH_DAY",
+                value="123456789",
             )
         )
 
@@ -415,7 +443,9 @@ class TestAsyncTransactionRequestAttributes:
             transaction_request_id="TRANSACTION_REQUEST_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            name="HOUSE_RENT",
+            type="DATE_WITH_DAY",
+            value="123456789",
         ) as transaction_request_attribute:
             assert not transaction_request_attribute.is_closed
             assert transaction_request_attribute.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -434,7 +464,9 @@ class TestAsyncTransactionRequestAttributes:
                 transaction_request_id="TRANSACTION_REQUEST_ID",
                 bank_id="",
                 account_id="ACCOUNT_ID",
-                body={},
+                name="HOUSE_RENT",
+                type="DATE_WITH_DAY",
+                value="123456789",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -442,7 +474,9 @@ class TestAsyncTransactionRequestAttributes:
                 transaction_request_id="TRANSACTION_REQUEST_ID",
                 bank_id="BANK_ID",
                 account_id="",
-                body={},
+                name="HOUSE_RENT",
+                type="DATE_WITH_DAY",
+                value="123456789",
             )
 
         with pytest.raises(
@@ -452,7 +486,9 @@ class TestAsyncTransactionRequestAttributes:
                 transaction_request_id="",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                body={},
+                name="HOUSE_RENT",
+                type="DATE_WITH_DAY",
+                value="123456789",
             )
 
     @parametrize
@@ -547,7 +583,9 @@ class TestAsyncTransactionRequestAttributes:
             transaction_request_id="TRANSACTION_REQUEST_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            name="HOUSE_RENT",
+            type="DATE_WITH_DAY",
+            value="123456789",
         )
         assert transaction_request_attribute.is_closed
         assert await transaction_request_attribute.json() == {"foo": "bar"}
@@ -566,7 +604,9 @@ class TestAsyncTransactionRequestAttributes:
                 transaction_request_id="TRANSACTION_REQUEST_ID",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                body={},
+                name="HOUSE_RENT",
+                type="DATE_WITH_DAY",
+                value="123456789",
             )
         )
 
@@ -585,7 +625,9 @@ class TestAsyncTransactionRequestAttributes:
             transaction_request_id="TRANSACTION_REQUEST_ID",
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
-            body={},
+            name="HOUSE_RENT",
+            type="DATE_WITH_DAY",
+            value="123456789",
         ) as transaction_request_attribute:
             assert not transaction_request_attribute.is_closed
             assert transaction_request_attribute.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -604,7 +646,9 @@ class TestAsyncTransactionRequestAttributes:
                 transaction_request_id="TRANSACTION_REQUEST_ID",
                 bank_id="",
                 account_id="ACCOUNT_ID",
-                body={},
+                name="HOUSE_RENT",
+                type="DATE_WITH_DAY",
+                value="123456789",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -612,7 +656,9 @@ class TestAsyncTransactionRequestAttributes:
                 transaction_request_id="TRANSACTION_REQUEST_ID",
                 bank_id="BANK_ID",
                 account_id="",
-                body={},
+                name="HOUSE_RENT",
+                type="DATE_WITH_DAY",
+                value="123456789",
             )
 
         with pytest.raises(
@@ -622,7 +668,9 @@ class TestAsyncTransactionRequestAttributes:
                 transaction_request_id="",
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
-                body={},
+                name="HOUSE_RENT",
+                type="DATE_WITH_DAY",
+                value="123456789",
             )
 
     @parametrize

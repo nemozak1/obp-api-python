@@ -32,7 +32,7 @@ class TestServices:
         service = client.banks.atms.services.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            services=["string"],
         )
         assert service.is_closed
         assert service.json() == {"foo": "bar"}
@@ -49,7 +49,7 @@ class TestServices:
         service = client.banks.atms.services.with_raw_response.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            services=["string"],
         )
 
         assert service.is_closed is True
@@ -66,7 +66,7 @@ class TestServices:
         with client.banks.atms.services.with_streaming_response.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            services=["string"],
         ) as service:
             assert not service.is_closed
             assert service.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -84,14 +84,14 @@ class TestServices:
             client.banks.atms.services.with_raw_response.update(
                 atm_id="ATM_ID",
                 bank_id="",
-                body={},
+                services=["string"],
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `atm_id` but received ''"):
             client.banks.atms.services.with_raw_response.update(
                 atm_id="",
                 bank_id="BANK_ID",
-                body={},
+                services=["string"],
             )
 
 
@@ -107,7 +107,7 @@ class TestAsyncServices:
         service = await async_client.banks.atms.services.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            services=["string"],
         )
         assert service.is_closed
         assert await service.json() == {"foo": "bar"}
@@ -124,7 +124,7 @@ class TestAsyncServices:
         service = await async_client.banks.atms.services.with_raw_response.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            services=["string"],
         )
 
         assert service.is_closed is True
@@ -141,7 +141,7 @@ class TestAsyncServices:
         async with async_client.banks.atms.services.with_streaming_response.update(
             atm_id="ATM_ID",
             bank_id="BANK_ID",
-            body={},
+            services=["string"],
         ) as service:
             assert not service.is_closed
             assert service.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -159,12 +159,12 @@ class TestAsyncServices:
             await async_client.banks.atms.services.with_raw_response.update(
                 atm_id="ATM_ID",
                 bank_id="",
-                body={},
+                services=["string"],
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `atm_id` but received ''"):
             await async_client.banks.atms.services.with_raw_response.update(
                 atm_id="",
                 bank_id="BANK_ID",
-                body={},
+                services=["string"],
             )

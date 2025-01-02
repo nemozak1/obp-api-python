@@ -50,7 +50,7 @@ class TagsResource(SyncAPIResource):
     def create(
         self,
         *,
-        body: object,
+        tag_name: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -73,7 +73,7 @@ class TagsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/obp/v5.1.0/management/endpoints/OPERATION_ID/tags",
-            body=maybe_transform(body, tag_create_params.TagCreateParams),
+            body=maybe_transform({"tag_name": tag_name}, tag_create_params.TagCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -83,7 +83,7 @@ class TagsResource(SyncAPIResource):
     def update(
         self,
         *,
-        body: object,
+        tag_name: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -106,7 +106,7 @@ class TagsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._put(
             "/obp/v5.1.0/management/endpoints/OPERATION_ID/tags/ENDPOINT_TAG_ID",
-            body=maybe_transform(body, tag_update_params.TagUpdateParams),
+            body=maybe_transform({"tag_name": tag_name}, tag_update_params.TagUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -177,7 +177,7 @@ class AsyncTagsResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        body: object,
+        tag_name: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -200,7 +200,7 @@ class AsyncTagsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/obp/v5.1.0/management/endpoints/OPERATION_ID/tags",
-            body=await async_maybe_transform(body, tag_create_params.TagCreateParams),
+            body=await async_maybe_transform({"tag_name": tag_name}, tag_create_params.TagCreateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -210,7 +210,7 @@ class AsyncTagsResource(AsyncAPIResource):
     async def update(
         self,
         *,
-        body: object,
+        tag_name: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -233,7 +233,7 @@ class AsyncTagsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._put(
             "/obp/v5.1.0/management/endpoints/OPERATION_ID/tags/ENDPOINT_TAG_ID",
-            body=await async_maybe_transform(body, tag_update_params.TagUpdateParams),
+            body=await async_maybe_transform({"tag_name": tag_name}, tag_update_params.TagUpdateParams),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

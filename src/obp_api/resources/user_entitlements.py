@@ -2,6 +2,8 @@
 
 from __future__ import annotations
 
+from typing import Iterable
+
 import httpx
 
 from ..types import user_entitlement_create_params
@@ -50,7 +52,9 @@ class UserEntitlementsResource(SyncAPIResource):
     def create(
         self,
         *,
-        body: object,
+        provider: str,
+        roles: Iterable[user_entitlement_create_params.Role],
+        username: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -74,7 +78,14 @@ class UserEntitlementsResource(SyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return self._post(
             "/obp/v5.1.0/user-entitlements",
-            body=maybe_transform(body, user_entitlement_create_params.UserEntitlementCreateParams),
+            body=maybe_transform(
+                {
+                    "provider": provider,
+                    "roles": roles,
+                    "username": username,
+                },
+                user_entitlement_create_params.UserEntitlementCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),
@@ -105,7 +116,9 @@ class AsyncUserEntitlementsResource(AsyncAPIResource):
     async def create(
         self,
         *,
-        body: object,
+        provider: str,
+        roles: Iterable[user_entitlement_create_params.Role],
+        username: str,
         # Use the following arguments if you need to pass additional parameters to the API that aren't available via kwargs.
         # The extra values given here take precedence over values defined on the client or passed to this method.
         extra_headers: Headers | None = None,
@@ -129,7 +142,14 @@ class AsyncUserEntitlementsResource(AsyncAPIResource):
         extra_headers = {"Accept": "*/*", **(extra_headers or {})}
         return await self._post(
             "/obp/v5.1.0/user-entitlements",
-            body=await async_maybe_transform(body, user_entitlement_create_params.UserEntitlementCreateParams),
+            body=await async_maybe_transform(
+                {
+                    "provider": provider,
+                    "roles": roles,
+                    "username": username,
+                },
+                user_entitlement_create_params.UserEntitlementCreateParams,
+            ),
             options=make_request_options(
                 extra_headers=extra_headers, extra_query=extra_query, extra_body=extra_body, timeout=timeout
             ),

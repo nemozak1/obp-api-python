@@ -28,7 +28,29 @@ class TestBanks:
     def test_method_create(self, client: ObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/banks").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         bank = client.banks.create(
-            body={},
+            bank_code="CGHZ",
+        )
+        assert bank.is_closed
+        assert bank.json() == {"foo": "bar"}
+        assert cast(Any, bank.is_closed) is True
+        assert isinstance(bank, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_create_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.post("/obp/v5.1.0/banks").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        bank = client.banks.create(
+            bank_code="CGHZ",
+            id="gh.29.uk",
+            bank_routings=[
+                {
+                    "address": "",
+                    "scheme": "scheme value",
+                }
+            ],
+            full_name="full name string",
+            logo="logo url",
+            website="www.openbankproject.com",
         )
         assert bank.is_closed
         assert bank.json() == {"foo": "bar"}
@@ -41,7 +63,7 @@ class TestBanks:
         respx_mock.post("/obp/v5.1.0/banks").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         bank = client.banks.with_raw_response.create(
-            body={},
+            bank_code="CGHZ",
         )
 
         assert bank.is_closed is True
@@ -54,7 +76,7 @@ class TestBanks:
     def test_streaming_response_create(self, client: ObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/banks").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.banks.with_streaming_response.create(
-            body={},
+            bank_code="CGHZ",
         ) as bank:
             assert not bank.is_closed
             assert bank.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -120,7 +142,29 @@ class TestBanks:
     def test_method_update(self, client: ObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.put("/obp/v5.1.0/banks").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         bank = client.banks.update(
-            body={},
+            bank_code="CGHZ",
+        )
+        assert bank.is_closed
+        assert bank.json() == {"foo": "bar"}
+        assert cast(Any, bank.is_closed) is True
+        assert isinstance(bank, BinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    def test_method_update_with_all_params(self, client: ObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.put("/obp/v5.1.0/banks").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        bank = client.banks.update(
+            bank_code="CGHZ",
+            id="gh.29.uk",
+            bank_routings=[
+                {
+                    "address": "",
+                    "scheme": "scheme value",
+                }
+            ],
+            full_name="full name string",
+            logo="logo url",
+            website="www.openbankproject.com",
         )
         assert bank.is_closed
         assert bank.json() == {"foo": "bar"}
@@ -133,7 +177,7 @@ class TestBanks:
         respx_mock.put("/obp/v5.1.0/banks").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         bank = client.banks.with_raw_response.update(
-            body={},
+            bank_code="CGHZ",
         )
 
         assert bank.is_closed is True
@@ -146,7 +190,7 @@ class TestBanks:
     def test_streaming_response_update(self, client: ObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.put("/obp/v5.1.0/banks").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         with client.banks.with_streaming_response.update(
-            body={},
+            bank_code="CGHZ",
         ) as bank:
             assert not bank.is_closed
             assert bank.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -202,7 +246,29 @@ class TestAsyncBanks:
     async def test_method_create(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/banks").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         bank = await async_client.banks.create(
-            body={},
+            bank_code="CGHZ",
+        )
+        assert bank.is_closed
+        assert await bank.json() == {"foo": "bar"}
+        assert cast(Any, bank.is_closed) is True
+        assert isinstance(bank, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_create_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.post("/obp/v5.1.0/banks").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        bank = await async_client.banks.create(
+            bank_code="CGHZ",
+            id="gh.29.uk",
+            bank_routings=[
+                {
+                    "address": "",
+                    "scheme": "scheme value",
+                }
+            ],
+            full_name="full name string",
+            logo="logo url",
+            website="www.openbankproject.com",
         )
         assert bank.is_closed
         assert await bank.json() == {"foo": "bar"}
@@ -215,7 +281,7 @@ class TestAsyncBanks:
         respx_mock.post("/obp/v5.1.0/banks").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         bank = await async_client.banks.with_raw_response.create(
-            body={},
+            bank_code="CGHZ",
         )
 
         assert bank.is_closed is True
@@ -228,7 +294,7 @@ class TestAsyncBanks:
     async def test_streaming_response_create(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.post("/obp/v5.1.0/banks").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.banks.with_streaming_response.create(
-            body={},
+            bank_code="CGHZ",
         ) as bank:
             assert not bank.is_closed
             assert bank.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -294,7 +360,29 @@ class TestAsyncBanks:
     async def test_method_update(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.put("/obp/v5.1.0/banks").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         bank = await async_client.banks.update(
-            body={},
+            bank_code="CGHZ",
+        )
+        assert bank.is_closed
+        assert await bank.json() == {"foo": "bar"}
+        assert cast(Any, bank.is_closed) is True
+        assert isinstance(bank, AsyncBinaryAPIResponse)
+
+    @parametrize
+    @pytest.mark.respx(base_url=base_url)
+    async def test_method_update_with_all_params(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
+        respx_mock.put("/obp/v5.1.0/banks").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
+        bank = await async_client.banks.update(
+            bank_code="CGHZ",
+            id="gh.29.uk",
+            bank_routings=[
+                {
+                    "address": "",
+                    "scheme": "scheme value",
+                }
+            ],
+            full_name="full name string",
+            logo="logo url",
+            website="www.openbankproject.com",
         )
         assert bank.is_closed
         assert await bank.json() == {"foo": "bar"}
@@ -307,7 +395,7 @@ class TestAsyncBanks:
         respx_mock.put("/obp/v5.1.0/banks").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
 
         bank = await async_client.banks.with_raw_response.update(
-            body={},
+            bank_code="CGHZ",
         )
 
         assert bank.is_closed is True
@@ -320,7 +408,7 @@ class TestAsyncBanks:
     async def test_streaming_response_update(self, async_client: AsyncObpAPI, respx_mock: MockRouter) -> None:
         respx_mock.put("/obp/v5.1.0/banks").mock(return_value=httpx.Response(200, json={"foo": "bar"}))
         async with async_client.banks.with_streaming_response.update(
-            body={},
+            bank_code="CGHZ",
         ) as bank:
             assert not bank.is_closed
             assert bank.http_request.headers.get("X-Stainless-Lang") == "python"

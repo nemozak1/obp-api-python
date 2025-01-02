@@ -87,7 +87,13 @@ class TestTransaction:
         )
         transaction = client.banks.attribute_definitions.transaction.update(
             bank_id="BANK_ID",
-            body={},
+            alias="STRING",
+            can_be_seen_on_views=["string"],
+            category="TransactionRequest",
+            description="description",
+            is_active=True,
+            name="SPECIAL_TAX_NUMBER",
+            type="STRING",
         )
         assert transaction.is_closed
         assert transaction.json() == {"foo": "bar"}
@@ -103,7 +109,13 @@ class TestTransaction:
 
         transaction = client.banks.attribute_definitions.transaction.with_raw_response.update(
             bank_id="BANK_ID",
-            body={},
+            alias="STRING",
+            can_be_seen_on_views=["string"],
+            category="TransactionRequest",
+            description="description",
+            is_active=True,
+            name="SPECIAL_TAX_NUMBER",
+            type="STRING",
         )
 
         assert transaction.is_closed is True
@@ -119,7 +131,13 @@ class TestTransaction:
         )
         with client.banks.attribute_definitions.transaction.with_streaming_response.update(
             bank_id="BANK_ID",
-            body={},
+            alias="STRING",
+            can_be_seen_on_views=["string"],
+            category="TransactionRequest",
+            description="description",
+            is_active=True,
+            name="SPECIAL_TAX_NUMBER",
+            type="STRING",
         ) as transaction:
             assert not transaction.is_closed
             assert transaction.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -136,7 +154,13 @@ class TestTransaction:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             client.banks.attribute_definitions.transaction.with_raw_response.update(
                 bank_id="",
-                body={},
+                alias="STRING",
+                can_be_seen_on_views=["string"],
+                category="TransactionRequest",
+                description="description",
+                is_active=True,
+                name="SPECIAL_TAX_NUMBER",
+                type="STRING",
             )
 
 
@@ -207,7 +231,13 @@ class TestAsyncTransaction:
         )
         transaction = await async_client.banks.attribute_definitions.transaction.update(
             bank_id="BANK_ID",
-            body={},
+            alias="STRING",
+            can_be_seen_on_views=["string"],
+            category="TransactionRequest",
+            description="description",
+            is_active=True,
+            name="SPECIAL_TAX_NUMBER",
+            type="STRING",
         )
         assert transaction.is_closed
         assert await transaction.json() == {"foo": "bar"}
@@ -223,7 +253,13 @@ class TestAsyncTransaction:
 
         transaction = await async_client.banks.attribute_definitions.transaction.with_raw_response.update(
             bank_id="BANK_ID",
-            body={},
+            alias="STRING",
+            can_be_seen_on_views=["string"],
+            category="TransactionRequest",
+            description="description",
+            is_active=True,
+            name="SPECIAL_TAX_NUMBER",
+            type="STRING",
         )
 
         assert transaction.is_closed is True
@@ -239,7 +275,13 @@ class TestAsyncTransaction:
         )
         async with async_client.banks.attribute_definitions.transaction.with_streaming_response.update(
             bank_id="BANK_ID",
-            body={},
+            alias="STRING",
+            can_be_seen_on_views=["string"],
+            category="TransactionRequest",
+            description="description",
+            is_active=True,
+            name="SPECIAL_TAX_NUMBER",
+            type="STRING",
         ) as transaction:
             assert not transaction.is_closed
             assert transaction.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -256,5 +298,11 @@ class TestAsyncTransaction:
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `bank_id` but received ''"):
             await async_client.banks.attribute_definitions.transaction.with_raw_response.update(
                 bank_id="",
-                body={},
+                alias="STRING",
+                can_be_seen_on_views=["string"],
+                category="TransactionRequest",
+                description="description",
+                is_active=True,
+                name="SPECIAL_TAX_NUMBER",
+                type="STRING",
             )

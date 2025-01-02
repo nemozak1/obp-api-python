@@ -8,4 +8,8 @@ __all__ = ["UserResetPasswordURLParams"]
 
 
 class UserResetPasswordURLParams(TypedDict, total=False):
-    body: Required[object]
+    email: Required[str]
+
+    user_id: Required[str]
+
+    username: Required[str]

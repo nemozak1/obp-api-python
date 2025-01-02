@@ -2,7 +2,7 @@
 
 [![PyPI version](https://img.shields.io/pypi/v/obp_api.svg)](https://pypi.org/project/obp_api/)
 
-The Obp API Python library provides convenient access to the Obp API REST API from any Python 3.7+
+The Obp API Python library provides convenient access to the Obp API REST API from any Python 3.8+
 application. The library includes type definitions for all request params and response fields,
 and offers both synchronous and asynchronous clients powered by [httpx](https://github.com/encode/httpx).
 
@@ -32,7 +32,7 @@ client = ObpAPI(
 )
 
 response = client.accounts.check_iban(
-    body={},
+    address="DE75512108001245126199",
 )
 ```
 
@@ -52,7 +52,7 @@ client = AsyncObpAPI(
 
 async def main() -> None:
     response = await client.accounts.check_iban(
-        body={},
+        address="DE75512108001245126199",
     )
 
 
@@ -87,7 +87,7 @@ client = ObpAPI()
 
 try:
     client.accounts.check_iban(
-        body={},
+        address="DE75512108001245126199",
     )
 except obp_api.APIConnectionError as e:
     print("The server could not be reached")
@@ -132,7 +132,7 @@ client = ObpAPI(
 
 # Or, configure per-request:
 client.with_options(max_retries=5).accounts.check_iban(
-    body={},
+    address="DE75512108001245126199",
 )
 ```
 
@@ -157,7 +157,7 @@ client = ObpAPI(
 
 # Override per-request:
 client.with_options(timeout=5.0).accounts.check_iban(
-    body={},
+    address="DE75512108001245126199",
 )
 ```
 
@@ -171,11 +171,13 @@ Note that requests that time out are [retried twice by default](#retries).
 
 We use the standard library [`logging`](https://docs.python.org/3/library/logging.html) module.
 
-You can enable logging by setting the environment variable `OBP_API_LOG` to `debug`.
+You can enable logging by setting the environment variable `OBP_API_LOG` to `info`.
 
 ```shell
-$ export OBP_API_LOG=debug
+$ export OBP_API_LOG=info
 ```
+
+Or to `debug` for more verbose logging.
 
 ### How to tell whether `None` means `null` or missing
 
@@ -198,7 +200,7 @@ from obp_api import ObpAPI
 
 client = ObpAPI()
 response = client.accounts.with_raw_response.check_iban(
-    body={},
+    address="DE75512108001245126199",
 )
 print(response.headers.get('X-My-Header'))
 
@@ -218,7 +220,7 @@ To stream the response body, use `.with_streaming_response` instead, which requi
 
 ```python
 with client.accounts.with_streaming_response.check_iban(
-    body={},
+    address="DE75512108001245126199",
 ) as response:
     print(response.headers.get("X-My-Header"))
 
@@ -267,18 +269,19 @@ can also get all the extra fields on the Pydantic model as a dict with
 
 You can directly override the [httpx client](https://www.python-httpx.org/api/#client) to customize it for your use case, including:
 
-- Support for proxies
-- Custom transports
+- Support for [proxies](https://www.python-httpx.org/advanced/proxies/)
+- Custom [transports](https://www.python-httpx.org/advanced/transports/)
 - Additional [advanced](https://www.python-httpx.org/advanced/clients/) functionality
 
 ```python
+import httpx
 from obp_api import ObpAPI, DefaultHttpxClient
 
 client = ObpAPI(
     # Or use the `OBP_API_BASE_URL` env var
     base_url="http://my.test.server.example.com:8083",
     http_client=DefaultHttpxClient(
-        proxies="http://my.test.proxy.example.com",
+        proxy="http://my.test.proxy.example.com",
         transport=httpx.HTTPTransport(local_address="0.0.0.0"),
     ),
 )
@@ -293,6 +296,16 @@ client.with_options(http_client=DefaultHttpxClient(...))
 ### Managing HTTP resources
 
 By default the library closes underlying HTTP connections whenever the client is [garbage collected](https://docs.python.org/3/reference/datamodel.html#object.__del__). You can manually close the client using the `.close()` method if desired, or with a context manager that closes when exiting.
+
+```py
+from obp_api import ObpAPI
+
+with ObpAPI() as client:
+  # make requests here
+  ...
+
+# HTTP client is now closed
+```
 
 ## Versioning
 
@@ -319,4 +332,8 @@ print(obp_api.__version__)
 
 ## Requirements
 
-Python 3.7 or higher.
+Python 3.8 or higher.
+
+## Contributing
+
+See [the contributing documentation](./CONTRIBUTING.md).

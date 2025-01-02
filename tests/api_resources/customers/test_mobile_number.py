@@ -32,7 +32,7 @@ class TestMobileNumber:
         mobile_number = client.customers.mobile_number.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            body={},
+            mobile_phone_number="+381631954907",
         )
         assert mobile_number.is_closed
         assert mobile_number.json() == {"foo": "bar"}
@@ -49,7 +49,7 @@ class TestMobileNumber:
         mobile_number = client.customers.mobile_number.with_raw_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            body={},
+            mobile_phone_number="+381631954907",
         )
 
         assert mobile_number.is_closed is True
@@ -66,7 +66,7 @@ class TestMobileNumber:
         with client.customers.mobile_number.with_streaming_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            body={},
+            mobile_phone_number="+381631954907",
         ) as mobile_number:
             assert not mobile_number.is_closed
             assert mobile_number.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -84,14 +84,14 @@ class TestMobileNumber:
             client.customers.mobile_number.with_raw_response.update(
                 customer_id="CUSTOMER_ID",
                 bank_id="",
-                body={},
+                mobile_phone_number="+381631954907",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             client.customers.mobile_number.with_raw_response.update(
                 customer_id="",
                 bank_id="BANK_ID",
-                body={},
+                mobile_phone_number="+381631954907",
             )
 
 
@@ -107,7 +107,7 @@ class TestAsyncMobileNumber:
         mobile_number = await async_client.customers.mobile_number.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            body={},
+            mobile_phone_number="+381631954907",
         )
         assert mobile_number.is_closed
         assert await mobile_number.json() == {"foo": "bar"}
@@ -124,7 +124,7 @@ class TestAsyncMobileNumber:
         mobile_number = await async_client.customers.mobile_number.with_raw_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            body={},
+            mobile_phone_number="+381631954907",
         )
 
         assert mobile_number.is_closed is True
@@ -141,7 +141,7 @@ class TestAsyncMobileNumber:
         async with async_client.customers.mobile_number.with_streaming_response.update(
             customer_id="CUSTOMER_ID",
             bank_id="BANK_ID",
-            body={},
+            mobile_phone_number="+381631954907",
         ) as mobile_number:
             assert not mobile_number.is_closed
             assert mobile_number.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -159,12 +159,12 @@ class TestAsyncMobileNumber:
             await async_client.customers.mobile_number.with_raw_response.update(
                 customer_id="CUSTOMER_ID",
                 bank_id="",
-                body={},
+                mobile_phone_number="+381631954907",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `customer_id` but received ''"):
             await async_client.customers.mobile_number.with_raw_response.update(
                 customer_id="",
                 bank_id="BANK_ID",
-                body={},
+                mobile_phone_number="+381631954907",
             )

@@ -34,7 +34,7 @@ class TestOpenCorporatesURL:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            json_string="{}",
         )
         assert open_corporates_url.is_closed
         assert open_corporates_url.json() == {"foo": "bar"}
@@ -53,7 +53,7 @@ class TestOpenCorporatesURL:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            json_string="{}",
         )
 
         assert open_corporates_url.is_closed is True
@@ -72,7 +72,7 @@ class TestOpenCorporatesURL:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            json_string="{}",
         ) as open_corporates_url:
             assert not open_corporates_url.is_closed
             assert open_corporates_url.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -92,7 +92,7 @@ class TestOpenCorporatesURL:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -101,7 +101,7 @@ class TestOpenCorporatesURL:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -110,7 +110,7 @@ class TestOpenCorporatesURL:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `other_account_id` but received ''"):
@@ -119,7 +119,7 @@ class TestOpenCorporatesURL:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                json_string="{}",
             )
 
 
@@ -137,7 +137,7 @@ class TestAsyncOpenCorporatesURL:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            json_string="{}",
         )
         assert open_corporates_url.is_closed
         assert await open_corporates_url.json() == {"foo": "bar"}
@@ -156,7 +156,7 @@ class TestAsyncOpenCorporatesURL:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            json_string="{}",
         )
 
         assert open_corporates_url.is_closed is True
@@ -175,7 +175,7 @@ class TestAsyncOpenCorporatesURL:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            json_string="{}",
         ) as open_corporates_url:
             assert not open_corporates_url.is_closed
             assert open_corporates_url.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -195,7 +195,7 @@ class TestAsyncOpenCorporatesURL:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -204,7 +204,7 @@ class TestAsyncOpenCorporatesURL:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -213,7 +213,7 @@ class TestAsyncOpenCorporatesURL:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `other_account_id` but received ''"):
@@ -222,5 +222,5 @@ class TestAsyncOpenCorporatesURL:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                json_string="{}",
             )

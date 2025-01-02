@@ -34,7 +34,7 @@ class TestPublicAlias:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            alias="String",
         )
         assert public_alias.is_closed
         assert public_alias.json() == {"foo": "bar"}
@@ -53,7 +53,7 @@ class TestPublicAlias:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            alias="String",
         )
 
         assert public_alias.is_closed is True
@@ -72,7 +72,7 @@ class TestPublicAlias:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            alias="String",
         ) as public_alias:
             assert not public_alias.is_closed
             assert public_alias.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -92,7 +92,7 @@ class TestPublicAlias:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                alias="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -101,7 +101,7 @@ class TestPublicAlias:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                body={},
+                alias="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -110,7 +110,7 @@ class TestPublicAlias:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                body={},
+                alias="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `other_account_id` but received ''"):
@@ -119,7 +119,7 @@ class TestPublicAlias:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                alias="String",
             )
 
     @parametrize
@@ -225,7 +225,7 @@ class TestPublicAlias:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            alias="String",
         )
         assert public_alias.is_closed
         assert public_alias.json() == {"foo": "bar"}
@@ -244,7 +244,7 @@ class TestPublicAlias:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            alias="String",
         )
 
         assert public_alias.is_closed is True
@@ -263,7 +263,7 @@ class TestPublicAlias:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            alias="String",
         ) as public_alias:
             assert not public_alias.is_closed
             assert public_alias.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -283,7 +283,7 @@ class TestPublicAlias:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                alias="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -292,7 +292,7 @@ class TestPublicAlias:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                body={},
+                alias="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -301,7 +301,7 @@ class TestPublicAlias:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                body={},
+                alias="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `other_account_id` but received ''"):
@@ -310,7 +310,7 @@ class TestPublicAlias:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                alias="String",
             )
 
     @parametrize
@@ -324,7 +324,7 @@ class TestPublicAlias:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            json_string="{}",
         )
         assert public_alias.is_closed
         assert public_alias.json() == {"foo": "bar"}
@@ -343,7 +343,7 @@ class TestPublicAlias:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            json_string="{}",
         )
 
         assert public_alias.is_closed is True
@@ -362,7 +362,7 @@ class TestPublicAlias:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            json_string="{}",
         ) as public_alias:
             assert not public_alias.is_closed
             assert public_alias.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -382,7 +382,7 @@ class TestPublicAlias:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -391,7 +391,7 @@ class TestPublicAlias:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -400,7 +400,7 @@ class TestPublicAlias:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `other_account_id` but received ''"):
@@ -409,7 +409,7 @@ class TestPublicAlias:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                json_string="{}",
             )
 
 
@@ -427,7 +427,7 @@ class TestAsyncPublicAlias:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            alias="String",
         )
         assert public_alias.is_closed
         assert await public_alias.json() == {"foo": "bar"}
@@ -446,7 +446,7 @@ class TestAsyncPublicAlias:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            alias="String",
         )
 
         assert public_alias.is_closed is True
@@ -465,7 +465,7 @@ class TestAsyncPublicAlias:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            alias="String",
         ) as public_alias:
             assert not public_alias.is_closed
             assert public_alias.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -485,7 +485,7 @@ class TestAsyncPublicAlias:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                alias="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -494,7 +494,7 @@ class TestAsyncPublicAlias:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                body={},
+                alias="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -503,7 +503,7 @@ class TestAsyncPublicAlias:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                body={},
+                alias="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `other_account_id` but received ''"):
@@ -512,7 +512,7 @@ class TestAsyncPublicAlias:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                alias="String",
             )
 
     @parametrize
@@ -618,7 +618,7 @@ class TestAsyncPublicAlias:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            alias="String",
         )
         assert public_alias.is_closed
         assert await public_alias.json() == {"foo": "bar"}
@@ -637,7 +637,7 @@ class TestAsyncPublicAlias:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            alias="String",
         )
 
         assert public_alias.is_closed is True
@@ -656,7 +656,7 @@ class TestAsyncPublicAlias:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            alias="String",
         ) as public_alias:
             assert not public_alias.is_closed
             assert public_alias.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -676,7 +676,7 @@ class TestAsyncPublicAlias:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                alias="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -685,7 +685,7 @@ class TestAsyncPublicAlias:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                body={},
+                alias="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -694,7 +694,7 @@ class TestAsyncPublicAlias:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                body={},
+                alias="String",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `other_account_id` but received ''"):
@@ -703,7 +703,7 @@ class TestAsyncPublicAlias:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                alias="String",
             )
 
     @parametrize
@@ -717,7 +717,7 @@ class TestAsyncPublicAlias:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            json_string="{}",
         )
         assert public_alias.is_closed
         assert await public_alias.json() == {"foo": "bar"}
@@ -736,7 +736,7 @@ class TestAsyncPublicAlias:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            json_string="{}",
         )
 
         assert public_alias.is_closed is True
@@ -755,7 +755,7 @@ class TestAsyncPublicAlias:
             bank_id="BANK_ID",
             account_id="ACCOUNT_ID",
             view_id="VIEW_ID",
-            body={},
+            json_string="{}",
         ) as public_alias:
             assert not public_alias.is_closed
             assert public_alias.http_request.headers.get("X-Stainless-Lang") == "python"
@@ -775,7 +775,7 @@ class TestAsyncPublicAlias:
                 bank_id="",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `account_id` but received ''"):
@@ -784,7 +784,7 @@ class TestAsyncPublicAlias:
                 bank_id="BANK_ID",
                 account_id="",
                 view_id="VIEW_ID",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `view_id` but received ''"):
@@ -793,7 +793,7 @@ class TestAsyncPublicAlias:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="",
-                body={},
+                json_string="{}",
             )
 
         with pytest.raises(ValueError, match=r"Expected a non-empty value for `other_account_id` but received ''"):
@@ -802,5 +802,5 @@ class TestAsyncPublicAlias:
                 bank_id="BANK_ID",
                 account_id="ACCOUNT_ID",
                 view_id="VIEW_ID",
-                body={},
+                json_string="{}",
             )
